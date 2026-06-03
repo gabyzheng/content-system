@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 """
 选题看板数据更新脚本
-读取 00-选题记录.md + 扫描 02-选题内容/ 目录，生成 dashboard.html
+读取 00-选题记录.md + 扫描 02-选题内容/ 目录，基于模板生成 dashboard.html
 用法: python3 update-dashboard.py
 """
 
-import os
-import re
 import json
+import re
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 TOPIC_FILE = BASE_DIR / "01-选题管理" / "00-选题记录.md"
 CONTENT_DIR = BASE_DIR / "02-选题内容"
+TEMPLATE_FILE = BASE_DIR / "dashboard.template.html"
 OUTPUT_FILE = BASE_DIR / "dashboard.html"
 
-# 各类型的流水线阶段定义
 PIPELINE_STAGES = {
     "公众号文章": [
         ("01-素材检索", "素材检索"),
@@ -84,21 +83,18 @@ STATUS_CONFIG = {
 
 
 def parse_topics():
-    """解析选题记录 md 文件"""
     if not TOPIC_FILE.exists():
         print(f"⚠️  选题记录文件不存在: {TOPIC_FILE}")
         return []
 
     content = TOPIC_FILE.read_text(encoding="utf-8")
-    topics = []
-
-    # 只解析「选题列表」之后的选题块
     parts = content.split("## 选题列表")
     if len(parts) < 2:
         return []
     topic_section = parts[1]
 
     pattern = r"### \[([^\]]+)\] (.+?)\n((?:- [^\n]+\n?)+)"
+    topics = []
     for match in re.finditer(pattern, topic_section):
         date = match.group(1)
         title = match.group(2).strip()
@@ -115,7 +111,6 @@ def parse_topics():
                 meta["idea"] = line.replace("- 初步想法：", "").strip()
             elif line.startswith("- 状态："):
                 raw_status = line.replace("- 状态：", "").strip()
-                # 提取主状态
                 for s in ["待深化", "已深化", "已发布", "放弃"]:
                     if s in raw_status:
                         meta["status"] = s
@@ -139,7 +134,6 @@ def parse_topics():
 
 
 def scan_pipeline(topic):
-    """扫描选题工作目录，获取各阶段文件信息"""
     work_dir = topic.get("work_dir", "")
     if not work_dir:
         return {"stages": [], "total_files": 0}
@@ -181,421 +175,6 @@ def scan_pipeline(topic):
     return {"stages": stages, "total_files": total_files}
 
 
-def generate_html(topics):
-    """生成 dashboard.html"""
-    # 为每个选题补充流水线数据
-    for topic in topics:
-        pipeline = scan_pipeline(topic)
-        topic["pipeline"] = pipeline["stages"]
-        topic["total_files"] = pipeline["total_files"]
-
-    data_json = json.dumps(topics, ensure_ascii=False, indent=2)
-
-    html = f'''<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Content Pipeline · 选题看板</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-  * {{ font-family: 'Inter', system-ui, sans-serif; }}
-  .mono {{ font-family: 'JetBrains Mono', monospace; }}
-  body {{ background: #0a0a0f; color: #e2e8f0; }}
-  .glass {{ background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); }}
-  .glass-hover:hover {{ background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }}
-  .card {{ border-radius: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }}
-  .card:hover {{ transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }}
-  .pipeline-dot {{ width: 8px; height: 8px; border-radius: 50%; }}
-  .pipeline-line {{ width: 24px; height: 2px; }}
-  .file-tree {{ max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }}
-  .file-tree.open {{ max-height: 800px; }}
-  .stat-card {{ position: relative; overflow: hidden; }}
-  .stat-card::after {{ content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); }}
-  .topic-card {{ border-left: 3px solid transparent; }}
-  .topic-card.status-已发布 {{ border-left-color: #10b981; }}
-  .topic-card.status-已深化 {{ border-left-color: #3b82f6; }}
-  .topic-card.status-待深化 {{ border-left-color: #f59e0b; }}
-  .topic-card.status-放弃 {{ border-left-color: #64748b; }}
-  ::-webkit-scrollbar {{ width: 6px; }}
-  ::-webkit-scrollbar-track {{ background: transparent; }}
-  ::-webkit-scrollbar-thumb {{ background: rgba(255,255,255,0.1); border-radius: 3px; }}
-  .filter-btn.active {{ background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.2) !important; }}
-  @keyframes fadeInUp {{ from {{ opacity: 0; transform: translateY(12px); }} to {{ opacity: 1; transform: translateY(0); }} }}
-  .animate-in {{ animation: fadeInUp 0.5s ease forwards; }}
-  /* Modal */
-  .modal-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }}
-  .modal-overlay.open {{ opacity: 1; pointer-events: auto; }}
-  .modal-content {{ max-width: 90vw; max-height: 90vh; overflow: auto; border-radius: 16px; background: #111118; border: 1px solid rgba(255,255,255,0.08); position: relative; }}
-  .modal-close {{ position: absolute; top: 12px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: none; color: #94a3b8; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10; }}
-  .modal-close:hover {{ background: rgba(255,255,255,0.15); color: #e2e8f0; }}
-  .modal-body {{ padding: 24px; }}
-  .modal-body img {{ max-width: 100%; max-height: 80vh; border-radius: 8px; }}
-  .modal-body .md-content {{ color: #cbd5e1; line-height: 1.8; font-size: 14px; }}
-  .modal-body .md-content h1,.modal-body .md-content h2,.modal-body .md-content h3 {{ color: #e2e8f0; margin: 16px 0 8px; }}
-  .modal-body .md-content h1 {{ font-size: 1.4em; }}
-  .modal-body .md-content h2 {{ font-size: 1.2em; }}
-  .modal-body .md-content h3 {{ font-size: 1.1em; }}
-  .modal-body .md-content p {{ margin: 8px 0; }}
-  .modal-body .md-content code {{ background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }}
-  .modal-body .md-content pre {{ background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px; overflow-x: auto; }}
-  .modal-body .md-content pre code {{ background: none; padding: 0; }}
-  .modal-body .md-content ul,.modal-body .md-content ol {{ padding-left: 20px; margin: 8px 0; }}
-  .modal-body .md-content li {{ margin: 4px 0; }}
-  .modal-body .md-content blockquote {{ border-left: 3px solid #3b82f6; padding-left: 12px; color: #94a3b8; margin: 12px 0; }}
-  .modal-body .md-content a {{ color: #60a5fa; text-decoration: underline; }}
-  .modal-body .md-content table {{ border-collapse: collapse; width: 100%; margin: 12px 0; }}
-  .modal-body .md-content th,.modal-body .md-content td {{ border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; text-align: left; }}
-  .modal-body .md-content th {{ background: rgba(255,255,255,0.05); }}
-  .file-link {{ cursor: pointer; }}
-  .file-link:hover {{ color: #e2e8f0 !important; }}
-  .file-link:hover i {{ color: #60a5fa !important; }}
-</style>
-</head>
-<body class="min-h-screen">
-
-<!-- Header -->
-<header class="border-b border-white/5 glass sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-        <i class="fa-solid fa-layer-group text-white text-lg"></i>
-      </div>
-      <div>
-        <h1 class="text-xl font-semibold tracking-tight">Content Pipeline</h1>
-        <p class="text-xs text-slate-500">选题看板 · 选题驱动 + 分支流水线</p>
-      </div>
-    </div>
-    <div class="flex items-center gap-3 text-xs text-slate-500">
-      <span class="glass px-3 py-1.5 rounded-full flex items-center gap-1.5">
-        <i class="fa-regular fa-clock"></i>
-        <span id="updateTime">--</span>
-      </span>
-      <a href="https://github.com/gabyzheng/content-system" target="_blank" class="glass px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:text-slate-300 transition-colors">
-        <i class="fa-brands fa-github"></i>
-        <span>GitHub</span>
-      </a>
-    </div>
-  </div>
-</header>
-
-<main class="max-w-7xl mx-auto px-6 py-8">
-  <!-- Stats Row -->
-  <div id="statsRow" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8"></div>
-
-  <!-- Filter Bar -->
-  <div class="flex flex-wrap items-center gap-3 mb-6">
-    <span class="text-xs text-slate-500 uppercase tracking-wider mr-1">筛选</span>
-    <div id="filterBar" class="flex flex-wrap gap-2"></div>
-  </div>
-
-  <!-- Topic List -->
-  <div id="topicList" class="space-y-4"></div>
-
-  <!-- Empty State -->
-  <div id="emptyState" class="hidden text-center py-20">
-    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl glass flex items-center justify-center">
-      <i class="fa-solid fa-inbox text-3xl text-slate-600"></i>
-    </div>
-    <h3 class="text-lg font-medium text-slate-400 mb-2">暂无选题</h3>
-    <p class="text-sm text-slate-600">在飞书中对大大驴说「记选题」来创建第一个选题</p>
-  </div>
-</main>
-
-<!-- File Preview Modal -->
-<div class="modal-overlay" id="fileModal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
-</div>
-
-<script>
-const DATA = {data_json};
-
-const TYPE_ICONS = {json.dumps(TYPE_ICONS, ensure_ascii=False)};
-const TYPE_COLORS = {json.dumps(TYPE_COLORS, ensure_ascii=False)};
-const STATUS_CONFIG = {json.dumps(STATUS_CONFIG, ensure_ascii=False)};
-
-let currentFilter = '全部';
-
-function formatSize(bytes) {{
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / 1048576).toFixed(1) + ' MB';
-}}
-
-function renderStats() {{
-  const counts = {{ total: DATA.length, '待深化': 0, '已深化': 0, '已发布': 0, '放弃': 0 }};
-  DATA.forEach(t => {{ if (counts[t.status] !== undefined) counts[t.status]++; }});
-
-  const stats = [
-    {{ label: '总计', value: counts.total, icon: 'fa-layer-group', color: 'from-blue-500 to-purple-600' }},
-    {{ label: '待深化', value: counts['待深化'], icon: 'fa-circle', color: 'from-amber-500 to-orange-600' }},
-    {{ label: '已深化', value: counts['已深化'], icon: 'fa-circle-dot', color: 'from-blue-500 to-cyan-600' }},
-    {{ label: '已发布', value: counts['已发布'], icon: 'fa-circle-check', color: 'from-emerald-500 to-teal-600' }},
-    {{ label: '放弃', value: counts['放弃'], icon: 'fa-circle-xmark', color: 'from-slate-500 to-zinc-600' }},
-  ];
-
-  document.getElementById('statsRow').innerHTML = stats.map((s, i) => `
-    <div class="glass card stat-card p-5 animate-in" style="animation-delay: ${{i * 0.08}}s">
-      <div class="flex items-center justify-between mb-3">
-        <span class="text-xs text-slate-500 uppercase tracking-wider">${{s.label}}</span>
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br ${{s.color}} flex items-center justify-center shadow-lg opacity-80">
-          <i class="fa-solid ${{s.icon}} text-white text-xs"></i>
-        </div>
-      </div>
-      <div class="text-3xl font-bold tracking-tight">${{s.value}}</div>
-    </div>
-  `).join('');
-}}
-
-function renderFilters() {{
-  const types = ['全部', ...new Set(DATA.map(t => t.type))];
-  document.getElementById('filterBar').innerHTML = types.map(t => `
-    <button onclick="filterBy('${{t}}')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 glass-hover ${{currentFilter === t ? 'active' : ''}}">
-      ${{t === '全部' ? '📋 全部' : '<i class="fa-solid ' + (TYPE_ICONS[t] || 'fa-file') + ' mr-1.5"></i>' + t}}
-    </button>
-  `).join('');
-}}
-
-function filterBy(type) {{
-  currentFilter = type;
-  renderFilters();
-  renderTopics();
-}}
-
-function renderPipeline(stages) {{
-  if (!stages || stages.length === 0) return '';
-  const hasFiles = stages.filter(s => s.file_count > 0).length;
-  const total = stages.length;
-
-  return `
-    <div class="flex items-center gap-1 flex-wrap">
-      ${{stages.map((s, i) => {{
-        const done = s.file_count > 0;
-        const isLast = s.label === '已发布' && done;
-        return `
-          <div class="flex items-center gap-1">
-            <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs ${{done ? 'bg-white/5' : 'opacity-30'}}">
-              <div class="pipeline-dot ${{done ? (isLast ? 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.5)]' : 'bg-blue-400') : 'bg-slate-600'}}"></div>
-              <span class="${{done ? 'text-slate-300' : 'text-slate-600'}}">${{s.label}}</span>
-              ${{s.file_count > 0 ? `<span class="mono text-[10px] text-slate-500">${{s.file_count}}</span>` : ''}}
-            </div>
-            ${{i < stages.length - 1 ? `<div class="pipeline-line ${{done ? 'bg-blue-500/40' : 'bg-slate-700'}}"></div>` : ''}}
-          </div>
-        `;
-      }}).join('')}}
-    </div>
-  `;
-}}
-
-function renderFileTree(stages, topicId) {{
-  if (!stages || stages.length === 0) return '';
-  return `
-    <div class="file-tree" id="files-${{topicId}}">
-      <div class="mt-4 pt-4 border-t border-white/5">
-        <div class="text-xs text-slate-500 mb-3 uppercase tracking-wider">📂 过程文件</div>
-        <div class="space-y-1">
-          ${{stages.map(s => `
-            <div class="flex items-center justify-between py-1.5 px-2 rounded-lg text-sm ${{s.exists ? 'hover:bg-white/5' : 'opacity-30'}} transition-colors">
-              <div class="flex items-center gap-2">
-                <i class="fa-solid ${{s.exists ? 'fa-folder text-amber-500/60' : 'fa-folder-open text-slate-600'}} text-xs"></i>
-                <span class="${{s.exists ? 'text-slate-300' : 'text-slate-600'}}">${{s.label}}</span>
-              </div>
-              <span class="mono text-xs ${{s.file_count > 0 ? 'text-slate-400' : 'text-slate-600'}}">${{s.file_count > 0 ? s.file_count + ' 文件' : '空'}}</span>
-            </div>
-            ${{s.files && s.files.length > 0 ? s.files.map(f => `
-              <div class="flex items-center justify-between py-1 pl-8 pr-2 text-xs text-slate-500 file-link" onclick="openFile('${{f.path}}', '${{f.name.replace(/'/g, "\\'")}}', ${{f.is_image ? 'true' : 'false'}}, ${{f.is_md ? 'true' : 'false'}})">
-                <span class="truncate max-w-[300px]"><i class="fa-solid ${{f.is_image ? 'fa-image text-cyan-500/60' : (f.is_md ? 'fa-file-lines text-blue-500/60' : 'fa-file text-slate-600')}} mr-1.5"></i>${{f.name}}</span>
-                <span class="mono text-slate-600 ml-2">${{formatSize(f.size)}}</span>
-              </div>
-            `).join('') : ''}}
-          `).join('')}}
-        </div>
-      </div>
-    </div>
-  `;
-}}
-
-function renderTopics() {{
-  const filtered = currentFilter === '全部' ? DATA : DATA.filter(t => t.type === currentFilter);
-  const container = document.getElementById('topicList');
-  const empty = document.getElementById('emptyState');
-
-  if (filtered.length === 0) {{
-    container.innerHTML = '';
-    empty.classList.remove('hidden');
-    return;
-  }}
-  empty.classList.add('hidden');
-
-  container.innerHTML = filtered.map((t, i) => {{
-    const colors = TYPE_COLORS[t.type] || TYPE_COLORS['其他'];
-    const statusCfg = STATUS_CONFIG[t.status] || STATUS_CONFIG['待深化'];
-    const topicId = i;
-
-    return `
-      <div class="glass card topic-card status-${{t.status}} p-6 animate-in" style="animation-delay: ${{i * 0.1}}s">
-        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
-          <div class="flex-1 min-w-0">
-            <!-- Header -->
-            <div class="flex items-center gap-3 mb-3 flex-wrap">
-              <span class="px-2.5 py-1 rounded-lg text-xs font-medium ${{colors.bg}} ${{colors.text}} ${{colors.border}} border">
-                <i class="fa-solid ${{TYPE_ICONS[t.type] || 'fa-file'}} mr-1"></i>${{t.type}}
-              </span>
-              <span class="px-2.5 py-1 rounded-lg text-xs font-medium ${{statusCfg.bg}} ${{statusCfg.color}}">
-                <i class="fa-solid ${{statusCfg.icon}} mr-1"></i>${{t.status}}
-              </span>
-              <span class="text-xs text-slate-600">${{t.date}}</span>
-            </div>
-
-            <!-- Title -->
-            <h3 class="text-lg font-semibold mb-2 text-slate-100">${{t.title}}</h3>
-
-            <!-- Idea -->
-            ${{t.idea ? `<p class="text-sm text-slate-400 mb-3 leading-relaxed">${{t.idea}}</p>` : ''}}
-
-            <!-- Keywords -->
-            ${{t.keywords && t.keywords.length > 0 ? `
-              <div class="flex flex-wrap gap-1.5 mb-4">
-                ${{t.keywords.map(k => `<span class="px-2 py-0.5 rounded-md text-[11px] bg-white/5 text-slate-500">#${{k}}</span>`).join('')}}
-              </div>
-            ` : ''}}
-
-            <!-- Pipeline -->
-            <div class="mb-3">
-              <div class="text-[10px] text-slate-600 uppercase tracking-wider mb-2">流水线进度</div>
-              ${{renderPipeline(t.pipeline)}}
-            </div>
-
-            <!-- File Tree Toggle -->
-            ${{t.total_files > 0 ? `
-              <button onclick="toggleFiles(${{topicId}})" class="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors mt-2">
-                <i id="icon-${{topicId}}" class="fa-solid fa-chevron-right text-[10px] transition-transform"></i>
-                <span>${{t.total_files}} 个过程文件</span>
-              </button>
-              ${{renderFileTree(t.pipeline, topicId)}}
-            ` : ''}}
-          </div>
-
-          <!-- Work Dir -->
-          ${{t.work_dir ? `
-            <div class="lg:text-right flex-shrink-0">
-              <div class="text-[10px] text-slate-600 uppercase tracking-wider mb-1">工作目录</div>
-              <code class="mono text-xs text-slate-500 bg-black/30 px-2 py-1 rounded block max-w-[320px] truncate">${{t.work_dir}}</code>
-            </div>
-          ` : ''}}
-        </div>
-      </div>
-    `;
-  }}).join('');
-}}
-
-function toggleFiles(id) {{
-  const tree = document.getElementById('files-' + id);
-  const icon = document.getElementById('icon-' + id);
-  if (tree && icon) {{
-    tree.classList.toggle('open');
-    icon.style.transform = tree.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
-  }}
-}}
-
-// Simple Markdown to HTML renderer
-function renderMarkdown(md) {{
-  let html = md
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    // Headers
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    // Bold / Italic
-    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Inline code
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
-    // Images (inline)
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:8px 0;">')
-    // Blockquote
-    .replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
-    // Horizontal rule
-    .replace(/^---$/gm, '<hr style="border-color:rgba(255,255,255,0.1);margin:16px 0;">')
-    // Unordered lists
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    // Wrap consecutive <li> in <ul>
-    .replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
-    // Paragraphs (double newline)
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(.+)$/gm, (m) => m.startsWith('<') ? m : '<p>' + m + '</p>')
-    // Clean empty paragraphs
-    .replace(/<p><\/p>/g, '');
-  return '<div class="md-content">' + html + '</div>';
-}}
-
-async function openFile(path, name, isImage, isMd) {{
-  const modal = document.getElementById('fileModal');
-  const body = document.getElementById('modalBody');
-  body.innerHTML = '<div class="flex items-center justify-center py-12"><div class="w-8 h-8 border-2 border-blue-500/30 border-t-blue-400 rounded-full animate-spin"></div></div>';
-  modal.classList.add('open');
-
-  try {{
-    const resp = await fetch(path);
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-
-    if (isImage) {{
-      const blob = await resp.blob();
-      const url = URL.createObjectURL(blob);
-      body.innerHTML = `
-        <div class="text-center">
-          <img src="${{url}}" alt="${{name}}" style="max-width:100%;max-height:75vh;border-radius:8px;">
-          <p class="text-xs text-slate-500 mt-3">${{name}} · <a href="${{path}}" target="_blank" class="text-blue-400 hover:underline">原始文件</a></p>
-        </div>`;
-    }} else if (isMd) {{
-      const text = await resp.text();
-      body.innerHTML = `
-        <div class="mb-3 pb-3 border-b border-white/5">
-          <span class="text-xs text-slate-500">${{name}} · <a href="${{path}}" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>
-        </div>
-        ${{renderMarkdown(text)}}`;
-    }} else {{
-      const text = await resp.text();
-      const ext = name.split('.').pop().toLowerCase();
-      const isCode = ['py','js','json','html','css','yaml','yml','sh','bash','xml'].includes(ext);
-      body.innerHTML = `
-        <div class="mb-3 pb-3 border-b border-white/5">
-          <span class="text-xs text-slate-500">${{name}} · <a href="${{path}}" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>
-        </div>
-        <pre style="background:rgba(0,0,0,0.4);padding:20px;border-radius:8px;overflow-x:auto;max-height:70vh;"><code style="color:#cbd5e1;font-size:13px;line-height:1.6;">${{text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}}</code></pre>`;
-    }}
-  }} catch (e) {{
-    body.innerHTML = `<div class="text-center py-12"><i class="fa-solid fa-triangle-exclamation text-3xl text-amber-500 mb-3"></i><p class="text-slate-400">无法加载文件</p><p class="text-xs text-slate-600 mt-1">${{e.message}}</p></div>`;
-  }}
-}}
-
-function closeModal() {{
-  document.getElementById('fileModal').classList.remove('open');
-  document.getElementById('modalBody').innerHTML = '';
-}}
-
-document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(); }});
-
-// Init
-document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN', {{ timeZone: 'Asia/Shanghai' }});
-renderStats();
-renderFilters();
-renderTopics();
-</script>
-</body>
-</html>'''
-
-    return html
-
-
 def main():
     print("📊 选题看板生成器")
     print("=" * 40)
@@ -605,10 +184,22 @@ def main():
 
     for t in topics:
         pipeline = scan_pipeline(t)
+        t["pipeline"] = pipeline["stages"]
+        t["total_files"] = pipeline["total_files"]
         file_count = sum(s["file_count"] for s in pipeline["stages"])
         print(f"   📝 {t['title'][:30]}... → {t['status']} ({file_count} 文件)")
 
-    html = generate_html(topics)
+    if not TEMPLATE_FILE.exists():
+        print(f"❌ 模板文件不存在: {TEMPLATE_FILE}")
+        return
+
+    template = TEMPLATE_FILE.read_text(encoding="utf-8")
+
+    html = template.replace("__DATA_JSON__", json.dumps(topics, ensure_ascii=False, indent=2))
+    html = html.replace("__TYPE_ICONS__", json.dumps(TYPE_ICONS, ensure_ascii=False))
+    html = html.replace("__TYPE_COLORS__", json.dumps(TYPE_COLORS, ensure_ascii=False))
+    html = html.replace("__STATUS_CONFIG__", json.dumps(STATUS_CONFIG, ensure_ascii=False))
+
     OUTPUT_FILE.write_text(html, encoding="utf-8")
     print(f"\n✅ 已生成: {OUTPUT_FILE}")
     print(f"   大小: {len(html):,} bytes")

@@ -159,9 +159,15 @@ def scan_pipeline(topic):
         if stage_path.exists():
             for f in sorted(stage_path.iterdir()):
                 if f.is_file() and not f.name.startswith("."):
+                    rel_path = str(f.relative_to(CONTENT_DIR.parent))
+                    ext = f.suffix.lower()
                     files.append({
                         "name": f.name,
                         "size": f.stat().st_size,
+                        "path": rel_path,
+                        "ext": ext,
+                        "is_image": ext in (".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"),
+                        "is_md": ext == ".md",
                     })
         stages.append({
             "dir": dir_name,
@@ -219,6 +225,33 @@ def generate_html(topics):
   .filter-btn.active {{ background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.2) !important; }}
   @keyframes fadeInUp {{ from {{ opacity: 0; transform: translateY(12px); }} to {{ opacity: 1; transform: translateY(0); }} }}
   .animate-in {{ animation: fadeInUp 0.5s ease forwards; }}
+  /* Modal */
+  .modal-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }}
+  .modal-overlay.open {{ opacity: 1; pointer-events: auto; }}
+  .modal-content {{ max-width: 90vw; max-height: 90vh; overflow: auto; border-radius: 16px; background: #111118; border: 1px solid rgba(255,255,255,0.08); position: relative; }}
+  .modal-close {{ position: absolute; top: 12px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: none; color: #94a3b8; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10; }}
+  .modal-close:hover {{ background: rgba(255,255,255,0.15); color: #e2e8f0; }}
+  .modal-body {{ padding: 24px; }}
+  .modal-body img {{ max-width: 100%; max-height: 80vh; border-radius: 8px; }}
+  .modal-body .md-content {{ color: #cbd5e1; line-height: 1.8; font-size: 14px; }}
+  .modal-body .md-content h1,.modal-body .md-content h2,.modal-body .md-content h3 {{ color: #e2e8f0; margin: 16px 0 8px; }}
+  .modal-body .md-content h1 {{ font-size: 1.4em; }}
+  .modal-body .md-content h2 {{ font-size: 1.2em; }}
+  .modal-body .md-content h3 {{ font-size: 1.1em; }}
+  .modal-body .md-content p {{ margin: 8px 0; }}
+  .modal-body .md-content code {{ background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }}
+  .modal-body .md-content pre {{ background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px; overflow-x: auto; }}
+  .modal-body .md-content pre code {{ background: none; padding: 0; }}
+  .modal-body .md-content ul,.modal-body .md-content ol {{ padding-left: 20px; margin: 8px 0; }}
+  .modal-body .md-content li {{ margin: 4px 0; }}
+  .modal-body .md-content blockquote {{ border-left: 3px solid #3b82f6; padding-left: 12px; color: #94a3b8; margin: 12px 0; }}
+  .modal-body .md-content a {{ color: #60a5fa; text-decoration: underline; }}
+  .modal-body .md-content table {{ border-collapse: collapse; width: 100%; margin: 12px 0; }}
+  .modal-body .md-content th,.modal-body .md-content td {{ border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; text-align: left; }}
+  .modal-body .md-content th {{ background: rgba(255,255,255,0.05); }}
+  .file-link {{ cursor: pointer; }}
+  .file-link:hover {{ color: #e2e8f0 !important; }}
+  .file-link:hover i {{ color: #60a5fa !important; }}
 </style>
 </head>
 <body class="min-h-screen">
@@ -270,6 +303,14 @@ def generate_html(topics):
     <p class="text-sm text-slate-600">在飞书中对大大驴说「记选题」来创建第一个选题</p>
   </div>
 </main>
+
+<!-- File Preview Modal -->
+<div class="modal-overlay" id="fileModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
 
 <script>
 const DATA = {data_json};
@@ -367,8 +408,8 @@ function renderFileTree(stages, topicId) {{
               <span class="mono text-xs ${{s.file_count > 0 ? 'text-slate-400' : 'text-slate-600'}}">${{s.file_count > 0 ? s.file_count + ' 文件' : '空'}}</span>
             </div>
             ${{s.files && s.files.length > 0 ? s.files.map(f => `
-              <div class="flex items-center justify-between py-1 pl-8 pr-2 text-xs text-slate-500 hover:text-slate-300 transition-colors">
-                <span class="truncate max-w-[300px]"><i class="fa-regular fa-file mr-1.5 text-slate-600"></i>${{f.name}}</span>
+              <div class="flex items-center justify-between py-1 pl-8 pr-2 text-xs text-slate-500 file-link" onclick="openFile('${{f.path}}', '${{f.name.replace(/'/g, "\\'")}}', ${{f.is_image ? 'true' : 'false'}}, ${{f.is_md ? 'true' : 'false'}})">
+                <span class="truncate max-w-[300px]"><i class="fa-solid ${{f.is_image ? 'fa-image text-cyan-500/60' : (f.is_md ? 'fa-file-lines text-blue-500/60' : 'fa-file text-slate-600')}} mr-1.5"></i>${{f.name}}</span>
                 <span class="mono text-slate-600 ml-2">${{formatSize(f.size)}}</span>
               </div>
             `).join('') : ''}}
@@ -461,6 +502,87 @@ function toggleFiles(id) {{
     icon.style.transform = tree.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
   }}
 }}
+
+// Simple Markdown to HTML renderer
+function renderMarkdown(md) {{
+  let html = md
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    // Headers
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // Bold / Italic
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+    // Images (inline)
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:8px 0;">')
+    // Blockquote
+    .replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
+    // Horizontal rule
+    .replace(/^---$/gm, '<hr style="border-color:rgba(255,255,255,0.1);margin:16px 0;">')
+    // Unordered lists
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    // Wrap consecutive <li> in <ul>
+    .replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
+    // Paragraphs (double newline)
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(.+)$/gm, (m) => m.startsWith('<') ? m : '<p>' + m + '</p>')
+    // Clean empty paragraphs
+    .replace(/<p><\/p>/g, '');
+  return '<div class="md-content">' + html + '</div>';
+}}
+
+async function openFile(path, name, isImage, isMd) {{
+  const modal = document.getElementById('fileModal');
+  const body = document.getElementById('modalBody');
+  body.innerHTML = '<div class="flex items-center justify-center py-12"><div class="w-8 h-8 border-2 border-blue-500/30 border-t-blue-400 rounded-full animate-spin"></div></div>';
+  modal.classList.add('open');
+
+  try {{
+    const resp = await fetch(path);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+
+    if (isImage) {{
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      body.innerHTML = `
+        <div class="text-center">
+          <img src="${{url}}" alt="${{name}}" style="max-width:100%;max-height:75vh;border-radius:8px;">
+          <p class="text-xs text-slate-500 mt-3">${{name}} · <a href="${{path}}" target="_blank" class="text-blue-400 hover:underline">原始文件</a></p>
+        </div>`;
+    }} else if (isMd) {{
+      const text = await resp.text();
+      body.innerHTML = `
+        <div class="mb-3 pb-3 border-b border-white/5">
+          <span class="text-xs text-slate-500">${{name}} · <a href="${{path}}" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>
+        </div>
+        ${{renderMarkdown(text)}}`;
+    }} else {{
+      const text = await resp.text();
+      const ext = name.split('.').pop().toLowerCase();
+      const isCode = ['py','js','json','html','css','yaml','yml','sh','bash','xml'].includes(ext);
+      body.innerHTML = `
+        <div class="mb-3 pb-3 border-b border-white/5">
+          <span class="text-xs text-slate-500">${{name}} · <a href="${{path}}" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>
+        </div>
+        <pre style="background:rgba(0,0,0,0.4);padding:20px;border-radius:8px;overflow-x:auto;max-height:70vh;"><code style="color:#cbd5e1;font-size:13px;line-height:1.6;">${{text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}}</code></pre>`;
+    }}
+  }} catch (e) {{
+    body.innerHTML = `<div class="text-center py-12"><i class="fa-solid fa-triangle-exclamation text-3xl text-amber-500 mb-3"></i><p class="text-slate-400">无法加载文件</p><p class="text-xs text-slate-600 mt-1">${{e.message}}</p></div>`;
+  }}
+}}
+
+function closeModal() {{
+  document.getElementById('fileModal').classList.remove('open');
+  document.getElementById('modalBody').innerHTML = '';
+}}
+
+document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(); }});
 
 // Init
 document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN', {{ timeZone: 'Asia/Shanghai' }});

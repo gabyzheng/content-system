@@ -34,6 +34,15 @@ PIPELINE_STAGES = {
         ("06-质量检查", "质量检查"),
         ("07-已发布", "已发布"),
     ],
+    "H5-Deck": [
+        ("01-打透观点", "打透观点"),
+        ("02-拆页设计", "拆页设计"),
+        ("03-素材检索", "素材检索"),
+        ("04-生成HTML", "生成HTML"),
+        ("05-配图", "配图"),
+        ("06-质量检查", "质量检查"),
+        ("07-已发布", "已发布"),
+    ],
     "日报": [
         ("01-素材检索", "素材检索"),
         ("02-内容生成", "内容生成"),
@@ -59,6 +68,7 @@ PIPELINE_STAGES = {
 TYPE_ICONS = {
     "公众号文章": "fa-newspaper",
     "PPT": "fa-file-powerpoint",
+    "H5-Deck": "fa-code",
     "日报": "fa-calendar-check",
     "竞品分析": "fa-chart-bar",
     "社交卡片": "fa-share-nodes",
@@ -68,6 +78,7 @@ TYPE_ICONS = {
 TYPE_COLORS = {
     "公众号文章": {"bg": "bg-emerald-500/10", "text": "text-emerald-400", "border": "border-emerald-500/30"},
     "PPT": {"bg": "bg-orange-500/10", "text": "text-orange-400", "border": "border-orange-500/30"},
+    "H5-Deck": {"bg": "bg-cyan-500/10", "text": "text-cyan-400", "border": "border-cyan-500/30"},
     "日报": {"bg": "bg-blue-500/10", "text": "text-blue-400", "border": "border-blue-500/30"},
     "竞品分析": {"bg": "bg-purple-500/10", "text": "text-purple-400", "border": "border-purple-500/30"},
     "社交卡片": {"bg": "bg-pink-500/10", "text": "text-pink-400", "border": "border-pink-500/30"},

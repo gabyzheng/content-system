@@ -1,0 +1,39 @@
+{
+  "page_id": "P18",
+  "title": "从试点到规模化，缺的不是技术，是体系",
+  "subtitle": "",
+  "core_message": "不是上线一套系统，而是让组织的工作方式具备自我进化的能力。这才是AI时代真正的组织能力。",
+  "layout": {
+    "type": "title_only",
+    "visual_focus": "center_large_typography",
+    "density": "sparse",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "center",
+      "content": {
+        "title": "从试点到规模化",
+        "subtitle": "缺的不是技术，是体系"
+      }
+    },
+    {
+      "type": "three_point_argument",
+      "position": "bottom_center",
+      "content": [
+        "信息流动",
+        "角色重构",
+        "流程自进化"
+      ]
+    }
+  ],
+  "illustration_prompt": "A minimalist closing slide composition, large golden typography area in the center reading the main message, three luminous keyword orbs floating below in a row, subtle particle effects, deep navy background, elegant consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "page_id": "P06",
+  "title": "反转① 工件：死文件 → 活资产",
+  "subtitle": "载体决定一切",
+  "core_message": "PPT是二进制黑盒——只能整体存取。HTML是结构化文本——可解析、可拆解、可重组。载体换了，AI才有了介入的物理可能。这一步之前，所有「AI赋能」都是表演。",
+  "layout": {
+    "type": "two_column_compare",
+    "visual_focus": "center_transformation_arrow",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "反转① 工件：死文件 → 活资产",
+        "subtitle": "载体决定一切"
+      }
+    },
+    {
+      "type": "comparison_table",
+      "position": "center",
+      "content": {
+        "left_label": "PPT · 旧世界",
+        "right_label": "HTML · 新世界",
+        "rows": [
+          {
+            "left": "二进制黑盒",
+            "right": "结构化文本"
+          },
+          {
+            "left": "最小单位：一个文件",
+            "right": "最小单位：一句话"
+          },
+          {
+            "left": "靠文件名检索",
+            "right": "靠语义检索"
+          },
+          {
+            "left": "只能被搬运",
+            "right": "可被引用、继承、改写"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "载体换了，AI才有了介入的物理可能。"
+    }
+  ],
+  "illustration_prompt": "A split composition: left side shows a dark locked cube with PPT label, right side shows a luminous network of connected glowing nodes with HTML label, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, deep navy background, minimalist consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "text on the arrow",
+      "cluttered comparison"
+    ]
+  }
+}

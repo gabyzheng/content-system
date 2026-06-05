@@ -1,0 +1,41 @@
+{
+  "page_id": "P04",
+  "title": "试点到规模化的鸿沟，不是技术问题",
+  "subtitle": "",
+  "core_message": "缺的不是更强的模型，是知识不流动、经验不沉淀、流程不循环。真正的差距不在AI能力，在组织能力。",
+  "layout": {
+    "type": "top_title_center_visual",
+    "visual_focus": "center_chasm_with_bridge",
+    "density": "sparse",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "试点到规模化的鸿沟，不是技术问题",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "three_point_argument",
+      "position": "bottom_center",
+      "content": [
+        "知识不流动：做完就归档，下次从头来",
+        "经验不沉淀：人在经验在，人走经验走",
+        "流程不循环：每次执行都是消耗，不是积累"
+      ]
+    }
+  ],
+  "illustration_prompt": "A dramatic abstract illustration of a wide chasm splitting the composition horizontally, scattered small islands on the left labeled with tiny icons representing isolated pilots, a unified landmass on the right, a golden bridge being constructed across the gap with luminous segments, deep navy background, ethereal blue glow in the chasm, executive consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "dramatic explosions",
+      "text in the chasm"
+    ]
+  }
+}

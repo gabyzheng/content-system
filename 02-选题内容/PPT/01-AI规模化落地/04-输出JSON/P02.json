@@ -1,0 +1,46 @@
+{
+  "page_id": "P02",
+  "title": "看起来在运转，实际上是一条断头路",
+  "subtitle": "",
+  "core_message": "很多企业的AI试点做了不少——AI客服、AI小红书、AI报表。但结果呢？「用了三个月，没人用了」「一天发200条，销量没变」「上了AI客服，客诉反而多了」。",
+  "layout": {
+    "type": "left_text_right_map",
+    "visual_focus": "right_broken_road",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_left",
+      "content": {
+        "title": "看起来在运转，实际上是一条断头路",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "three_point_argument",
+      "position": "left_center",
+      "content": [
+        "「我们买了AI，用了三个月，没人用了。」",
+        "「我们做了AI小红书，一天发200条，销量没变。」",
+        "「我们上了AI客服，客诉反而多了。」"
+      ]
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_left",
+      "content": "试点是孤岛，没有体系支撑，做完就完了。"
+    }
+  ],
+  "illustration_prompt": "A minimalist abstract illustration of a road that starts from the left side and abruptly breaks off in the middle-right, floating fragments falling into dark void below, the road edge highlighted with a thin golden line, deep navy blue background, dramatic but restrained lighting, consulting presentation style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "dramatic explosions",
+      "cluttered composition"
+    ]
+  }
+}

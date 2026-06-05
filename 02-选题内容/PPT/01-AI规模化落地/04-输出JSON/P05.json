@@ -1,0 +1,62 @@
+{
+  "page_id": "P05",
+  "title": "规模化需要六个反转",
+  "subtitle": "信息层 · 组织层 · 系统层",
+  "core_message": "信息层让知识流动（①②③）→ 组织层让人与AI重新分工（④⑤）→ 系统层让流程自我进化（⑥）。三层递进，缺一不可。",
+  "layout": {
+    "type": "top_title_center_visual",
+    "visual_focus": "center_three_tier_pyramid",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "规模化需要六个反转",
+        "subtitle": "信息层 · 组织层 · 系统层"
+      }
+    },
+    {
+      "type": "flow_diagram",
+      "position": "center",
+      "content": {
+        "tiers": [
+          {
+            "label": "系统层 · 让流程自我进化",
+            "items": [
+              "⑥ 流程反转：被设计→自生长"
+            ],
+            "color": "golden"
+          },
+          {
+            "label": "组织层 · 让人与AI重新分工",
+            "items": [
+              "④ 角色反转：生产者→判断者",
+              "⑤ 激励反转：考核投入→考核产出"
+            ],
+            "color": "teal"
+          },
+          {
+            "label": "信息层 · 让知识流动起来",
+            "items": [
+              "① 工件反转：死文件→活资产",
+              "② 颗粒度反转：文件级→片段级",
+              "③ 数据反转：单向归档→双向喂养"
+            ],
+            "color": "blue"
+          }
+        ]
+      }
+    }
+  ],
+  "illustration_prompt": "A three-tier pyramid or stepped platform abstract composition, bottom tier in deep blue with three luminous nodes, middle tier in teal with two nodes, top tier in warm golden with one radiant node, each node connected by ascending luminous lines, dark navy background, clean executive consulting aesthetic, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

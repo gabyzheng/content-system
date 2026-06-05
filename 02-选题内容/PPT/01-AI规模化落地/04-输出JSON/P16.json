@@ -1,0 +1,58 @@
+{
+  "page_id": "P16",
+  "title": "企业AI转型的三层路径",
+  "subtitle": "",
+  "core_message": "不同成熟度的业务需要不同的AI策略——一刀切是最大的浪费。",
+  "layout": {
+    "type": "three_column_cards",
+    "visual_focus": "center_three_pillars",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "企业AI转型的三层路径",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "flow_diagram",
+      "position": "center",
+      "content": {
+        "columns": [
+          {
+            "label": "路径一：成熟业务",
+            "desc": "单点AI优化 → 全链路AI优化 → 极致降本增效",
+            "highlight": "生产力革新"
+          },
+          {
+            "label": "路径二：创新业务",
+            "desc": "围绕需求重新定义业务 → AI原生品牌数智化",
+            "highlight": "数智化孵化"
+          },
+          {
+            "label": "路径三：C端入口",
+            "desc": "新场景新入口拓展 → 提升用户渗透与粘性",
+            "highlight": "超级入口"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "不同成熟度的业务，需要不同的AI策略——一刀切是最大的浪费。"
+    }
+  ],
+  "illustration_prompt": "A three-pillar composition: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, deep navy background, consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

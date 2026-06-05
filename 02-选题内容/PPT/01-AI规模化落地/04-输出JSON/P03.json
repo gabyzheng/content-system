@@ -1,0 +1,58 @@
+{
+  "page_id": "P03",
+  "title": "四个「假运转」症状",
+  "subtitle": "共同根因：流程的产物全部是死的，无法回流",
+  "core_message": "知识库是死库存·复盘是幸存者偏差·质量是黑盒·绩效是猜谜——四个症状指向同一个根因：材料、录音、复盘全部是死的，无法回流。",
+  "layout": {
+    "type": "grid_icons",
+    "visual_focus": "center_cross_mark",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "四个「假运转」症状",
+        "subtitle": "共同根因：流程的产物全部是死的，无法回流"
+      }
+    },
+    {
+      "type": "icon_grid",
+      "position": "center",
+      "content": [
+        {
+          "icon": "locked_file",
+          "title": "知识死库存",
+          "desc": "PPT进了共享盘，文件名「最终版-V3-真的最终.pptx」。存而不用。"
+        },
+        {
+          "icon": "blind_magnifier",
+          "title": "复盘幸存者偏差",
+          "desc": "每周抓几个「印象里最难的」讨论，样本靠记忆。下周还会犯一样的错。"
+        },
+        {
+          "icon": "black_box",
+          "title": "质量黑盒",
+          "desc": "100场汇报抽查3场，剩下97场无人知晓。客户的真实反应沉入海底。"
+        },
+        {
+          "icon": "dice",
+          "title": "绩效猜谜",
+          "desc": "「小张这季度状态不错」，但具体好在哪里？打分变成印象管理。"
+        }
+      ]
+    }
+  ],
+  "illustration_prompt": "A clean 2x2 grid layout with four minimalist abstract icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, deep navy blue background, professional consulting infographic style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "cartoonish icons",
+      "crowded labels"
+    ]
+  }
+}

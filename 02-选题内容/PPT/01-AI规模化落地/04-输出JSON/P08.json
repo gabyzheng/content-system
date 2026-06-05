@@ -1,0 +1,60 @@
+{
+  "page_id": "P08",
+  "title": "反转③ 数据：单向归档 → 双向喂养",
+  "subtitle": "",
+  "core_message": "旧流程里数据是「流出」的，归档即终点。新流程里数据是「循环」的，归档即燃料。每一场汇报既消耗知识，也生产知识。",
+  "layout": {
+    "type": "two_column_compare",
+    "visual_focus": "center_loop_vs_line",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "反转③ 数据：单向归档 → 双向喂养",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "flow_diagram",
+      "position": "center",
+      "content": {
+        "left_flow": {
+          "label": "旧流程",
+          "steps": [
+            "产出",
+            "归档",
+            "结束"
+          ],
+          "shape": "straight_line"
+        },
+        "right_flow": {
+          "label": "新流程",
+          "steps": [
+            "产出",
+            "归档",
+            "喂养",
+            "下一次产出"
+          ],
+          "shape": "circular_loop"
+        }
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "归档即燃料。每一场汇报既消耗知识，也生产知识。"
+    }
+  ],
+  "illustration_prompt": "A split composition: left side shows a straight grey arrow going into a dead-end folder icon, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, labeled subtly, deep navy background, clean consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

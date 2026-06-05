@@ -1,0 +1,57 @@
+{
+  "page_id": "P15",
+  "title": "AI人才建设：内部培养 + 外部引进",
+  "subtitle": "双轮驱动",
+  "core_message": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。",
+  "layout": {
+    "type": "two_column_compare",
+    "visual_focus": "center_bridge",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "AI人才建设：内部培养 + 外部引进",
+        "subtitle": "双轮驱动"
+      }
+    },
+    {
+      "type": "comparison_table",
+      "position": "center",
+      "content": {
+        "left_label": "业务人才转型",
+        "right_label": "技术人才转型",
+        "rows": [
+          {
+            "left": "各业务部门选拔AI操作官",
+            "right": "促使技术人员深入理解业务逻辑"
+          },
+          {
+            "left": "6个月转型期，从需求源头驱动AI建设",
+            "right": "用技术创新重塑业务价值链条"
+          },
+          {
+            "left": "让业务需求精准转化为AI场景落地",
+            "right": "AI智能体黑客松大赛检验成果"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。"
+    }
+  ],
+  "illustration_prompt": "A dual-path illustration: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, deep navy background, consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

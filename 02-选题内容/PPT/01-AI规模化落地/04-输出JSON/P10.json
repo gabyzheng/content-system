@@ -1,0 +1,46 @@
+{
+  "page_id": "P10",
+  "title": "反转⑤ 激励：考核投入 → 考核产出",
+  "subtitle": "",
+  "core_message": "同岗位的人正在被AI拉开10倍差距。销售BD从5封到50封/天，产品经理从1版到3版PRD/天，设计师从2张到20张方案/天。如果你的团队出现了一个产出10倍于同事的人，这不是个人英雄——是组织该重新思考激励了。",
+  "layout": {
+    "type": "left_text_right_chart",
+    "visual_focus": "right_bar_chart",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_left",
+      "content": {
+        "title": "反转⑤ 激励：考核投入 → 考核产出",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "three_point_argument",
+      "position": "left_center",
+      "content": [
+        "销售BD：5封→50封邮件/天，10×个性化能力",
+        "产品经理：1版→3版PRD/天，3×共创深度",
+        "设计师：2张→20张方案/天，10×迭代速度"
+      ]
+    },
+    {
+      "type": "callout_card",
+      "position": "left_bottom",
+      "content": "如果你的团队里出现了一个产出10倍于同事的人，这不是个人英雄。这是一个信号：你的组织，该重新思考激励分配方式了。"
+    }
+  ],
+  "illustration_prompt": "A clean bar chart composition on the right side with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines, deep navy background, professional consulting data visualization style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "3D charts",
+      "excessive data labels"
+    ]
+  }
+}

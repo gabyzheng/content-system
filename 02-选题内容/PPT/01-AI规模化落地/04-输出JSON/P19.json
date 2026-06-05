@@ -1,0 +1,35 @@
+{
+  "page_id": "P19",
+  "title": "拥抱AI时代，跨越周期",
+  "subtitle": "",
+  "core_message": "火山引擎",
+  "layout": {
+    "type": "full_bleed_visual",
+    "visual_focus": "center_horizon_line",
+    "density": "sparse",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "center",
+      "content": {
+        "title": "拥抱AI时代，跨越周期",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "火山引擎"
+    }
+  ],
+  "illustration_prompt": "A minimalist end slide, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, deep navy background, clean and serene, consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

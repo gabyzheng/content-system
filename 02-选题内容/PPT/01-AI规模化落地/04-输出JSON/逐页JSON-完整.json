@@ -1,0 +1,1006 @@
+{
+  "deck_name": "AI驱动，智慧增长——从试点场景到业务价值规模化",
+  "theme": "blue_minimal_consulting",
+  "aspect_ratio": "16:9",
+  "resolution": "3840x2160",
+  "slides": [
+    {
+      "page_id": "P01",
+      "title": "AI驱动，智慧增长",
+      "subtitle": "从试点场景到业务价值规模化",
+      "core_message": "AI不是选择题，是生存题。从试点到规模化，缺的不是技术，是体系。",
+      "layout": {
+        "type": "full_bleed_visual",
+        "visual_focus": "center_title_with_arrow",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "center_left",
+          "content": {
+            "title": "AI驱动，智慧增长",
+            "subtitle": "从试点场景到业务价值规模化"
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_right",
+          "content": "2026/06 · 火山引擎"
+        }
+      ],
+      "illustration_prompt": "A minimalist abstract 3D geometric composition with a glowing golden arrow rising diagonally from scattered small luminous dots at bottom-left toward a large radiant sphere at top-right, deep navy blue gradient background, clean executive consulting style, ethereal lighting, generous negative space on the left for text overlay, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "busy composition",
+          "text overlapping visuals"
+        ]
+      }
+    },
+    {
+      "page_id": "P02",
+      "title": "看起来在运转，实际上是一条断头路",
+      "subtitle": "",
+      "core_message": "很多企业的AI试点做了不少——AI客服、AI小红书、AI报表。但结果呢？「用了三个月，没人用了」「一天发200条，销量没变」「上了AI客服，客诉反而多了」。",
+      "layout": {
+        "type": "left_text_right_map",
+        "visual_focus": "right_broken_road",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "看起来在运转，实际上是一条断头路",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "「我们买了AI，用了三个月，没人用了。」",
+            "「我们做了AI小红书，一天发200条，销量没变。」",
+            "「我们上了AI客服，客诉反而多了。」"
+          ]
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_left",
+          "content": "试点是孤岛，没有体系支撑，做完就完了。"
+        }
+      ],
+      "illustration_prompt": "A minimalist abstract illustration of a road that starts from the left side and abruptly breaks off in the middle-right, floating fragments falling into dark void below, the road edge highlighted with a thin golden line, deep navy blue background, dramatic but restrained lighting, consulting presentation style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "dramatic explosions",
+          "cluttered composition"
+        ]
+      }
+    },
+    {
+      "page_id": "P03",
+      "title": "四个「假运转」症状",
+      "subtitle": "共同根因：流程的产物全部是死的，无法回流",
+      "core_message": "知识库是死库存·复盘是幸存者偏差·质量是黑盒·绩效是猜谜——四个症状指向同一个根因：材料、录音、复盘全部是死的，无法回流。",
+      "layout": {
+        "type": "grid_icons",
+        "visual_focus": "center_cross_mark",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "四个「假运转」症状",
+            "subtitle": "共同根因：流程的产物全部是死的，无法回流"
+          }
+        },
+        {
+          "type": "icon_grid",
+          "position": "center",
+          "content": [
+            {
+              "icon": "locked_file",
+              "title": "知识死库存",
+              "desc": "PPT进了共享盘，文件名「最终版-V3-真的最终.pptx」。存而不用。"
+            },
+            {
+              "icon": "blind_magnifier",
+              "title": "复盘幸存者偏差",
+              "desc": "每周抓几个「印象里最难的」讨论，样本靠记忆。下周还会犯一样的错。"
+            },
+            {
+              "icon": "black_box",
+              "title": "质量黑盒",
+              "desc": "100场汇报抽查3场，剩下97场无人知晓。客户的真实反应沉入海底。"
+            },
+            {
+              "icon": "dice",
+              "title": "绩效猜谜",
+              "desc": "「小张这季度状态不错」，但具体好在哪里？打分变成印象管理。"
+            }
+          ]
+        }
+      ],
+      "illustration_prompt": "A clean 2x2 grid layout with four minimalist abstract icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, deep navy blue background, professional consulting infographic style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "cartoonish icons",
+          "crowded labels"
+        ]
+      }
+    },
+    {
+      "page_id": "P04",
+      "title": "试点到规模化的鸿沟，不是技术问题",
+      "subtitle": "",
+      "core_message": "缺的不是更强的模型，是知识不流动、经验不沉淀、流程不循环。真正的差距不在AI能力，在组织能力。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_chasm_with_bridge",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "试点到规模化的鸿沟，不是技术问题",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "bottom_center",
+          "content": [
+            "知识不流动：做完就归档，下次从头来",
+            "经验不沉淀：人在经验在，人走经验走",
+            "流程不循环：每次执行都是消耗，不是积累"
+          ]
+        }
+      ],
+      "illustration_prompt": "A dramatic abstract illustration of a wide chasm splitting the composition horizontally, scattered small islands on the left labeled with tiny icons representing isolated pilots, a unified landmass on the right, a golden bridge being constructed across the gap with luminous segments, deep navy background, ethereal blue glow in the chasm, executive consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "dramatic explosions",
+          "text in the chasm"
+        ]
+      }
+    },
+    {
+      "page_id": "P05",
+      "title": "规模化需要六个反转",
+      "subtitle": "信息层 · 组织层 · 系统层",
+      "core_message": "信息层让知识流动（①②③）→ 组织层让人与AI重新分工（④⑤）→ 系统层让流程自我进化（⑥）。三层递进，缺一不可。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_three_tier_pyramid",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "规模化需要六个反转",
+            "subtitle": "信息层 · 组织层 · 系统层"
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "tiers": [
+              {
+                "label": "系统层 · 让流程自我进化",
+                "items": [
+                  "⑥ 流程反转：被设计→自生长"
+                ],
+                "color": "golden"
+              },
+              {
+                "label": "组织层 · 让人与AI重新分工",
+                "items": [
+                  "④ 角色反转：生产者→判断者",
+                  "⑤ 激励反转：考核投入→考核产出"
+                ],
+                "color": "teal"
+              },
+              {
+                "label": "信息层 · 让知识流动起来",
+                "items": [
+                  "① 工件反转：死文件→活资产",
+                  "② 颗粒度反转：文件级→片段级",
+                  "③ 数据反转：单向归档→双向喂养"
+                ],
+                "color": "blue"
+              }
+            ]
+          }
+        }
+      ],
+      "illustration_prompt": "A three-tier pyramid or stepped platform abstract composition, bottom tier in deep blue with three luminous nodes, middle tier in teal with two nodes, top tier in warm golden with one radiant node, each node connected by ascending luminous lines, dark navy background, clean executive consulting aesthetic, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    },
+    {
+      "page_id": "P06",
+      "title": "反转① 工件：死文件 → 活资产",
+      "subtitle": "载体决定一切",
+      "core_message": "PPT是二进制黑盒——只能整体存取。HTML是结构化文本——可解析、可拆解、可重组。载体换了，AI才有了介入的物理可能。这一步之前，所有「AI赋能」都是表演。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_transformation_arrow",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转① 工件：死文件 → 活资产",
+            "subtitle": "载体决定一切"
+          }
+        },
+        {
+          "type": "comparison_table",
+          "position": "center",
+          "content": {
+            "left_label": "PPT · 旧世界",
+            "right_label": "HTML · 新世界",
+            "rows": [
+              {
+                "left": "二进制黑盒",
+                "right": "结构化文本"
+              },
+              {
+                "left": "最小单位：一个文件",
+                "right": "最小单位：一句话"
+              },
+              {
+                "left": "靠文件名检索",
+                "right": "靠语义检索"
+              },
+              {
+                "left": "只能被搬运",
+                "right": "可被引用、继承、改写"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "载体换了，AI才有了介入的物理可能。"
+        }
+      ],
+      "illustration_prompt": "A split composition: left side shows a dark locked cube with PPT label, right side shows a luminous network of connected glowing nodes with HTML label, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, deep navy background, minimalist consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "text on the arrow",
+          "cluttered comparison"
+        ]
+      }
+    },
+    {
+      "page_id": "P07",
+      "title": "反转② 颗粒度：文件级 → 片段级",
+      "subtitle": "",
+      "core_message": "旧世界最小单位是一个PPT，靠文件名。新世界最小单位是一句话、一个观点、一段客户反馈，靠语义。颗粒度决定知识能不能被「用」，而不只是被「存」。",
+      "layout": {
+        "type": "left_text_right_map",
+        "visual_focus": "right_exploding_cube",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "反转② 颗粒度：文件级 → 片段级",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "旧世界：一个PPT是一个整体，检索靠文件名",
+            "新世界：一句话就是一个独立的知识单元",
+            "颗粒度越细，知识越能被精准调用和重组"
+          ]
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_left",
+          "content": "颗粒度决定知识能不能被「用」，而不只是被「存」。"
+        }
+      ],
+      "illustration_prompt": "An abstract illustration of a large dark cube on the right side exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, deep navy background, consulting infographic style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "violent explosion",
+          "too many particles"
+        ]
+      }
+    },
+    {
+      "page_id": "P08",
+      "title": "反转③ 数据：单向归档 → 双向喂养",
+      "subtitle": "",
+      "core_message": "旧流程里数据是「流出」的，归档即终点。新流程里数据是「循环」的，归档即燃料。每一场汇报既消耗知识，也生产知识。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_loop_vs_line",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转③ 数据：单向归档 → 双向喂养",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "left_flow": {
+              "label": "旧流程",
+              "steps": [
+                "产出",
+                "归档",
+                "结束"
+              ],
+              "shape": "straight_line"
+            },
+            "right_flow": {
+              "label": "新流程",
+              "steps": [
+                "产出",
+                "归档",
+                "喂养",
+                "下一次产出"
+              ],
+              "shape": "circular_loop"
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "归档即燃料。每一场汇报既消耗知识，也生产知识。"
+        }
+      ],
+      "illustration_prompt": "A split composition: left side shows a straight grey arrow going into a dead-end folder icon, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, labeled subtly, deep navy background, clean consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    },
+    {
+      "page_id": "P09",
+      "title": "反转④ 角色：内容生产者 → 判断提供者",
+      "subtitle": "ERA 三阶段：校对员 → 执行者 → 协作者",
+      "core_message": "角色反转不是一夜之间发生的。它经历三个阶段：AI先做校对员，再做执行者，最后做协作者。AI每往前移一步，人的价值密度就提升一个量级。",
+      "layout": {
+        "type": "three_column_cards",
+        "visual_focus": "center_ai_position_shift",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转④ 角色：内容生产者 → 判断提供者",
+            "subtitle": "ERA 三阶段：校对员 → 执行者 → 协作者"
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "columns": [
+              {
+                "label": "ERA 01 · 校对员",
+                "flow": [
+                  "人 → 定义需求",
+                  "人 → 产出内容",
+                  "AI → 检查校对"
+                ],
+                "highlight": "AI 在最后一步"
+              },
+              {
+                "label": "ERA 02 · 执行者",
+                "flow": [
+                  "人 → 定义需求",
+                  "AI → 产出内容",
+                  "AI → 检查校对"
+                ],
+                "highlight": "AI 在中间步骤"
+              },
+              {
+                "label": "ERA 03 · 协作者",
+                "flow": [
+                  "人+AI → 定义需求",
+                  "AI → 产出内容",
+                  "AI → 检查校对"
+                ],
+                "highlight": "AI 在第一步"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "AI每往前移一步，人需要做的就越靠近——提出对的问题。"
+        }
+      ],
+      "illustration_prompt": "A three-column progressive illustration showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end of the workflow, middle column shows AI in the middle as executor with human defining requirements, right column shows human and AI collaborating at the start together, golden gradient flowing from left to right, deep navy background, executive consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "robot figures",
+          "complex workflow details"
+        ]
+      }
+    },
+    {
+      "page_id": "P10",
+      "title": "反转⑤ 激励：考核投入 → 考核产出",
+      "subtitle": "",
+      "core_message": "同岗位的人正在被AI拉开10倍差距。销售BD从5封到50封/天，产品经理从1版到3版PRD/天，设计师从2张到20张方案/天。如果你的团队出现了一个产出10倍于同事的人，这不是个人英雄——是组织该重新思考激励了。",
+      "layout": {
+        "type": "left_text_right_chart",
+        "visual_focus": "right_bar_chart",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "反转⑤ 激励：考核投入 → 考核产出",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "销售BD：5封→50封邮件/天，10×个性化能力",
+            "产品经理：1版→3版PRD/天，3×共创深度",
+            "设计师：2张→20张方案/天，10×迭代速度"
+          ]
+        },
+        {
+          "type": "callout_card",
+          "position": "left_bottom",
+          "content": "如果你的团队里出现了一个产出10倍于同事的人，这不是个人英雄。这是一个信号：你的组织，该重新思考激励分配方式了。"
+        }
+      ],
+      "illustration_prompt": "A clean bar chart composition on the right side with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines, deep navy background, professional consulting data visualization style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "3D charts",
+          "excessive data labels"
+        ]
+      }
+    },
+    {
+      "page_id": "P11",
+      "title": "反转⑥ 流程：被设计 → 自生长",
+      "subtitle": "",
+      "core_message": "传统组织里流程是被「设计」出来的——专家画SOP，所有人遵守。AI时代的流程是被「生长」出来的——每一次执行都在重写它自己。这是六个反转的终局。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_organic_tree",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转⑥ 流程：被设计 → 自生长",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "top_flow": {
+              "label": "传统组织",
+              "desc": "专家画SOP → 所有人遵守 → 改流程要立项",
+              "shape": "rigid_line"
+            },
+            "bottom_flow": {
+              "label": "AI时代组织",
+              "desc": "每一次执行 → 留下痕迹 → 自动优化 → 流程自生长",
+              "shape": "organic_tree"
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "这是六个反转的终局。前五个反转做到位，流程就自然具备了自我进化的能力。"
+        }
+      ],
+      "illustration_prompt": "An abstract illustration contrasting two process models: top half shows a rigid straight horizontal line with fixed grey nodes representing traditional SOP, bottom half shows an organic golden tree structure growing and branching upward from a root with luminous nodes at branch tips, the rigid line fading as the tree grows through it, deep navy background, executive consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "literal tree",
+          "complex branching"
+        ]
+      }
+    },
+    {
+      "page_id": "P12",
+      "title": "不是「在流程里加AI」，而是「为AI重新画流程」",
+      "subtitle": "",
+      "core_message": "旧思维：现有流程+AI辅助=效率提升10-20%，天花板很低。新思维：从零开始用AI原生方式重构=效率提升10倍。AI不是用来跑赢现有流程的，是用来让现有流程消失的。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_dissolving_gear",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "不是「在流程里加AI」，而是「为AI重新画流程」",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "comparison_table",
+          "position": "center",
+          "content": {
+            "left_label": "旧思维",
+            "right_label": "新思维",
+            "rows": [
+              {
+                "left": "现有流程 + AI辅助",
+                "right": "从零AI原生重构"
+              },
+              {
+                "left": "效率提升 10-20%",
+                "right": "效率提升 10倍"
+              },
+              {
+                "left": "天花板很低",
+                "right": "不是优化，是重构"
+              }
+            ]
+          }
+        },
+        {
+          "type": "callout_card",
+          "position": "bottom_center",
+          "content": "打车场景：「伸手拦车」消失了，不是因为变快了，是因为系统知道你在哪、车在哪。这个动作的存在前提被推翻了。AI不是用来跑赢现有流程的，是用来让现有流程消失的。"
+        }
+      ],
+      "illustration_prompt": "A split composition: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on, labeled 10-20 percent, right side shows a luminous golden fluid organic flowing structure, labeled 10x, with the gear dissolving into golden particles at the boundary, deep navy background, consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "literal gears",
+          "complex machinery"
+        ]
+      }
+    },
+    {
+      "page_id": "P13",
+      "title": "AI的上限不是模型能力，是企业的知识质量",
+      "subtitle": "",
+      "core_message": "20%显性知识（制度、SOP、手册）浮在水面，80%隐性知识（肌肉记忆、直觉判断、经验调度）藏在水下。被动萃取覆盖70-80%判断模式，剩余的留给智能体在真实决策中持续学习。",
+      "layout": {
+        "type": "left_text_right_map",
+        "visual_focus": "right_iceberg",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "AI的上限不是模型能力，是企业的知识质量",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "20%显性知识：制度、SOP、手册——浮在水面，容易管理",
+            "80%隐性知识：肌肉记忆、直觉判断、经验调度——藏在水下，最难复制",
+            "被动萃取覆盖70-80%判断模式，深层直觉留给智能体持续学习"
+          ]
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_left",
+          "content": "三层体系：知识内容体系 → 平台支撑体系 → 运营管理体系"
+        }
+      ],
+      "illustration_prompt": "A classic iceberg illustration on the right side, the tip above water in light blue labeled 20 percent explicit knowledge with small document icons, the massive submerged portion in deep teal labeled 80 percent tacit knowledge with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, deep navy background, professional consulting infographic style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "cartoon iceberg",
+          "excessive labels"
+        ]
+      }
+    },
+    {
+      "page_id": "P14",
+      "title": "智能化架构：松耦合、热插拔技术基座",
+      "subtitle": "",
+      "core_message": "AI不是「加一个模块」，而是「换一个底座」。底层AI中台（大模型+数据湖+数据治理+AI安全），上层Agent军团（松耦合、热插拔，按需组合）。架构决定了你能走多远。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_platform_with_modules",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "智能化架构：松耦合、热插拔技术基座",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "foundation": {
+              "label": "AI 中台基座",
+              "pillars": [
+                "大模型统一调度",
+                "多模态数据湖",
+                "数据开发与治理",
+                "AI数据安全"
+              ]
+            },
+            "modules": {
+              "label": "Agent 军团 · 松耦合 · 热插拔",
+              "items": [
+                "AI点单",
+                "AI导购",
+                "AI客服",
+                "渠道助手",
+                "AI Coach",
+                "AI开店",
+                "新品开发",
+                "内容Agent",
+                "AI搜推问",
+                "公域洞察",
+                "直播助手"
+              ]
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "架构决定了你能走多远。不是「加一个模块」，而是「换一个底座」。"
+        }
+      ],
+      "illustration_prompt": "A clean architectural diagram showing a solid dark blue foundation platform at the bottom labeled AI platform with four luminous pillars rising from it, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, deep navy background, executive consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling",
+          "complex network mesh",
+          "small unreadable labels"
+        ]
+      }
+    },
+    {
+      "page_id": "P15",
+      "title": "AI人才建设：内部培养 + 外部引进",
+      "subtitle": "双轮驱动",
+      "core_message": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_bridge",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "AI人才建设：内部培养 + 外部引进",
+            "subtitle": "双轮驱动"
+          }
+        },
+        {
+          "type": "comparison_table",
+          "position": "center",
+          "content": {
+            "left_label": "业务人才转型",
+            "right_label": "技术人才转型",
+            "rows": [
+              {
+                "left": "各业务部门选拔AI操作官",
+                "right": "促使技术人员深入理解业务逻辑"
+              },
+              {
+                "left": "6个月转型期，从需求源头驱动AI建设",
+                "right": "用技术创新重塑业务价值链条"
+              },
+              {
+                "left": "让业务需求精准转化为AI场景落地",
+                "right": "AI智能体黑客松大赛检验成果"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。"
+        }
+      ],
+      "illustration_prompt": "A dual-path illustration: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, deep navy background, consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    },
+    {
+      "page_id": "P16",
+      "title": "企业AI转型的三层路径",
+      "subtitle": "",
+      "core_message": "不同成熟度的业务需要不同的AI策略——一刀切是最大的浪费。",
+      "layout": {
+        "type": "three_column_cards",
+        "visual_focus": "center_three_pillars",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "企业AI转型的三层路径",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "columns": [
+              {
+                "label": "路径一：成熟业务",
+                "desc": "单点AI优化 → 全链路AI优化 → 极致降本增效",
+                "highlight": "生产力革新"
+              },
+              {
+                "label": "路径二：创新业务",
+                "desc": "围绕需求重新定义业务 → AI原生品牌数智化",
+                "highlight": "数智化孵化"
+              },
+              {
+                "label": "路径三：C端入口",
+                "desc": "新场景新入口拓展 → 提升用户渗透与粘性",
+                "highlight": "超级入口"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "不同成熟度的业务，需要不同的AI策略——一刀切是最大的浪费。"
+        }
+      ],
+      "illustration_prompt": "A three-pillar composition: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, deep navy background, consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    },
+    {
+      "page_id": "P17",
+      "title": "六个反转完成后的组织",
+      "subtitle": "",
+      "core_message": "工件活了——每一页材料都是知识库的一个节点。数据循环了——每一次汇报都在喂饱下一次。颗粒度细了——一句话就能被检索、引用、重组。角色变了——人不再搬砖，只做判断。流程自生长了——每一次执行都在重写它自己。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_hexagonal_flywheel",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "六个反转完成后的组织",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "flywheel": {
+              "vertices": [
+                "工件活了",
+                "数据循环了",
+                "颗粒度细了",
+                "角色变了",
+                "激励对了",
+                "流程自生长了"
+              ],
+              "center": "组织能力"
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "每一次执行都在重写它自己。这才是AI时代真正的组织能力。"
+        }
+      ],
+      "illustration_prompt": "A luminous golden hexagonal flywheel at the center, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles, deep navy background, ethereal glow, executive consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    },
+    {
+      "page_id": "P18",
+      "title": "从试点到规模化，缺的不是技术，是体系",
+      "subtitle": "",
+      "core_message": "不是上线一套系统，而是让组织的工作方式具备自我进化的能力。这才是AI时代真正的组织能力。",
+      "layout": {
+        "type": "title_only",
+        "visual_focus": "center_large_typography",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "center",
+          "content": {
+            "title": "从试点到规模化",
+            "subtitle": "缺的不是技术，是体系"
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "bottom_center",
+          "content": [
+            "信息流动",
+            "角色重构",
+            "流程自进化"
+          ]
+        }
+      ],
+      "illustration_prompt": "A minimalist closing slide composition, large golden typography area in the center reading the main message, three luminous keyword orbs floating below in a row, subtle particle effects, deep navy background, elegant consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    },
+    {
+      "page_id": "P19",
+      "title": "拥抱AI时代，跨越周期",
+      "subtitle": "",
+      "core_message": "火山引擎",
+      "layout": {
+        "type": "full_bleed_visual",
+        "visual_focus": "center_horizon_line",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "center",
+          "content": {
+            "title": "拥抱AI时代，跨越周期",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "火山引擎"
+        }
+      ],
+      "illustration_prompt": "A minimalist end slide, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, deep navy background, clean and serene, consulting style, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "avoid": [
+          "too much glow",
+          "cyberpunk feeling"
+        ]
+      }
+    }
+  ]
+}

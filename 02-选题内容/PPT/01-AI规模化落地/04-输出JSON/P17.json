@@ -1,0 +1,52 @@
+{
+  "page_id": "P17",
+  "title": "六个反转完成后的组织",
+  "subtitle": "",
+  "core_message": "工件活了——每一页材料都是知识库的一个节点。数据循环了——每一次汇报都在喂饱下一次。颗粒度细了——一句话就能被检索、引用、重组。角色变了——人不再搬砖，只做判断。流程自生长了——每一次执行都在重写它自己。",
+  "layout": {
+    "type": "top_title_center_visual",
+    "visual_focus": "center_hexagonal_flywheel",
+    "density": "sparse",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "六个反转完成后的组织",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "flow_diagram",
+      "position": "center",
+      "content": {
+        "flywheel": {
+          "vertices": [
+            "工件活了",
+            "数据循环了",
+            "颗粒度细了",
+            "角色变了",
+            "激励对了",
+            "流程自生长了"
+          ],
+          "center": "组织能力"
+        }
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "每一次执行都在重写它自己。这才是AI时代真正的组织能力。"
+    }
+  ],
+  "illustration_prompt": "A luminous golden hexagonal flywheel at the center, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles, deep navy background, ethereal glow, executive consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling"
+    ]
+  }
+}

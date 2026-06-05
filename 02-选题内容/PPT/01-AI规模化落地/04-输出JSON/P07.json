@@ -1,0 +1,46 @@
+{
+  "page_id": "P07",
+  "title": "反转② 颗粒度：文件级 → 片段级",
+  "subtitle": "",
+  "core_message": "旧世界最小单位是一个PPT，靠文件名。新世界最小单位是一句话、一个观点、一段客户反馈，靠语义。颗粒度决定知识能不能被「用」，而不只是被「存」。",
+  "layout": {
+    "type": "left_text_right_map",
+    "visual_focus": "right_exploding_cube",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_left",
+      "content": {
+        "title": "反转② 颗粒度：文件级 → 片段级",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "three_point_argument",
+      "position": "left_center",
+      "content": [
+        "旧世界：一个PPT是一个整体，检索靠文件名",
+        "新世界：一句话就是一个独立的知识单元",
+        "颗粒度越细，知识越能被精准调用和重组"
+      ]
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_left",
+      "content": "颗粒度决定知识能不能被「用」，而不只是被「存」。"
+    }
+  ],
+  "illustration_prompt": "An abstract illustration of a large dark cube on the right side exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, deep navy background, consulting infographic style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "violent explosion",
+      "too many particles"
+    ]
+  }
+}

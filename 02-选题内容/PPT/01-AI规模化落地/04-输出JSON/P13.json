@@ -1,0 +1,46 @@
+{
+  "page_id": "P13",
+  "title": "AI的上限不是模型能力，是企业的知识质量",
+  "subtitle": "",
+  "core_message": "20%显性知识（制度、SOP、手册）浮在水面，80%隐性知识（肌肉记忆、直觉判断、经验调度）藏在水下。被动萃取覆盖70-80%判断模式，剩余的留给智能体在真实决策中持续学习。",
+  "layout": {
+    "type": "left_text_right_map",
+    "visual_focus": "right_iceberg",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_left",
+      "content": {
+        "title": "AI的上限不是模型能力，是企业的知识质量",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "three_point_argument",
+      "position": "left_center",
+      "content": [
+        "20%显性知识：制度、SOP、手册——浮在水面，容易管理",
+        "80%隐性知识：肌肉记忆、直觉判断、经验调度——藏在水下，最难复制",
+        "被动萃取覆盖70-80%判断模式，深层直觉留给智能体持续学习"
+      ]
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_left",
+      "content": "三层体系：知识内容体系 → 平台支撑体系 → 运营管理体系"
+    }
+  ],
+  "illustration_prompt": "A classic iceberg illustration on the right side, the tip above water in light blue labeled 20 percent explicit knowledge with small document icons, the massive submerged portion in deep teal labeled 80 percent tacit knowledge with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, deep navy background, professional consulting infographic style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "cartoon iceberg",
+      "excessive labels"
+    ]
+  }
+}

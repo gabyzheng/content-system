@@ -1,0 +1,72 @@
+{
+  "page_id": "P09",
+  "title": "反转④ 角色：内容生产者 → 判断提供者",
+  "subtitle": "ERA 三阶段：校对员 → 执行者 → 协作者",
+  "core_message": "角色反转不是一夜之间发生的。它经历三个阶段：AI先做校对员，再做执行者，最后做协作者。AI每往前移一步，人的价值密度就提升一个量级。",
+  "layout": {
+    "type": "three_column_cards",
+    "visual_focus": "center_ai_position_shift",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "反转④ 角色：内容生产者 → 判断提供者",
+        "subtitle": "ERA 三阶段：校对员 → 执行者 → 协作者"
+      }
+    },
+    {
+      "type": "flow_diagram",
+      "position": "center",
+      "content": {
+        "columns": [
+          {
+            "label": "ERA 01 · 校对员",
+            "flow": [
+              "人 → 定义需求",
+              "人 → 产出内容",
+              "AI → 检查校对"
+            ],
+            "highlight": "AI 在最后一步"
+          },
+          {
+            "label": "ERA 02 · 执行者",
+            "flow": [
+              "人 → 定义需求",
+              "AI → 产出内容",
+              "AI → 检查校对"
+            ],
+            "highlight": "AI 在中间步骤"
+          },
+          {
+            "label": "ERA 03 · 协作者",
+            "flow": [
+              "人+AI → 定义需求",
+              "AI → 产出内容",
+              "AI → 检查校对"
+            ],
+            "highlight": "AI 在第一步"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "AI每往前移一步，人需要做的就越靠近——提出对的问题。"
+    }
+  ],
+  "illustration_prompt": "A three-column progressive illustration showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end of the workflow, middle column shows AI in the middle as executor with human defining requirements, right column shows human and AI collaborating at the start together, golden gradient flowing from left to right, deep navy background, executive consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "robot figures",
+      "complex workflow details"
+    ]
+  }
+}

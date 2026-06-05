@@ -1,0 +1,59 @@
+{
+  "page_id": "P12",
+  "title": "不是「在流程里加AI」，而是「为AI重新画流程」",
+  "subtitle": "",
+  "core_message": "旧思维：现有流程+AI辅助=效率提升10-20%，天花板很低。新思维：从零开始用AI原生方式重构=效率提升10倍。AI不是用来跑赢现有流程的，是用来让现有流程消失的。",
+  "layout": {
+    "type": "two_column_compare",
+    "visual_focus": "center_dissolving_gear",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "不是「在流程里加AI」，而是「为AI重新画流程」",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "comparison_table",
+      "position": "center",
+      "content": {
+        "left_label": "旧思维",
+        "right_label": "新思维",
+        "rows": [
+          {
+            "left": "现有流程 + AI辅助",
+            "right": "从零AI原生重构"
+          },
+          {
+            "left": "效率提升 10-20%",
+            "right": "效率提升 10倍"
+          },
+          {
+            "left": "天花板很低",
+            "right": "不是优化，是重构"
+          }
+        ]
+      }
+    },
+    {
+      "type": "callout_card",
+      "position": "bottom_center",
+      "content": "打车场景：「伸手拦车」消失了，不是因为变快了，是因为系统知道你在哪、车在哪。这个动作的存在前提被推翻了。AI不是用来跑赢现有流程的，是用来让现有流程消失的。"
+    }
+  ],
+  "illustration_prompt": "A split composition: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on, labeled 10-20 percent, right side shows a luminous golden fluid organic flowing structure, labeled 10x, with the gear dissolving into golden particles at the boundary, deep navy background, consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "literal gears",
+      "complex machinery"
+    ]
+  }
+}

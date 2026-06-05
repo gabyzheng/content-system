@@ -1,0 +1,68 @@
+{
+  "page_id": "P14",
+  "title": "智能化架构：松耦合、热插拔技术基座",
+  "subtitle": "",
+  "core_message": "AI不是「加一个模块」，而是「换一个底座」。底层AI中台（大模型+数据湖+数据治理+AI安全），上层Agent军团（松耦合、热插拔，按需组合）。架构决定了你能走多远。",
+  "layout": {
+    "type": "top_title_center_visual",
+    "visual_focus": "center_platform_with_modules",
+    "density": "medium",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "top_center",
+      "content": {
+        "title": "智能化架构：松耦合、热插拔技术基座",
+        "subtitle": ""
+      }
+    },
+    {
+      "type": "flow_diagram",
+      "position": "center",
+      "content": {
+        "foundation": {
+          "label": "AI 中台基座",
+          "pillars": [
+            "大模型统一调度",
+            "多模态数据湖",
+            "数据开发与治理",
+            "AI数据安全"
+          ]
+        },
+        "modules": {
+          "label": "Agent 军团 · 松耦合 · 热插拔",
+          "items": [
+            "AI点单",
+            "AI导购",
+            "AI客服",
+            "渠道助手",
+            "AI Coach",
+            "AI开店",
+            "新品开发",
+            "内容Agent",
+            "AI搜推问",
+            "公域洞察",
+            "直播助手"
+          ]
+        }
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_center",
+      "content": "架构决定了你能走多远。不是「加一个模块」，而是「换一个底座」。"
+    }
+  ],
+  "illustration_prompt": "A clean architectural diagram showing a solid dark blue foundation platform at the bottom labeled AI platform with four luminous pillars rising from it, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, deep navy background, executive consulting style, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "complex network mesh",
+      "small unreadable labels"
+    ]
+  }
+}

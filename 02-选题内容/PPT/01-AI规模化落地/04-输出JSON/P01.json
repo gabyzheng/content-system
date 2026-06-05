@@ -1,0 +1,37 @@
+{
+  "page_id": "P01",
+  "title": "AI驱动，智慧增长",
+  "subtitle": "从试点场景到业务价值规模化",
+  "core_message": "AI不是选择题，是生存题。从试点到规模化，缺的不是技术，是体系。",
+  "layout": {
+    "type": "full_bleed_visual",
+    "visual_focus": "center_title_with_arrow",
+    "density": "sparse",
+    "whitespace": "generous"
+  },
+  "elements": [
+    {
+      "type": "headline_block",
+      "position": "center_left",
+      "content": {
+        "title": "AI驱动，智慧增长",
+        "subtitle": "从试点场景到业务价值规模化"
+      }
+    },
+    {
+      "type": "bottom_note",
+      "position": "bottom_right",
+      "content": "2026/06 · 火山引擎"
+    }
+  ],
+  "illustration_prompt": "A minimalist abstract 3D geometric composition with a glowing golden arrow rising diagonally from scattered small luminous dots at bottom-left toward a large radiant sphere at top-right, deep navy blue gradient background, clean executive consulting style, ethereal lighting, generous negative space on the left for text overlay, 16:9, 4K",
+  "style_rules": {
+    "tone": "calm_executive",
+    "avoid": [
+      "too much glow",
+      "cyberpunk feeling",
+      "busy composition",
+      "text overlapping visuals"
+    ]
+  }
+}

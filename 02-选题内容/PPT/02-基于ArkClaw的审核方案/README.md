@@ -11,7 +11,8 @@
 ### 设计文档
 - `01-设计文档/智能审批系统-用户体验流与信息处理流-设计文档.md` — 完整设计（v1.1）
 
-### PPT 输出（在线预览）
+### PPT 输出（在线预览 · 支持 ← → 键盘切换）
+- [📺 Deck 播放模式](https://gabyzheng.github.io/content-system/02-%E9%80%89%E9%A2%98%E5%86%85%E5%AE%B9/PPT/02-%E5%9F%BA%E4%BA%8EArkClaw%E7%9A%84%E5%AE%A1%E6%A0%B8%E6%96%B9%E6%A1%88/02-PPT-HTML/index.html) — 左右键切换页面，底部导航栏
 - [P01 · 用户体验流](https://gabyzheng.github.io/content-system/02-%E9%80%89%E9%A2%98%E5%86%85%E5%AE%B9/PPT/02-%E5%9F%BA%E4%BA%8EArkClaw%E7%9A%84%E5%AE%A1%E6%A0%B8%E6%96%B9%E6%A1%88/02-PPT-HTML/P01_%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E6%B5%81.html) — 用户视角：规则管理 + 单据审核
 - [P02 · 信息处理流](https://gabyzheng.github.io/content-system/02-%E9%80%89%E9%A2%98%E5%86%85%E5%AE%B9/PPT/02-%E5%9F%BA%E4%BA%8EArkClaw%E7%9A%84%E5%AE%A1%E6%A0%B8%E6%96%B9%E6%A1%88/02-PPT-HTML/P02_%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86%E6%B5%81.html) — ArkClaw 后台：配置→校验→OCR→AI→推送→回调
 

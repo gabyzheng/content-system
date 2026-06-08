@@ -49,12 +49,18 @@
       "content": "归档即燃料。每一场汇报既消耗知识，也生产知识。"
     }
   ],
-  "illustration_prompt": "A split composition: left side shows a straight grey arrow going into a dead-end folder icon, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, labeled subtly, deep navy background, clean consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean split composition on white background: left side shows a straight grey arrow going into a dead-end folder icon in blue wireframe, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, clean consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
-      "cyberpunk feeling"
+      "cyberpunk feeling",
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

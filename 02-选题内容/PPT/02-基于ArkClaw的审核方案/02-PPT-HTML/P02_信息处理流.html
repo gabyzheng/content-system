@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, initial-scale=1.0">
+<title>来伊份智能审批系统 — ArkClaw 信息处理流</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#e8edf3;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+.slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border-radius:8px}
+.decor-tl{position:absolute;top:-120px;left:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,229,.06) 0%,transparent 70%)}
+.decor-br{position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(200,148,45,.05) 0%,transparent 70%)}
+.header{position:absolute;top:0;left:0;right:0;padding:30px 80px 0;z-index:2}
+.header .tag{display:inline-block;padding:5px 18px;border:2px solid #1f6fe5;border-radius:18px;font-size:16px;color:#1f6fe5;font-weight:700;letter-spacing:.08em;margin-bottom:12px}
+.header h1{font-size:48px;font-weight:800;color:#0d2b5e;line-height:1.2;letter-spacing:-.02em}
+.header h1 span{color:#c8942d}
+.header .sub{font-size:20px;color:#5c6f8c;margin-top:6px;font-weight:400}
+
+.main{position:absolute;top:180px;left:40px;right:40px;bottom:30px;display:flex;gap:24px}
+.col{flex:1;display:flex;flex-direction:column;background:#fff;border:2px solid #d5e4f7;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(31,111,229,.04)}
+.col-header{padding:16px 24px;border-bottom:2px solid #eaf3ff;display:flex;align-items:center;gap:12px}
+.col-header .num{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;flex-shrink:0}
+.col-header .num.blue{background:#1f6fe5}
+.col-header .num.gold{background:#c8942d}
+.col-header h2{font-size:22px;font-weight:750;color:#0d2b5e}
+.col-body{flex:1;padding:14px 20px;overflow-y:auto}
+
+/* pipeline nodes */
+.pipeline{display:flex;flex-direction:column;gap:0}
+.node{position:relative;padding:10px 14px 10px 40px;border-left:2px solid #d5e4f7;margin-left:16px}
+.node:last-child{border-left-color:transparent}
+.node::before{content:'';position:absolute;left:-7px;top:16px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid #1f6fe5;z-index:1}
+.node.gold::before{border-color:#c8942d}
+.node.teal::before{border-color:#168a8a}
+.node.warn::before{border-color:#e1b65a;background:#fff7e6}
+.node .node-label{font-size:12px;font-weight:700;color:#1f6fe5;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.node.gold .node-label{color:#c8942d}
+.node.teal .node-label{color:#168a8a}
+.node .node-title{font-size:15px;font-weight:750;color:#0d2b5e;margin-bottom:3px}
+.node .node-desc{font-size:12.5px;color:#5c6f8c;line-height:1.5}
+.node .node-detail{font-size:11.5px;color:#8a9bb5;margin-top:2px;line-height:1.4}
+.node .node-exception{display:inline-block;margin-top:4px;padding:2px 8px;background:#fff7e6;border:1px solid #e1b65a;border-radius:8px;font-size:11px;color:#c8942d;font-weight:600}
+
+/* sub-box */
+.sub-box{margin:4px 0 4px 8px;padding:10px 14px;background:#f8fbff;border:1.5px solid #eaf3ff;border-radius:10px}
+.sub-box.teal{background:#f1fcfb;border-color:#d0f0ed}
+.sub-box .sub-title{font-size:13px;font-weight:700;color:#0d2b5e;margin-bottom:4px}
+.sub-box .sub-desc{font-size:12px;color:#5c6f8c;line-height:1.5}
+
+/* mini flow */
+.mini-flow{display:flex;align-items:center;gap:6px;margin:4px 0;flex-wrap:wrap}
+.mini-step{padding:4px 10px;background:#eaf3ff;border-radius:6px;font-size:11.5px;color:#1f6fe5;font-weight:600;white-space:nowrap}
+.mini-step.gold{background:#fff7e6;color:#c8942d}
+.mini-step.teal{background:#e8fbf8;color:#168a8a}
+.mini-arrow{font-size:11px;color:#bfd4f2}
+
+/* exception table */
+.ex-table{margin-top:8px;width:100%;border-collapse:collapse;font-size:11px}
+.ex-table th{background:#f8fbff;padding:6px 8px;text-align:left;font-weight:700;color:#0d2b5e;border-bottom:2px solid #d5e4f7;font-size:11px}
+.ex-table td{padding:5px 8px;border-bottom:1px solid #eaf3ff;color:#5c6f8c;line-height:1.4}
+.ex-table tr:hover td{background:#fafcff}
+.ex-table .ex-scene{color:#c8942d;font-weight:600;font-size:10.5px}
+.ex-table .ex-action{color:#1f6fe5;font-size:10.5px}
+
+.bottom-note{position:absolute;bottom:14px;left:80px;right:80px;text-align:center;font-size:13px;color:#8a9bb5;padding-top:10px;border-top:1px solid #eaf3ff}
+</style>
+</head>
+<body>
+<div class="slide">
+<div class="decor-tl"></div><div class="decor-br"></div>
+
+<div class="header">
+  <div class="tag">信息处理流</div>
+  <h1>来伊份智能审批系统 — <span>ArkClaw</span> 后台处理全链路</h1>
+  <div class="sub">规则管理处理流 + 单据审核处理流 · 配置→校验→审核→推送→回调，全链路闭环</div>
+</div>
+
+<div class="main">
+  <!-- 左列：规则管理处理流 -->
+  <div class="col">
+    <div class="col-header">
+      <div class="num blue">1</div>
+      <h2>审批规则管理 · 处理流</h2>
+    </div>
+    <div class="col-body">
+      <div class="pipeline">
+        <!-- 3.1a -->
+        <div class="node">
+          <div class="node-label">3.1a</div>
+          <div class="node-title">检查配置</div>
+          <div class="node-desc">读取 config.json → 验证 rule_spreadsheet.token → 调飞书 API 验证表格存在且可访问</div>
+          <div class="mini-flow">
+            <span class="mini-step">读配置</span><span class="mini-arrow">→</span>
+            <span class="mini-step">验 Token</span><span class="mini-arrow">→</span>
+            <span class="mini-step">飞书 API 验证</span>
+          </div>
+          <span class="node-exception">⚠ 不存在 → 提示初始化</span>
+          <span class="node-exception" style="margin-left:4px">⚠ 无权限 → 提示检查分享</span>
+        </div>
+
+        <!-- 3.1b -->
+        <div class="node gold">
+          <div class="node-label">3.1b</div>
+          <div class="node-title">检查规则有效性</div>
+          <div class="node-desc">读取 Sheet1 总览 → 逐流程检查 Sheet 页存在性、内容非空、JSON 一致性、格式合法性</div>
+          <div class="sub-box">
+            <div class="sub-title">检查维度</div>
+            <div class="sub-desc">Sheet 页存在 ✓ · 内容非空 ✓ · JSON 一致 ✓ · 格式合法 ✓</div>
+          </div>
+          <span class="node-exception">⚠ Sheet 缺失 / 为空 / JSON 异常 → 输出有效性报告</span>
+        </div>
+
+        <!-- 3.1c -->
+        <div class="node gold">
+          <div class="node-label">3.1c</div>
+          <div class="node-title">校验具体流程规则</div>
+          <div class="node-desc">定位 Sheet 页 → 读取规则行 → 调 BPM 样例数据 → 逐条匹配 → 输出优化建议</div>
+
+          <div class="sub-box" style="margin-top:6px">
+            <div class="sub-title">匹配引擎（仅处理「有效」状态规则）</div>
+            <div class="sub-desc" style="font-size:11.5px">
+              <strong>表单校验</strong>：字段值 vs 条件值（>/</=/≠/包含/为空）<br>
+              <strong>附件校验</strong>：附件存在性 + OCR 解析状态<br>
+              <strong>交叉校验</strong>：多字段 AND/OR 组合判断
+            </div>
+          </div>
+
+          <div class="mini-flow" style="margin-top:6px">
+            <span class="mini-step">读规则</span><span class="mini-arrow">→</span>
+            <span class="mini-step gold">调 BPM 样例</span><span class="mini-arrow">→</span>
+            <span class="mini-step gold">逐条匹配</span><span class="mini-arrow">→</span>
+            <span class="mini-step gold">优化建议</span><span class="mini-arrow">→</span>
+            <span class="mini-step teal">用户确认</span><span class="mini-arrow">→</span>
+            <span class="mini-step teal">写回 Sheet + JSON</span>
+          </div>
+          <span class="node-exception">⚠ BPM 无样例 → 无法校验</span>
+          <span class="node-exception" style="margin-left:4px">⚠ 写入失败 → 提示手动</span>
+        </div>
+      </div>
+
+      <!-- 异常速查 -->
+      <div style="margin-top:10px">
+        <div style="font-size:13px;font-weight:700;color:#c8942d;margin-bottom:6px">⚠ 规则管理异常速查（9 种）</div>
+        <table class="ex-table">
+          <tr><th>异常场景</th><th>处理策略</th></tr>
+          <tr><td class="ex-scene">未配置规则表</td><td class="ex-action">提示初始化</td></tr>
+          <tr><td class="ex-scene">规则表无权限</td><td class="ex-action">提示检查分享设置</td></tr>
+          <tr><td class="ex-scene">Sheet 页不存在</td><td class="ex-action">提示规则不完整</td></tr>
+          <tr><td class="ex-scene">Sheet 页为空</td><td class="ex-action">提示未配置规则</td></tr>
+          <tr><td class="ex-scene">JSON 格式异常</td><td class="ex-action">建议重新校验更新</td></tr>
+          <tr><td class="ex-scene">BPM 无样例数据</td><td class="ex-action">提示无法校验</td></tr>
+          <tr><td class="ex-scene">BPM 接口超时</td><td class="ex-action">重试 1 次 → 提示稍后</td></tr>
+          <tr><td class="ex-scene">规则写入失败</td><td class="ex-action">提示具体原因</td></tr>
+          <tr><td class="ex-scene">用户确认超时</td><td class="ex-action">结果过期，重新校验</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右列：单据审核处理流 -->
+  <div class="col">
+    <div class="col-header">
+      <div class="num gold">2</div>
+      <h2>单据审核管理 · 处理流</h2>
+    </div>
+    <div class="col-body">
+      <div class="pipeline">
+        <!-- 3.2a -->
+        <div class="node teal">
+          <div class="node-label">3.2a</div>
+          <div class="node-title">定时拉取待审核清单</div>
+          <div class="node-desc">Cron 每 30 分钟 → GET BPM /api/tasks/pending → 去重已处理任务</div>
+          <div class="mini-flow">
+            <span class="mini-step teal">⏰ Cron 触发</span><span class="mini-arrow">→</span>
+            <span class="mini-step teal">调 BPM API</span><span class="mini-arrow">→</span>
+            <span class="mini-step teal">去重对比</span>
+          </div>
+          <span class="node-exception">⚠ 401/403 → 提示授权</span>
+          <span class="node-exception" style="margin-left:4px">⚠ 空清单 → 跳过</span>
+        </div>
+
+        <!-- 3.2b -->
+        <div class="node gold">
+          <div class="node-label">3.2b</div>
+          <div class="node-title">逐条审核处理（7 步串行）</div>
+          <div class="node-desc">从前往后逐条处理，避免并发冲突</div>
+        </div>
+
+        <!-- b1 -->
+        <div class="node">
+          <div class="node-label">b1</div>
+          <div class="node-title">获取表单明细</div>
+          <div class="node-desc">GET /api/tasks/{id}/detail → 表单字段 + 附件列表</div>
+          <span class="node-exception">⚠ 接口失败 → 跳过本条</span>
+        </div>
+
+        <!-- b2 -->
+        <div class="node">
+          <div class="node-label">b2</div>
+          <div class="node-title">附件 OCR 处理</div>
+          <div class="node-desc">下载附件 → 判断类型 → OCR 解析 → 记录状态标识</div>
+          <div class="sub-box teal">
+            <div class="sub-title">解析状态标识</div>
+            <div class="sub-desc">
+              <span style="color:#2e7d32">● 完整解析</span>（置信度 ≥80%）
+              <span style="color:#c8942d;margin-left:8px">● 部分解析</span>（50-80%）
+              <span style="color:#c62828;margin-left:8px">● 无法解析</span>（损坏/加密/低质）
+            </div>
+          </div>
+          <span class="node-exception">⚠ 下载失败 / OCR 超时 / 格式不支持 → 标记降级</span>
+        </div>
+
+        <!-- b3 -->
+        <div class="node">
+          <div class="node-label">b3</div>
+          <div class="node-title">获取审批规则</div>
+          <div class="node-desc">读 Sheet1 总览 → 匹配流程名 → 解析 JSON（仅取「有效」状态规则）</div>
+          <span class="node-exception">⚠ 未配置 / JSON 异常 → 跳过审核</span>
+        </div>
+
+        <!-- b4 -->
+        <div class="node gold">
+          <div class="node-label">b4</div>
+          <div class="node-title">AI 审核建议</div>
+          <div class="node-desc">组装 Prompt（表单数据 + OCR 结果 + 规则 JSON）→ 大模型逐条匹配 → 输出命中结果 + 综合建议</div>
+          <div class="sub-box">
+            <div class="sub-title">大模型输出</div>
+            <div class="sub-desc">每条规则命中结果 + 理由 · 综合建议（通过/驳回/人工复核）· 风险点汇总</div>
+          </div>
+          <span class="node-exception">⚠ AI 超时/异常 → 降级（仅展示表单摘要）</span>
+        </div>
+
+        <!-- b5 -->
+        <div class="node">
+          <div class="node-label">b5</div>
+          <div class="node-title">更新 BPM 审核建议</div>
+          <div class="node-desc">PATCH /api/tasks/{id}/review → { suggestion, reasons, risk_level }</div>
+          <span class="node-exception">⚠ 失败 → 仍推送卡片（标注"BPM 同步失败"）</span>
+        </div>
+
+        <!-- b6 -->
+        <div class="node teal">
+          <div class="node-label">b6</div>
+          <div class="node-title">推送飞书消息卡片</div>
+          <div class="node-desc">组装交互卡片（单据信息 + AI 建议 + 三按钮）→ 发送至用户私聊</div>
+          <span class="node-exception">⚠ 推送失败 → 重试 1 次</span>
+        </div>
+
+        <!-- b7 -->
+        <div class="node gold">
+          <div class="node-label">b7</div>
+          <div class="node-title">等待用户操作 → 回调 BPM</div>
+          <div class="node-desc">审批通过 / 驳回 → PATCH BPM 状态 → 更新卡片 → 继续下一条</div>
+          <div class="mini-flow">
+            <span class="mini-step gold">用户点击</span><span class="mini-arrow">→</span>
+            <span class="mini-step gold">调 BPM 接口</span><span class="mini-arrow">→</span>
+            <span class="mini-step teal">更新卡片</span><span class="mini-arrow">→</span>
+            <span class="mini-step teal">下一条</span>
+          </div>
+          <span class="node-exception">⚠ 回调失败 → 不自动重试（避免重复操作）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-note">规则管理（配置→有效性→校验→写回）+ 单据审核（拉取→OCR→规则→AI→推送→回调）· 全链路 17 种异常覆盖</div>
+</div>
+</body>
+</html>

@@ -24,12 +24,18 @@
       "content": "火山引擎"
     }
   ],
-  "illustration_prompt": "A minimalist end slide, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, deep navy background, clean and serene, consulting style, 16:9, 4K",
+  "illustration_prompt": "A minimalist end slide on white background, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, clean and serene, corporate consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
-      "cyberpunk feeling"
+      "cyberpunk feeling",
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

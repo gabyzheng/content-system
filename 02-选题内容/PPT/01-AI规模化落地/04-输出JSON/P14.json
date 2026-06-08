@@ -55,14 +55,18 @@
       "content": "架构决定了你能走多远。不是「加一个模块」，而是「换一个底座」。"
     }
   ],
-  "illustration_prompt": "A clean architectural diagram showing a solid dark blue foundation platform at the bottom labeled AI platform with four luminous pillars rising from it, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, deep navy background, executive consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean architectural diagram on white background showing a solid dark blue foundation platform at the bottom with four luminous pillars rising from it in blue wireframe style, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "complex network mesh",
-      "small unreadable labels"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

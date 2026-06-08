@@ -45,14 +45,18 @@
       ]
     }
   ],
-  "illustration_prompt": "A clean 2x2 grid layout with four minimalist abstract icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, deep navy blue background, professional consulting infographic style, 16:9, 4K",
+  "illustration_prompt": "A clean 2x2 grid layout on white background, four minimalist blue wireframe icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, professional consulting infographic style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "cartoonish icons",
-      "crowded labels"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#D5E4F7" flood-opacity="0.65"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEF6FF"/></linearGradient>
+  <marker id="arrowBlue" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#1F6FE5"/></marker>
+  <marker id="arrowGold" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#C8942D"/></marker>
+  <style>
+  .title{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:92px;font-weight:800;fill:#12315C;letter-spacing:-1px}
+  .subtitle{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:42px;font-weight:500;fill:#5C6F8C}
+  .label{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:34px;font-weight:700;fill:#1F4E8C}
+  .body{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:32px;font-weight:400;fill:#26384D}
+  .small{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:26px;font-weight:400;fill:#5C6F8C}
+  .tiny{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:22px;font-weight:400;fill:#6D7F99}
+  .num{font-family:"Inter",Arial,sans-serif;font-size:92px;font-weight:850;fill:#C8942D}
+  .big{font-family:"Inter",Arial,sans-serif;font-size:132px;font-weight:850;fill:#12315C}
+  .gold{fill:#C8942D}.blue{fill:#1F6FE5}.navy{fill:#12315C}.muted{fill:#7C8CA5}
+  .card{fill:#FFFFFF;stroke:#BFD4F2;stroke-width:3;rx:28;filter:url(#shadow)}
+  .cardBlue{fill:#F4F8FF;stroke:#8CB8F2;stroke-width:3;rx:28;filter:url(#shadow)}
+  .line{stroke:#7DADEB;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .lineGold{stroke:#C8942D;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke:#9BBFEF;stroke-width:4;fill:none;stroke-dasharray:18 16;stroke-linecap:round}
+</style>
+</defs>
+<rect width="3840" height="2160" fill="url(#bg)"/>
+<circle cx="3360" cy="260" r="360" fill="#EAF3FF" opacity="0.7"/>
+<circle cx="260" cy="1880" r="420" fill="#F8FBFF" opacity="0.8"/>
+<text x="180" y="190" class="tiny">AI × 组织变革方法论</text>
+<text x="180" y="320" class="title" text-anchor="start">从“加AI”到“重画流程”</text><text x="180" y="385" class="subtitle" text-anchor="start">不是减少步骤，而是推翻步骤存在的前提</text><rect x="220" y="570" width="1420" height="980" class="card" /><text x="300" y="670" class="label" text-anchor="start">案例 · 打车场景</text><text x="300" y="790" class="title" text-anchor="start">“伸手拦车”消失了</text><text x="300" y="900" class="body" text-anchor="start">不是因为它变快了，</text>
+<text x="300" y="956" class="body" text-anchor="start">而是因为系统知道：</text>
+<text x="300" y="1012" class="body" text-anchor="start">你在哪、车在哪、谁离你最近。</text><path d="M420 1280 L760 1280 L850 1180 L1010 1380 L1180 1180 L1320 1280" class="line"/><circle cx="760" cy="1280" r="30" fill="#1F6FE5"/><circle cx="1180" cy="1180" r="30" fill="#C8942D"/><text x="880" y="1450" class="label" text-anchor="middle">动作存在的前提被推翻</text><rect x="1780" y="570" width="1840" height="980" class="cardBlue" /><text x="1880" y="690" class="label" text-anchor="start">重画流程的本质</text><text x="1880" y="810" class="title" text-anchor="start">流程里的每个步骤，</text>
+<text x="1880" y="922" class="title" text-anchor="start">都是为了弥补某个“不知道”。</text><rect x="1900" y="1110" width="470" height="100" rx="36" fill="#F4F8FF" stroke="#8CB8F2" stroke-width="3"/><text x="2135.0" y="1172.0" class="label" text-anchor="middle">不知道</text><path d="M2410 1160 L2680 1160" class="lineGold" marker-end="url(#arrowGold)"/><rect x="2730" y="1110" width="470" height="100" rx="36" fill="#F4F8FF" stroke="#8CB8F2" stroke-width="3"/><text x="2965.0" y="1172.0" class="label" text-anchor="middle">已知</text><path d="M2000 1350 C2380 1510, 2920 1510, 3300 1350" class="line" marker-end="url(#arrowBlue)"/><text x="2650" y="1600" class="label" text-anchor="middle">AI不是用来跑赢现有流程的，而是让不必要的流程消失。</text><text x="180" y="2040" class="tiny">business_blue_consulting_wireframe · 3840×2160</text></svg>

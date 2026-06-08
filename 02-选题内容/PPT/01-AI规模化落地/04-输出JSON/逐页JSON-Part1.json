@@ -1,0 +1,343 @@
+{
+  "deck_name": "AI驱动，智慧增长——从试点场景到业务价值规模化",
+  "theme": "business_blue_consulting_wireframe",
+  "aspect_ratio": "16:9",
+  "resolution": "3840x2160",
+  "part": "Part1",
+  "description": "P01-P06 · 封面+断头路+六大反转总览+反转①",
+  "slides": [
+    {
+      "page_id": "P01",
+      "title": "AI驱动，智慧增长",
+      "subtitle": "从试点场景到业务价值规模化",
+      "core_message": "AI不是选择题，是生存题。从试点到规模化，缺的不是技术，是体系。",
+      "layout": {
+        "type": "full_bleed_visual",
+        "visual_focus": "center_title_with_arrow",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "center_left",
+          "content": {
+            "title": "AI驱动，智慧增长",
+            "subtitle": "从试点场景到业务价值规模化"
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_right",
+          "content": "2026/06 · 火山引擎"
+        }
+      ],
+      "illustration_prompt": "A clean professional consulting PPT cover slide, white background with subtle light blue gradient accents, large elegant dark blue typography on the left reading the title, a minimalist golden arrow icon rising from bottom-left toward top-right, thin blue wireframe geometric elements, generous whitespace, corporate executive presentation quality, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P02",
+      "title": "看起来在运转，实际上是一条断头路",
+      "subtitle": "",
+      "core_message": "很多企业的AI试点做了不少——AI客服、AI小红书、AI报表。但结果呢？「用了三个月，没人用了」「一天发200条，销量没变」「上了AI客服，客诉反而多了」。",
+      "layout": {
+        "type": "left_text_right_map",
+        "visual_focus": "right_broken_road",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "看起来在运转，实际上是一条断头路",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "「我们买了AI，用了三个月，没人用了。」",
+            "「我们做了AI小红书，一天发200条，销量没变。」",
+            "「我们上了AI客服，客诉反而多了。」"
+          ]
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_left",
+          "content": "试点是孤岛，没有体系支撑，做完就完了。"
+        }
+      ],
+      "illustration_prompt": "A clean consulting slide with white background, left side shows three quoted statements in dark blue text with subtle grey quotation marks, right side shows a minimalist abstract road illustration in thin blue wireframe style that breaks off mid-way, fragments falling, the road edge highlighted with a thin golden line, generous whitespace, professional presentation, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P03",
+      "title": "四个「假运转」症状",
+      "subtitle": "共同根因：流程的产物全部是死的，无法回流",
+      "core_message": "知识库是死库存·复盘是幸存者偏差·质量是黑盒·绩效是猜谜——四个症状指向同一个根因：材料、录音、复盘全部是死的，无法回流。",
+      "layout": {
+        "type": "grid_icons",
+        "visual_focus": "center_cross_mark",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "四个「假运转」症状",
+            "subtitle": "共同根因：流程的产物全部是死的，无法回流"
+          }
+        },
+        {
+          "type": "icon_grid",
+          "position": "center",
+          "content": [
+            {
+              "icon": "locked_file",
+              "title": "知识死库存",
+              "desc": "PPT进了共享盘，文件名「最终版-V3-真的最终.pptx」。存而不用。"
+            },
+            {
+              "icon": "blind_magnifier",
+              "title": "复盘幸存者偏差",
+              "desc": "每周抓几个「印象里最难的」讨论，样本靠记忆。下周还会犯一样的错。"
+            },
+            {
+              "icon": "black_box",
+              "title": "质量黑盒",
+              "desc": "100场汇报抽查3场，剩下97场无人知晓。客户的真实反应沉入海底。"
+            },
+            {
+              "icon": "dice",
+              "title": "绩效猜谜",
+              "desc": "「小张这季度状态不错」，但具体好在哪里？打分变成印象管理。"
+            }
+          ]
+        }
+      ],
+      "illustration_prompt": "A clean 2x2 grid layout on white background, four minimalist blue wireframe icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, professional consulting infographic style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P04",
+      "title": "试点到规模化的鸿沟，不是技术问题",
+      "subtitle": "",
+      "core_message": "缺的不是更强的模型，是知识不流动、经验不沉淀、流程不循环。真正的差距不在AI能力，在组织能力。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_chasm_with_bridge",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "试点到规模化的鸿沟，不是技术问题",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "bottom_center",
+          "content": [
+            "知识不流动：做完就归档，下次从头来",
+            "经验不沉淀：人在经验在，人走经验走",
+            "流程不循环：每次执行都是消耗，不是积累"
+          ]
+        }
+      ],
+      "illustration_prompt": "A clean consulting slide with white background, a dramatic abstract illustration of a wide chasm splitting the composition horizontally in thin blue wireframe style, scattered small islands on the left, a unified landmass on the right, a golden bridge being constructed across the gap, ethereal light blue glow in the chasm, executive consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P05",
+      "title": "规模化需要六个反转",
+      "subtitle": "信息层 · 组织层 · 系统层",
+      "core_message": "信息层让知识流动（①②③）→ 组织层让人与AI重新分工（④⑤）→ 系统层让流程自我进化（⑥）。三层递进，缺一不可。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_three_tier_pyramid",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "规模化需要六个反转",
+            "subtitle": "信息层 · 组织层 · 系统层"
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "tiers": [
+              {
+                "label": "系统层 · 让流程自我进化",
+                "items": [
+                  "⑥ 流程反转：被设计→自生长"
+                ],
+                "color": "golden"
+              },
+              {
+                "label": "组织层 · 让人与AI重新分工",
+                "items": [
+                  "④ 角色反转：生产者→判断者",
+                  "⑤ 激励反转：考核投入→考核产出"
+                ],
+                "color": "teal"
+              },
+              {
+                "label": "信息层 · 让知识流动起来",
+                "items": [
+                  "① 工件反转：死文件→活资产",
+                  "② 颗粒度反转：文件级→片段级",
+                  "③ 数据反转：单向归档→双向喂养"
+                ],
+                "color": "blue"
+              }
+            ]
+          }
+        }
+      ],
+      "illustration_prompt": "A clean three-tier stepped platform abstract composition on white background, bottom tier in deep blue wireframe with three luminous nodes, middle tier in teal with two nodes, top tier in warm golden with one radiant node, each node connected by ascending thin lines, clean executive consulting aesthetic, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P06",
+      "title": "反转① 工件：死文件 → 活资产",
+      "subtitle": "载体决定一切",
+      "core_message": "PPT是二进制黑盒——只能整体存取。HTML是结构化文本——可解析、可拆解、可重组。载体换了，AI才有了介入的物理可能。这一步之前，所有「AI赋能」都是表演。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_transformation_arrow",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转① 工件：死文件 → 活资产",
+            "subtitle": "载体决定一切"
+          }
+        },
+        {
+          "type": "comparison_table",
+          "position": "center",
+          "content": {
+            "left_label": "PPT · 旧世界",
+            "right_label": "HTML · 新世界",
+            "rows": [
+              {
+                "left": "二进制黑盒",
+                "right": "结构化文本"
+              },
+              {
+                "left": "最小单位：一个文件",
+                "right": "最小单位：一句话"
+              },
+              {
+                "left": "靠文件名检索",
+                "right": "靠语义检索"
+              },
+              {
+                "left": "只能被搬运",
+                "right": "可被引用、继承、改写"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "载体换了，AI才有了介入的物理可能。"
+        }
+      ],
+      "illustration_prompt": "A clean split composition on white background: left side shows a dark locked cube in blue wireframe style, right side shows a luminous network of connected glowing nodes, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, minimalist consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    }
+  ]
+}

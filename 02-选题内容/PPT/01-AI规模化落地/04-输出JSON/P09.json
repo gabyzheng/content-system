@@ -59,14 +59,18 @@
       "content": "AI每往前移一步，人需要做的就越靠近——提出对的问题。"
     }
   ],
-  "illustration_prompt": "A three-column progressive illustration showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end of the workflow, middle column shows AI in the middle as executor with human defining requirements, right column shows human and AI collaborating at the start together, golden gradient flowing from left to right, deep navy background, executive consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean three-column progressive illustration on white background showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end, middle column shows AI in the middle as executor, right column shows human and AI collaborating at the start, golden gradient flowing from left to right, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "robot figures",
-      "complex workflow details"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

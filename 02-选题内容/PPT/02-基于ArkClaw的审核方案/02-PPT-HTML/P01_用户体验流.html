@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, initial-scale=1.0">
+<title>来伊份智能审批系统 — 用户体验流</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#e8edf3;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+.slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border-radius:8px}
+/* decor */
+.decor-tl{position:absolute;top:-120px;left:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,229,.06) 0%,transparent 70%)}
+.decor-br{position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(200,148,45,.05) 0%,transparent 70%)}
+/* header */
+.header{position:absolute;top:0;left:0;right:0;padding:36px 80px 0;z-index:2}
+.header .tag{display:inline-block;padding:6px 20px;border:2px solid #c8942d;border-radius:20px;font-size:18px;color:#c8942d;font-weight:700;letter-spacing:.08em;margin-bottom:16px}
+.header h1{font-size:52px;font-weight:800;color:#0d2b5e;line-height:1.25;letter-spacing:-.02em}
+.header h1 span{color:#c8942d}
+.header .sub{font-size:22px;color:#5c6f8c;margin-top:8px;font-weight:400}
+/* main layout: two columns */
+.main{position:absolute;top:200px;left:60px;right:60px;bottom:40px;display:flex;gap:36px}
+.col{flex:1;display:flex;flex-direction:column;background:#fff;border:2px solid #d5e4f7;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(31,111,229,.06)}
+.col-header{padding:22px 32px;border-bottom:2px solid #eaf3ff;display:flex;align-items:center;gap:14px}
+.col-header .num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff}
+.col-header .num.blue{background:#1f6fe5}
+.col-header .num.gold{background:#c8942d}
+.col-header h2{font-size:26px;font-weight:750;color:#0d2b5e}
+.col-body{flex:1;padding:20px 28px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
+/* flow items */
+.flow-section{margin-bottom:4px}
+.flow-section-title{font-size:18px;font-weight:700;color:#1f6fe5;margin-bottom:10px;padding-left:12px;border-left:3px solid #1f6fe5}
+.flow-steps{display:flex;flex-direction:column;gap:8px}
+.step{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:#f8fbff;border:1.5px solid #eaf3ff;border-radius:12px;transition:all .2s}
+.step:hover{background:#eaf3ff;border-color:#bfd4f2}
+.step-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.step-icon.blue{background:#eaf3ff;color:#1f6fe5}
+.step-icon.gold{background:#fff7e6;color:#c8942d}
+.step-icon.teal{background:#e8fbf8;color:#168a8a}
+.step-content{flex:1}
+.step-content .step-title{font-size:17px;font-weight:700;color:#0d2b5e;margin-bottom:3px}
+.step-content .step-desc{font-size:14px;color:#5c6f8c;line-height:1.5}
+.step-content .step-detail{font-size:13px;color:#8a9bb5;margin-top:4px;line-height:1.5}
+.step-arrow{display:flex;align-items:center;justify-content:center;height:20px}
+.step-arrow svg{width:20px;height:20px}
+/* exception badge */
+.exception-badge{display:inline-block;padding:2px 10px;background:#fff7e6;border:1px solid #e1b65a;border-radius:10px;font-size:12px;color:#c8942d;font-weight:600;margin-left:8px}
+/* card preview */
+.card-preview{margin-top:8px;padding:16px 20px;background:#fff;border:2px solid #d5e4f7;border-radius:14px;box-shadow:0 2px 12px rgba(31,111,229,.04)}
+.card-preview .card-title{font-size:15px;font-weight:700;color:#0d2b5e;margin-bottom:8px}
+.card-preview .card-row{font-size:13px;color:#5c6f8c;margin-bottom:4px}
+.card-preview .card-ai{font-size:13px;color:#1f6fe5;margin-top:8px;padding-top:8px;border-top:1px dashed #d5e4f7}
+.card-preview .card-btns{display:flex;gap:10px;margin-top:10px}
+.card-preview .card-btn{padding:6px 18px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:default}
+.card-btn.approve{background:#e8f5e9;color:#2e7d32;border:1.5px solid #a5d6a7}
+.card-btn.reject{background:#fce4ec;color:#c62828;border:1.5px solid #ef9a9a}
+.card-btn.link{background:#eaf3ff;color:#1f6fe5;border:1.5px solid #90caf9}
+/* bottom note */
+.bottom-note{position:absolute;bottom:20px;left:80px;right:80px;text-align:center;font-size:14px;color:#8a9bb5;padding-top:12px;border-top:1px solid #eaf3ff}
+</style>
+</head>
+<body>
+<div class="slide">
+<div class="decor-tl"></div><div class="decor-br"></div>
+
+<div class="header">
+  <div class="tag">用户体验流</div>
+  <h1>来伊份智能审批系统 — <span>用户视角</span>全链路</h1>
+  <div class="sub">审批规则管理 + 单据审核管理 · 两条主线，一个入口</div>
+</div>
+
+<div class="main">
+  <!-- 左列：审批规则管理 -->
+  <div class="col">
+    <div class="col-header">
+      <div class="num blue">1</div>
+      <h2>审批规则管理</h2>
+    </div>
+    <div class="col-body">
+      <div class="flow-section">
+        <div class="flow-section-title">1a · 查询规则清单</div>
+        <div class="flow-steps">
+          <div class="step">
+            <div class="step-icon blue">💬</div>
+            <div class="step-content">
+              <div class="step-title">自然语言发起查询</div>
+              <div class="step-desc">「查看我的审批规则」「我有哪些流程规则」</div>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon blue">📋</div>
+            <div class="step-content">
+              <div class="step-title">返回结构化规则清单</div>
+              <div class="step-desc">流程名称 + 规则数量 + 更新时间 + 状态</div>
+              <div class="step-detail">点击流程名 → 跳转对应 Sheet 页查看详细规则</div>
+              <span class="exception-badge">⚠ 未配置 → 提示初始化</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-section">
+        <div class="flow-section-title">1b · 查询 / 编辑具体规则</div>
+        <div class="flow-steps">
+          <div class="step">
+            <div class="step-icon blue">🔍</div>
+            <div class="step-content">
+              <div class="step-title">查看某流程规则明细</div>
+              <div class="step-desc">「查看采购申请审批规则」→ 返回规则列表（含分类/场景/状态）</div>
+              <span class="exception-badge">⚠ Sheet 不存在 → 提示未配置</span>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon gold">✏️</div>
+            <div class="step-content">
+              <div class="step-title">点击链接跳转飞书表格编辑</div>
+              <div class="step-desc">「编辑采购申请审批规则」→ 返回电子表格链接</div>
+              <div class="step-detail">用户在飞书表格中直接修改 → 完成后「刷新规则」同步到 Sheet1 JSON</div>
+              <span class="exception-badge">⚠ 链接失效 → 重新获取</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-section">
+        <div class="flow-section-title">1c · 校验规则有效性</div>
+        <div class="flow-steps">
+          <div class="step">
+            <div class="step-icon gold">🔬</div>
+            <div class="step-content">
+              <div class="step-title">发起规则校验</div>
+              <div class="step-desc">「校验采购申请审批规则」→ 读取 Sheet 页规则 + 调 BPM 样例数据</div>
+              <span class="exception-badge">⚠ BPM 无样例 → 无法校验</span>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon gold">📊</div>
+            <div class="step-content">
+              <div class="step-title">查看校验结果 + 优化建议</div>
+              <div class="step-desc">命中/未命中矩阵 + 规则优化建议 + 建议新增规则</div>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon gold">✅</div>
+            <div class="step-content">
+              <div class="step-title">用户确认 → 自动更新 / 手动编辑</div>
+              <div class="step-desc">「确认，帮我更新」→ 写回 Sheet 页 + 更新 Sheet1 JSON</div>
+              <div class="step-detail">「我自己改」→ 返回链接，用户手动编辑</div>
+              <span class="exception-badge">⚠ 写入失败 → 提示手动更新</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右列：单据审核管理 -->
+  <div class="col">
+    <div class="col-header">
+      <div class="num gold">2</div>
+      <h2>单据审核管理</h2>
+    </div>
+    <div class="col-body">
+      <div class="flow-section">
+        <div class="flow-section-title">2a · 自动轮询 + 推送审核卡片</div>
+        <div class="flow-steps">
+          <div class="step">
+            <div class="step-icon teal">⏰</div>
+            <div class="step-content">
+              <div class="step-title">ArkClaw 每 30 分钟自动拉取 BPM 待审清单</div>
+              <div class="step-desc">获取待审核单据 → 逐条 AI 审核 → 推送飞书卡片</div>
+              <span class="exception-badge">⚠ 无权限 → 提示授权</span>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon teal">📨</div>
+            <div class="step-content">
+              <div class="step-title">收到飞书交互卡片</div>
+              <div class="step-desc">卡片包含：单据信息 + AI 审核建议 + 操作按钮</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 卡片预览 -->
+      <div class="card-preview">
+        <div class="card-title">📋 采购申请审批 #PR-2026-0608-003</div>
+        <div class="card-row">申请人：李四 | 金额：¥85,000 | 供应商：XX 公司</div>
+        <div class="card-ai">
+          🤖 AI 审核建议：<br>
+          · [表单校验] 金额超 5 万 → 人工复核<br>
+          · [交叉校验] 供应商在合格名录 ✅<br>
+          · [附件校验] 报价单完整 ✅ · 合同已盖章 ✅<br>
+          <strong>综合建议：建议人工复核（金额超限）</strong>
+        </div>
+        <div class="card-btns">
+          <button class="card-btn approve">✅ 审批通过</button>
+          <button class="card-btn reject">❌ 驳回</button>
+          <button class="card-btn link">🔗 跳转 BPM</button>
+        </div>
+      </div>
+
+      <div class="flow-section" style="margin-top:8px">
+        <div class="flow-section-title">2b · 用户操作与反馈</div>
+        <div class="flow-steps">
+          <div class="step">
+            <div class="step-icon gold">👆</div>
+            <div class="step-content">
+              <div class="step-title">点击「审批通过」或「驳回」</div>
+              <div class="step-desc">调 BPM 接口更新状态 → 卡片更新为"已处理"</div>
+              <span class="exception-badge">⚠ 接口失败 → 提示跳转 BPM 手动处理</span>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon gold">🔗</div>
+            <div class="step-content">
+              <div class="step-title">点击「跳转 BPM」</div>
+              <div class="step-desc">打开 BPM 详情页，进行更复杂操作（加签/转审等）</div>
+              <span class="exception-badge">⚠ 链接失效 → 提示手动登录</span>
+            </div>
+          </div>
+          <div class="step-arrow"><svg viewBox="0 0 20 20"><path d="M10 4 L10 14 M5 10 L10 14 L15 10" stroke="#bfd4f2" stroke-width="2" fill="none"/></svg></div>
+          <div class="step">
+            <div class="step-icon teal">🔄</div>
+            <div class="step-content">
+              <div class="step-title">操作完成 → 继续下一条</div>
+              <div class="step-desc">ArkClaw 自动处理下一条待审核单据</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-note">所有操作均在飞书私聊窗口完成 · 规则管理 + 单据审核 · 一个对话入口，两条体验主线</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,403 @@
+{
+  "deck_name": "AI驱动，智慧增长——从试点场景到业务价值规模化",
+  "theme": "business_blue_consulting_wireframe",
+  "aspect_ratio": "16:9",
+  "resolution": "3840x2160",
+  "part": "Part3",
+  "description": "P13-P19 · 知识+架构+人才+路径+飞轮+结论+封底",
+  "slides": [
+    {
+      "page_id": "P13",
+      "title": "AI的上限不是模型能力，是企业的知识质量",
+      "subtitle": "",
+      "core_message": "20%显性知识（制度、SOP、手册）浮在水面，80%隐性知识（肌肉记忆、直觉判断、经验调度）藏在水下。被动萃取覆盖70-80%判断模式，剩余的留给智能体在真实决策中持续学习。",
+      "layout": {
+        "type": "left_text_right_map",
+        "visual_focus": "right_iceberg",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "AI的上限不是模型能力，是企业的知识质量",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "20%显性知识：制度、SOP、手册——浮在水面，容易管理",
+            "80%隐性知识：肌肉记忆、直觉判断、经验调度——藏在水下，最难复制",
+            "被动萃取覆盖70-80%判断模式，深层直觉留给智能体持续学习"
+          ]
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_left",
+          "content": "三层体系：知识内容体系 → 平台支撑体系 → 运营管理体系"
+        }
+      ],
+      "illustration_prompt": "A classic iceberg illustration on white background, the tip above water in light blue with small document icons, the massive submerged portion in deep teal with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, all in blue wireframe consulting infographic style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P14",
+      "title": "智能化架构：松耦合、热插拔技术基座",
+      "subtitle": "",
+      "core_message": "AI不是「加一个模块」，而是「换一个底座」。底层AI中台（大模型+数据湖+数据治理+AI安全），上层Agent军团（松耦合、热插拔，按需组合）。架构决定了你能走多远。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_platform_with_modules",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "智能化架构：松耦合、热插拔技术基座",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "foundation": {
+              "label": "AI 中台基座",
+              "pillars": [
+                "大模型统一调度",
+                "多模态数据湖",
+                "数据开发与治理",
+                "AI数据安全"
+              ]
+            },
+            "modules": {
+              "label": "Agent 军团 · 松耦合 · 热插拔",
+              "items": [
+                "AI点单",
+                "AI导购",
+                "AI客服",
+                "渠道助手",
+                "AI Coach",
+                "AI开店",
+                "新品开发",
+                "内容Agent",
+                "AI搜推问",
+                "公域洞察",
+                "直播助手"
+              ]
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "架构决定了你能走多远。不是「加一个模块」，而是「换一个底座」。"
+        }
+      ],
+      "illustration_prompt": "A clean architectural diagram on white background showing a solid dark blue foundation platform at the bottom with four luminous pillars rising from it in blue wireframe style, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P15",
+      "title": "AI人才建设：内部培养 + 外部引进",
+      "subtitle": "双轮驱动",
+      "core_message": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_bridge",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "AI人才建设：内部培养 + 外部引进",
+            "subtitle": "双轮驱动"
+          }
+        },
+        {
+          "type": "comparison_table",
+          "position": "center",
+          "content": {
+            "left_label": "业务人才转型",
+            "right_label": "技术人才转型",
+            "rows": [
+              {
+                "left": "各业务部门选拔AI操作官",
+                "right": "促使技术人员深入理解业务逻辑"
+              },
+              {
+                "left": "6个月转型期，从需求源头驱动AI建设",
+                "right": "用技术创新重塑业务价值链条"
+              },
+              {
+                "left": "让业务需求精准转化为AI场景落地",
+                "right": "AI智能体黑客松大赛检验成果"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。"
+        }
+      ],
+      "illustration_prompt": "A clean dual-path illustration on white background: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P16",
+      "title": "企业AI转型的三层路径",
+      "subtitle": "",
+      "core_message": "不同成熟度的业务需要不同的AI策略——一刀切是最大的浪费。",
+      "layout": {
+        "type": "three_column_cards",
+        "visual_focus": "center_three_pillars",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "企业AI转型的三层路径",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "columns": [
+              {
+                "label": "路径一：成熟业务",
+                "desc": "单点AI优化 → 全链路AI优化 → 极致降本增效",
+                "highlight": "生产力革新"
+              },
+              {
+                "label": "路径二：创新业务",
+                "desc": "围绕需求重新定义业务 → AI原生品牌数智化",
+                "highlight": "数智化孵化"
+              },
+              {
+                "label": "路径三：C端入口",
+                "desc": "新场景新入口拓展 → 提升用户渗透与粘性",
+                "highlight": "超级入口"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "不同成熟度的业务，需要不同的AI策略——一刀切是最大的浪费。"
+        }
+      ],
+      "illustration_prompt": "A clean three-pillar composition on white background: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, blue wireframe consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P17",
+      "title": "六个反转完成后的组织",
+      "subtitle": "",
+      "core_message": "工件活了——每一页材料都是知识库的一个节点。数据循环了——每一次汇报都在喂饱下一次。颗粒度细了——一句话就能被检索、引用、重组。角色变了——人不再搬砖，只做判断。流程自生长了——每一次执行都在重写它自己。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_hexagonal_flywheel",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "六个反转完成后的组织",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "flywheel": {
+              "vertices": [
+                "工件活了",
+                "数据循环了",
+                "颗粒度细了",
+                "角色变了",
+                "激励对了",
+                "流程自生长了"
+              ],
+              "center": "组织能力"
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "每一次执行都在重写它自己。这才是AI时代真正的组织能力。"
+        }
+      ],
+      "illustration_prompt": "A luminous golden hexagonal flywheel at the center on white background, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles in light blue, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P18",
+      "title": "从试点到规模化，缺的不是技术，是体系",
+      "subtitle": "",
+      "core_message": "不是上线一套系统，而是让组织的工作方式具备自我进化的能力。这才是AI时代真正的组织能力。",
+      "layout": {
+        "type": "title_only",
+        "visual_focus": "center_large_typography",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "center",
+          "content": {
+            "title": "从试点到规模化",
+            "subtitle": "缺的不是技术，是体系"
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "bottom_center",
+          "content": [
+            "信息流动",
+            "角色重构",
+            "流程自进化"
+          ]
+        }
+      ],
+      "illustration_prompt": "A minimalist closing slide on white background, large dark blue typography area in the center reading the main message, three luminous keyword orbs floating below in a row in blue and gold, subtle particle effects, elegant consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P19",
+      "title": "拥抱AI时代，跨越周期",
+      "subtitle": "",
+      "core_message": "火山引擎",
+      "layout": {
+        "type": "full_bleed_visual",
+        "visual_focus": "center_horizon_line",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "center",
+          "content": {
+            "title": "拥抱AI时代，跨越周期",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "火山引擎"
+        }
+      ],
+      "illustration_prompt": "A minimalist end slide on white background, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, clean and serene, corporate consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    }
+  ]
+}

@@ -28,12 +28,18 @@
       ]
     }
   ],
-  "illustration_prompt": "A minimalist closing slide composition, large golden typography area in the center reading the main message, three luminous keyword orbs floating below in a row, subtle particle effects, deep navy background, elegant consulting style, 16:9, 4K",
+  "illustration_prompt": "A minimalist closing slide on white background, large dark blue typography area in the center reading the main message, three luminous keyword orbs floating below in a row in blue and gold, subtle particle effects, elegant consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
-      "cyberpunk feeling"
+      "cyberpunk feeling",
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

@@ -1,6 +1,6 @@
 {
   "deck_name": "AI驱动，智慧增长——从试点场景到业务价值规模化",
-  "theme": "blue_minimal_consulting",
+  "theme": "business_blue_consulting_wireframe",
   "aspect_ratio": "16:9",
   "resolution": "3840x2160",
   "slides": [
@@ -30,14 +30,18 @@
           "content": "2026/06 · 火山引擎"
         }
       ],
-      "illustration_prompt": "A minimalist abstract 3D geometric composition with a glowing golden arrow rising diagonally from scattered small luminous dots at bottom-left toward a large radiant sphere at top-right, deep navy blue gradient background, clean executive consulting style, ethereal lighting, generous negative space on the left for text overlay, 16:9, 4K",
+      "illustration_prompt": "A clean professional consulting PPT cover slide, white background with subtle light blue gradient accents, large elegant dark blue typography on the left reading the title, a minimalist golden arrow icon rising from bottom-left toward top-right, thin blue wireframe geometric elements, generous whitespace, corporate executive presentation quality, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "busy composition",
-          "text overlapping visuals"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -76,14 +80,18 @@
           "content": "试点是孤岛，没有体系支撑，做完就完了。"
         }
       ],
-      "illustration_prompt": "A minimalist abstract illustration of a road that starts from the left side and abruptly breaks off in the middle-right, floating fragments falling into dark void below, the road edge highlighted with a thin golden line, deep navy blue background, dramatic but restrained lighting, consulting presentation style, 16:9, 4K",
+      "illustration_prompt": "A clean consulting slide with white background, left side shows three quoted statements in dark blue text with subtle grey quotation marks, right side shows a minimalist abstract road illustration in thin blue wireframe style that breaks off mid-way, fragments falling, the road edge highlighted with a thin golden line, generous whitespace, professional presentation, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "dramatic explosions",
-          "cluttered composition"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -134,14 +142,18 @@
           ]
         }
       ],
-      "illustration_prompt": "A clean 2x2 grid layout with four minimalist abstract icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, deep navy blue background, professional consulting infographic style, 16:9, 4K",
+      "illustration_prompt": "A clean 2x2 grid layout on white background, four minimalist blue wireframe icons: a locked file cabinet, a magnifying glass with blind spots, a black box with question marks, and a dice with question marks, all connected by thin golden lines to a central red X mark, professional consulting infographic style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "cartoonish icons",
-          "crowded labels"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -175,14 +187,18 @@
           ]
         }
       ],
-      "illustration_prompt": "A dramatic abstract illustration of a wide chasm splitting the composition horizontally, scattered small islands on the left labeled with tiny icons representing isolated pilots, a unified landmass on the right, a golden bridge being constructed across the gap with luminous segments, deep navy background, ethereal blue glow in the chasm, executive consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean consulting slide with white background, a dramatic abstract illustration of a wide chasm splitting the composition horizontally in thin blue wireframe style, scattered small islands on the left, a unified landmass on the right, a golden bridge being constructed across the gap, ethereal light blue glow in the chasm, executive consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "dramatic explosions",
-          "text in the chasm"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -239,12 +255,18 @@
           }
         }
       ],
-      "illustration_prompt": "A three-tier pyramid or stepped platform abstract composition, bottom tier in deep blue with three luminous nodes, middle tier in teal with two nodes, top tier in warm golden with one radiant node, each node connected by ascending luminous lines, dark navy background, clean executive consulting aesthetic, 16:9, 4K",
+      "illustration_prompt": "A clean three-tier stepped platform abstract composition on white background, bottom tier in deep blue wireframe with three luminous nodes, middle tier in teal with two nodes, top tier in warm golden with one radiant node, each node connected by ascending thin lines, clean executive consulting aesthetic, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -300,14 +322,18 @@
           "content": "载体换了，AI才有了介入的物理可能。"
         }
       ],
-      "illustration_prompt": "A split composition: left side shows a dark locked cube with PPT label, right side shows a luminous network of connected glowing nodes with HTML label, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, deep navy background, minimalist consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean split composition on white background: left side shows a dark locked cube in blue wireframe style, right side shows a luminous network of connected glowing nodes, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, minimalist consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "text on the arrow",
-          "cluttered comparison"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -346,14 +372,18 @@
           "content": "颗粒度决定知识能不能被「用」，而不只是被「存」。"
         }
       ],
-      "illustration_prompt": "An abstract illustration of a large dark cube on the right side exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, deep navy background, consulting infographic style, 16:9, 4K",
+      "illustration_prompt": "A clean consulting slide on white background, right side shows a large dark cube in blue wireframe style exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "violent explosion",
-          "too many particles"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -408,12 +438,18 @@
           "content": "归档即燃料。每一场汇报既消耗知识，也生产知识。"
         }
       ],
-      "illustration_prompt": "A split composition: left side shows a straight grey arrow going into a dead-end folder icon, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, labeled subtly, deep navy background, clean consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean split composition on white background: left side shows a straight grey arrow going into a dead-end folder icon in blue wireframe, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, clean consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -478,14 +514,18 @@
           "content": "AI每往前移一步，人需要做的就越靠近——提出对的问题。"
         }
       ],
-      "illustration_prompt": "A three-column progressive illustration showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end of the workflow, middle column shows AI in the middle as executor with human defining requirements, right column shows human and AI collaborating at the start together, golden gradient flowing from left to right, deep navy background, executive consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean three-column progressive illustration on white background showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end, middle column shows AI in the middle as executor, right column shows human and AI collaborating at the start, golden gradient flowing from left to right, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "robot figures",
-          "complex workflow details"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -524,14 +564,18 @@
           "content": "如果你的团队里出现了一个产出10倍于同事的人，这不是个人英雄。这是一个信号：你的组织，该重新思考激励分配方式了。"
         }
       ],
-      "illustration_prompt": "A clean bar chart composition on the right side with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines, deep navy background, professional consulting data visualization style, 16:9, 4K",
+      "illustration_prompt": "A clean bar chart composition on white background with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines in light blue, professional consulting data visualization style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "3D charts",
-          "excessive data labels"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -577,14 +621,18 @@
           "content": "这是六个反转的终局。前五个反转做到位，流程就自然具备了自我进化的能力。"
         }
       ],
-      "illustration_prompt": "An abstract illustration contrasting two process models: top half shows a rigid straight horizontal line with fixed grey nodes representing traditional SOP, bottom half shows an organic golden tree structure growing and branching upward from a root with luminous nodes at branch tips, the rigid line fading as the tree grows through it, deep navy background, executive consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean consulting slide on white background contrasting two process models: top half shows a rigid straight horizontal line with fixed grey nodes representing traditional SOP in blue wireframe, bottom half shows an organic golden tree structure growing and branching upward from a root with luminous nodes at branch tips, the rigid line fading as the tree grows through it, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "literal tree",
-          "complex branching"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -636,14 +684,18 @@
           "content": "打车场景：「伸手拦车」消失了，不是因为变快了，是因为系统知道你在哪、车在哪。这个动作的存在前提被推翻了。AI不是用来跑赢现有流程的，是用来让现有流程消失的。"
         }
       ],
-      "illustration_prompt": "A split composition: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on, labeled 10-20 percent, right side shows a luminous golden fluid organic flowing structure, labeled 10x, with the gear dissolving into golden particles at the boundary, deep navy background, consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean split composition on white background: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on in blue wireframe, right side shows a luminous golden fluid organic flowing structure, with the gear dissolving into golden particles at the boundary, consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "literal gears",
-          "complex machinery"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -682,14 +734,18 @@
           "content": "三层体系：知识内容体系 → 平台支撑体系 → 运营管理体系"
         }
       ],
-      "illustration_prompt": "A classic iceberg illustration on the right side, the tip above water in light blue labeled 20 percent explicit knowledge with small document icons, the massive submerged portion in deep teal labeled 80 percent tacit knowledge with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, deep navy background, professional consulting infographic style, 16:9, 4K",
+      "illustration_prompt": "A classic iceberg illustration on white background, the tip above water in light blue with small document icons, the massive submerged portion in deep teal with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, all in blue wireframe consulting infographic style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "cartoon iceberg",
-          "excessive labels"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -750,14 +806,18 @@
           "content": "架构决定了你能走多远。不是「加一个模块」，而是「换一个底座」。"
         }
       ],
-      "illustration_prompt": "A clean architectural diagram showing a solid dark blue foundation platform at the bottom labeled AI platform with four luminous pillars rising from it, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, deep navy background, executive consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean architectural diagram on white background showing a solid dark blue foundation platform at the bottom with four luminous pillars rising from it in blue wireframe style, above the platform multiple modular blocks floating and connecting via thin golden lines, each block a subtle glowing rectangle, organized but not rigid, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
           "cyberpunk feeling",
-          "complex network mesh",
-          "small unreadable labels"
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -809,12 +869,18 @@
           "content": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。"
         }
       ],
-      "illustration_prompt": "A dual-path illustration: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, deep navy background, consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean dual-path illustration on white background: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -867,12 +933,18 @@
           "content": "不同成熟度的业务，需要不同的AI策略——一刀切是最大的浪费。"
         }
       ],
-      "illustration_prompt": "A three-pillar composition: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, deep navy background, consulting style, 16:9, 4K",
+      "illustration_prompt": "A clean three-pillar composition on white background: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, blue wireframe consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -919,12 +991,18 @@
           "content": "每一次执行都在重写它自己。这才是AI时代真正的组织能力。"
         }
       ],
-      "illustration_prompt": "A luminous golden hexagonal flywheel at the center, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles, deep navy background, ethereal glow, executive consulting style, 16:9, 4K",
+      "illustration_prompt": "A luminous golden hexagonal flywheel at the center on white background, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles in light blue, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -958,12 +1036,18 @@
           ]
         }
       ],
-      "illustration_prompt": "A minimalist closing slide composition, large golden typography area in the center reading the main message, three luminous keyword orbs floating below in a row, subtle particle effects, deep navy background, elegant consulting style, 16:9, 4K",
+      "illustration_prompt": "A minimalist closing slide on white background, large dark blue typography area in the center reading the main message, three luminous keyword orbs floating below in a row in blue and gold, subtle particle effects, elegant consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     },
@@ -993,12 +1077,18 @@
           "content": "火山引擎"
         }
       ],
-      "illustration_prompt": "A minimalist end slide, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, deep navy background, clean and serene, consulting style, 16:9, 4K",
+      "illustration_prompt": "A minimalist end slide on white background, a single elegant golden line forming an abstract horizon across the center, subtle particle glow above the line, clean and serene, corporate consulting style, generous whitespace, 16:9, 4K",
       "style_rules": {
         "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
         "avoid": [
+          "dark backgrounds",
           "too much glow",
-          "cyberpunk feeling"
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
         ]
       }
     }

@@ -47,12 +47,18 @@
       "content": "不同成熟度的业务，需要不同的AI策略——一刀切是最大的浪费。"
     }
   ],
-  "illustration_prompt": "A three-pillar composition: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, deep navy background, consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean three-pillar composition on white background: left pillar in steady blue showing incremental optimization, middle pillar in teal showing innovation sprouting, right pillar in golden showing a portal gateway, all rising from a common foundation, blue wireframe consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
-      "cyberpunk feeling"
+      "cyberpunk feeling",
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

@@ -46,12 +46,18 @@
       "content": "买得到AI工具，买不到AI人才。培养自己的AI队伍是长期竞争力的根基。"
     }
   ],
-  "illustration_prompt": "A dual-path illustration: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, deep navy background, consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean dual-path illustration on white background: left side shows a business professional transforming with golden AI augmentation, right side shows a technical professional gaining business context, connected by a golden bridge in the center, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
-      "cyberpunk feeling"
+      "cyberpunk feeling",
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

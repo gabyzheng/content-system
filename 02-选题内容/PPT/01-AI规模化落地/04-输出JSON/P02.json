@@ -33,14 +33,18 @@
       "content": "试点是孤岛，没有体系支撑，做完就完了。"
     }
   ],
-  "illustration_prompt": "A minimalist abstract illustration of a road that starts from the left side and abruptly breaks off in the middle-right, floating fragments falling into dark void below, the road edge highlighted with a thin golden line, deep navy blue background, dramatic but restrained lighting, consulting presentation style, 16:9, 4K",
+  "illustration_prompt": "A clean consulting slide with white background, left side shows three quoted statements in dark blue text with subtle grey quotation marks, right side shows a minimalist abstract road illustration in thin blue wireframe style that breaks off mid-way, fragments falling, the road edge highlighted with a thin golden line, generous whitespace, professional presentation, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "dramatic explosions",
-      "cluttered composition"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

@@ -41,12 +41,18 @@
       "content": "每一次执行都在重写它自己。这才是AI时代真正的组织能力。"
     }
   ],
-  "illustration_prompt": "A luminous golden hexagonal flywheel at the center, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles, deep navy background, ethereal glow, executive consulting style, 16:9, 4K",
+  "illustration_prompt": "A luminous golden hexagonal flywheel at the center on white background, six vertices labeled with subtle icons representing each transformation, rotating arrows connecting them forming a continuous cycle, surrounded by orbiting data particles in light blue, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
-      "cyberpunk feeling"
+      "cyberpunk feeling",
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

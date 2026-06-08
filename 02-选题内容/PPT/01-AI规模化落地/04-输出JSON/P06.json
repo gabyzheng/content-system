@@ -50,14 +50,18 @@
       "content": "载体换了，AI才有了介入的物理可能。"
     }
   ],
-  "illustration_prompt": "A split composition: left side shows a dark locked cube with PPT label, right side shows a luminous network of connected glowing nodes with HTML label, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, deep navy background, minimalist consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean split composition on white background: left side shows a dark locked cube in blue wireframe style, right side shows a luminous network of connected glowing nodes, a sweeping golden arrow transforming from left to right across the center, the cube dissolving into particles that reform as the network, minimalist consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "text on the arrow",
-      "cluttered comparison"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

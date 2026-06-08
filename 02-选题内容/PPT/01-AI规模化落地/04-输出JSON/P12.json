@@ -46,14 +46,18 @@
       "content": "打车场景：「伸手拦车」消失了，不是因为变快了，是因为系统知道你在哪、车在哪。这个动作的存在前提被推翻了。AI不是用来跑赢现有流程的，是用来让现有流程消失的。"
     }
   ],
-  "illustration_prompt": "A split composition: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on, labeled 10-20 percent, right side shows a luminous golden fluid organic flowing structure, labeled 10x, with the gear dissolving into golden particles at the boundary, deep navy background, consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean split composition on white background: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on in blue wireframe, right side shows a luminous golden fluid organic flowing structure, with the gear dissolving into golden particles at the boundary, consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "literal gears",
-      "complex machinery"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

@@ -33,14 +33,18 @@
       "content": "如果你的团队里出现了一个产出10倍于同事的人，这不是个人英雄。这是一个信号：你的组织，该重新思考激励分配方式了。"
     }
   ],
-  "illustration_prompt": "A clean bar chart composition on the right side with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines, deep navy background, professional consulting data visualization style, 16:9, 4K",
+  "illustration_prompt": "A clean bar chart composition on white background with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines in light blue, professional consulting data visualization style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "3D charts",
-      "excessive data labels"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

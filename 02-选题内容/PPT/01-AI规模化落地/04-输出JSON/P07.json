@@ -33,14 +33,18 @@
       "content": "颗粒度决定知识能不能被「用」，而不只是被「存」。"
     }
   ],
-  "illustration_prompt": "An abstract illustration of a large dark cube on the right side exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, deep navy background, consulting infographic style, 16:9, 4K",
+  "illustration_prompt": "A clean consulting slide on white background, right side shows a large dark cube in blue wireframe style exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "violent explosion",
-      "too many particles"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

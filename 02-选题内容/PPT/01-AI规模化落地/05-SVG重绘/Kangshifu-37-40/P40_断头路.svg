@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#D5E4F7" flood-opacity="0.65"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEF6FF"/></linearGradient>
+  <marker id="arrowBlue" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#1F6FE5"/></marker>
+  <marker id="arrowGold" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#C8942D"/></marker>
+  <style>
+  .title{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:92px;font-weight:800;fill:#12315C;letter-spacing:-1px}
+  .subtitle{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:42px;font-weight:500;fill:#5C6F8C}
+  .label{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:34px;font-weight:700;fill:#1F4E8C}
+  .body{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:32px;font-weight:400;fill:#26384D}
+  .small{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:26px;font-weight:400;fill:#5C6F8C}
+  .tiny{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif;font-size:22px;font-weight:400;fill:#6D7F99}
+  .num{font-family:"Inter",Arial,sans-serif;font-size:92px;font-weight:850;fill:#C8942D}
+  .big{font-family:"Inter",Arial,sans-serif;font-size:132px;font-weight:850;fill:#12315C}
+  .gold{fill:#C8942D}.blue{fill:#1F6FE5}.navy{fill:#12315C}.muted{fill:#7C8CA5}
+  .card{fill:#FFFFFF;stroke:#BFD4F2;stroke-width:3;rx:28;filter:url(#shadow)}
+  .cardBlue{fill:#F4F8FF;stroke:#8CB8F2;stroke-width:3;rx:28;filter:url(#shadow)}
+  .line{stroke:#7DADEB;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .lineGold{stroke:#C8942D;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke:#9BBFEF;stroke-width:4;fill:none;stroke-dasharray:18 16;stroke-linecap:round}
+</style>
+</defs>
+<rect width="3840" height="2160" fill="url(#bg)"/>
+<circle cx="3360" cy="260" r="360" fill="#EAF3FF" opacity="0.7"/>
+<circle cx="260" cy="1880" r="420" fill="#F8FBFF" opacity="0.8"/>
+<text x="180" y="190" class="tiny">AI × 组织变革方法论</text>
+<text x="180" y="320" class="title" text-anchor="start">看起来在运转，实际上是一条断头路</text><text x="180" y="385" class="subtitle" text-anchor="start">材料是终点、知识是孤岛、人是唯一连接器</text><rect x="230" y="590" width="1540" height="420" class="card" /><circle cx="320" cy="682" r="52" fill="#F4F8FF" stroke="#8CB8F2" stroke-width="4"/><text x="320" y="698" class="label" text-anchor="middle">01</text><text x="410" y="685" class="label" text-anchor="start">知识库是死库存</text><text x="410" y="765" class="body" text-anchor="start">PPT被放进共享盘，存在但等于不存在。</text><rect x="410" y="900" width="420" height="70" rx="35" fill="#FFF7E6" stroke="#E1B65A" stroke-width="3"/><text x="620" y="946" class="small" text-anchor="middle">存而不用</text><rect x="1980" y="590" width="1540" height="420" class="card" /><circle cx="2070" cy="682" r="52" fill="#F4F8FF" stroke="#8CB8F2" stroke-width="4"/><text x="2070" y="698" class="label" text-anchor="middle">02</text><text x="2160" y="685" class="label" text-anchor="start">复盘是幸存者偏差</text><text x="2160" y="765" class="body" text-anchor="start">每周抓几个“印象里最难的”，样本靠记忆。</text><rect x="2160" y="900" width="420" height="70" rx="35" fill="#FFF7E6" stroke="#E1B65A" stroke-width="3"/><text x="2370" y="946" class="small" text-anchor="middle">凭印象抽样</text><rect x="230" y="1120" width="1540" height="420" class="card" /><circle cx="320" cy="1212" r="52" fill="#F4F8FF" stroke="#8CB8F2" stroke-width="4"/><text x="320" y="1228" class="label" text-anchor="middle">03</text><text x="410" y="1215" class="label" text-anchor="start">质量是黑盒</text><text x="410" y="1295" class="body" text-anchor="start">100场汇报抽查3场，剩下97场无人知晓。</text><rect x="410" y="1430" width="420" height="70" rx="35" fill="#FFF7E6" stroke="#E1B65A" stroke-width="3"/><text x="620" y="1476" class="small" text-anchor="middle">3%抽样盲区</text><rect x="1980" y="1120" width="1540" height="420" class="card" /><circle cx="2070" cy="1212" r="52" fill="#F4F8FF" stroke="#8CB8F2" stroke-width="4"/><text x="2070" y="1228" class="label" text-anchor="middle">04</text><text x="2160" y="1215" class="label" text-anchor="start">绩效是猜谜</text><text x="2160" y="1295" class="body" text-anchor="start">“状态不错”说不清具体好在哪里。</text><rect x="2160" y="1430" width="420" height="70" rx="35" fill="#FFF7E6" stroke="#E1B65A" stroke-width="3"/><text x="2370" y="1476" class="small" text-anchor="middle">印象式打分</text><rect x="520" y="1660" width="2800" height="230" class="cardBlue" /><text x="1920" y="1748" class="label" text-anchor="middle">共同根因</text><text x="1920" y="1830" class="label" text-anchor="middle">流程的产物（材料、录音、复盘）全部是死的，无法回流。</text><path d="M1740 1525 C1800 1580, 1860 1620, 1920 1660" class="lineGold" marker-end="url(#arrowGold)"/><path d="M2100 1525 C2040 1580, 1980 1620, 1920 1660" class="lineGold" marker-end="url(#arrowGold)"/><text x="180" y="2040" class="tiny">business_blue_consulting_wireframe · 3840×2160</text></svg>

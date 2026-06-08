@@ -33,14 +33,18 @@
       "content": "三层体系：知识内容体系 → 平台支撑体系 → 运营管理体系"
     }
   ],
-  "illustration_prompt": "A classic iceberg illustration on the right side, the tip above water in light blue labeled 20 percent explicit knowledge with small document icons, the massive submerged portion in deep teal labeled 80 percent tacit knowledge with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, deep navy background, professional consulting infographic style, 16:9, 4K",
+  "illustration_prompt": "A classic iceberg illustration on white background, the tip above water in light blue with small document icons, the massive submerged portion in deep teal with three layered sections: muscle memory, intuition, experience, subtle golden light beams penetrating from above the water surface, all in blue wireframe consulting infographic style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "cartoon iceberg",
-      "excessive labels"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

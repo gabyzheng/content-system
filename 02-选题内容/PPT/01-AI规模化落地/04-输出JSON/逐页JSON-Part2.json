@@ -1,0 +1,372 @@
+{
+  "deck_name": "AI驱动，智慧增长——从试点场景到业务价值规模化",
+  "theme": "business_blue_consulting_wireframe",
+  "aspect_ratio": "16:9",
+  "resolution": "3840x2160",
+  "part": "Part2",
+  "description": "P07-P12 · 反转②③④⑤⑥+思维转变",
+  "slides": [
+    {
+      "page_id": "P07",
+      "title": "反转② 颗粒度：文件级 → 片段级",
+      "subtitle": "",
+      "core_message": "旧世界最小单位是一个PPT，靠文件名。新世界最小单位是一句话、一个观点、一段客户反馈，靠语义。颗粒度决定知识能不能被「用」，而不只是被「存」。",
+      "layout": {
+        "type": "left_text_right_map",
+        "visual_focus": "right_exploding_cube",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "反转② 颗粒度：文件级 → 片段级",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "旧世界：一个PPT是一个整体，检索靠文件名",
+            "新世界：一句话就是一个独立的知识单元",
+            "颗粒度越细，知识越能被精准调用和重组"
+          ]
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_left",
+          "content": "颗粒度决定知识能不能被「用」，而不只是被「存」。"
+        }
+      ],
+      "illustration_prompt": "A clean consulting slide on white background, right side shows a large dark cube in blue wireframe style exploding into hundreds of small luminous particles, each particle glowing with a tiny golden tag, particles forming new constellation-like patterns, a gradient from solid cube to dispersed particles, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P08",
+      "title": "反转③ 数据：单向归档 → 双向喂养",
+      "subtitle": "",
+      "core_message": "旧流程里数据是「流出」的，归档即终点。新流程里数据是「循环」的，归档即燃料。每一场汇报既消耗知识，也生产知识。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_loop_vs_line",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转③ 数据：单向归档 → 双向喂养",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "left_flow": {
+              "label": "旧流程",
+              "steps": [
+                "产出",
+                "归档",
+                "结束"
+              ],
+              "shape": "straight_line"
+            },
+            "right_flow": {
+              "label": "新流程",
+              "steps": [
+                "产出",
+                "归档",
+                "喂养",
+                "下一次产出"
+              ],
+              "shape": "circular_loop"
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "归档即燃料。每一场汇报既消耗知识，也生产知识。"
+        }
+      ],
+      "illustration_prompt": "A clean split composition on white background: left side shows a straight grey arrow going into a dead-end folder icon in blue wireframe, right side shows a glowing golden circular loop with arrows feeding back into itself forming a continuous cycle, clean consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P09",
+      "title": "反转④ 角色：内容生产者 → 判断提供者",
+      "subtitle": "ERA 三阶段：校对员 → 执行者 → 协作者",
+      "core_message": "角色反转不是一夜之间发生的。它经历三个阶段：AI先做校对员，再做执行者，最后做协作者。AI每往前移一步，人的价值密度就提升一个量级。",
+      "layout": {
+        "type": "three_column_cards",
+        "visual_focus": "center_ai_position_shift",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转④ 角色：内容生产者 → 判断提供者",
+            "subtitle": "ERA 三阶段：校对员 → 执行者 → 协作者"
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "columns": [
+              {
+                "label": "ERA 01 · 校对员",
+                "flow": [
+                  "人 → 定义需求",
+                  "人 → 产出内容",
+                  "AI → 检查校对"
+                ],
+                "highlight": "AI 在最后一步"
+              },
+              {
+                "label": "ERA 02 · 执行者",
+                "flow": [
+                  "人 → 定义需求",
+                  "AI → 产出内容",
+                  "AI → 检查校对"
+                ],
+                "highlight": "AI 在中间步骤"
+              },
+              {
+                "label": "ERA 03 · 协作者",
+                "flow": [
+                  "人+AI → 定义需求",
+                  "AI → 产出内容",
+                  "AI → 检查校对"
+                ],
+                "highlight": "AI 在第一步"
+              }
+            ]
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "AI每往前移一步，人需要做的就越靠近——提出对的问题。"
+        }
+      ],
+      "illustration_prompt": "A clean three-column progressive illustration on white background showing the evolution of human-AI collaboration, left column shows a human figure with a small AI checker icon at the end, middle column shows AI in the middle as executor, right column shows human and AI collaborating at the start, golden gradient flowing from left to right, all in blue wireframe consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P10",
+      "title": "反转⑤ 激励：考核投入 → 考核产出",
+      "subtitle": "",
+      "core_message": "同岗位的人正在被AI拉开10倍差距。销售BD从5封到50封/天，产品经理从1版到3版PRD/天，设计师从2张到20张方案/天。如果你的团队出现了一个产出10倍于同事的人，这不是个人英雄——是组织该重新思考激励了。",
+      "layout": {
+        "type": "left_text_right_chart",
+        "visual_focus": "right_bar_chart",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_left",
+          "content": {
+            "title": "反转⑤ 激励：考核投入 → 考核产出",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "three_point_argument",
+          "position": "left_center",
+          "content": [
+            "销售BD：5封→50封邮件/天，10×个性化能力",
+            "产品经理：1版→3版PRD/天，3×共创深度",
+            "设计师：2张→20张方案/天，10×迭代速度"
+          ]
+        },
+        {
+          "type": "callout_card",
+          "position": "left_bottom",
+          "content": "如果你的团队里出现了一个产出10倍于同事的人，这不是个人英雄。这是一个信号：你的组织，该重新思考激励分配方式了。"
+        }
+      ],
+      "illustration_prompt": "A clean bar chart composition on white background with three pairs of bars, left bars in muted grey showing baseline productivity, right bars in glowing gold showing AI-amplified output, labels showing 10x, 3x, 10x multipliers, minimal grid lines in light blue, professional consulting data visualization style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P11",
+      "title": "反转⑥ 流程：被设计 → 自生长",
+      "subtitle": "",
+      "core_message": "传统组织里流程是被「设计」出来的——专家画SOP，所有人遵守。AI时代的流程是被「生长」出来的——每一次执行都在重写它自己。这是六个反转的终局。",
+      "layout": {
+        "type": "top_title_center_visual",
+        "visual_focus": "center_organic_tree",
+        "density": "sparse",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "反转⑥ 流程：被设计 → 自生长",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "flow_diagram",
+          "position": "center",
+          "content": {
+            "top_flow": {
+              "label": "传统组织",
+              "desc": "专家画SOP → 所有人遵守 → 改流程要立项",
+              "shape": "rigid_line"
+            },
+            "bottom_flow": {
+              "label": "AI时代组织",
+              "desc": "每一次执行 → 留下痕迹 → 自动优化 → 流程自生长",
+              "shape": "organic_tree"
+            }
+          }
+        },
+        {
+          "type": "bottom_note",
+          "position": "bottom_center",
+          "content": "这是六个反转的终局。前五个反转做到位，流程就自然具备了自我进化的能力。"
+        }
+      ],
+      "illustration_prompt": "A clean consulting slide on white background contrasting two process models: top half shows a rigid straight horizontal line with fixed grey nodes representing traditional SOP in blue wireframe, bottom half shows an organic golden tree structure growing and branching upward from a root with luminous nodes at branch tips, the rigid line fading as the tree grows through it, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    },
+    {
+      "page_id": "P12",
+      "title": "不是「在流程里加AI」，而是「为AI重新画流程」",
+      "subtitle": "",
+      "core_message": "旧思维：现有流程+AI辅助=效率提升10-20%，天花板很低。新思维：从零开始用AI原生方式重构=效率提升10倍。AI不是用来跑赢现有流程的，是用来让现有流程消失的。",
+      "layout": {
+        "type": "two_column_compare",
+        "visual_focus": "center_dissolving_gear",
+        "density": "medium",
+        "whitespace": "generous"
+      },
+      "elements": [
+        {
+          "type": "headline_block",
+          "position": "top_center",
+          "content": {
+            "title": "不是「在流程里加AI」，而是「为AI重新画流程」",
+            "subtitle": ""
+          }
+        },
+        {
+          "type": "comparison_table",
+          "position": "center",
+          "content": {
+            "left_label": "旧思维",
+            "right_label": "新思维",
+            "rows": [
+              {
+                "left": "现有流程 + AI辅助",
+                "right": "从零AI原生重构"
+              },
+              {
+                "left": "效率提升 10-20%",
+                "right": "效率提升 10倍"
+              },
+              {
+                "left": "天花板很低",
+                "right": "不是优化，是重构"
+              }
+            ]
+          }
+        },
+        {
+          "type": "callout_card",
+          "position": "bottom_center",
+          "content": "打车场景：「伸手拦车」消失了，不是因为变快了，是因为系统知道你在哪、车在哪。这个动作的存在前提被推翻了。AI不是用来跑赢现有流程的，是用来让现有流程消失的。"
+        }
+      ],
+      "illustration_prompt": "A clean split composition on white background: left side shows a grey mechanical gear system with a small blue AI chip awkwardly bolted on in blue wireframe, right side shows a luminous golden fluid organic flowing structure, with the gear dissolving into golden particles at the boundary, consulting style, generous whitespace, 16:9, 4K",
+      "style_rules": {
+        "tone": "calm_executive",
+        "background": "white with subtle blue accents",
+        "style": "blue wireframe consulting",
+        "avoid": [
+          "dark backgrounds",
+          "too much glow",
+          "cyberpunk feeling",
+          "complex 3D effects",
+          "crowded labels",
+          "long paragraphs"
+        ]
+      }
+    }
+  ]
+}

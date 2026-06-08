@@ -28,14 +28,18 @@
       ]
     }
   ],
-  "illustration_prompt": "A dramatic abstract illustration of a wide chasm splitting the composition horizontally, scattered small islands on the left labeled with tiny icons representing isolated pilots, a unified landmass on the right, a golden bridge being constructed across the gap with luminous segments, deep navy background, ethereal blue glow in the chasm, executive consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean consulting slide with white background, a dramatic abstract illustration of a wide chasm splitting the composition horizontally in thin blue wireframe style, scattered small islands on the left, a unified landmass on the right, a golden bridge being constructed across the gap, ethereal light blue glow in the chasm, executive consulting style, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "dramatic explosions",
-      "text in the chasm"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

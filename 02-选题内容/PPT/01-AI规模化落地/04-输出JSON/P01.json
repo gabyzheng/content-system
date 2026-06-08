@@ -24,14 +24,18 @@
       "content": "2026/06 · 火山引擎"
     }
   ],
-  "illustration_prompt": "A minimalist abstract 3D geometric composition with a glowing golden arrow rising diagonally from scattered small luminous dots at bottom-left toward a large radiant sphere at top-right, deep navy blue gradient background, clean executive consulting style, ethereal lighting, generous negative space on the left for text overlay, 16:9, 4K",
+  "illustration_prompt": "A clean professional consulting PPT cover slide, white background with subtle light blue gradient accents, large elegant dark blue typography on the left reading the title, a minimalist golden arrow icon rising from bottom-left toward top-right, thin blue wireframe geometric elements, generous whitespace, corporate executive presentation quality, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "busy composition",
-      "text overlapping visuals"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

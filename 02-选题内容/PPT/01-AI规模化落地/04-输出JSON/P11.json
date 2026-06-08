@@ -40,14 +40,18 @@
       "content": "这是六个反转的终局。前五个反转做到位，流程就自然具备了自我进化的能力。"
     }
   ],
-  "illustration_prompt": "An abstract illustration contrasting two process models: top half shows a rigid straight horizontal line with fixed grey nodes representing traditional SOP, bottom half shows an organic golden tree structure growing and branching upward from a root with luminous nodes at branch tips, the rigid line fading as the tree grows through it, deep navy background, executive consulting style, 16:9, 4K",
+  "illustration_prompt": "A clean consulting slide on white background contrasting two process models: top half shows a rigid straight horizontal line with fixed grey nodes representing traditional SOP in blue wireframe, bottom half shows an organic golden tree structure growing and branching upward from a root with luminous nodes at branch tips, the rigid line fading as the tree grows through it, generous whitespace, 16:9, 4K",
   "style_rules": {
     "tone": "calm_executive",
+    "background": "white with subtle blue accents",
+    "style": "blue wireframe consulting",
     "avoid": [
+      "dark backgrounds",
       "too much glow",
       "cyberpunk feeling",
-      "literal tree",
-      "complex branching"
+      "complex 3D effects",
+      "crowded labels",
+      "long paragraphs"
     ]
   }
 }

@@ -6,12 +6,12 @@
 <title>来伊份智能审批系统 — 基于 ArkClaw 的审核方案</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0d1117;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;overflow:hidden}
-.deck{position:relative;width:1920px;height:1080px;overflow:hidden;border-radius:12px;box-shadow:0 20px 80px rgba(0,0,0,.5)}
+body{background:#0d1117;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;overflow:auto;padding:20px 0}
+.deck{position:relative;width:1920px;height:1080px;overflow:visible;border-radius:12px;box-shadow:0 20px 80px rgba(0,0,0,.5)}
 .slides{position:relative;width:100%;height:100%}
 .slide-frame{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .5s ease}
 .slide-frame.active{opacity:1;pointer-events:auto;z-index:1}
-.slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:hidden}
+.slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:auto}
 /* Navigation */
 .nav-bar{position:absolute;bottom:0;left:0;right:0;height:60px;background:rgba(255,255,255,.95);border-top:1px solid #eaf3ff;display:flex;align-items:center;justify-content:center;gap:20px;z-index:10}
 .nav-btn{width:44px;height:44px;border-radius:50%;border:2px solid #d5e4f7;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#1f6fe5;font-size:18px}
@@ -38,7 +38,7 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 .header h1 span{color:#c8942d}
 .header .sub{font-size:22px;color:#5c6f8c;margin-top:8px;font-weight:400}
 /* main layout: two columns */
-.main{position:absolute;top:200px;left:60px;right:60px;bottom:40px;display:flex;gap:36px}
+.main{position:absolute;top:200px;left:60px;right:60px;bottom:70px;display:flex;gap:36px}
 .col{flex:1;display:flex;flex-direction:column;background:#fff;border:2px solid #d5e4f7;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(31,111,229,.06)}
 .col-header{padding:22px 32px;border-bottom:2px solid #eaf3ff;display:flex;align-items:center;gap:14px}
 .col-header .num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff}
@@ -89,7 +89,7 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 .header h1 span{color:#c8942d}
 .header .sub{font-size:20px;color:#5c6f8c;margin-top:6px;font-weight:400}
 
-.main{position:absolute;top:180px;left:40px;right:40px;bottom:30px;display:flex;gap:24px}
+.main{position:absolute;top:180px;left:40px;right:40px;bottom:70px;display:flex;gap:24px}
 .col{flex:1;display:flex;flex-direction:column;background:#fff;border:2px solid #d5e4f7;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(31,111,229,.04)}
 .col-header{padding:16px 24px;border-bottom:2px solid #eaf3ff;display:flex;align-items:center;gap:12px}
 .col-header .num{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;flex-shrink:0}

@@ -12,7 +12,6 @@ body{background:#0d1117;display:flex;justify-content:center;align-items:flex-sta
 .slide-frame{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .5s ease}
 .slide-frame.active{opacity:1;pointer-events:auto;z-index:1}
 .slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:auto}
-/* Navigation */
 .nav-bar{position:absolute;bottom:0;left:0;right:0;height:60px;background:rgba(255,255,255,.95);border-top:1px solid #eaf3ff;display:flex;align-items:center;justify-content:center;gap:20px;z-index:10}
 .nav-btn{width:44px;height:44px;border-radius:50%;border:2px solid #d5e4f7;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#1f6fe5;font-size:18px}
 .nav-btn:hover{background:#eaf3ff;border-color:#1f6fe5}
@@ -22,22 +21,15 @@ body{background:#0d1117;display:flex;justify-content:center;align-items:flex-sta
 .nav-dot.active{background:#1f6fe5;width:28px;border-radius:5px}
 .nav-info{font-size:14px;color:#5c6f8c;min-width:80px;text-align:center}
 .nav-hint{font-size:12px;color:#8a9bb5;position:absolute;right:24px}
-</style>
-<style>
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#e8edf3;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
-.slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border-radius:8px}
-/* decor */
+/* Shared decor */
 .decor-tl{position:absolute;top:-120px;left:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,229,.06) 0%,transparent 70%)}
 .decor-br{position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(200,148,45,.05) 0%,transparent 70%)}
-/* header */
 .header{position:absolute;top:0;left:0;right:0;padding:36px 80px 0;z-index:2}
 .header .tag{display:inline-block;padding:6px 20px;border:2px solid #c8942d;border-radius:20px;font-size:18px;color:#c8942d;font-weight:700;letter-spacing:.08em;margin-bottom:16px}
 .header h1{font-size:52px;font-weight:800;color:#0d2b5e;line-height:1.25;letter-spacing:-.02em}
 .header h1 span{color:#c8942d}
 .header .sub{font-size:22px;color:#5c6f8c;margin-top:8px;font-weight:400}
-/* main layout: two columns */
 .main{position:absolute;top:200px;left:60px;right:60px;bottom:70px;display:flex;gap:36px}
 .col{flex:1;display:flex;flex-direction:column;background:#fff;border:2px solid #d5e4f7;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(31,111,229,.06)}
 .col-header{padding:22px 32px;border-bottom:2px solid #eaf3ff;display:flex;align-items:center;gap:14px}
@@ -46,7 +38,6 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 .col-header .num.gold{background:#c8942d}
 .col-header h2{font-size:26px;font-weight:750;color:#0d2b5e}
 .col-body{flex:1;padding:20px 28px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
-/* flow items */
 .flow-section{margin-bottom:4px}
 .flow-section-title{font-size:18px;font-weight:700;color:#1f6fe5;margin-bottom:10px;padding-left:12px;border-left:3px solid #1f6fe5}
 .flow-steps{display:flex;flex-direction:column;gap:8px}
@@ -62,43 +53,44 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 .step-content .step-detail{font-size:13px;color:#8a9bb5;margin-top:4px;line-height:1.5}
 .step-arrow{display:flex;align-items:center;justify-content:center;height:20px}
 .step-arrow svg{width:20px;height:20px}
-/* exception badge */
 .exception-badge{display:inline-block;padding:2px 10px;background:#fff7e6;border:1px solid #e1b65a;border-radius:10px;font-size:12px;color:#c8942d;font-weight:600;margin-left:8px}
-/* card preview */
-.card-preview{margin-top:8px;padding:16px 20px;background:#fff;border:2px solid #d5e4f7;border-radius:14px;box-shadow:0 2px 12px rgba(31,111,229,.04)}
-.card-preview .card-title{font-size:15px;font-weight:700;color:#0d2b5e;margin-bottom:8px}
-.card-preview .card-row{font-size:13px;color:#5c6f8c;margin-bottom:4px}
-.card-preview .card-ai{font-size:13px;color:#1f6fe5;margin-top:8px;padding-top:8px;border-top:1px dashed #d5e4f7}
-.card-preview .card-btns{display:flex;gap:10px;margin-top:10px}
-.card-preview .card-btn{padding:6px 18px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:default}
-.card-btn.approve{background:#e8f5e9;color:#2e7d32;border:1.5px solid #a5d6a7}
-.card-btn.reject{background:#fce4ec;color:#c62828;border:1.5px solid #ef9a9a}
-.card-btn.link{background:#eaf3ff;color:#1f6fe5;border:1.5px solid #90caf9}
-/* bottom note */
 .bottom-note{position:absolute;bottom:20px;left:80px;right:80px;text-align:center;font-size:14px;color:#8a9bb5;padding-top:12px;border-top:1px solid #eaf3ff}
 
+/* === 飞书消息卡片预览 (5区设计) === */
+.card-preview-new{margin-top:6px;background:#fff;border:2px solid #d5e4f7;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(31,111,229,.04)}
+.card-zone{padding:10px 16px;border-bottom:1px solid #eaf3ff}
+.card-zone:last-child{border-bottom:none}
+.card-zone-header{background:#1f6fe5;padding:12px 16px}
+.card-badge{font-size:15px;font-weight:750;color:#fff}
+.card-zone-label{font-size:13px;font-weight:700;color:#0d2b5e;margin-bottom:6px}
+.confidence-badge{display:inline-block;padding:1px 10px;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:10px;font-size:12px;color:#2e7d32;font-weight:700;margin-left:8px}
+.card-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:12.5px;color:#5c6f8c}
+.card-summary-grid b{color:#0d2b5e}
+.card-ai-result{margin-top:4px}
+.ai-verdict{font-size:14px;font-weight:700;margin-bottom:6px;color:#0d2b5e}
+.verdict-pass{color:#2e7d32}
+.verdict-review{color:#c8942d}
+.verdict-reject{color:#c62828}
+.ai-checks{display:flex;flex-direction:column;gap:3px}
+.ai-check{font-size:12px;color:#5c6f8c}
+.ai-check.pass{color:#2e7d32}
+.ai-check.warn{color:#c8942d}
+.ai-check.fail{color:#c62828}
+.card-detail-section{margin-bottom:6px}
+.detail-subtitle{font-size:12px;font-weight:700;color:#0d2b5e;margin-bottom:3px}
+.detail-row{font-size:11.5px;color:#5c6f8c;margin-bottom:2px}
+.card-script-text{font-size:12.5px;color:#5c6f8c;background:#f8fbff;padding:8px 12px;border-radius:8px;border:1px dashed #d5e4f7;font-style:italic}
+.card-reject-row{display:flex;gap:24px;font-size:12px;color:#5c6f8c}
+.card-reject-row b{color:#0d2b5e}
+.card-zone-actions{display:flex;gap:10px;padding:12px 16px}
+.card-act-btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:default}
+.card-act-btn.default{background:#f0f4fa;color:#1f6fe5;border:1.5px solid #bfd4f2}
+.card-act-btn.primary{background:#1f6fe5;color:#fff}
+.card-act-btn.danger{background:#c62828;color:#fff}
+.card-zone-rules{background:#fafcff;padding:8px 16px}
+.card-rules-text{font-size:11px;color:#8a9bb5;line-height:1.5}
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#e8edf3;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
-.slide{width:1920px;height:1080px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 100%);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border-radius:8px}
-.decor-tl{position:absolute;top:-120px;left:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,229,.06) 0%,transparent 70%)}
-.decor-br{position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(200,148,45,.05) 0%,transparent 70%)}
-.header{position:absolute;top:0;left:0;right:0;padding:30px 80px 0;z-index:2}
-.header .tag{display:inline-block;padding:5px 18px;border:2px solid #1f6fe5;border-radius:18px;font-size:16px;color:#1f6fe5;font-weight:700;letter-spacing:.08em;margin-bottom:12px}
-.header h1{font-size:48px;font-weight:800;color:#0d2b5e;line-height:1.2;letter-spacing:-.02em}
-.header h1 span{color:#c8942d}
-.header .sub{font-size:20px;color:#5c6f8c;margin-top:6px;font-weight:400}
-
-.main{position:absolute;top:180px;left:40px;right:40px;bottom:70px;display:flex;gap:24px}
-.col{flex:1;display:flex;flex-direction:column;background:#fff;border:2px solid #d5e4f7;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(31,111,229,.04)}
-.col-header{padding:16px 24px;border-bottom:2px solid #eaf3ff;display:flex;align-items:center;gap:12px}
-.col-header .num{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;flex-shrink:0}
-.col-header .num.blue{background:#1f6fe5}
-.col-header .num.gold{background:#c8942d}
-.col-header h2{font-size:22px;font-weight:750;color:#0d2b5e}
-.col-body{flex:1;padding:14px 20px;overflow-y:auto}
-
-/* pipeline nodes */
+/* === P02 styles (pipeline) === */
 .pipeline{display:flex;flex-direction:column;gap:0}
 .node{position:relative;padding:10px 14px 10px 40px;border-left:2px solid #d5e4f7;margin-left:16px}
 .node:last-child{border-left-color:transparent}
@@ -113,21 +105,15 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 .node .node-desc{font-size:12.5px;color:#5c6f8c;line-height:1.5}
 .node .node-detail{font-size:11.5px;color:#8a9bb5;margin-top:2px;line-height:1.4}
 .node .node-exception{display:inline-block;margin-top:4px;padding:2px 8px;background:#fff7e6;border:1px solid #e1b65a;border-radius:8px;font-size:11px;color:#c8942d;font-weight:600}
-
-/* sub-box */
 .sub-box{margin:4px 0 4px 8px;padding:10px 14px;background:#f8fbff;border:1.5px solid #eaf3ff;border-radius:10px}
 .sub-box.teal{background:#f1fcfb;border-color:#d0f0ed}
 .sub-box .sub-title{font-size:13px;font-weight:700;color:#0d2b5e;margin-bottom:4px}
 .sub-box .sub-desc{font-size:12px;color:#5c6f8c;line-height:1.5}
-
-/* mini flow */
 .mini-flow{display:flex;align-items:center;gap:6px;margin:4px 0;flex-wrap:wrap}
 .mini-step{padding:4px 10px;background:#eaf3ff;border-radius:6px;font-size:11.5px;color:#1f6fe5;font-weight:600;white-space:nowrap}
 .mini-step.gold{background:#fff7e6;color:#c8942d}
 .mini-step.teal{background:#e8fbf8;color:#168a8a}
 .mini-arrow{font-size:11px;color:#bfd4f2}
-
-/* exception table */
 .ex-table{margin-top:8px;width:100%;border-collapse:collapse;font-size:11px}
 .ex-table th{background:#f8fbff;padding:6px 8px;text-align:left;font-weight:700;color:#0d2b5e;border-bottom:2px solid #d5e4f7;font-size:11px}
 .ex-table td{padding:5px 8px;border-bottom:1px solid #eaf3ff;color:#5c6f8c;line-height:1.4}
@@ -135,7 +121,31 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 .ex-table .ex-scene{color:#c8942d;font-weight:600;font-size:10.5px}
 .ex-table .ex-action{color:#1f6fe5;font-size:10.5px}
 
-.bottom-note{position:absolute;bottom:14px;left:80px;right:80px;text-align:center;font-size:13px;color:#8a9bb5;padding-top:10px;border-top:1px solid #eaf3ff}
+/* === P03 styles (rules table) === */
+.standard-card{background:#f8fbff;border:1.5px solid #eaf3ff;border-radius:12px;padding:12px 16px}
+.std-field-name{font-size:15px;font-weight:750;color:#1f6fe5;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid #eaf3ff}
+.std-row{font-size:12px;color:#5c6f8c;margin-bottom:3px;line-height:1.5}
+.std-row b{color:#0d2b5e}
+.tag-val{display:inline-block;padding:1px 8px;background:#eaf3ff;border-radius:4px;font-size:11px;color:#1f6fe5;font-weight:600;margin-right:4px}
+.code-text{font-family:"SF Mono","Fira Code",monospace;font-size:11.5px;color:#2e7d32;background:#e8f5e9;padding:1px 6px;border-radius:3px}
+.code-text.err{color:#c62828;background:#fce4ec}
+.rule-table{width:100%;border-collapse:collapse;font-size:11.5px}
+.rule-table th{padding:8px 6px;text-align:left;font-weight:700;color:#0d2b5e;border-bottom:2px solid #d5e4f7;background:#f8fbff;font-size:11px;white-space:nowrap}
+.rule-table td{padding:7px 6px;border-bottom:1px solid #eaf3ff;color:#5c6f8c;line-height:1.4;vertical-align:top}
+.rule-table tr:hover td{background:#fafcff}
+.th-cat{width:60px}.th-scene{width:140px}.th-desc{}.th-act{width:60px}.th-status{width:55px}
+.td-cat{font-weight:700;font-size:10.5px}
+.cat-form{color:#1f6fe5}
+.cat-attach{color:#168a8a}
+.cat-cross{color:#c8942d}
+.td-desc{font-family:"SF Mono","Fira Code",monospace;font-size:10.5px;color:#0d2b5e}
+.td-act{font-weight:700;font-size:10.5px}
+.act-review{color:#c8942d}
+.act-reject{color:#c62828}
+.td-status{font-weight:700;font-size:10.5px}
+.status-active{color:#2e7d32}
+.status-pending{color:#c8942d}
+.status-disabled{color:#8a9bb5}
 
 </style>
 </head>
@@ -143,8 +153,7 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 <div class="deck">
   <div class="slides">
     <div class="slide-frame active" data-index="0">
-      
-<div class="slide">
+      <div class="slide">
 <div class="decor-tl"></div><div class="decor-br"></div>
 
 <div class="header">
@@ -256,7 +265,7 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
             <div class="step-icon teal">⏰</div>
             <div class="step-content">
               <div class="step-title">ArkClaw 每 30 分钟自动拉取 BPM 待审清单</div>
-              <div class="step-desc">获取待审核单据 → 逐条 AI 审核 → 推送飞书卡片</div>
+              <div class="step-desc">获取待审核单据 → 逐条 AI 审核 → 推送飞书交互卡片</div>
               <span class="exception-badge">⚠ 无权限 → 提示授权</span>
             </div>
           </div>
@@ -265,37 +274,78 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
             <div class="step-icon teal">📨</div>
             <div class="step-content">
               <div class="step-title">收到飞书交互卡片</div>
-              <div class="step-desc">卡片包含：单据信息 + AI 审核建议 + 操作按钮</div>
+              <div class="step-desc">卡片包含 5 个功能区：表单摘要 → AI 审核建议 → 审核详情 → 建议话术 → 驳回设置 + 操作按钮</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 卡片预览 -->
-      <div class="card-preview">
-        <div class="card-title">📋 采购申请审批 #PR-2026-0608-003</div>
-        <div class="card-row">申请人：李四 | 金额：¥85,000 | 供应商：XX 公司</div>
-        <div class="card-ai">
-          🤖 AI 审核建议：<br>
-          · [表单校验] 金额超 5 万 → 人工复核<br>
-          · [交叉校验] 供应商在合格名录 ✅<br>
-          · [附件校验] 报价单完整 ✅ · 合同已盖章 ✅<br>
-          <strong>综合建议：建议人工复核（金额超限）</strong>
+      <!-- 飞书消息卡片预览（5区设计） -->
+      <div class="card-preview-new">
+        <div class="card-zone card-zone-header">
+          <div class="card-badge">📋 报销单审批 #EXP-2026-0608-015</div>
         </div>
-        <div class="card-btns">
-          <button class="card-btn approve">✅ 审批通过</button>
-          <button class="card-btn reject">❌ 驳回</button>
-          <button class="card-btn link">🔗 跳转 BPM</button>
+        <div class="card-zone card-zone-summary">
+          <div class="card-zone-label">① 表单摘要</div>
+          <div class="card-summary-grid">
+            <span><b>申请人</b> 张三</span><span><b>部门</b> 市场部</span>
+            <span><b>金额</b> ¥12,580.00</span><span><b>类型</b> 差旅费</span>
+            <span style="grid-column:1/-1"><b>提交时间</b> 2026-06-08 14:30</span>
+          </div>
+        </div>
+        <div class="card-zone card-zone-ai">
+          <div class="card-zone-label">② AI 审核建议 <span class="confidence-badge">置信度 92%</span></div>
+          <div class="card-ai-result">
+            <div class="ai-verdict">综合建议：<span class="verdict-pass">通过</span></div>
+            <div class="ai-checks">
+              <div class="ai-check pass">▪️ 金额 ¥12,580 在差旅标准范围内（上限 ¥15,000）</div>
+              <div class="ai-check pass">▪️ 发票 OCR 核验通过，金额与发票一致</div>
+              <div class="ai-check pass">▪️ 行程单与出差申请单匹配</div>
+              <div class="ai-check pass">▪️ 供应商在合格名录内</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-zone card-zone-detail">
+          <div class="card-zone-label">③ 审核详情</div>
+          <div class="card-detail-section">
+            <div class="detail-subtitle">发票核验</div>
+            <div class="detail-row">▪️ 增值税发票 №4401234567 · ¥8,200.00 · 核验通过 ✅</div>
+            <div class="detail-row">▪️ 住宿发票 №3109876543 · ¥3,680.00 · 核验通过 ✅</div>
+            <div class="detail-row">▪️ 交通票据 ×3 · ¥700.00 · 核验通过 ✅</div>
+          </div>
+          <div class="card-detail-section">
+            <div class="detail-subtitle">OCR 解析状态</div>
+            <div class="detail-row">▪️ 完整解析 3/3 份附件 · 置信度均 ≥85%</div>
+          </div>
+        </div>
+        <div class="card-zone card-zone-script">
+          <div class="card-zone-label">④ 建议话术（点击复制）</div>
+          <div class="card-script-text">报销材料齐全，发票核验通过，金额在差旅标准范围内，同意报销。</div>
+        </div>
+        <div class="card-zone card-zone-reject">
+          <div class="card-zone-label">⑤ 驳回设置（仅在驳回时生效）</div>
+          <div class="card-reject-row">
+            <span>▪️ 驳回至：<b>提交人（张三）</b></span>
+            <span>▪️ 驳回原因（可选）：___</span>
+          </div>
+        </div>
+        <div class="card-zone card-zone-actions">
+          <button class="card-act-btn default">🔗 跳转 BPM 查看详情</button>
+          <button class="card-act-btn primary">✅ 审核通过</button>
+          <button class="card-act-btn danger">❌ 确认驳回</button>
+        </div>
+        <div class="card-zone card-zone-rules">
+          <div class="card-rules-text">⚡ 交互规则：审核通过需二次确认 ｜ 驳回必须选择节点 ｜ 提交中锁止操作 ｜ 成功后标记已处理 ｜ 失败显示原因支持重试 ｜ 移动端/PC 端体验一致</div>
         </div>
       </div>
 
-      <div class="flow-section" style="margin-top:8px">
+      <div class="flow-section" style="margin-top:6px">
         <div class="flow-section-title">2b · 用户操作与反馈</div>
         <div class="flow-steps">
           <div class="step">
             <div class="step-icon gold">👆</div>
             <div class="step-content">
-              <div class="step-title">点击「审批通过」或「驳回」</div>
+              <div class="step-title">点击「审核通过」或「确认驳回」</div>
               <div class="step-desc">调 BPM 接口更新状态 → 卡片更新为"已处理"</div>
               <span class="exception-badge">⚠ 接口失败 → 提示跳转 BPM 手动处理</span>
             </div>
@@ -531,17 +581,115 @@ body{background:#e8edf3;display:flex;justify-content:center;align-items:center;m
 </div>
 
     </div>
+    <div class="slide-frame" data-index="2">
+      <div class="slide">
+<div class="decor-tl"></div><div class="decor-br"></div>
+
+<div class="header">
+  <div class="tag">规则表设计</div>
+  <h1>审批规则 — <span>填写标准</span>与 Sample 示例</h1>
+  <div class="sub">5 字段填写规范 + 11 条 Sample 规则 · 覆盖表单校验 / 附件校验 / 交叉校验</div>
+</div>
+
+<div class="main" style="top:180px;bottom:70px">
+  <!-- 左列：填写标准 -->
+  <div class="col">
+    <div class="col-header">
+      <div class="num blue">1</div>
+      <h2>填写标准（5 字段 × 6 维度）</h2>
+    </div>
+    <div class="col-body" style="padding:10px 16px;gap:10px">
+      <div class="standard-card">
+        <div class="std-field-name">规则分类说明</div>
+        <div class="std-row"><b>说明</b> 标识规则属于哪种校验类型</div>
+        <div class="std-row"><b>规范</b> 三选一，不可为空。根据规则判断逻辑选择最匹配的分类</div>
+        <div class="std-row"><b>可选值</b> <span class="tag-val">表单校验</span> <span class="tag-val">附件校验</span> <span class="tag-val">交叉校验</span></div>
+        <div class="std-row"><b>✅ 正确</b> <span class="code-text">表单校验</span></div>
+        <div class="std-row"><b>❌ 错误</b> <span class="code-text err">写成</span></div>
+      </div>
+      <div class="standard-card">
+        <div class="std-field-name">细分场景</div>
+        <div class="std-row"><b>说明</b> 描述规则适用的具体业务场景</div>
+        <div class="std-row"><b>规范</b> 一句话概括，格式：「当…时」。场景描述要具体可判断，避免模糊表述</div>
+        <div class="std-row"><b>可选值</b> 自由文本</div>
+        <div class="std-row"><b>✅ 正确</b> <span class="code-text">当报销金额超过5000元时</span></div>
+        <div class="std-row"><b>❌ 错误</b> <span class="code-text err">当金额比较大时</span></div>
+      </div>
+      <div class="standard-card">
+        <div class="std-field-name">规则详细描述</div>
+        <div class="std-row"><b>说明</b> 规则的完整判断逻辑</div>
+        <div class="std-row"><b>规范</b> 明确字段名、比较运算符、阈值/条件值。交叉校验需写明涉及的所有字段及 AND/OR 关系</div>
+        <div class="std-row"><b>可选值</b> 自由文本（建议含字段名+运算符+阈值）</div>
+        <div class="std-row"><b>✅ 正确</b> <span class="code-text">报销金额 > 5000 AND 发票类型 ≠ 增值税专用发票</span></div>
+        <div class="std-row"><b>❌ 错误</b> <span class="code-text err">金额超了要检查</span></div>
+      </div>
+      <div class="standard-card">
+        <div class="std-field-name">执行动作</div>
+        <div class="std-row"><b>说明</b> 规则命中后的处理方式</div>
+        <div class="std-row"><b>规范</b> 二选一。驳回=直接拒绝；人工复核=标记需人工确认。当前不支持自动通过</div>
+        <div class="std-row"><b>可选值</b> <span class="tag-val">驳回</span> <span class="tag-val">人工复核</span></div>
+        <div class="std-row"><b>✅ 正确</b> <span class="code-text">人工复核</span></div>
+        <div class="std-row"><b>❌ 错误</b> <span class="code-text err">建议驳回</span></div>
+      </div>
+      <div class="standard-card">
+        <div class="std-field-name">规则状态</div>
+        <div class="std-row"><b>说明</b> 规则的生效状态</div>
+        <div class="std-row"><b>规范</b> 新增规则默认「待验证」，校验通过后手动改为「有效」。不再使用的规则改为「失效」</div>
+        <div class="std-row"><b>可选值</b> <span class="tag-val">有效</span> <span class="tag-val">失效</span> <span class="tag-val">待验证</span></div>
+        <div class="std-row"><b>✅ 正确</b> <span class="code-text">待验证</span></div>
+        <div class="std-row"><b>❌ 错误</b> <span class="code-text err">生效</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右列：Sample 规则表 -->
+  <div class="col">
+    <div class="col-header">
+      <div class="num gold">2</div>
+      <h2>Sample 规则表（11 条示例）</h2>
+    </div>
+    <div class="col-body" style="padding:8px 12px;gap:0">
+      <table class="rule-table">
+        <thead>
+          <tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-cat cat-form">表单校验</td><td>当报销金额超过5000元时</td><td class="td-desc">报销金额 > 5000</td><td class="td-act act-review">人工复核</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-form">表单校验</td><td>当发票类型为收据时</td><td class="td-desc">发票类型 = 收据</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-form">表单校验</td><td>当出差天数超过7天时</td><td class="td-desc">出差天数 > 7</td><td class="td-act act-review">人工复核</td><td class="td-status status-pending">待验证</td></tr>
+          <tr><td class="td-cat cat-form">表单校验</td><td>当报销金额为负数时</td><td class="td-desc">报销金额 < 0</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-attach">附件校验</td><td>当报销单缺少发票附件时</td><td class="td-desc">附件列表 不包含 发票文件</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-attach">附件校验</td><td>当发票OCR解析置信度低于80%时</td><td class="td-desc">OCR置信度 < 80%</td><td class="td-act act-review">人工复核</td><td class="td-status status-pending">待验证</td></tr>
+          <tr><td class="td-cat cat-attach">附件校验</td><td>当合同附件未盖章时</td><td class="td-desc">合同OCR结果 不包含 公章/合同章</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-cross">交叉校验</td><td>当报销金额>5000且发票类型≠增值税专用发票时</td><td class="td-desc">报销金额 > 5000 AND 发票类型 ≠ 增值税专用发票</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-cross">交叉校验</td><td>当供应商不在合格名录且金额>2000时</td><td class="td-desc">供应商 ∉ 合格名录 AND 金额 > 2000</td><td class="td-act act-review">人工复核</td><td class="td-status status-active">有效</td></tr>
+          <tr><td class="td-cat cat-cross">交叉校验</td><td>当出差天数>3且住宿费/天>500时</td><td class="td-desc">出差天数 > 3 AND 住宿费/天 > 500</td><td class="td-act act-review">人工复核</td><td class="td-status status-pending">待验证</td></tr>
+          <tr><td class="td-cat cat-cross">交叉校验</td><td>当金额>10000且部门≠财务部且无合同附件时</td><td class="td-desc">金额 > 10000 AND 部门 ≠ 财务部 AND 附件 不包含 合同</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px;display:flex;gap:16px;font-size:12px;color:#5c6f8c;flex-wrap:wrap">
+        <span>📊 表单校验 4 条</span><span>📎 附件校验 3 条</span><span>🔗 交叉校验 4 条</span>
+        <span style="margin-left:auto">✅ 有效 7 条</span><span>⏳ 待验证 3 条</span><span>❌ 驳回 6 条</span><span>👁 人工复核 5 条</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-note">填写标准覆盖 5 字段 × 6 维度（说明/规范/可选值/正确示例/常见错误）· Sample 覆盖 3 种分类 × 2 种动作 × 2 种状态</div>
+</div>
+
+    </div>
   </div>
   <div class="nav-bar">
     <button class="nav-btn" id="prevBtn" onclick="goSlide(-1)" title="上一页 (←)">◀</button>
     <div class="nav-dots" id="navDots"></div>
     <button class="nav-btn" id="nextBtn" onclick="goSlide(1)" title="下一页 (→)">▶</button>
-    <span class="nav-info" id="navInfo">1 / 2</span>
+    <span class="nav-info" id="navInfo">1 / 3</span>
     <span class="nav-hint">← → 键盘切换</span>
   </div>
 </div>
 <script>
-var totalSlides = 2;
+var totalSlides = 3;
 var currentSlide = 0;
 var frames = document.querySelectorAll('.slide-frame');
 

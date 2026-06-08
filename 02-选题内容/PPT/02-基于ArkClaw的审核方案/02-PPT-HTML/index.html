@@ -887,30 +887,6 @@ body{
           <span>📊 表单校验 12 条</span><span>📎 附件校验 8 条</span><span>🔗 交叉校验 7 条</span>
           <span style="margin-left:auto">✅ 有效 21 条</span><span>⏳ 待验证 6 条</span><span>❌ 驳回 18 条</span><span>👁 复核 9 条</span>
         </div>
-        <div class="json-block">
-          <div class="json-title">📋 规则 JSON（大模型可用）</div>
-          <div class="json-content">{
-  "version": "1.0",
-  "updated": "2026-06-08",
-  "sheets": {
-    "用印申请流程": {
-      "sheet_id": "Sheet2",
-      "rules": [
-        {"category":"表单校验","scene":"当非合同类型未选「人事类」时","rule":"非合同类型 ≠ 人事类","action":"驳回","status":"有效"},
-        {"category":"表单校验","scene":"当业务类型与附件内容不一致时","rule":"业务类型 ∉ {员工证明,五险一金,劳动关系,其他} OR 业务类型 ≠ 附件内容类型","action":"驳回","status":"有效"},
-        ...
-      ]
-    },
-    "加盟商自采商品申请": {
-      "sheet_id": "Sheet3",
-      "rules": [
-        {"category":"表单校验","scene":"当申请品类超出规定范围时","rule":"商品品类 ∉ {烟类,饮料,属地特色品,时令水果,玩具衍生品,冰淇淋,乳制品,酒类}","action":"驳回","status":"有效"},
-        ...
-      ]
-    }
-  }
-}</div>
-        </div>
       </div>
 
       <!-- Tab 1: 用印申请流程 -->
@@ -930,6 +906,26 @@ body{
             <tr><td class="td-cat cat-attach">附件校验</td><td>当询证函数据与账面数据不一致时</td><td class="td-desc">附件函证金额 ≠ 账面科目余额</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
           </tbody>
         </table>
+        <div class="json-block">
+          <div class="json-title">📋 规则 JSON（大模型可用） · 更新于 2026-06-08</div>
+          <div class="json-content">{
+  "flow": "用印申请流程",
+  "sheet": "Sheet2",
+  "updated": "2026-06-08",
+  "rules": [
+    {"category":"表单校验","scene":"当非合同类型未选「人事类」时","rule":"非合同类型 ≠ 人事类","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当业务类型与附件内容不一致时","rule":"业务类型 ∉ {员工证明,五险一金,劳动关系,其他} OR 业务类型 ≠ 附件内容类型","action":"驳回","status":"有效"},
+    {"category":"交叉校验","scene":"当印章类型与文件用途不匹配时","rule":"印章类型 ∉ {公章,行政人事章} AND 文件用途 = 人事证明","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当前置审批缺失时","rule":"部门经理审批状态 ≠ 已通过","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当协作方为空时","rule":"协作方 = 空","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当用印用途未写明具体场景时","rule":"用印用途 不包含 具体使用场景关键词","action":"驳回","status":"有效"},
+    {"category":"附件校验","scene":"当附件包含合同属性文件时","rule":"附件OCR结果 包含 合同/协议","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当流程主题与用印资料不匹配时","rule":"流程主题 不包含 {询证函,对账,财务}","action":"驳回","status":"有效"},
+    {"category":"交叉校验","scene":"当非合同类型≠财务类且业务类型≠询证函时","rule":"非合同类型 ≠ 财务类 AND 业务类型 ≠ 询证函","action":"驳回","status":"待验证"},
+    {"category":"附件校验","scene":"当询证函数据与账面数据不一致时","rule":"附件函证金额 ≠ 账面科目余额","action":"驳回","status":"待验证"}
+  ]
+}</div>
+        </div>
       </div>
 
       <!-- Tab 2: 加盟商自采商品申请 -->
@@ -947,6 +943,24 @@ body{
             <tr><td class="td-cat cat-form">表单校验</td><td>当门店他牌SKU占比超过30%时</td><td class="td-desc">门店他牌SKU数 / 门店总SKU数 > 30%</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
           </tbody>
         </table>
+        <div class="json-block">
+          <div class="json-title">📋 规则 JSON（大模型可用） · 更新于 2026-06-08</div>
+          <div class="json-content">{
+  "flow": "加盟商自采商品申请",
+  "sheet": "Sheet3",
+  "updated": "2026-06-08",
+  "rules": [
+    {"category":"表单校验","scene":"当申请品类超出规定范围时","rule":"商品品类 ∉ {烟类,饮料,属地特色品,时令水果,玩具衍生品,冰淇淋,乳制品,酒类}","action":"驳回","status":"有效"},
+    {"category":"交叉校验","scene":"当商品与自有品牌重复或高度相似时","rule":"商品口感风味 ≈ 自有品牌 OR 外观造型 ≈ 自有品牌 OR 关键卖点 ≈ 自有品牌","action":"驳回","status":"有效"},
+    {"category":"附件校验","scene":"当经营资质文件缺失时","rule":"附件列表 不包含 营业执照 OR 附件列表 不包含 生产/经营资质","action":"驳回","status":"有效"},
+    {"category":"交叉校验","scene":"当非生活店引进非食类商品时","rule":"门店类型 = 非生活店 AND 商品类别 = 非食类 AND 商品类别 ≠ IP文具玩具","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当商品信息与69码不一致时","rule":"申请商品名称 ≠ 69码商品名称 OR 产品照片 不包含 强制标注信息","action":"驳回","status":"有效"},
+    {"category":"表单校验","scene":"当商品缺乏市场价值时","rule":"品牌知名度 = 低 AND 引流价值 = 无 AND 差异化优势 = 无","action":"驳回","status":"待验证"},
+    {"category":"附件校验","scene":"当特殊情况缺少副总裁级审批文件时","rule":"申请类型 = 特殊调整 AND 附件 不包含 副总裁审批文件","action":"驳回","status":"待验证"},
+    {"category":"表单校验","scene":"当门店他牌SKU占比超过30%时","rule":"门店他牌SKU数 / 门店总SKU数 > 30%","action":"驳回","status":"有效"}
+  ]
+}</div>
+        </div>
       </div>
 
       <!-- Tab 3: 合同备案流程 -->
@@ -959,6 +973,19 @@ body{
             <tr><td class="td-cat cat-cross">交叉校验</td><td>当合同金额>50万且法务未会签时</td><td class="td-desc">合同金额 > 500000 AND 法务会签 = 否</td><td class="td-act act-review">人工复核</td><td class="td-status status-active">有效</td></tr>
           </tbody>
         </table>
+        <div class="json-block">
+          <div class="json-title">📋 规则 JSON（大模型可用） · 更新于 2026-06-08</div>
+          <div class="json-content">{
+  "flow": "合同备案流程",
+  "sheet": "Sheet4",
+  "updated": "2026-06-08",
+  "rules": [
+    {"category":"附件校验","scene":"当合同文件未上传时","rule":"附件列表 不包含 合同文件","action":"驳回","status":"有效"},
+    {"category":"附件校验","scene":"当合同未加盖公章时","rule":"合同OCR结果 不包含 公章/合同章","action":"驳回","status":"有效"},
+    {"category":"交叉校验","scene":"当合同金额>50万且法务未会签时","rule":"合同金额 > 500000 AND 法务会签 = 否","action":"人工复核","status":"有效"}
+  ]
+}</div>
+        </div>
       </div>
 
       <!-- Tab 4: 新员工入职准备流程 -->
@@ -971,6 +998,19 @@ body{
             <tr><td class="td-cat cat-cross">交叉校验</td><td>当岗位为财务且无背调报告时</td><td class="td-desc">部门 = 财务部 AND 附件 不包含 背调报告</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
           </tbody>
         </table>
+        <div class="json-block">
+          <div class="json-title">📋 规则 JSON（大模型可用） · 更新于 2026-06-08</div>
+          <div class="json-content">{
+  "flow": "新员工入职准备流程",
+  "sheet": "Sheet5",
+  "updated": "2026-06-08",
+  "rules": [
+    {"category":"表单校验","scene":"当入职岗位为「高管」时","rule":"岗位级别 = 高管","action":"人工复核","status":"有效"},
+    {"category":"附件校验","scene":"当学历证书未上传时","rule":"附件列表 不包含 学历证书","action":"驳回","status":"有效"},
+    {"category":"交叉校验","scene":"当岗位为财务且无背调报告时","rule":"部门 = 财务部 AND 附件 不包含 背调报告","action":"驳回","status":"待验证"}
+  ]
+}</div>
+        </div>
       </div>
 
       <!-- Tab 5: 商品活动申请 -->
@@ -983,13 +1023,26 @@ body{
             <tr><td class="td-cat cat-cross">交叉校验</td><td>当折扣<6折且预算>3万且非店庆月时</td><td class="td-desc">折扣 < 60% AND 预算 > 30000 AND 活动类型 ≠ 店庆</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
           </tbody>
         </table>
+        <div class="json-block">
+          <div class="json-title">📋 规则 JSON（大模型可用） · 更新于 2026-06-08</div>
+          <div class="json-content">{
+  "flow": "商品活动申请",
+  "sheet": "Sheet6",
+  "updated": "2026-06-08",
+  "rules": [
+    {"category":"表单校验","scene":"当活动折扣低于7折时","rule":"活动折扣 < 70%","action":"人工复核","status":"有效"},
+    {"category":"表单校验","scene":"当活动预算超过5万元时","rule":"活动预算 > 50000","action":"人工复核","status":"有效"},
+    {"category":"交叉校验","scene":"当折扣<6折且预算>3万且非店庆月时","rule":"折扣 < 60% AND 预算 > 30000 AND 活动类型 ≠ 店庆","action":"驳回","status":"待验证"}
+  ]
+}</div>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 
-<div class="bottom-note">Sheet1 总览固定 · Sheet2~N 按流程命名 · 每个流程独立维护规则 · 点击页签切换查看 · 总览含规则 JSON 与 AI 更新日期</div>
+<div class="bottom-note">Sheet1 总览固定 · Sheet2~N 按流程命名 · 每个流程独立维护规则 + 规则 JSON · 点击页签切换查看</div>
 </div>
 
     </div>

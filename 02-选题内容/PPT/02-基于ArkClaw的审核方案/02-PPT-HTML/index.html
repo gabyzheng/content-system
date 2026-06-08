@@ -310,6 +310,14 @@ body{
 .sheet-block .rule-table th{background:#fafcff;font-size:10.5px;padding:5px 6px}
 .sheet-block .rule-table td{font-size:10.5px;padding:5px 6px}
 
+/* ---- P03: Tab switching ---- */
+.tab-nav{display:flex;gap:0;border-bottom:2px solid #d5e4f7;overflow-x:auto;flex-shrink:0}
+.tab-btn{padding:8px 14px;font-size:12px;font-weight:600;color:#5c6f8c;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;user-select:none}
+.tab-btn:hover{color:#1f6fe5;background:#f8fbff}
+.tab-btn.active{color:#1f6fe5;border-bottom-color:#1f6fe5;background:#f0f4fa}
+.tab-panel{display:none;flex:1;overflow-y:auto}
+.tab-panel.active{display:block}
+
 /* ---- Navigation UI (overlay) ---- */
 .deck-ui{
   position:fixed;bottom:0;left:0;right:0;z-index:100;
@@ -790,7 +798,7 @@ body{
 <div class="header">
   <div class="tag">规则表设计</div>
   <h1>审批规则 — <span>填写标准</span>与 Sample 示例</h1>
-  <div class="sub">5 字段填写规范 + 4 个流程 Sheet 页 × 多条规则 · 覆盖表单校验 / 附件校验 / 交叉校验</div>
+  <div class="sub">5 字段填写规范 + 6 个流程 Sheet 页 · 覆盖表单校验 / 附件校验 / 交叉校验</div>
 </div>
 
 <div class="main" style="top:180px;bottom:70px">
@@ -841,22 +849,44 @@ body{
     </div>
   </div>
 
-  <!-- 右列：4 个流程 Sheet 页 -->
+  <!-- 右列：Tab 页签切换 -->
   <div class="col">
     <div class="col-header">
       <div class="num gold">2</div>
-      <h2>Sample 规则表（4 个流程 Sheet 页）</h2>
+      <h2>Sample 规则表（6 个流程 Sheet 页）</h2>
     </div>
-    <div class="col-body" style="padding:8px 12px;gap:8px">
+    <div class="col-body" style="padding:0;gap:0">
+      <!-- Tab 导航 -->
+      <div class="tab-nav">
+        <div class="tab-btn active" onclick="switchTab(0)">📊 总览</div>
+        <div class="tab-btn" onclick="switchTab(1)">📄 合同备案</div>
+        <div class="tab-btn" onclick="switchTab(2)">🔖 用印申请</div>
+        <div class="tab-btn" onclick="switchTab(3)">👤 新员工入职</div>
+        <div class="tab-btn" onclick="switchTab(4)">🏷️ 商品活动</div>
+        <div class="tab-btn" onclick="switchTab(5)">🏪 加盟商自采</div>
+      </div>
 
-      <!-- Sheet: 合同备案流程 -->
-      <div class="sheet-block">
-        <div class="sheet-title">
-          <span class="sheet-icon">📄</span>
-          <span>Sheet · 合同备案流程</span>
-          <span class="sheet-meta">3 条规则</span>
+      <!-- Tab 0: 总览 -->
+      <div class="tab-panel active" data-tab="0">
+        <table class="rule-table" style="margin:8px 10px;width:calc(100% - 20px)">
+          <thead><tr><th class="th-cat">Sheet 页</th><th class="th-scene">流程名称</th><th style="width:50px">规则数</th><th style="width:50px">表单</th><th style="width:50px">附件</th><th style="width:50px">交叉</th><th style="width:60px">有效</th><th style="width:60px">待验证</th></tr></thead>
+          <tbody>
+            <tr><td class="td-cat cat-attach">Sheet2</td><td>📄 合同备案流程</td><td style="text-align:center;font-weight:700">3</td><td style="text-align:center">0</td><td style="text-align:center">2</td><td style="text-align:center">1</td><td style="text-align:center;color:#2e7d32;font-weight:700">3</td><td style="text-align:center;color:#c8942d;font-weight:700">0</td></tr>
+            <tr><td class="td-cat cat-form">Sheet3</td><td>🔖 用印申请流程</td><td style="text-align:center;font-weight:700">10</td><td style="text-align:center">5</td><td style="text-align:center">3</td><td style="text-align:center">2</td><td style="text-align:center;color:#2e7d32;font-weight:700">8</td><td style="text-align:center;color:#c8942d;font-weight:700">2</td></tr>
+            <tr><td class="td-cat cat-form">Sheet4</td><td>👤 新员工入职准备流程</td><td style="text-align:center;font-weight:700">3</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center;color:#2e7d32;font-weight:700">2</td><td style="text-align:center;color:#c8942d;font-weight:700">1</td></tr>
+            <tr><td class="td-cat cat-form">Sheet5</td><td>🏷️ 商品活动申请</td><td style="text-align:center;font-weight:700">3</td><td style="text-align:center">2</td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center;color:#2e7d32;font-weight:700">2</td><td style="text-align:center;color:#c8942d;font-weight:700">1</td></tr>
+            <tr><td class="td-cat cat-cross">Sheet6</td><td>🏪 加盟商自采商品申请</td><td style="text-align:center;font-weight:700">8</td><td style="text-align:center">4</td><td style="text-align:center">2</td><td style="text-align:center">2</td><td style="text-align:center;color:#2e7d32;font-weight:700">6</td><td style="text-align:center;color:#c8942d;font-weight:700">2</td></tr>
+          </tbody>
+        </table>
+        <div style="margin:8px 10px;display:flex;gap:16px;font-size:11px;color:#5c6f8c;flex-wrap:wrap">
+          <span>📊 表单校验 12 条</span><span>📎 附件校验 8 条</span><span>🔗 交叉校验 7 条</span>
+          <span style="margin-left:auto">✅ 有效 21 条</span><span>⏳ 待验证 6 条</span><span>❌ 驳回 18 条</span><span>👁 复核 9 条</span>
         </div>
-        <table class="rule-table">
+      </div>
+
+      <!-- Tab 1: 合同备案 -->
+      <div class="tab-panel" data-tab="1">
+        <table class="rule-table" style="margin:8px 10px;width:calc(100% - 20px)">
           <thead><tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr></thead>
           <tbody>
             <tr><td class="td-cat cat-attach">附件校验</td><td>当合同文件未上传时</td><td class="td-desc">附件列表 不包含 合同文件</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
@@ -866,31 +896,35 @@ body{
         </table>
       </div>
 
-      <!-- Sheet: 用印申请流程 -->
-      <div class="sheet-block">
-        <div class="sheet-title">
-          <span class="sheet-icon">🔖</span>
-          <span>Sheet · 用印申请流程</span>
-          <span class="sheet-meta">3 条规则</span>
-        </div>
-        <table class="rule-table">
+      <!-- Tab 2: 用印申请（人事+财务） -->
+      <div class="tab-panel" data-tab="2">
+        <div style="font-size:12px;font-weight:700;color:#1f6fe5;padding:8px 12px 4px">🔖 人事审批环节</div>
+        <table class="rule-table" style="margin:0 10px;width:calc(100% - 20px)">
           <thead><tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr></thead>
           <tbody>
-            <tr><td class="td-cat cat-form">表单校验</td><td>当用印类型为「外带」时</td><td class="td-desc">用印类型 = 外带</td><td class="td-act act-review">人工复核</td><td class="td-status status-active">有效</td></tr>
-            <tr><td class="td-cat cat-attach">附件校验</td><td>当用印文件未上传时</td><td class="td-desc">附件列表 不包含 用印文件</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
-            <tr><td class="td-cat cat-cross">交叉校验</td><td>当用印次数>3次/月且部门≠行政部时</td><td class="td-desc">月度用印次数 > 3 AND 部门 ≠ 行政部</td><td class="td-act act-review">人工复核</td><td class="td-status status-pending">待验证</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当非合同类型未选「人事类」时</td><td class="td-desc">非合同类型 ≠ 人事类</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当业务类型与附件内容不一致时</td><td class="td-desc">业务类型 ∉ {员工证明,五险一金,劳动关系,其他} OR 业务类型 ≠ 附件内容类型</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-cross">交叉校验</td><td>当印章类型与文件用途不匹配时</td><td class="td-desc">印章类型 ∉ {公章,行政人事章} AND 文件用途 = 人事证明</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当前置审批缺失时</td><td class="td-desc">部门经理审批状态 ≠ 已通过</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当协作方为空时</td><td class="td-desc">协作方 = 空</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当用印用途未写明具体场景时</td><td class="td-desc">用印用途 不包含 具体使用场景关键词</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-attach">附件校验</td><td>当附件包含合同属性文件时</td><td class="td-desc">附件OCR结果 包含 合同/协议</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:12px;font-weight:700;color:#c8942d;padding:8px 12px 4px">💰 财务审批环节</div>
+        <table class="rule-table" style="margin:0 10px;width:calc(100% - 20px)">
+          <thead><tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr></thead>
+          <tbody>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当流程主题与用印资料不匹配时</td><td class="td-desc">流程主题 不包含 {询证函,对账,财务}</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-cross">交叉校验</td><td>当非合同类型≠财务类且业务类型≠询证函时</td><td class="td-desc">非合同类型 ≠ 财务类 AND 业务类型 ≠ 询证函</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
+            <tr><td class="td-cat cat-attach">附件校验</td><td>当询证函数据与账面数据不一致时</td><td class="td-desc">附件函证金额 ≠ 账面科目余额</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Sheet: 新员工入职准备流程 -->
-      <div class="sheet-block">
-        <div class="sheet-title">
-          <span class="sheet-icon">👤</span>
-          <span>Sheet · 新员工入职准备流程</span>
-          <span class="sheet-meta">3 条规则</span>
-        </div>
-        <table class="rule-table">
+      <!-- Tab 3: 新员工入职 -->
+      <div class="tab-panel" data-tab="3">
+        <table class="rule-table" style="margin:8px 10px;width:calc(100% - 20px)">
           <thead><tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr></thead>
           <tbody>
             <tr><td class="td-cat cat-form">表单校验</td><td>当入职岗位为「高管」时</td><td class="td-desc">岗位级别 = 高管</td><td class="td-act act-review">人工复核</td><td class="td-status status-active">有效</td></tr>
@@ -900,14 +934,9 @@ body{
         </table>
       </div>
 
-      <!-- Sheet: 商品活动申请 -->
-      <div class="sheet-block">
-        <div class="sheet-title">
-          <span class="sheet-icon">🏷️</span>
-          <span>Sheet · 商品活动申请</span>
-          <span class="sheet-meta">3 条规则</span>
-        </div>
-        <table class="rule-table">
+      <!-- Tab 4: 商品活动 -->
+      <div class="tab-panel" data-tab="4">
+        <table class="rule-table" style="margin:8px 10px;width:calc(100% - 20px)">
           <thead><tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr></thead>
           <tbody>
             <tr><td class="td-cat cat-form">表单校验</td><td>当活动折扣低于7折时</td><td class="td-desc">活动折扣 < 70%</td><td class="td-act act-review">人工复核</td><td class="td-status status-active">有效</td></tr>
@@ -917,15 +946,28 @@ body{
         </table>
       </div>
 
-      <div style="margin-top:4px;display:flex;gap:16px;font-size:11px;color:#5c6f8c;flex-wrap:wrap">
-        <span>📊 表单校验 4 条</span><span>📎 附件校验 4 条</span><span>🔗 交叉校验 4 条</span>
-        <span style="margin-left:auto">✅ 有效 9 条</span><span>⏳ 待验证 3 条</span><span>❌ 驳回 6 条</span><span>👁 复核 6 条</span>
+      <!-- Tab 5: 加盟商自采商品申请 -->
+      <div class="tab-panel" data-tab="5">
+        <table class="rule-table" style="margin:8px 10px;width:calc(100% - 20px)">
+          <thead><tr><th class="th-cat">分类</th><th class="th-scene">细分场景</th><th class="th-desc">规则详细描述</th><th class="th-act">动作</th><th class="th-status">状态</th></tr></thead>
+          <tbody>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当申请品类超出规定范围时</td><td class="td-desc">商品品类 ∉ {烟类,饮料,属地特色品,时令水果,玩具衍生品,冰淇淋,乳制品,酒类}</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-cross">交叉校验</td><td>当商品与自有品牌重复或高度相似时</td><td class="td-desc">商品口感风味 ≈ 自有品牌 OR 外观造型 ≈ 自有品牌 OR 关键卖点 ≈ 自有品牌</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-attach">附件校验</td><td>当经营资质文件缺失时</td><td class="td-desc">附件列表 不包含 营业执照 OR 附件列表 不包含 生产/经营资质</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-cross">交叉校验</td><td>当非生活店引进非食类商品时（IP文具玩具除外）</td><td class="td-desc">门店类型 = 非生活店 AND 商品类别 = 非食类 AND 商品类别 ≠ IP文具玩具</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当商品信息与69码不一致时</td><td class="td-desc">申请商品名称 ≠ 69码商品名称 OR 产品照片 不包含 强制标注信息</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当商品缺乏市场价值时</td><td class="td-desc">品牌知名度 = 低 AND 引流价值 = 无 AND 差异化优势 = 无</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
+            <tr><td class="td-cat cat-attach">附件校验</td><td>当特殊情况缺少副总裁级审批文件时</td><td class="td-desc">申请类型 = 特殊调整 AND 附件 不包含 副总裁审批文件</td><td class="td-act act-reject">驳回</td><td class="td-status status-pending">待验证</td></tr>
+            <tr><td class="td-cat cat-form">表单校验</td><td>当门店他牌SKU占比超过30%时</td><td class="td-desc">门店他牌SKU数 / 门店总SKU数 > 30%</td><td class="td-act act-reject">驳回</td><td class="td-status status-active">有效</td></tr>
+          </tbody>
+        </table>
       </div>
+
     </div>
   </div>
 </div>
 
-<div class="bottom-note">每个流程对应一个独立 Sheet 页 · 填写标准覆盖 5 字段 × 6 维度 · 4 个流程 × 3 条规则 = 12 条 Sample</div>
+<div class="bottom-note">Sheet1 总览固定 · Sheet2~N 按流程命名 · 每个流程独立维护规则 · 点击页签切换查看</div>
 </div>
 
     </div>
@@ -1033,6 +1075,14 @@ body{
     setTimeout(scaleAll, 150);
   });
 })();
+
+// ---- Tab switching (P03) ----
+function switchTab(idx) {
+  var btns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  btns.forEach(function(b, i) { b.classList.toggle('active', i === idx); });
+  panels.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+}
 </script>
 </body>
 </html>

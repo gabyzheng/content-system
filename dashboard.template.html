@@ -212,9 +212,12 @@ function renderFileTree(stages, topicId) {
     '</div>';
     if (s.files && s.files.length > 0) {
       s.files.forEach(function(f) {
-        var iconClass = f.is_image ? 'fa-image text-cyan-500/60' : (f.is_md ? 'fa-file-lines text-blue-500/60' : 'fa-file text-slate-600');
-        html += '<div class="flex items-center justify-between py-1 pl-8 pr-2 text-xs text-slate-500 file-link" onclick="openFile(\'' + f.path + '\', \'' + f.name.replace(/'/g, "\\'") + '\', ' + f.is_image + ', ' + f.is_md + ')">' +
-          '<span class="truncate max-w-[300px]"><i class="fa-solid ' + iconClass + ' mr-1.5"></i>' + f.name + '</span>' +
+        var iconClass = f.is_image ? 'fa-image text-cyan-500/60' : (f.is_html ? 'fa-globe text-emerald-500/60' : (f.is_md ? 'fa-file-lines text-blue-500/60' : 'fa-file text-slate-600'));
+        var clickAction = f.is_html && f.gh_pages_url ? ' onclick="window.open(\'' + f.gh_pages_url + '\', \'_blank\')"' : (f.is_image || f.is_md ? ' onclick="openFile(\'' + f.path + '\', \'' + f.name.replace(/'/g, "\\'") + '\', ' + f.is_image + ', ' + f.is_md + ')"' : '');
+        var cursorStyle = (f.is_html || f.is_image || f.is_md) ? ' cursor-pointer hover:text-slate-300' : '';
+        var previewBadge = f.is_html && f.gh_pages_url ? ' <span class="text-[10px] text-emerald-500/70 ml-1">🔗 预览</span>' : '';
+        html += '<div class="flex items-center justify-between py-1 pl-8 pr-2 text-xs text-slate-500 file-link' + cursorStyle + '"' + clickAction + '>' +
+          '<span class="truncate max-w-[300px]"><i class="fa-solid ' + iconClass + ' mr-1.5"></i>' + f.name + previewBadge + '</span>' +
           '<span class="mono text-slate-600 ml-2">' + formatSize(f.size) + '</span>' +
         '</div>';
       });

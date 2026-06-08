@@ -14,6 +14,7 @@ TOPIC_FILE = BASE_DIR / "01-选题管理" / "00-选题记录.md"
 CONTENT_DIR = BASE_DIR / "02-选题内容"
 TEMPLATE_FILE = BASE_DIR / "dashboard.template.html"
 OUTPUT_FILE = BASE_DIR / "dashboard.html"
+GITHUB_PAGES_BASE = "https://gabyzheng.github.io/content-system"
 
 PIPELINE_STAGES = {
     "公众号文章": [
@@ -166,6 +167,7 @@ def scan_pipeline(topic):
                 if f.is_file() and not f.name.startswith("."):
                     rel_path = str(f.relative_to(CONTENT_DIR.parent))
                     ext = f.suffix.lower()
+                    gh_pages_url = f"{GITHUB_PAGES_BASE}/{rel_path}" if ext == ".html" else None
                     files.append({
                         "name": f.name,
                         "size": f.stat().st_size,
@@ -173,6 +175,8 @@ def scan_pipeline(topic):
                         "ext": ext,
                         "is_image": ext in (".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"),
                         "is_md": ext == ".md",
+                        "is_html": ext == ".html",
+                        "gh_pages_url": gh_pages_url,
                     })
         stages.append({
             "dir": dir_name,

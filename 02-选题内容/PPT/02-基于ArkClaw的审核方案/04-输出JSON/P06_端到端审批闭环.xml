@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P06" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P06" role="end_to_end_flow" layout="full_process_timeline">
+    <title>端到端审批闭环</title>
+    <core_message>从用户发起审批到最终归档，智能审批系统覆盖 10 个关键节点，形成完整的端到端业务闭环。</core_message>
+    <audience_focus>让所有相关方对齐系统运作全流程。</audience_focus>
+    <layout_type>横向流程时间线 + 角色泳道</layout_type>
+    <visual_focus>用户/BPM/智能审批中心/业务系统/数据平台五角色协同</visual_focus>
+    <copy_hierarchy>10 步主流程；每步标注所属模块；底部关键指标</copy_hierarchy>
+    <illustration_type>端到端流程泳道图</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 端到端业务流程泳道图，五条泳道：用户、BPM、智能审批中心、业务系统、数据平台。10 个流程节点横向排列：①用户发起审批 ②BPM生成待办 ③智能审批中心拉取待办 ④知识库匹配规则 ⑤智能体解析材料 ⑥智能审批引擎生成建议 ⑦飞书卡片推送审批人 ⑧审批人确认/驳回 ⑨审批结果回写BPM ⑩数据平台归档与分析。底部关键指标：审批时效、自动通过率、人工复核率、异常率。蓝白泳道，正式汇报用。</illustration_prompt>
+    <avoid>
+      <item>不要加入过多异常分支</item>
+      <item>不要把每步拆得过细</item>
+    </avoid>
+  </slide>
+</deck>

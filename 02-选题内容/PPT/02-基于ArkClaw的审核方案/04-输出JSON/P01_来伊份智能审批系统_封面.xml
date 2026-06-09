@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P01" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P01" role="cover" layout="title_with_branding">
+    <title>来伊份智能审批系统</title>
+    <subtitle>总方案蓝图 · 重塑品牌认知 · 提升用户体验</subtitle>
+    <core_message>以来伊份"以消费者为导向"为核心理念，构建覆盖知识库、智能体能力集、智能审批中心、业务系统与数据平台的端到端智能审批总蓝图。</core_message>
+    <audience_focus>面向管理层与业务负责人，快速建立智能审批系统的全局认知。</audience_focus>
+    <layout_type>左标题右品牌架构图</layout_type>
+    <visual_focus>来伊份品牌标识 + 总方案蓝图五大模块概览</visual_focus>
+    <copy_hierarchy>主标题最大；副标题次级；底部放来伊份品牌标语与版本信息</copy_hierarchy>
+    <illustration_type>品牌封面 + 蓝图概览</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 商务咨询风 PPT 封面，深蓝与浅蓝渐变，左侧大标题"来伊份智能审批系统 总方案蓝图"，右侧极简五大模块圆环图：知识库 → 智能体能力集 → 智能审批中心 → 业务系统 → 数据平台。顶部来伊份品牌标语"重塑品牌认知 提升用户体验 以消费者为导向"。线条干净，企业级方案汇报感，强留白，无复杂背景，无人物。</illustration_prompt>
+    <avoid>
+      <item>不要解释为什么需要智能审批</item>
+      <item>不要堆背景文字</item>
+      <item>不要花哨科技背景</item>
+    </avoid>
+  </slide>
+</deck>

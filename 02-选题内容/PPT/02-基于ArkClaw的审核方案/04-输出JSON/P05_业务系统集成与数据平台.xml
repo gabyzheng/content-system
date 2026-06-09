@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P05" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P05" role="business_and_data" layout="integration_and_platform">
+    <title>业务系统集成与数据平台</title>
+    <core_message>智能审批中心通过标准化接口连接门店管理、供应链、财务、HR 等业务系统；数据平台提供统一的数据采集、治理、服务与 AI 模型底座。</core_message>
+    <audience_focus>让 IT 和业务方理解系统对接范围与数据底座能力。</audience_focus>
+    <layout_type>上业务系统集成 + 下数据平台架构</layout_type>
+    <visual_focus>业务系统矩阵 + 数据平台四层架构</visual_focus>
+    <copy_hierarchy>上栏业务系统对接；下栏数据平台分层；右侧对接方式说明</copy_hierarchy>
+    <illustration_type>系统集成 + 数据平台架构图</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 企业架构页。上栏"业务系统集成"：智能审批中心通过统一 API 网关连接门店管理系统、供应链系统、财务系统、HR 系统、BPM 流程引擎，每个系统标注典型对接场景。下栏"数据平台"：四层架构——数据采集层（实时/批量接入）、数据治理层（标准化/质量/血缘）、数据服务层（统一查询/分析接口）、AI 模型层（NLP/OCR/规则引擎/大模型）。右侧标注对接方式：API 调用、消息队列、文件同步。蓝白线框，正式方案页。</illustration_prompt>
+    <avoid>
+      <item>不要过度展开每个业务系统的细节</item>
+      <item>不要做成纯技术架构</item>
+    </avoid>
+  </slide>
+</deck>

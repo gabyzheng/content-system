@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P03" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P03" role="approval_center" layout="four_module_cycle">
+    <title>智能审批中心 — 核心枢纽</title>
+    <core_message>智能审批中心是总方案的神经中枢，由知识库、智能体能力集、规则引擎、智能审批四大模块组成，形成"知识驱动 → 智能分析 → 规则判断 → 审批决策"的闭环。</core_message>
+    <audience_focus>理解四大模块各自定位与协同关系。</audience_focus>
+    <layout_type>中心辐射型：中央智能审批引擎，四周围绕四大模块</layout_type>
+    <visual_focus>四大模块循环联动：知识库 → 智能体能力集 → 规则引擎 → 智能审批 → 回到知识库</visual_focus>
+    <copy_hierarchy>中央核心引擎描述；四个方向模块详细说明；底部闭环逻辑</copy_hierarchy>
+    <illustration_type>中心辐射模块关系图</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 商务咨询风信息图，中心为"智能审批引擎"，四个方向连接四大模块：上方"知识库"（公司红线、业务审批规则、个人审批规则、管理规范标准）；右侧"智能体能力集"（内容智能体、风险智能体、规则智能体、异常智能体）；下方"规则引擎"（规则匹配、规则合并、规则优先级、规则审计）；左侧"智能审批"（材料解析、AI审核建议、飞书卡片推送、BPM回写）。模块之间用蓝色弧线连接形成闭环，白底、深蓝标题、浅蓝模块，强留白。</illustration_prompt>
+    <avoid>
+      <item>不要做成纯文字列表</item>
+      <item>不要使用过于复杂的箭头交叉</item>
+    </avoid>
+  </slide>
+</deck>

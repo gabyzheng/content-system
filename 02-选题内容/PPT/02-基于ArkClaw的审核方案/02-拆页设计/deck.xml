@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+
+
+  <slide id="P01" role="cover" layout="title_with_branding">
+
+
+    <title>来伊份智能审批系统</title>
+
+
+    <subtitle>总方案蓝图 · 重塑品牌认知 · 提升用户体验</subtitle>
+
+
+    <core_message>以来伊份"以消费者为导向"为核心理念，构建覆盖知识库、智能体能力集、智能审批中心、业务系统与数据平台的端到端智能审批总蓝图。</core_message>
+
+
+    <audience_focus>面向管理层与业务负责人，快速建立智能审批系统的全局认知。</audience_focus>
+
+
+    <layout_type>左标题右品牌架构图</layout_type>
+
+
+    <visual_focus>来伊份品牌标识 + 总方案蓝图五大模块概览</visual_focus>
+
+
+    <copy_hierarchy>主标题最大；副标题次级；底部放来伊份品牌标语与版本信息</copy_hierarchy>
+
+
+    <illustration_type>品牌封面 + 蓝图概览</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 商务咨询风 PPT 封面，深蓝与浅蓝渐变，左侧大标题"来伊份智能审批系统 总方案蓝图"，右侧极简五大模块圆环图：知识库 → 智能体能力集 → 智能审批中心 → 业务系统 → 数据平台。顶部来伊份品牌标语"重塑品牌认知 提升用户体验 以消费者为导向"。线条干净，企业级方案汇报感，强留白，无复杂背景，无人物。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要解释为什么需要智能审批</item>
+      <item>不要堆背景文字</item>
+      <item>不要花哨科技背景</item>
+    </avoid>
+
+
+  </slide>
+
+
+
+  <slide id="P02" role="architecture_overview" layout="five_layer_blueprint">
+
+
+    <title>总体架构蓝图</title>
+
+
+    <core_message>智能审批系统以"用户"为发起端、以"智能审批中心"为核心枢纽、以"业务系统"为执行载体、以"数据平台"为底层支撑，形成完整闭环。</core_message>
+
+
+    <audience_focus>让管理层在 3 分钟内建立系统全局认知，理解五大模块的定位与关系。</audience_focus>
+
+
+    <layout_type>五层架构蓝图：用户层 → 智能审批中心层 → 业务系统层 → 数据平台层</layout_type>
+
+
+    <visual_focus>左侧用户层发起审批 → 中间智能审批中心四大模块循环 → 右侧业务系统执行 → 底部数据平台支撑</visual_focus>
+
+
+    <copy_hierarchy>顶层来伊份品牌标语；中间五层架构；底部核心原则</copy_hierarchy>
+
+
+    <illustration_type>五层架构蓝图</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 企业架构蓝图页，顶部来伊份品牌标语"重塑品牌认知 提升用户体验 以消费者为导向"。主体为五层架构：最上层"用户"发起与查看审批；第二层"智能审批中心"包含四个循环模块（知识库、智能体能力集、智能审批、规则引擎）；第三层"业务系统"连接门店管理、供应链、财务、HR等系统；第四层"数据平台"包含数据采集、数据治理、数据服务、AI模型。蓝色线框架构图，白底，正式汇报用，清晰可读。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要做成技术架构图</item>
+      <item>不要过度细化每个模块的子项</item>
+      <item>不要使用复杂 3D 效果</item>
+    </avoid>
+
+
+  </slide>
+
+
+
+  <slide id="P03" role="approval_center" layout="four_module_cycle">
+
+
+    <title>智能审批中心 — 核心枢纽</title>
+
+
+    <core_message>智能审批中心是总方案的神经中枢，由知识库、智能体能力集、智能审批引擎、规则引擎四大模块组成，形成"知识驱动 → 智能分析 → 规则判断 → 审批决策"的闭环。</core_message>
+
+
+    <audience_focus>理解四大模块各自定位与协同关系。</audience_focus>
+
+
+    <layout_type>中心辐射型：中央智能审批引擎，四周围绕四大模块</layout_type>
+
+
+    <visual_focus>四大模块循环联动：知识库 → 智能体能力集 → 规则引擎 → 智能审批 → 回到知识库</visual_focus>
+
+
+    <copy_hierarchy>中央核心引擎描述；四个方向模块详细说明；底部闭环逻辑</copy_hierarchy>
+
+
+    <illustration_type>中心辐射模块关系图</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 商务咨询风信息图，中心为"智能审批引擎"，四个方向连接四大模块：上方"知识库"（公司红线、业务审批规则、个人审批规则、管理规范标准）；右侧"智能体能力集"（内容智能体、风险智能体、规则智能体、异常智能体）；下方"规则引擎"（规则匹配、规则合并、规则优先级、规则审计）；左侧"智能审批"（材料解析、AI审核建议、飞书卡片推送、BPM回写）。模块之间用蓝色弧线连接形成闭环，白底、深蓝标题、浅蓝模块，强留白。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要做成纯文字列表</item>
+      <item>不要使用过于复杂的箭头交叉</item>
+    </avoid>
+
+
+  </slide>
+
+
+
+  <slide id="P04" role="knowledge_and_agents" layout="two_column_detail">
+
+
+    <title>知识库与智能体能力集</title>
+
+
+    <core_message>知识库是智能审批的"大脑记忆"，智能体能力集是"思考与判断"的执行单元，两者共同构成智能审批中心的认知层。</core_message>
+
+
+    <audience_focus>让业务方理解知识库如何维护、智能体如何工作。</audience_focus>
+
+
+    <layout_type>左右双栏：左知识库体系，右智能体能力集</layout_type>
+
+
+    <visual_focus>知识库三层结构 + 四大智能体分工</visual_focus>
+
+
+    <copy_hierarchy>左侧知识库层级；右侧智能体能力矩阵；底部协同说明</copy_hierarchy>
+
+
+    <illustration_type>双栏对比信息图</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 双栏信息图。左栏"知识库体系"：三层结构——公司红线（全局硬约束）、业务审批规则（按表单/部门维护）、个人审批规则（按审批人补充），载体为飞书多维表格。右栏"智能体能力集"：四个智能体卡片——内容智能体（表单解析、附件识别、OCR提取）、风险智能体（合规检查、金额校验、异常检测）、规则智能体（规则匹配、条件判断、优先级排序）、异常智能体（解析失败处理、缺失字段补全、置信度评估）。底部协同逻辑：知识库为智能体提供判断依据，智能体输出反馈优化知识库。蓝白线框风格，正式方案页。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要过度技术化描述智能体实现</item>
+      <item>不要遗漏知识库的三层结构</item>
+    </avoid>
+
+
+  </slide>
+
+
+
+  <slide id="P05" role="business_and_data" layout="integration_and_platform">
+
+
+    <title>业务系统集成与数据平台</title>
+
+
+    <core_message>智能审批中心通过标准化接口连接门店管理、供应链、财务、HR 等业务系统；数据平台提供统一的数据采集、治理、服务与 AI 模型底座。</core_message>
+
+
+    <audience_focus>让 IT 和业务方理解系统对接范围与数据底座能力。</audience_focus>
+
+
+    <layout_type>上业务系统集成 + 下数据平台架构</layout_type>
+
+
+    <visual_focus>业务系统矩阵 + 数据平台四层架构</visual_focus>
+
+
+    <copy_hierarchy>上栏业务系统对接；下栏数据平台分层；右侧对接方式说明</copy_hierarchy>
+
+
+    <illustration_type>系统集成 + 数据平台架构图</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 企业架构页。上栏"业务系统集成"：智能审批中心通过统一 API 网关连接门店管理系统、供应链系统、财务系统、HR 系统、BPM 流程引擎，每个系统标注典型对接场景。下栏"数据平台"：四层架构——数据采集层（实时/批量接入）、数据治理层（标准化/质量/血缘）、数据服务层（统一查询/分析接口）、AI 模型层（NLP/OCR/规则引擎/大模型）。右侧标注对接方式：API 调用、消息队列、文件同步。蓝白线框，正式方案页。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要过度展开每个业务系统的细节</item>
+      <item>不要做成纯技术架构</item>
+    </avoid>
+
+
+  </slide>
+
+
+
+  <slide id="P06" role="end_to_end_flow" layout="full_process_timeline">
+
+
+    <title>端到端审批闭环</title>
+
+
+    <core_message>从用户发起审批到最终归档，智能审批系统覆盖 10 个关键节点，形成完整的端到端业务闭环。</core_message>
+
+
+    <audience_focus>让所有相关方对齐系统运作全流程。</audience_focus>
+
+
+    <layout_type>横向流程时间线 + 角色泳道</layout_type>
+
+
+    <visual_focus>用户/BPM/智能审批中心/业务系统/数据平台五角色协同</visual_focus>
+
+
+    <copy_hierarchy>10 步主流程；每步标注所属模块；底部关键指标</copy_hierarchy>
+
+
+    <illustration_type>端到端流程泳道图</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 端到端业务流程泳道图，五条泳道：用户、BPM、智能审批中心、业务系统、数据平台。10 个流程节点横向排列：①用户发起审批 ②BPM生成待办 ③智能审批中心拉取待办 ④知识库匹配规则 ⑤智能体解析材料 ⑥智能审批引擎生成建议 ⑦飞书卡片推送审批人 ⑧审批人确认/驳回 ⑨审批结果回写BPM ⑩数据平台归档与分析。底部关键指标：审批时效、自动通过率、人工复核率、异常率。蓝白泳道，正式汇报用。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要加入过多异常分支</item>
+      <item>不要把每步拆得过细</item>
+    </avoid>
+
+
+  </slide>
+
+
+
+  <slide id="P07" role="blueprint_summary" layout="one_page_summary">
+
+
+    <title>总方案蓝图 — 一页纸总览</title>
+
+
+    <core_message>一页纸浓缩智能审批系统总方案蓝图：五大模块、四大核心能力、三大落地原则。</core_message>
+
+
+    <audience_focus>便于管理层打印/分享，快速对齐全局认知。</audience_focus>
+
+
+    <layout_type>一页纸全景：顶部品牌标语 + 中间架构全景 + 底部核心原则</layout_type>
+
+
+    <visual_focus>五大模块完整架构图 + 核心能力标注 + 落地原则</visual_focus>
+
+
+    <copy_hierarchy>品牌标语；架构全景；能力标注；落地原则</copy_hierarchy>
+
+
+    <illustration_type>一页纸全景蓝图</illustration_type>
+
+
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 一页纸总览蓝图，顶部来伊份品牌标语"重塑品牌认知 提升用户体验 以消费者为导向"。中间完整架构全景图：左侧用户层 → 中心智能审批中心（知识库/智能体/规则引擎/智能审批四模块循环）→ 右侧业务系统层 → 底部数据平台层。五大模块用不同深浅蓝色区分，核心能力用标签标注。底部三大落地原则：业务驱动（以审批场景为核心）、渐进迭代（从高频场景切入逐步扩展）、数据闭环（审批数据回流优化知识库与模型）。白底、蓝色系、正式商务风，适合打印。</illustration_prompt>
+
+
+    <avoid>
+      <item>不要放入详细文字说明</item>
+      <item>不要使用照片或复杂装饰</item>
+    </avoid>
+
+
+  </slide>
+
+
+</deck>

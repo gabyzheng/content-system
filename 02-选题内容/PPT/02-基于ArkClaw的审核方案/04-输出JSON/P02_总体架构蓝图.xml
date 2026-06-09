@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P02" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P02" role="architecture_overview" layout="five_layer_blueprint">
+    <title>总体架构蓝图</title>
+    <core_message>智能审批系统以"用户"为发起端、以"智能审批中心"为核心枢纽、以"业务系统"为执行载体、以"数据平台"为底层支撑，形成完整闭环。</core_message>
+    <audience_focus>让管理层在 3 分钟内建立系统全局认知，理解五大模块的定位与关系。</audience_focus>
+    <layout_type>五层架构蓝图：用户层 → 智能审批中心层 → 业务系统层 → 数据平台层</layout_type>
+    <visual_focus>左侧用户层发起审批 → 中间智能审批中心四大模块循环 → 右侧业务系统执行 → 底部数据平台支撑</visual_focus>
+    <copy_hierarchy>顶层来伊份品牌标语；中间五层架构；底部核心原则</copy_hierarchy>
+    <illustration_type>五层架构蓝图</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 企业架构蓝图页，顶部来伊份品牌标语"重塑品牌认知 提升用户体验 以消费者为导向"。主体为五层架构：最上层"用户"发起与查看审批；第二层"智能审批中心"包含四个循环模块（知识库、智能体能力集、智能审批、规则引擎）；第三层"业务系统"连接门店管理、供应链、财务、HR等系统；第四层"数据平台"包含数据采集、数据治理、数据服务、AI模型。蓝色线框架构图，白底，正式汇报用，清晰可读。</illustration_prompt>
+    <avoid>
+      <item>不要做成技术架构图</item>
+      <item>不要过度细化每个模块的子项</item>
+      <item>不要使用复杂 3D 效果</item>
+    </avoid>
+  </slide>
+</deck>

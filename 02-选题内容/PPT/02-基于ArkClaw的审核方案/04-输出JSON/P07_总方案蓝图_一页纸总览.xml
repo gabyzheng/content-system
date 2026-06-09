@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P07" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P07" role="blueprint_summary" layout="one_page_summary">
+    <title>总方案蓝图 — 一页纸总览</title>
+    <core_message>一页纸浓缩智能审批系统总方案蓝图：五大模块、四大核心能力、三大落地原则。</core_message>
+    <audience_focus>便于管理层打印/分享，快速对齐全局认知。</audience_focus>
+    <layout_type>一页纸全景：顶部品牌标语 + 中间架构全景 + 底部核心原则</layout_type>
+    <visual_focus>五大模块完整架构图 + 核心能力标注 + 落地原则</visual_focus>
+    <copy_hierarchy>品牌标语；架构全景；能力标注；落地原则</copy_hierarchy>
+    <illustration_type>一页纸全景蓝图</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 一页纸总览蓝图，顶部来伊份品牌标语"重塑品牌认知 提升用户体验 以消费者为导向"。中间完整架构全景图：左侧用户层 → 中心智能审批中心（知识库/智能体/规则引擎/智能审批四模块循环）→ 右侧业务系统层 → 底部数据平台层。五大模块用不同深浅蓝色区分，核心能力用标签标注。底部三大落地原则：业务驱动（以审批场景为核心）、渐进迭代（从高频场景切入逐步扩展）、数据闭环（审批数据回流优化知识库与模型）。白底、蓝色系、正式商务风，适合打印。</illustration_prompt>
+    <avoid>
+      <item>不要放入详细文字说明</item>
+      <item>不要使用照片或复杂装饰</item>
+    </avoid>
+  </slide>
+</deck>

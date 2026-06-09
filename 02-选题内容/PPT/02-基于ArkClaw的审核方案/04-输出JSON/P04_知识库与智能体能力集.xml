@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deck name="来伊份智能审批系统总方案蓝图_P04" theme="business_blue_consulting_wireframe" aspect_ratio="16:9" resolution="3840x2160">
+  <slide id="P04" role="knowledge_and_agents" layout="two_column_detail">
+    <title>知识库与智能体能力集</title>
+    <core_message>知识库是智能审批的"大脑记忆"，智能体能力集是"思考与判断"的执行单元，两者共同构成智能审批中心的认知层。</core_message>
+    <audience_focus>让业务方理解知识库如何维护、智能体如何工作。</audience_focus>
+    <layout_type>左右双栏：左知识库体系，右智能体能力集</layout_type>
+    <visual_focus>知识库三层结构 + 四大智能体分工</visual_focus>
+    <copy_hierarchy>左侧知识库层级；右侧智能体能力矩阵；底部协同说明</copy_hierarchy>
+    <illustration_type>双栏对比信息图</illustration_type>
+    <illustration_prompt lang="zh" model_hint="gpt2">16:9 双栏信息图。左栏"知识库体系"：三层结构——公司红线（全局硬约束）、业务审批规则（按表单/部门维护）、个人审批规则（按审批人补充），载体为飞书多维表格。右栏"智能体能力集"：四个智能体卡片——内容智能体（表单解析、附件识别、OCR提取）、风险智能体（合规检查、金额校验、异常检测）、规则智能体（规则匹配、条件判断、优先级排序）、异常智能体（解析失败处理、缺失字段补全、置信度评估）。底部协同逻辑：知识库为智能体提供判断依据，智能体输出反馈优化知识库。蓝白线框风格，正式方案页。</illustration_prompt>
+    <avoid>
+      <item>不要过度技术化描述智能体实现</item>
+      <item>不要遗漏知识库的三层结构</item>
+    </avoid>
+  </slide>
+</deck>

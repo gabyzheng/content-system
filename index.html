@@ -6,6 +6,7 @@
 <title>Content Pipeline · 选题看板</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
   * { font-family: 'Inter', system-ui, sans-serif; }
@@ -1203,25 +1204,13 @@ function toggleFiles(id) {
 }
 
 function renderMarkdown(md) {
-  var html = md
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:8px 0;">')
-    .replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
-    .replace(/^---$/gm, '<hr style="border-color:rgba(255,255,255,0.1);margin:16px 0;">')
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(.+)$/gm, function(m) { return m.charAt(0) === '<' ? m : '<p>' + m + '</p>'; })
-    .replace(/<p><\/p>/g, '');
-  return '<div class="md-content">' + html + '</div>';
+  marked.setOptions({ breaks: true, gfm: true });
+  var renderer = new marked.Renderer();
+  renderer.link = function(href, title, text) {
+    return '<a href="' + href + '" target="_blank"' + (title ? ' title="' + title + '"' : '') + '>' + text + '</a>';
+  };
+  marked.use({ renderer: renderer });
+  return '<div class="md-content">' + marked.parse(md) + '</div>';
 }
 
 async function openFile(path, name, isImage, isMd) {

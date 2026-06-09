@@ -167,7 +167,7 @@ def scan_pipeline(topic):
                 if f.is_file() and not f.name.startswith("."):
                     rel_path = str(f.relative_to(CONTENT_DIR.parent))
                     ext = f.suffix.lower()
-                    gh_pages_url = f"{GITHUB_PAGES_BASE}/{rel_path}" if ext == ".html" else None
+                    gh_pages_url = f"{GITHUB_PAGES_BASE}/{rel_path}" if ext in (".html", ".xml") else None
                     files.append({
                         "name": f.name,
                         "size": f.stat().st_size,
@@ -176,6 +176,7 @@ def scan_pipeline(topic):
                         "is_image": ext in (".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"),
                         "is_md": ext == ".md",
                         "is_html": ext == ".html",
+                        "is_xml": ext == ".xml",
                         "gh_pages_url": gh_pages_url,
                     })
         stages.append({

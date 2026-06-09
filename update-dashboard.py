@@ -219,6 +219,11 @@ def main():
     print(f"\n✅ 已生成: {OUTPUT_FILE}")
     print(f"   大小: {len(html):,} bytes")
 
+    # Also generate index.html for GitHub Pages default entry
+    INDEX_FILE = BASE_DIR / "index.html"
+    INDEX_FILE.write_text(html, encoding="utf-8")
+    print(f"✅ 已生成: {INDEX_FILE} (GitHub Pages 入口)")
+
 
 if __name__ == "__main__":
     main()

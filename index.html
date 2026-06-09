@@ -1232,8 +1232,12 @@ async function openFile(path, name, isImage, isMd) {
       '</div>';
     } else if (isMd) {
       var text = await resp.text();
-      body.innerHTML = '<div class="mb-3 pb-3 border-b border-white/5">' +
+      var editUrl = 'https://github.com/gabyzheng/content-system/edit/master/' + path;
+      body.innerHTML = '<div class="mb-3 pb-3 border-b border-white/5 flex items-center justify-between">' +
         '<span class="text-xs text-slate-500">' + name + ' · <a href="' + path + '" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>' +
+        '<a href="' + editUrl + '" target="_blank" class="px-3 py-1 rounded-lg text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition-colors">' +
+          '<i class="fa-solid fa-pen-to-square mr-1"></i>编辑' +
+        '</a>' +
       '</div>' + renderMarkdown(text);
     } else {
       var text = await resp.text();

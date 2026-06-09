@@ -12,8 +12,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 TOPIC_FILE = BASE_DIR / "01-选题管理" / "00-选题记录.md"
 CONTENT_DIR = BASE_DIR / "02-选题内容"
-TEMPLATE_FILE = BASE_DIR / "dashboard.template.html"
-OUTPUT_FILE = BASE_DIR / "dashboard.html"
+TEMPLATE_FILE = BASE_DIR / "index.template.html"
+OUTPUT_FILE = BASE_DIR / "index.html"
 GITHUB_PAGES_BASE = "https://gabyzheng.github.io/content-system"
 
 PIPELINE_STAGES = {

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="fs-language" content="zh-only">
+  <title>火山方舟大模型数据安全合规 · 亿滋客户问答</title>
+  <link rel="stylesheet" href="assets/feishu-deck.css">
+  <style>
+    .qa-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; height: 100%; }
+    .qa-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 28px 32px; display: flex; flex-direction: column; gap: 14px; }
+    .qa-card .q-num { font: 600 14px/1 var(--fs-font-latin); color: var(--fs-blue); letter-spacing: 0.08em; }
+    .qa-card .q-title { font: 600 20px/1.35 var(--fs-font-cjk); color: #fff; }
+    .qa-card .q-answer { font: 400 15px/1.6 var(--fs-font-cjk); color: rgba(255,255,255,0.78); flex: 1; }
+    .qa-card .q-answer .a-yes { color: var(--fs-teal); font-weight: 600; }
+    .qa-card .q-answer .a-pending { color: var(--fs-orange); font-weight: 600; }
+    .qa-card .q-source { font: 400 12px/1 var(--fs-font-cjk); color: rgba(255,255,255,0.40); margin-top: auto; }
+    .safety-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .safety-table th { font: 600 15px/1.4 var(--fs-font-cjk); color: rgba(255,255,255,0.55); text-align: left; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .safety-table td { font: 400 15px/1.5 var(--fs-font-cjk); color: rgba(255,255,255,0.78); padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .safety-table .cap { color: var(--fs-teal); font-weight: 600; }
+    .ext-list { display: flex; flex-direction: column; gap: 12px; }
+    .ext-item { display: flex; gap: 14px; align-items: flex-start; }
+    .ext-item .ext-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px; background: rgba(60,127,255,0.15); color: var(--fs-blue); font: 600 13px/28px var(--fs-font-latin); text-align: center; }
+    .ext-item .ext-text { font: 400 15px/1.55 var(--fs-font-cjk); color: rgba(255,255,255,0.78); }
+    .ext-item .ext-text b { color: #fff; font-weight: 600; }
+    .ref-list { display: flex; flex-direction: column; gap: 10px; }
+    .ref-item { display: flex; gap: 12px; align-items: baseline; }
+    .ref-item .ref-label { flex-shrink: 0; font: 600 13px/1 var(--fs-font-cjk); color: rgba(255,255,255,0.48); min-width: 140px; }
+    .ref-item .ref-link { font: 400 14px/1.5 var(--fs-font-cjk); color: rgba(255,255,255,0.72); }
+    .ref-item .ref-link a { color: var(--fs-blue); text-decoration: none; }
+    .tag-confirmed { display: inline-block; padding: 2px 8px; border-radius: 6px; font: 600 11px/1 var(--fs-font-cjk); background: rgba(51,214,192,0.15); color: var(--fs-teal); margin-right: 6px; }
+    .tag-pending { display: inline-block; padding: 2px 8px; border-radius: 6px; font: 600 11px/1 var(--fs-font-cjk); background: rgba(254,127,0,0.15); color: var(--fs-orange); margin-right: 6px; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .detail-col h3 { font: 600 18px/1.3 var(--fs-font-cjk); color: var(--fs-teal); margin-bottom: 16px; }
+    .detail-col .item { margin-bottom: 14px; }
+    .detail-col .item .label { font: 600 14px/1.4 var(--fs-font-cjk); color: rgba(255,255,255,0.65); }
+    .detail-col .item .text { font: 400 14px/1.55 var(--fs-font-cjk); color: rgba(255,255,255,0.78); }
+    .detail-col .item .text .src { font-size: 12px; color: rgba(255,255,255,0.40); }
+    .detail-col .pending-block { background: rgba(254,127,0,0.08); border-left: 3px solid var(--fs-orange); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-top: 16px; }
+    .pending-block .pb-title { font: 600 14px/1 var(--fs-font-cjk); color: var(--fs-orange); margin-bottom: 8px; }
+    .pending-block .pb-item { font: 400 13px/1.55 var(--fs-font-cjk); color: rgba(255,255,255,0.72); margin-bottom: 4px; }
+    .slide[data-layout="content-2col"] .stage { display: flex; flex-direction: column; flex: 1; align-content: center; justify-content: center; }
+  </style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 01 Cover -->
+<div class="slide-frame">
+  <div class="slide" data-layout="cover" data-screen-label="01 Cover" data-slide-key="cover">
+    <div class="wordmark">飞书</div>
+    <div class="stage">
+      <h1 class="title title-zh" data-text-id="slide-01.title">火山方舟大模型<br>数据安全合规</h1>
+      <p class="subtitle" data-text-id="slide-01.subtitle">亿滋（Mondelez）客户问答 · 基于官方条款逐条答复</p>
+    </div>
+    <div class="author">
+      <span data-text-id="slide-01.author">火山引擎 · 东区 SA 团队</span><br>
+      <span data-text-id="slide-01.date">2026.06.15</span>
+    </div>
+  </div>
+</div>
+
+<!-- 02 客户四问 · 逐条答复 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="02 客户四问 · 逐条答复" data-slide-key="qa-summary">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-02.title">客户四问 · 逐条答复</h2>
+    </div>
+    <div class="stage">
+      <div class="qa-grid">
+        <div class="qa-card">
+          <div class="q-num">Q1</div>
+          <div class="q-title" data-text-id="slide-02.q1.title">行为及信息审查，如何做到数据0保存？</div>
+          <div class="q-answer" data-text-id="slide-02.q1.answer"><span class="a-yes">✅ 自动化过滤审核，非人工审查。</span>审查对象为输入+输出内容，目的为建立风险过滤机制与特征库。<br><span class="a-pending">【待确认】</span>审查后原始数据是否立即删除？特征库是否包含可还原的原始内容？</div>
+          <div class="q-source">出处：专用条款 3.7.7(1)</div>
+        </div>
+        <div class="qa-card">
+          <div class="q-num">Q2</div>
+          <div class="q-title" data-text-id="slide-02.q2.title">排障工具中"合理时间"是多长？主动提供的数据范围？</div>
+          <div class="q-answer" data-text-id="slide-02.q2.answer"><span class="a-yes">✅ 仅在排障/模型效果咨询时处理，依据用户委托。</span>触发条件为用户使用排障工具或主动提供数据。<br><span class="a-pending">【待确认】</span>"合理时间"具体天数？"主动提供"是否包含正常API调用数据？</div>
+          <div class="q-source">出处：专用条款 3.7.7(2)</div>
+        </div>
+        <div class="qa-card">
+          <div class="q-num">Q3</div>
+          <div class="q-title" data-text-id="slide-02.q3.title">异常告警存储和审查的范围、通知机制、解除时间？</div>
+          <div class="q-answer" data-text-id="slide-02.q3.answer"><span class="a-yes">✅ 告警解除后不再存储和审查。</span>触发条件为模型异常调用告警，目的为防范安全合规风险。<br><span class="a-pending">【待确认】</span>数据范围、是否通知客户、解除时长与判定机制？</div>
+          <div class="q-source">出处：专用条款 3.7.7(3)</div>
+        </div>
+        <div class="qa-card">
+          <div class="q-num">Q4</div>
+          <div class="q-title" data-text-id="slide-02.q4.title">聚合数据的定义、存储时长和分析方式？</div>
+          <div class="q-answer" data-text-id="slide-02.q4.answer"><span class="a-yes">✅ 明确不存储和使用任何原始数据。</span>仅对聚合数据进行统计分析，目的为优化平台服务体验。<br><span class="a-pending">【待确认】</span>"聚合数据"具体维度？存储时长？是否涉及第三方？</div>
+          <div class="q-source">出处：专用条款 3.7.7 末段</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 Q1 详细拆解 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="03 Q1 行为及信息审查" data-slide-key="q1-detail">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-03.title">Q1 · 行为及信息审查，如何做到数据0保存？</h2>
+    </div>
+    <div class="stage">
+      <div class="detail-grid">
+        <div class="detail-col">
+          <h3><span class="tag-confirmed">已确认</span>条款明确的内容</h3>
+          <div class="item"><div class="label">审查方式</div><div class="text">自动化过滤审核，非人工审查 <span class="src">— 3.7.7(1)</span></div></div>
+          <div class="item"><div class="label">审查对象</div><div class="text">输入内容 + 输出内容 <span class="src">— 3.7.7(1)</span></div></div>
+          <div class="item"><div class="label">审查目的</div><div class="text">建立和改进风险过滤机制、违法违规侵权内容特征库 <span class="src">— 3.7.7(1)</span></div></div>
+          <div class="item"><div class="label">数据所有权</div><div class="text">客户数据完全属于客户，火山引擎仅按客户指示处理 <span class="src">— 隐私政策 4.1</span></div></div>
+          <div class="item"><div class="label">安全沙箱</div><div class="text">支持高阶安全防护（安全沙箱互信方案），保护数据不提供给模型服务商 <span class="src">— 3.7.8</span></div></div>
+        </div>
+        <div class="detail-col">
+          <h3><span class="tag-pending">待确认</span>需火山引擎书面答复</h3>
+          <div class="pending-block">
+            <div class="pb-title">⚠ 需确认的三个关键问题</div>
+            <div class="pb-item">1. 自动化审查完成后，原始输入/输出内容是否立即删除？保留时长是多少？</div>
+            <div class="pb-item">2. 审查不通过时，原始内容是否会被存储？存储多久？以什么形式（原文/哈希/特征向量）？</div>
+            <div class="pb-item">3. "特征库"中存储的具体是什么？是否包含可还原为用户原始内容的任何信息？</div>
+          </div>
+          <div style="margin-top:20px; font:400 13px/1.6 var(--fs-font-cjk); color:rgba(255,255,255,0.48);">
+            条款用词是"特征库"而非"数据库"或"内容库"，暗示存储的是特征（如哈希值、特征向量）而非原始内容，但未明确定义。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 Q2 详细拆解 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="04 Q2 排障数据存储" data-slide-key="q2-detail">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-04.title">Q2 · 排障工具中"合理时间"与数据范围</h2>
+    </div>
+    <div class="stage">
+      <div class="detail-grid">
+        <div class="detail-col">
+          <h3><span class="tag-confirmed">已确认</span>条款明确的内容</h3>
+          <div class="item"><div class="label">触发条件</div><div class="text">用户使用排障工具 或 用户主动提供数据 <span class="src">— 3.7.7(2)</span></div></div>
+          <div class="item"><div class="label">使用范围</div><div class="text">仅在排障或模型效果问题咨询时处理 <span class="src">— 3.7.7(2)</span></div></div>
+          <div class="item"><div class="label">处理方式</div><div class="text">依据用户委托处理 <span class="src">— 3.7.7(2)</span></div></div>
+          <div class="item"><div class="label">存储期限参考</div><div class="text">隐私政策 3.2：取决于"完成业务目的所需时间、用户同意的更长时间、法律法规要求"，但未给出排障场景具体数字</div></div>
+        </div>
+        <div class="detail-col">
+          <h3><span class="tag-pending">待确认</span>需火山引擎书面答复</h3>
+          <div class="pending-block">
+            <div class="pb-title">⚠ 需确认的两个关键问题</div>
+            <div class="pb-item">1. 排障场景下数据存储的"合理时间"具体是多久？（如 7天 / 30天 / 排障结束后即删除）</div>
+            <div class="pb-item">2. 请书面确认"主动提供的数据"不包括正常 API 调用产生的输入输出内容。</div>
+          </div>
+          <div style="margin-top:20px; font:400 13px/1.6 var(--fs-font-cjk); color:rgba(255,255,255,0.48);">
+            条款将"排障工具"和"其他方式主动提供"并列，暗示"主动提供"是指排障工具之外用户主动上传/提交的数据（如工单附件、问题截图），而非正常 API 调用产生的输入输出。但需要火山引擎书面确认。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 Q3 详细拆解 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="05 Q3 异常告警" data-slide-key="q3-detail">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-05.title">Q3 · 异常告警存储和审查的范围与机制</h2>
+    </div>
+    <div class="stage">
+      <div class="detail-grid">
+        <div class="detail-col">
+          <h3><span class="tag-confirmed">已确认</span>条款明确的内容</h3>
+          <div class="item"><div class="label">触发条件</div><div class="text">模型异常调用告警 <span class="src">— 3.7.7(3)</span></div></div>
+          <div class="item"><div class="label">目的</div><div class="text">防范模型异常调用等行为，给模型提供方和方舟平台造成安全合规风险 <span class="src">— 3.7.7(3)</span></div></div>
+          <div class="item"><div class="label">终止条件</div><div class="text">告警解除后不再存储和审查 <span class="src">— 3.7.7(3)</span></div></div>
+          <div class="item"><div class="label">安全监控</div><div class="text">平台提供安全监控面板，可查看安全防护状态、风险事件、风险趋势 <span class="src">— 安全管理总览</span></div></div>
+        </div>
+        <div class="detail-col">
+          <h3><span class="tag-pending">待确认</span>需火山引擎书面答复</h3>
+          <div class="pending-block">
+            <div class="pb-title">⚠ 需确认的四个关键问题</div>
+            <div class="pb-item">1. 异常告警触发时，存储和审查的数据范围是什么？（仅告警调用 / 关联时间段内所有调用）</div>
+            <div class="pb-item">2. 告警触发时是否会通知亿滋？通知方式和时效？</div>
+            <div class="pb-item">3. 告警解除的标准流程和通常时长？</div>
+            <div class="pb-item">4. 告警解除由系统自动判定还是人工审核？</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 Q4 详细拆解 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="06 Q4 聚合数据" data-slide-key="q4-detail">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-06.title">Q4 · 聚合数据的定义、存储与分析</h2>
+    </div>
+    <div class="stage">
+      <div class="detail-grid">
+        <div class="detail-col">
+          <h3><span class="tag-confirmed">已确认</span>条款明确的内容</h3>
+          <div class="item"><div class="label">数据性质</div><div class="text">聚合数据，非原始数据 <span class="src">— 3.7.7 末段</span></div></div>
+          <div class="item"><div class="label">目的</div><div class="text">优化平台服务体验 <span class="src">— 3.7.7 末段</span></div></div>
+          <div class="item"><div class="label">原始数据</div><div class="text">明确不会存储和使用原始数据 <span class="src">— 3.7.7 末段</span></div></div>
+          <div class="item"><div class="label">行业常见做法</div><div class="text">API 调用次数、Token 消耗量、响应延迟、错误率等运维指标，不包含用户输入输出内容 <span class="src">[Inference]</span></div></div>
+        </div>
+        <div class="detail-col">
+          <h3><span class="tag-pending">待确认</span>需火山引擎书面答复</h3>
+          <div class="pending-block">
+            <div class="pb-title">⚠ 需确认的三个关键问题</div>
+            <div class="pb-item">1. "聚合数据"具体包含哪些维度的信息？请提供示例。</div>
+            <div class="pb-item">2. 聚合数据的存储时长？</div>
+            <div class="pb-item">3. 聚合数据的分析是否涉及第三方？</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 火山方舟安全能力总览 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="07 安全能力总览" data-slide-key="safety-capabilities">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-07.title">火山方舟安全能力总览</h2>
+    </div>
+    <div class="stage">
+      <table class="safety-table">
+        <tr><th style="width:200px">防护能力</th><th>说明</th></tr>
+        <tr><td class="cap">应用层会话加密</td><td>客户端与模型服务的会话链路加密，防范会话劫持、数据窃听</td></tr>
+        <tr><td class="cap">vArmor 容器沙箱</td><td>容器资源隔离与权限限制，拦截容器逃逸、权限滥用</td></tr>
+        <tr><td class="cap">网络层传输加密</td><td>TLS/SSL 加密，防止数据窃取、篡改</td></tr>
+        <tr><td class="cap">网络隔离</td><td>网络策略/安全组实现容器间、容器与外部网络的访问限制</td></tr>
+        <tr><td class="cap">内容安全审核</td><td>对模型精调数据、推理输出内容进行合规检测与审计</td></tr>
+        <tr><td class="cap">密钥管理</td><td>加密密钥全生命周期管理（创建/轮换/授权/销毁）</td></tr>
+        <tr><td class="cap">高阶安全防护</td><td>安全沙箱互信方案，保护数据不提供给模型服务商（3.7.8）</td></tr>
+      </table>
+      <p style="margin-top:24px; font:400 14px/1.6 var(--fs-font-cjk); color:rgba(255,255,255,0.48);">来源：火山方舟安全管理总览 · 安全白皮书</p>
+    </div>
+  </div>
+</div>
+
+<!-- 08 延伸问题预判（上） -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="08 延伸问题预判 ①" data-slide-key="extended-questions-1">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-08.title">可能出现的延伸问题（1/2）</h2>
+    </div>
+    <div class="stage">
+      <div class="ext-list">
+        <div class="ext-item"><div class="ext-num">1</div><div class="ext-text"><b>数据传输到境外：</b>隐私政策 3.1(2) 提到，若使用非中国大陆地区服务，可能将账号 ID、资源配置信息、客户数据传输至境外。亿滋作为 Global 客户需关注数据传输路径。</div></div>
+        <div class="ext-item"><div class="ext-num">2</div><div class="ext-text"><b>模型服务商的角色：</b>3.7.2 明确模型服务商有独立的《模型服务协议》，Seedance 等专有模型的数据处理规则需同时遵守模型服务商的协议。</div></div>
+        <div class="ext-item"><div class="ext-num">3</div><div class="ext-text"><b>第三方数据源服务：</b>3.7.7 末尾提到"检测或服务可能由火山引擎委托的第三方提供数据源等服务支持"，亿滋可能追问第三方列表及其数据处理方式。</div></div>
+        <div class="ext-item"><div class="ext-num">4</div><div class="ext-text"><b>数据删除权：</b>隐私政策 6.1.3 列出了用户可以请求删除个人信息的情形，但客户数据（非个人信息）的删除机制需确认。</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 09 延伸问题预判（下） -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="09 延伸问题预判 ②" data-slide-key="extended-questions-2">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-09.title">可能出现的延伸问题（2/2）</h2>
+    </div>
+    <div class="stage">
+      <div class="ext-list">
+        <div class="ext-item"><div class="ext-num">5</div><div class="ext-text"><b>审计权：</b>Global 客户通常要求审计权（如 SOC2 报告、渗透测试报告），需确认火山引擎能提供哪些合规认证和审计报告。</div></div>
+        <div class="ext-item"><div class="ext-num">6</div><div class="ext-text"><b>数据存储地域：</b>隐私政策 3.1(2) 提到客户可选择服务区域存储数据，亿滋可能要求数据存储在特定地域（如欧洲、东南亚）。</div></div>
+        <div class="ext-item"><div class="ext-num">7</div><div class="ext-text"><b>日志留存：</b>3.7.11 提到缓存存储、日志记录、AI 应用监控等功能会存储数据在方舟平台，亿滋可能追问这些日志的存储时长和访问控制。</div></div>
+        <div class="ext-item"><div class="ext-num">8</div><div class="ext-text"><b>Seedance 视频生成的特殊性：</b>视频生成涉及人像、版权素材等额外合规风险，3.7.9 提到版权和人像素材使用规则，需确认 Seedance 场景下的特殊合规要求。</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 关键出处索引 -->
+<div class="slide-frame">
+  <div class="slide" data-layout="content-2col" data-screen-label="10 关键出处" data-slide-key="references">
+    <div class="wordmark">飞书</div>
+    <div class="header">
+      <h2 class="title-zh" data-text-id="slide-10.title">关键出处索引</h2>
+    </div>
+    <div class="stage">
+      <div class="ref-list">
+        <div class="ref-item"><span class="ref-label">专用条款</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/1104498">火山方舟大模型服务平台专用条款</a></span></div>
+        <div class="ref-item"><span class="ref-label">安全白皮书</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/2123283">火山方舟大模型服务安全白皮书</a></span></div>
+        <div class="ref-item"><span class="ref-label">安全管理总览</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/1151431">安全管理总览</a></span></div>
+        <div class="ref-item"><span class="ref-label">互信计算架构</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/1099355">火山方舟互信计算架构白皮书</a></span></div>
+        <div class="ref-item"><span class="ref-label">应用层加密</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/1389905">推理会话数据应用层加密方案</a></span></div>
+        <div class="ref-item"><span class="ref-label">内容安全护栏</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/1981525">内容安全护栏</a></span></div>
+        <div class="ref-item"><span class="ref-label">隐私政策</span><span class="ref-link"><a href="https://www.volcengine.com/docs/6256/64902">火山引擎隐私政策</a></span></div>
+        <div class="ref-item"><span class="ref-label">常见问题</span><span class="ref-link"><a href="https://www.volcengine.com/docs/82379/1359411">常见问题</a></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="assets/feishu-deck.js"></script>
+</body>
+</html>

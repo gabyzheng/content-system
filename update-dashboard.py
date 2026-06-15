@@ -221,6 +221,32 @@ def main():
     print(f"\n✅ 已生成: {OUTPUT_FILE}")
     print(f"   大小: {len(html):,} bytes")
 
+    # StatiCrypt 加密
+    import subprocess, os, shutil
+    pwd = os.environ.get("STATICRYPT_PASSWORD", "")
+    if pwd:
+        print(f"\n🔐 正在加密...")
+        tmp_dir = BASE_DIR / "encrypted"
+        if tmp_dir.exists():
+            shutil.rmtree(str(tmp_dir))
+        result = subprocess.run(
+            ["npx", "staticrypt", str(OUTPUT_FILE), "-p", pwd, "-d", "encrypted", "--short"],
+            cwd=str(BASE_DIR),
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        enc_file = tmp_dir / OUTPUT_FILE.name
+        if result.returncode == 0 and enc_file.exists():
+            shutil.move(str(enc_file), str(OUTPUT_FILE))
+            shutil.rmtree(str(tmp_dir))
+            enc_size = OUTPUT_FILE.stat().st_size
+            print(f"🔒 已加密: {enc_size:,} bytes")
+        else:
+            print(f"⚠️  加密失败: {result.stderr}")
+    else:
+        print(f"\n⚠️  未设置 STATICRYPT_PASSWORD 环境变量，跳过加密")
+
 
 if __name__ == "__main__":
     main()

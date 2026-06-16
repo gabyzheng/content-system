@@ -412,7 +412,79 @@ image_with_caption   — 配图+说明
 
 ---
 
-## 八、总结
+## 八、Mira GPT Image 2 配图模式（新增）
+
+### 8.1 适用场景
+
+逐页 JSON 生成后，通过 Mira API 调用 GPT Image 2 严格按 JSON 的 `illustration_prompt` 逐页生成配图。
+
+### 8.2 技术参数
+
+| 项目 | 值 |
+|------|-----|
+| API 端点 | `https://mira.bytedance.com/mira/api/v1/chat/completion` |
+| 认证方式 | `mira_session` cookie（从浏览器 DevTools → Console → `document.cookie` 获取） |
+| 模型参数 | `summaryAgent: "gpt-image-2"` |
+| 输出分辨率 | 1672×941（16:9，固定值，不可调） |
+| 单张成本 | ~$0.013 |
+| 生成速度 | ~60s/张 |
+| 建议间隔 | 30s 以上，避免限流 |
+
+### 8.3 调用流程
+
+```
+1. 创建 Session
+   POST /mira/api/v1/chat/create
+   → 获取 sessionId
+
+2. 发送生图请求
+   POST /mira/api/v1/chat/completion
+   Body: {
+     "sessionId": "...",
+     "content": "{illustration_prompt 原文}",
+     "messageType": 1,
+     "summaryAgent": "gpt-image-2",
+     "dataSources": ["manus"],
+     "comprehensive": 1,
+     "config": {"online": false, "mode": "quick", "tool_list": []}
+   }
+   → SSE 流式返回，从 result 字段提取图片 URL
+
+3. 下载图片
+   GET {图片URL}（需带 mira_session cookie）
+   → 保存为 JPEG
+```
+
+### 8.4 与 Seedream 5.0 的对比
+
+| 维度 | Mira GPT Image 2 | Seedream 5.0 |
+|------|-----------------|--------------|
+| 分辨率 | 1672×941 | 2848×1600 (2K) |
+| 调用方式 | Mira API (cookie) | ARK API (API Key) |
+| 成本 | Mira 额度 | ARK 额度 |
+| 风格控制 | 英文 prompt 效果好 | 中英文均可 |
+| 适用场景 | PPT 单页配图（supporting visual） | 需要更高分辨率的场景 |
+
+### 8.5 批量生成脚本模板
+
+```python
+# 核心逻辑：逐页读取 JSON → 提取 illustration_prompt → 调 Mira API → 下载
+# 每页间隔 30s，支持断点续跑（已存在的文件跳过）
+# 完整脚本参考：阿迪达斯选题实际执行记录
+```
+
+### 8.6 注意事项
+
+- cookie 有效期有限，过期需重新从浏览器获取
+- GPT Image 2 不支持指定分辨率，1672×941 是固定输出
+- 图片 URL 含签名，有时效性，需及时下载
+- 批量生成建议分批次跑（每批 10-12 页），避免 OOM
+- 产出目录：`05-配图/mira-gpt-image2/`
+- 确认后复制到 `07-已发布/` 供最终使用
+
+---
+
+## 九、总结
 
 这套方法的本质是**把脑力花在刀刃上**：
 - 你的时间 → 判断、洞察、结构、表达

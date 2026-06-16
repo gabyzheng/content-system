@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "project": "阿迪达斯知识引擎投标方案",
+    "theme": "business_blue_consulting_wireframe",
+    "ratio": "16:9",
+    "resolution": "3840x2160",
+    "part": "2/3",
+    "style_rules": {
+      "background": "白色底色 #FFFFFF",
+      "primary_color": "蓝色 #2563EB",
+      "accent_color": "金色 #D4A843",
+      "text_color": "深灰 #1E293B",
+      "secondary_text": "中灰 #64748B",
+      "border_style": "细线框 1px",
+      "font_family": "PingFang SC, Noto Sans SC, sans-serif"
+    }
+  },
+  "pages": [
+    {
+      "page": 7,
+      "layout": "content_2col",
+      "title": "痛点 4：PEP 生成效率低",
+      "subtitle": "PEP 不是设计问题，是知识工程问题",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "现状描述",
+          "items": [
+            {"label": "自动化率", "text": "不足 10%，制作仍停留在铺人阶段"},
+            {"label": "生产方式", "text": "信息组装靠人工，从各系统取数再手动拼接"},
+            {"label": "高频需求", "text": "难以应对高频次的集中制作需求（换季/大促）"},
+            {"label": "人力瓶颈", "text": "人力无法弹性伸缩，旺季积压严重"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "根因分析",
+          "items": [
+            {"label": "信息未结构化", "text": "商品信息散落在各系统，未形成结构化知识"},
+            {"label": "模板与数据分离", "text": "PEP 模板与商品数据分离，无法自动组装"},
+            {"label": "缺乏自动化", "text": "缺乏从知识到内容的自动化生成能力"},
+            {"label": "规模不经济", "text": "每增加一个 SKU，人力成本线性增长"}
+          ]
+        },
+        {
+          "type": "bottom_quote",
+          "content": "PEP 不是设计问题，是知识工程问题。",
+          "style": "gold-accent"
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left: current state with <10% stat highlighted in red. Right: root cause analysis showing '各系统取数 → 人工拼接 → PEP' workflow with pain points. Bottom: gold quote. 16:9, 3840x2160."
+    },
+    {
+      "page": 8,
+      "layout": "strategic_house_diagram",
+      "title": "知识引擎 · EC 知识赋能方案",
+      "subtitle": "四层架构 × 四大痛点 一一对应",
+      "sections": [
+        {
+          "type": "house_diagram",
+          "layers": [
+            {
+              "name": "AI 应用层",
+              "color": "gold",
+              "items": ["USP 智能生成", "PEP 智能生成", "智能问答", "规则校验"],
+              "mapping": "→ 痛点 3、4"
+            },
+            {
+              "name": "知识运营层",
+              "color": "blue_light",
+              "items": ["版本管理", "有效期配置", "生命周期管理", "周期更新提醒"],
+              "mapping": "→ 持续运营"
+            },
+            {
+              "name": "知识管理层",
+              "color": "blue",
+              "items": ["分类打标", "标签体系", "质量检测", "统一检索"],
+              "mapping": "→ 痛点 1、2"
+            },
+            {
+              "name": "知识入库层",
+              "color": "blue_dark",
+              "items": ["多源接入", "格式兼容", "批量导入", "API 对接"],
+              "mapping": "→ 痛点 1"
+            }
+          ],
+          "foundation": {
+            "name": "知识运营 SOP 贯穿全流程",
+            "color": "gray"
+          }
+        },
+        {
+          "type": "side_annotation",
+          "content": "每一层对应解决特定痛点，四层协同形成完整闭环",
+          "position": "right"
+        }
+      ],
+      "illustration_prompt": "Strategic house diagram in consulting style. White background. A four-layer house structure: top gold layer 'AI 应用层', then light blue '知识运营层', blue '知识管理层', dark blue '知识入库层'. Each layer shows 4 capability items. Right side: annotation connecting layers to pain points. Bottom foundation: '知识运营 SOP 贯穿全流程'. Clean wireframe borders, 16:9, 3840x2160."
+    },
+    {
+      "page": 9,
+      "layout": "content_2col",
+      "title": "能力详解：知识入库与管理",
+      "subtitle": "从分散到统一——覆盖痛点 1 + 痛点 2",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "知识入库",
+          "items": [
+            {"label": "多源接入", "text": "邮件、文档、业务系统、检测报告统一接入"},
+            {"label": "格式兼容", "text": "PDF / Word / Excel / 图片 / 数据库"},
+            {"label": "批量导入", "text": "支持历史数据一次性迁移"},
+            {"label": "API 对接", "text": "与现有系统无缝集成，不替代现有系统"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "知识管理",
+          "items": [
+            {"label": "分类打标", "text": "按品类/季节/功能多维度分类"},
+            {"label": "标签体系", "text": "自动提取功能词、属性词，建立标准化词表"},
+            {"label": "质量检测", "text": "错别字/重复/截断/字段校验四重保障"},
+            {"label": "统一检索", "text": "关键词 + 语义 + 条件筛选，秒级响应"}
+          ]
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left: '知识入库' with 4 capability cards showing data sources flowing into a central knowledge base icon. Right: '知识管理' with 4 capability cards. Arrows connecting left to right showing the flow from ingestion to management. Clean wireframe style, 16:9, 3840x2160."
+    },
+    {
+      "page": 10,
+      "layout": "content_2col",
+      "title": "能力详解：质量保障与规则引擎",
+      "subtitle": "从人工到自动——10+ 字段校验规则，一次配置持续生效",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "质量检测能力",
+          "items": [
+            {"label": "错别字检测", "text": "入库前自动扫描，拦截拼写错误"},
+            {"label": "重复检测", "text": "避免知识冗余，保持知识库清洁"},
+            {"label": "截断检测", "text": "确保内容完整性，防止信息丢失"},
+            {"label": "字段校验", "text": "格式/取值范围/跨字段逻辑一致性检查"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "规则引擎",
+          "items": [
+            {"label": "字段规范规则化", "text": "将 10+ 字段的格式要求沉淀为可执行规则"},
+            {"label": "自动校验", "text": "Model Name、Division、Brand-OC 等字段自动校验"},
+            {"label": "跨字段约束", "text": "Gender ↔ Category、Material ↔ Division 等关联检查"},
+            {"label": "入库前拦截", "text": "错误在入库前拦截，而非发布后修复"}
+          ]
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left: 4 quality check items with checkmark icons in green. Right: rule engine showing a flowchart: '字段规范 → 规则配置 → 自动校验 → 入库前拦截'. A visual highlight: '10+ 字段' in large blue number. Clean wireframe, 16:9, 3840x2160."
+    },
+    {
+      "page": 11,
+      "layout": "content_2col",
+      "title": "能力详解：AI 智能生成",
+      "subtitle": "从人工到智能——USP 0% → 分钟级 | PEP <10% → 70%+",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "USP 智能生成",
+          "items": [
+            {"label": "卖点库结构化", "text": "品类卖点维度（材质/功能/设计/场景）标准化入库"},
+            {"label": "必填约束", "text": "每个品类必填卖点维度作为生成约束条件"},
+            {"label": "合规自动过审", "text": "禁用词库 + 广告法规则自动校验"},
+            {"label": "分钟级输出", "text": "输入商品主档 → 分钟级输出 USP 文案"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "PEP 智能生成",
+          "items": [
+            {"label": "统一接入", "text": "模板 + 主档 + USP + 视觉素材统一接入知识引擎"},
+            {"label": "自动组装", "text": "AI 自动取数、组装、生成详情页"},
+            {"label": "批量生成", "text": "按品类/季节/活动批量生成 PEP"},
+            {"label": "模板管理", "text": "模板统一管理、一键更新，确保品牌一致性"}
+          ]
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left: USP generation flow showing '商品主档 → 知识引擎 → USP文案' with key stats (0% → 分钟级). Right: PEP generation flow showing '模板+主档+USP+素材 → 知识引擎 → PEP详情页' with key stats (<10% → 70%+). Gold highlight on the transformation numbers. 16:9, 3840x2160."
+    },
+    {
+      "page": 12,
+      "layout": "content_2col",
+      "title": "能力详解：知识运营 SOP",
+      "subtitle": "从一次性到可持续——知识不是一次性导入，而是持续运营的资产",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "运营能力",
+          "items": [
+            {"label": "版本日志", "text": "每次知识变更完整记录，可追溯、可回滚"},
+            {"label": "有效期配置", "text": "设置知识有效期，过期自动下线提醒"},
+            {"label": "生命周期管理", "text": "创建 → 发布 → 更新 → 归档，全流程管理"},
+            {"label": "周期更新提醒", "text": "避免知识过期，确保知识库时效性"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "运营价值",
+          "items": [
+            {"label": "质量持续保障", "text": "不是一次性清洗，而是持续的质量管理"},
+            {"label": "错误快速回滚", "text": "版本管理确保错误可快速恢复"},
+            {"label": "合规审计可追溯", "text": "完整的变更日志满足合规审计要求"},
+            {"label": "知识资产沉淀", "text": "每一次运营都是知识资产的积累和增值"}
+          ]
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left: 4 operational capability cards with lifecycle icons. Right: 4 value cards. Center: a circular diagram showing '创建 → 发布 → 更新 → 归档' lifecycle. Bottom: gold quote '知识不是一次性导入，而是持续运营的资产'. 16:9, 3840x2160."
+    }
+  ]
+}

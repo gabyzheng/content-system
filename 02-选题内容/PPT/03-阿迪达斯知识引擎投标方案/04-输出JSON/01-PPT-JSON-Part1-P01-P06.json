@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "project": "阿迪达斯知识引擎投标方案",
+    "theme": "business_blue_consulting_wireframe",
+    "ratio": "16:9",
+    "resolution": "3840x2160",
+    "total_pages": 18,
+    "target_audience": "IT决策者 + 业务负责人",
+    "style_rules": {
+      "background": "白色底色 #FFFFFF",
+      "primary_color": "蓝色 #2563EB",
+      "accent_color": "金色 #D4A843",
+      "text_color": "深灰 #1E293B",
+      "secondary_text": "中灰 #64748B",
+      "border_style": "细线框 1px",
+      "font_family": "PingFang SC, Noto Sans SC, sans-serif",
+      "chart_style": "蓝色线框咨询风，金色数据高亮",
+      "decorative": "蓝色细线几何装饰，金色强调色块"
+    }
+  },
+  "pages": [
+    {
+      "page": 1,
+      "layout": "cover",
+      "title": "知识引擎 · 驱动品牌知识智能化",
+      "subtitle": "阿迪达斯 EC 团队知识赋能方案",
+      "sections": [
+        {
+          "type": "tag",
+          "content": "火山引擎 · 知识引擎",
+          "position": "top-left"
+        },
+        {
+          "type": "main_title",
+          "content": "知识引擎",
+          "size": "72px",
+          "weight": "bold"
+        },
+        {
+          "type": "main_title",
+          "content": "驱动品牌知识智能化",
+          "size": "56px",
+          "weight": "regular"
+        },
+        {
+          "type": "subtitle",
+          "content": "阿迪达斯 EC 团队知识赋能方案",
+          "size": "24px"
+        },
+        {
+          "type": "footer",
+          "content": "火山引擎 · 东区 SA 团队 · 2026.06",
+          "position": "bottom-center"
+        }
+      ],
+      "illustration_prompt": "Clean consulting-style cover slide with white background. Top-left: small blue tag '火山引擎 · 知识引擎'. Center: large bold title '知识引擎' in deep gray, below it '驱动品牌知识智能化' in slightly smaller font. Below: subtitle '阿迪达斯 EC 团队知识赋能方案' in medium gray. Bottom: thin blue horizontal line, below it '火山引擎 · 东区 SA 团队 · 2026.06'. A subtle geometric blue wireframe pattern in the background, minimal and professional. 16:9, 3840x2160, white background with blue and gold accents."
+    },
+    {
+      "page": 2,
+      "layout": "big_stat",
+      "title": "核心主张",
+      "subtitle": "EC 团队不缺知识，缺的是让知识「找得到、用得对、产得快」的能力",
+      "sections": [
+        {
+          "type": "quote",
+          "content": "EC 团队不缺知识，缺的是让知识「找得到、用得对、产得快」的能力。",
+          "size": "32px",
+          "style": "gold-accent-left-border"
+        },
+        {
+          "type": "stat_grid",
+          "columns": 3,
+          "items": [
+            {
+              "number": "0%",
+              "label": "USP 文案自动化率",
+              "target": "目标：分钟级生成",
+              "color": "red"
+            },
+            {
+              "number": "<10%",
+              "label": "PEP 自动化率",
+              "target": "目标：70%+",
+              "color": "red"
+            },
+            {
+              "number": "10+",
+              "label": "主档字段人工校验",
+              "target": "目标：系统自动",
+              "color": "red"
+            }
+          ]
+        },
+        {
+          "type": "bottom_text",
+          "content": "知识引擎 = 统一知识底座 + 质量保障 + AI 智能应用",
+          "style": "blue-box"
+        }
+      ],
+      "illustration_prompt": "Consulting-style slide with white background. Top: page title '核心主张' in blue. Center: a large quote box with gold left border, containing the quote text in deep gray. Below: three stat cards in a row, each showing a large red number (0%, <10%, 10+), a label below, and a target in green. Bottom: a blue rounded box with formula text. Clean wireframe style, 16:9, 3840x2160."
+    },
+    {
+      "page": 3,
+      "layout": "content_3up",
+      "title": "EC 团队四大核心痛点",
+      "subtitle": "四大痛点指向同一个根因——缺乏统一的知识底座",
+      "sections": [
+        {
+          "type": "card_grid",
+          "columns": 4,
+          "items": [
+            {
+              "icon": "分散",
+              "title": "知识分散",
+              "bullets": ["信息散落邮件/文档/系统", "检测报告无快速查询", "功能词表人工排查", "源头信息无法对齐"]
+            },
+            {
+              "icon": "繁琐",
+              "title": "主档繁琐",
+              "bullets": ["10+字段人工校对", "流程标准化极低", "错误快速扩散全平台", "制约上新速度"]
+            },
+            {
+              "icon": "低效",
+              "title": "USP 靠人",
+              "bullets": ["自动化率 0%", "2小时/个耗时", "卖点遗漏风险", "客诉风险"]
+            },
+            {
+              "icon": "瓶颈",
+              "title": "PEP 低效",
+              "bullets": ["自动化率 <10%", "停留在铺人阶段", "高频集中制作难应对", "信息组装靠人工"]
+            }
+          ]
+        },
+        {
+          "type": "bottom_annotation",
+          "content": "四大痛点指向同一个根因——缺乏统一的知识底座",
+          "style": "gold-highlight"
+        }
+      ],
+      "illustration_prompt": "Consulting-style slide with white background. Title 'EC 团队四大核心痛点' at top. Four vertical cards in a row, each with a blue wireframe border, an icon label at top, a bold title, and 4 bullet points below. Each card has a subtle red accent at top indicating pain point severity. Bottom: a gold-highlighted annotation text. Clean, minimal, 16:9, 3840x2160."
+    },
+    {
+      "page": 4,
+      "layout": "content_2col",
+      "title": "痛点 1：产品资料分散，缺少统一数据源",
+      "subtitle": "信息不是不够，是找不到、对不齐、用不上",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "现状描述",
+          "items": [
+            {"label": "信息分散", "text": "各 Team 关键产品信息分散在邮件、本地文档、各系统中"},
+            {"label": "检测报告", "text": "无快速查询窗口，靠单文件存储查看"},
+            {"label": "功能词表", "text": "靠人工逐一排查，效率低"},
+            {"label": "源头对齐", "text": "源头信息无法完全对齐，系统自动化不够"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "根因分析",
+          "items": [
+            {"label": "无统一入口", "text": "知识散落在多个系统中，缺乏统一的知识入口"},
+            {"label": "未结构化", "text": "知识以文档形式存在，未进行结构化处理"},
+            {"label": "无自动检索", "text": "缺乏自动化检索能力，信息查找靠人"},
+            {"label": "人效瓶颈", "text": "信息传递靠人，效率成为瓶颈"}
+          ]
+        },
+        {
+          "type": "bottom_quote",
+          "content": "信息不是不够，是找不到、对不齐、用不上。",
+          "style": "gold-accent"
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide with white background. Left column: '现状描述' header with 4 items, each with a blue label and gray description text. Right column: '根因分析' header with 4 items in same format. A vertical divider line between columns. Bottom: gold-accented quote text. Clean wireframe borders, 16:9, 3840x2160."
+    },
+    {
+      "page": 5,
+      "layout": "content_2col",
+      "title": "痛点 2：主档信息检查繁琐",
+      "subtitle": "一个字段的错误，全平台可见。拦截在入库前，而不是发布后。",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "现状描述",
+          "items": [
+            {"label": "字段数量", "text": "Model Name、Division、Brand-OC、Category Update、Description in Chinese、Colour-OC、Colour in Chinese、Local Product Type、Gender Update、Material_CN、材质-鞋面等 10+ 字段"},
+            {"label": "操作方式", "text": "人工手动创建 + 逐条校对"},
+            {"label": "流程标准化", "text": "标准化程度极低"},
+            {"label": "错误影响", "text": "错误通过 PID 快速同步至全平台，造成大范围影响"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "影响分析",
+          "items": [
+            {"label": "效率", "text": "10+ 字段逐条人工核对，耗时且易疲劳出错"},
+            {"label": "质量", "text": "人工审核极易出现信息错漏"},
+            {"label": "扩散", "text": "错误扩散范围大、修复成本高"},
+            {"label": "业务", "text": "制约上新速度和数据质量，影响消费者体验"}
+          ]
+        },
+        {
+          "type": "bottom_quote",
+          "content": "一个字段的错误，全平台可见。拦截在入库前，而不是发布后。",
+          "style": "gold-accent"
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left column shows the 10+ field names in a structured list with blue labels. Right column shows impact analysis with 4 items. A visual element: a small diagram showing '人工校对 → 错误 → PID同步 → 全平台扩散' with red arrows. Bottom: gold quote. 16:9, 3840x2160."
+    },
+    {
+      "page": 6,
+      "layout": "content_2col",
+      "title": "痛点 3：USP 规则复杂，依赖人工",
+      "subtitle": "2 小时一个 USP，不是写得慢，是知识没到位",
+      "sections": [
+        {
+          "type": "left_column",
+          "header": "现状描述",
+          "items": [
+            {"label": "自动化率", "text": "文案自动化率 0%，完全依赖人工撰写"},
+            {"label": "耗时", "text": "USP 文案撰写耗时 2 小时/个，需大量人力"},
+            {"label": "卖点遗漏", "text": "缺乏标准化卖点维度，容易遗漏关键卖点"},
+            {"label": "客诉风险", "text": "文案描述不对导致客诉风险"}
+          ]
+        },
+        {
+          "type": "right_column",
+          "header": "根因分析",
+          "items": [
+            {"label": "规则未结构化", "text": "USP 规则散落在人脑中，未形成结构化知识"},
+            {"label": "维度未标准化", "text": "品类卖点维度（材质/功能/设计/场景）未标准化"},
+            {"label": "合规未系统化", "text": "禁用词、夸大宣传规则未系统化管理"},
+            {"label": "依赖个人经验", "text": "文案质量完全取决于个人能力和经验"}
+          ]
+        },
+        {
+          "type": "bottom_quote",
+          "content": "2 小时一个 USP，不是写得慢，是知识没到位。",
+          "style": "gold-accent"
+        }
+      ],
+      "illustration_prompt": "Consulting-style two-column slide. Left: current state with red 0% stat highlighted. Right: root cause analysis. A visual showing '人脑中的规则 → 结构化知识库' transformation. Bottom: gold quote. 16:9, 3840x2160."
+    }
+  ]
+}

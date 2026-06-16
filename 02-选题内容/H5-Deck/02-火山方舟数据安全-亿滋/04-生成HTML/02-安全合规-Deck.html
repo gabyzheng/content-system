@@ -269,7 +269,6 @@ function prevSlide(){show(current-1);}
 function toggleFS(){if(document.fullscreenElement){document.exitFullscreen();}else{document.documentElement.requestFullscreen();}}
 window.addEventListener('resize',function(){clearTimeout(window._rt);window._rt=setTimeout(scaleAll,100);});
 document.addEventListener('fullscreenchange',function(){setTimeout(scaleAll,150);});
-document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'){nextSlide();}else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){prevSlide();}else if(e.key==='f'||e.key==='F'){toggleFS();}});
 scaleAll();
 </script>
 </body>

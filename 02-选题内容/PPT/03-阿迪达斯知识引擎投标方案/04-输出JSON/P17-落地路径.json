@@ -1,0 +1,18 @@
+{
+  "page": 17,
+  "layout": "timeline_phases",
+  "title": "一期落地路径",
+  "subtitle": "整体周期约 14-20 周，可根据实际需求调整节奏",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "phase_timeline", "phases": [
+      {"name": "Phase 1：知识底座搭建", "duration": "4-6 周", "color": "blue", "tasks": ["系统对接", "知识入库", "分类打标配置", "历史数据迁移", "PDF 智能解析"], "deliverable": "EC 团队统一知识底座上线"},
+      {"name": "Phase 2：质量体系建立", "duration": "4-6 周", "color": "blue_light", "tasks": ["主档校验规则配置", "质量检测流程部署", "规则引擎上线", "运营 SOP 建立"], "deliverable": "10+ 字段自动校验 + 质量门禁"},
+      {"name": "Phase 3：AI 应用上线", "duration": "6-8 周", "color": "gold", "tasks": ["USP 智能生成上线", "PEP 智能生成上线", "自动对比上线", "统一检索门户", "持续优化迭代"], "deliverable": "USP 分钟级 + PEP 70%+ + 商品自动对比"}
+    ]},
+    {"type": "bottom_note", "content": "三阶段递进：先建底座 → 再建质量 → 最后释放 AI 价值。每阶段可独立验收、独立交付价值。"}
+  ],
+  "illustration_prompt": "Three-phase horizontal timeline in consulting style. White background. Phase 1 (blue, 4-6周), Phase 2 (light blue, 4-6周), Phase 3 (gold, 6-8周). Each shows tasks and deliverable. Arrows between phases. Bottom: summary note. Clean wireframe, 16:9, 3840x2160."
+}

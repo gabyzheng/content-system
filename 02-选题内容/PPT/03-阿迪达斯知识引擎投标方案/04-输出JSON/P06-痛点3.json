@@ -1,0 +1,26 @@
+{
+  "page": 6,
+  "layout": "content_2col",
+  "title": "痛点 3：USP 规则复杂，依赖人工",
+  "subtitle": "2 小时一个 USP，不是写得慢，是知识没到位",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "现状描述", "items": [
+      {"label": "自动化率", "text": "文案自动化率 0%，完全依赖人工撰写"},
+      {"label": "耗时", "text": "USP 文案撰写耗时 2 小时/个，需大量人力"},
+      {"label": "卖点遗漏", "text": "缺乏标准化卖点维度，容易遗漏关键卖点"},
+      {"label": "客诉风险", "text": "文案描述不对导致客诉风险"}
+    ]},
+    {"type": "right_column", "header": "根因分析", "items": [
+      {"label": "规则未结构化", "text": "USP 规则散落在 Excel 和 PPT 中，未形成结构化知识"},
+      {"label": "维度未标准化", "text": "品类卖点维度（材质/功能/设计/场景）未标准化"},
+      {"label": "合规未系统化", "text": "禁用词、夸大宣传规则未系统化管理"},
+      {"label": "依赖个人经验", "text": "文案质量完全取决于个人能力和经验"}
+    ]},
+    {"type": "bottom_quote", "content": "2 小时一个 USP，不是写得慢，是知识没到位。", "style": "gold-accent"},
+    {"type": "image", "path": "05-配图/痛点3-USP规则复杂-v2.png", "position": "center-right"}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: current state with red 0% stat. Right: root cause analysis. Center-right: supporting illustration showing Excel/PPT rules chaos. Bottom: gold quote. 16:9, 3840x2160."
+}

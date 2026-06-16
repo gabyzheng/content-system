@@ -1,0 +1,19 @@
+{
+  "page": 16,
+  "layout": "matrix_table",
+  "title": "品牌延展场景详解",
+  "subtitle": "四阶段延展场景与价值——知识资产持续复用",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "table", "columns": ["阶段", "覆盖范围", "核心场景", "知识引擎价值"], "rows": [
+      {"phase": "一期", "scope": "EC 团队", "scenarios": "主档校验 · USP 生成 · PEP 生成 · 检测报告检索 · 商品对比", "value": "知识底座 + 质量保障 + AI 生成 + 自动对比"},
+      {"phase": "二期", "scope": "产品企划 & 供应链", "scenarios": "产品规格管理 · 材质标准库 · 供应商合规审核", "value": "标准化知识库 + 规则引擎 + 合规校验"},
+      {"phase": "三期", "scope": "零售 & 营销", "scenarios": "门店培训话术 · 活动方案复用 · 消费者反馈分析", "value": "知识沉淀 + 智能推荐 + 经验复用"},
+      {"phase": "四期", "scope": "品牌全域", "scenarios": "品牌资产统一管理 · 全球合规协同 · 跨区域最佳实践共享", "value": "全域知识底座 + 多语言 + 跨组织协同"}
+    ], "style": "blue-wireframe-header"},
+    {"type": "annotation", "content": "一期聚焦 EC 团队核心痛点，建立知识底座；后续阶段基于已有知识资产逐步扩展", "style": "gold-note"}
+  ],
+  "illustration_prompt": "Matrix table in consulting style. White background. 4-row table with blue wireframe borders. Columns: 阶段, 覆盖范围, 核心场景, 知识引擎价值. Each row has phase color indicator. Gold annotation box at bottom. Clean, 16:9, 3840x2160."
+}

@@ -1,0 +1,23 @@
+{
+  "page": 19,
+  "layout": "big_stat_grid",
+  "title": "客户价值量化",
+  "subtitle": "不是替代人，是让人从重复劳动中解放出来，做更有价值的事",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "stat_grid", "columns": 4, "rows": 2, "items": [
+      {"metric": "USP 生成效率", "current": "2 小时/个", "target": "分钟级", "color": "gold"},
+      {"metric": "PEP 自动化率", "current": "<10%", "target": "70%+", "color": "gold"},
+      {"metric": "主档校验方式", "current": "人工逐条", "target": "系统自动", "color": "gold"},
+      {"metric": "商品对比方式", "current": "100% 人工计算", "target": "自动提取+规则对比", "color": "gold"},
+      {"metric": "检测报告查询", "current": "单文件翻找", "target": "关键词秒级检索", "color": "blue"},
+      {"metric": "功能词表维护", "current": "人工逐一排查", "target": "自动提取+标准化", "color": "blue"},
+      {"metric": "知识错误扩散", "current": "发布后才发现", "target": "入库前拦截", "color": "blue"},
+      {"metric": "质检报告解析", "current": "PDF 人工阅读", "target": "智能解析结构化", "color": "blue"}
+    ]},
+    {"type": "bottom_quote", "content": "不是替代人，是让人从重复劳动中解放出来，做更有价值的事。", "style": "gold-accent-large"}
+  ],
+  "illustration_prompt": "Big stat grid in consulting style. White background. 4x2 grid of metric cards, each showing: metric name, current state (red/gray), arrow, target state (green/gold). Gold accent on top row. Bottom: large gold quote. Clean wireframe, 16:9, 3840x2160."
+}

@@ -1,0 +1,24 @@
+{
+  "page": 11,
+  "layout": "content_2col",
+  "title": "能力详解：质量保障与规则引擎",
+  "subtitle": "从人工到自动——10+ 字段校验规则，一次配置持续生效",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "质量检测能力", "items": [
+      {"label": "错别字检测", "text": "入库前自动扫描，拦截拼写错误"},
+      {"label": "重复检测", "text": "避免知识冗余，保持知识库清洁"},
+      {"label": "截断检测", "text": "确保内容完整性，防止信息丢失"},
+      {"label": "字段校验", "text": "格式/取值范围/跨字段逻辑一致性检查"}
+    ]},
+    {"type": "right_column", "header": "规则引擎", "items": [
+      {"label": "字段规范规则化", "text": "将 10+ 字段的格式要求沉淀为可执行规则"},
+      {"label": "自动校验", "text": "Model Name、Division、Brand-OC 等字段自动校验"},
+      {"label": "跨字段约束", "text": "Gender ↔ Category、Material ↔ Division 等关联检查"},
+      {"label": "入库前拦截", "text": "错误在入库前拦截，而非发布后修复"}
+    ]}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: 4 quality check items with green checkmarks. Right: rule engine flowchart. Highlight '10+ 字段' in large blue number. Clean wireframe, 16:9, 3840x2160."
+}

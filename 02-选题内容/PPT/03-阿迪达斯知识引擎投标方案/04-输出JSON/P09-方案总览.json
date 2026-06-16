@@ -1,0 +1,19 @@
+{
+  "page": 9,
+  "layout": "strategic_house_diagram",
+  "title": "知识引擎 · EC 知识赋能方案",
+  "subtitle": "四层架构 × 五大痛点 一一对应",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "house_diagram", "layers": [
+      {"name": "AI 应用层", "color": "gold", "items": ["USP 智能生成", "PEP 智能生成", "智能问答", "规则校验", "自动对比"], "mapping": "→ 痛点 3、4、5"},
+      {"name": "知识运营层", "color": "blue_light", "items": ["版本管理", "有效期配置", "生命周期管理", "周期更新提醒"], "mapping": "→ 持续运营"},
+      {"name": "知识管理层", "color": "blue", "items": ["分类打标", "标签体系", "质量检测", "统一检索"], "mapping": "→ 痛点 1、2"},
+      {"name": "知识入库层", "color": "blue_dark", "items": ["多源接入", "格式兼容", "批量导入", "智能解析", "API 对接"], "mapping": "→ 痛点 1、5"}
+    ], "foundation": {"name": "知识运营 SOP 贯穿全流程", "color": "gray"}},
+    {"type": "side_annotation", "content": "每一层对应解决特定痛点，四层协同形成完整闭环", "position": "right"}
+  ],
+  "illustration_prompt": "Strategic house diagram in consulting style. White background. Four-layer house: top gold 'AI 应用层', light blue '知识运营层', blue '知识管理层', dark blue '知识入库层'. Each layer shows capability items. Right: annotation connecting layers to pain points. Bottom foundation: '知识运营 SOP 贯穿全流程'. Clean wireframe, 16:9, 3840x2160."
+}

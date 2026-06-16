@@ -1,0 +1,24 @@
+{
+  "page": 10,
+  "layout": "content_2col",
+  "title": "能力详解：知识入库与管理",
+  "subtitle": "从分散到统一——覆盖痛点 1 + 痛点 2",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "知识入库", "items": [
+      {"label": "多源接入", "text": "邮件、文档、业务系统、检测报告统一接入"},
+      {"label": "格式兼容", "text": "PDF / Word / Excel / 图片 / 数据库"},
+      {"label": "批量导入", "text": "支持历史数据一次性迁移"},
+      {"label": "API 对接", "text": "与现有系统无缝集成，不替代现有系统"}
+    ]},
+    {"type": "right_column", "header": "知识管理", "items": [
+      {"label": "分类打标", "text": "按品类/季节/功能多维度分类"},
+      {"label": "标签体系", "text": "自动提取功能词、属性词，建立标准化词表"},
+      {"label": "质量检测", "text": "错别字/重复/截断/字段校验四重保障"},
+      {"label": "统一检索", "text": "关键词 + 语义 + 条件筛选，秒级响应"}
+    ]}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: 知识入库 with 4 capability cards. Right: 知识管理 with 4 capability cards. Arrows connecting left to right showing flow. Clean wireframe, 16:9, 3840x2160."
+}

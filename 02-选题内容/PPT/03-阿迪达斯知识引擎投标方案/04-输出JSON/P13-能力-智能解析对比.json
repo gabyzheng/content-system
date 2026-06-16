@@ -1,0 +1,24 @@
+{
+  "page": 13,
+  "layout": "content_2col",
+  "title": "能力详解：智能解析与自动对比",
+  "subtitle": "从人算到机算——100% 人工逐条计算 → 自动提取 + 规则对比",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "智能解析", "items": [
+      {"label": "PDF 自动解析", "text": "质检报告 PDF 入库时自动解析，提取结构化字段"},
+      {"label": "参数提取", "text": "自动提取功能参数、检测值、标准值"},
+      {"label": "自动分类", "text": "按检测方向（物理性能/化学成分/安全标准）自动分类"},
+      {"label": "标签体系", "text": "建立统一的功能参数标签体系，跨报告可对比"}
+    ]},
+    {"type": "right_column", "header": "自动对比", "items": [
+      {"label": "对比逻辑规则化", "text": "将「功能参数提升是否符合描述」的对比逻辑规则化"},
+      {"label": "自动计算差异", "text": "系统自动计算并标记参数差异"},
+      {"label": "SKU 关联", "text": "质检报告与商品主档通过 SKU/产品 ID 关联"},
+      {"label": "结果复用", "text": "历史对比结果自动归档，同类产品复用对比模板"}
+    ]}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: PDF → structured data extraction flow. Right: automatic comparison engine with product A vs B parameter diff. Gold highlight on '100% 人工 → 自动'. Clean wireframe, 16:9, 3840x2160."
+}

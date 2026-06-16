@@ -1,0 +1,26 @@
+{
+  "page": 5,
+  "layout": "content_2col",
+  "title": "痛点 2：主档信息检查繁琐",
+  "subtitle": "一个字段的错误，全平台可见。拦截在入库前，而不是发布后。",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "现状描述", "items": [
+      {"label": "字段数量", "text": "Model Name、Division、Brand-OC、Category Update、Description in Chinese、Colour-OC、Colour in Chinese、Local Product Type、Gender Update、Material_CN、材质-鞋面等 10+ 字段"},
+      {"label": "操作方式", "text": "人工手动创建 + 逐条校对"},
+      {"label": "流程标准化", "text": "标准化程度极低"},
+      {"label": "错误影响", "text": "错误通过 PID 快速同步至全平台，造成大范围影响"}
+    ]},
+    {"type": "right_column", "header": "影响分析", "items": [
+      {"label": "效率", "text": "10+ 字段逐条人工核对，耗时且易疲劳出错"},
+      {"label": "质量", "text": "人工审核极易出现信息错漏"},
+      {"label": "扩散", "text": "错误扩散范围大、修复成本高"},
+      {"label": "业务", "text": "制约上新速度和数据质量，影响消费者体验"}
+    ]},
+    {"type": "bottom_quote", "content": "一个字段的错误，全平台可见。拦截在入库前，而不是发布后。", "style": "gold-accent"},
+    {"type": "image", "path": "05-配图/痛点2-主档信息检查繁琐-v2.png", "position": "center-right"}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: 10+ field names in structured list. Right: impact analysis with 4 items. Center-right: supporting illustration showing manual field checking. Bottom: gold quote. 16:9, 3840x2160."
+}

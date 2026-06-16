@@ -1,0 +1,21 @@
+{
+  "page": 2,
+  "layout": "big_stat",
+  "title": "核心主张",
+  "subtitle": "EC 团队不缺知识，缺的是让知识「找得到、用得对、产得快、比得准」的能力",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "quote", "content": "EC 团队不缺知识，缺的是让知识「找得到、用得对、产得快、比得准」的能力。", "size": "32px", "style": "gold-accent-left-border"},
+    {"type": "stat_grid", "columns": 5, "items": [
+      {"number": "0%", "label": "USP 自动化率", "target": "→ 分钟级", "color": "red"},
+      {"number": "<10%", "label": "PEP 自动化率", "target": "→ 70%+", "color": "red"},
+      {"number": "10+", "label": "主档人工校验", "target": "→ 系统自动", "color": "red"},
+      {"number": "100%", "label": "商品对比人工", "target": "→ 自动对比", "color": "red"},
+      {"number": "PDF", "label": "质检报告锁死", "target": "→ 结构化解析", "color": "red"}
+    ]},
+    {"type": "bottom_text", "content": "知识引擎 = 统一知识底座 + 质量保障 + AI 智能应用 + 自动对比", "style": "blue-box"}
+  ],
+  "illustration_prompt": "Consulting-style slide with white background. Top: page title '核心主张' in blue. Center: a large quote box with gold left border. Below: five stat cards in a row, each showing a large red number, a label, and a green target. Bottom: a blue rounded box with formula text. Clean wireframe style, 16:9, 3840x2160."
+}

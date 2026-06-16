@@ -1,0 +1,24 @@
+{
+  "page": 14,
+  "layout": "content_2col",
+  "title": "能力详解：知识运营 SOP",
+  "subtitle": "从一次性到可持续——知识不是一次性导入，而是持续运营的资产",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "运营能力", "items": [
+      {"label": "版本日志", "text": "每次知识变更完整记录，可追溯、可回滚"},
+      {"label": "有效期配置", "text": "设置知识有效期，过期自动下线提醒"},
+      {"label": "生命周期管理", "text": "创建 → 发布 → 更新 → 归档，全流程管理"},
+      {"label": "周期更新提醒", "text": "避免知识过期，确保知识库时效性"}
+    ]},
+    {"type": "right_column", "header": "运营价值", "items": [
+      {"label": "质量持续保障", "text": "不是一次性清洗，而是持续的质量管理"},
+      {"label": "错误快速回滚", "text": "版本管理确保错误可快速恢复"},
+      {"label": "合规审计可追溯", "text": "完整的变更日志满足合规审计要求"},
+      {"label": "知识资产沉淀", "text": "每一次运营都是知识资产的积累和增值"}
+    ]}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: 4 operational capability cards. Right: 4 value cards. Center: circular lifecycle diagram. Bottom: gold quote. 16:9, 3840x2160."
+}

@@ -1,0 +1,24 @@
+{
+  "page": 12,
+  "layout": "content_2col",
+  "title": "能力详解：AI 智能生成",
+  "subtitle": "从人工到智能——USP 0% → 分钟级 | PEP <10% → 70%+",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "USP 智能生成", "items": [
+      {"label": "卖点库结构化", "text": "品类卖点维度（材质/功能/设计/场景）标准化入库"},
+      {"label": "必填约束", "text": "每个品类必填卖点维度作为生成约束条件"},
+      {"label": "合规自动过审", "text": "禁用词库 + 广告法规则自动校验"},
+      {"label": "分钟级输出", "text": "输入商品主档 → 分钟级输出 USP 文案"}
+    ]},
+    {"type": "right_column", "header": "PEP 智能生成", "items": [
+      {"label": "统一接入", "text": "模板 + 主档 + USP + 视觉素材统一接入知识引擎"},
+      {"label": "自动组装", "text": "AI 自动取数、组装、生成详情页"},
+      {"label": "批量生成", "text": "按品类/季节/活动批量生成 PEP"},
+      {"label": "模板管理", "text": "模板统一管理、一键更新，确保品牌一致性"}
+    ]}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: USP flow '商品主档 → 知识引擎 → USP文案' with 0%→分钟级. Right: PEP flow '模板+数据 → 知识引擎 → PEP' with <10%→70%+. Gold highlight on transformation numbers. 16:9, 3840x2160."
+}

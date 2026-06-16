@@ -1,0 +1,19 @@
+{
+  "page": 15,
+  "layout": "timeline_evolution",
+  "title": "品牌视角延展：从 EC 到全域",
+  "subtitle": "从 EC 起步，覆盖品牌全链路——每一阶段为下一阶段打下知识基础",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "timeline", "direction": "horizontal", "phases": [
+      {"phase": "一期", "label": "EC 团队", "color": "blue", "scenarios": ["主档校验", "USP 生成", "PEP 生成", "检测报告检索", "商品对比"], "value": "知识底座 + 质量保障 + AI 生成 + 自动对比"},
+      {"phase": "二期", "label": "产品链", "color": "blue_light", "scenarios": ["产品规格知识库", "材质标准库", "供应商合规知识"], "value": "标准化知识库 + 规则引擎"},
+      {"phase": "三期", "label": "零售链", "color": "teal", "scenarios": ["门店话术知识", "活动方案库", "消费者洞察知识"], "value": "知识沉淀 + 智能推荐"},
+      {"phase": "四期", "label": "品牌全域", "color": "gold", "scenarios": ["品牌资产库", "全球合规知识", "跨区域知识协同"], "value": "全域知识底座 + 多语言"}
+    ]},
+    {"type": "bottom_narrative", "content": "知识引擎作为品牌知识中枢，随业务需求逐步扩展覆盖范围。每一阶段的建设都为下一阶段打下知识基础，知识资产持续复用。"}
+  ],
+  "illustration_prompt": "Horizontal timeline evolution diagram in consulting style. White background. Four phases connected by arrows: Phase 1 (blue, EC), Phase 2 (light blue, 产品链), Phase 3 (teal, 零售链), Phase 4 (gold, 品牌全域). Each phase shows scenarios and value. Clean wireframe, 16:9, 3840x2160."
+}

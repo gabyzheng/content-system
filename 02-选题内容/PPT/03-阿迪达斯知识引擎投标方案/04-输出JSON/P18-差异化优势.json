@@ -1,0 +1,21 @@
+{
+  "page": 18,
+  "layout": "comparison_table",
+  "title": "差异化优势",
+  "subtitle": "知识引擎 vs. 传统知识管理方案",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "table", "columns": ["维度", "传统方案", "知识引擎"], "rows": [
+      {"dimension": "知识组织", "traditional": "文件夹层级，靠人分类", "knowledge_engine": "多维分类 + 标签体系 + 语义检索"},
+      {"dimension": "质量保障", "traditional": "无 / 人工抽查", "knowledge_engine": "入库自动质检（错别字/重复/截断/字段校验）"},
+      {"dimension": "知识应用", "traditional": "人找文档 → 人读 → 人写", "knowledge_engine": "API 检索 → AI 理解 → AI 生成"},
+      {"dimension": "非结构化处理", "traditional": "PDF 靠人读", "knowledge_engine": "智能解析 → 结构化提取 → 自动对比"},
+      {"dimension": "运营管理", "traditional": "无生命周期管理", "knowledge_engine": "版本/有效期/生命周期/周期更新"},
+      {"dimension": "系统关系", "traditional": "替代现有系统", "knowledge_engine": "不替代，做统一知识入口层"},
+      {"dimension": "扩展性", "traditional": "单点使用", "knowledge_engine": "EC → 产品链 → 零售链 → 品牌全域"}
+    ], "style": "blue-wireframe-comparison", "highlight_column": "knowledge_engine"}
+  ],
+  "illustration_prompt": "Comparison table in consulting style. White background. 7-row table with blue wireframe borders. Three columns: 维度, 传统方案 (gray), 知识引擎 (blue/gold highlighted). Clean, 16:9, 3840x2160."
+}

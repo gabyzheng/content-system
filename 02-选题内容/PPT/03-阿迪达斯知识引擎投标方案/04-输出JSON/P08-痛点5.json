@@ -1,0 +1,26 @@
+{
+  "page": 8,
+  "layout": "content_2col",
+  "title": "痛点 5：商品对比依赖人工，质检报告分析耗时",
+  "subtitle": "不是没有数据，是数据锁在 PDF 里、散在不同检测方向里",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "现状描述", "items": [
+      {"label": "操作方式", "text": "完全由人工进行制作，无任何自动化辅助"},
+      {"label": "工作流程", "text": "人工根据产品属性 → 查阅各产品质检报告 → 逐个数据计算功能参数提升是否符合描述"},
+      {"label": "数据来源", "text": "质检报告以完整 PDF 格式存储在 adifox 系统"},
+      {"label": "核心困难", "text": "每份报告检测方向不同，能提炼、对比的功能点各不相同"}
+    ]},
+    {"type": "right_column", "header": "根因分析", "items": [
+      {"label": "PDF 未结构化", "text": "关键数据锁在文档中，无法直接查询和对比"},
+      {"label": "检测方向不统一", "text": "缺乏标准化的功能参数指标体系"},
+      {"label": "对比逻辑靠人脑", "text": "无规则引擎或自动校验机制"},
+      {"label": "数据孤岛", "text": "质检报告与商品主档割裂，缺乏知识复用"}
+    ]},
+    {"type": "bottom_quote", "content": "不是没有数据，是数据锁在 PDF 里、散在不同检测方向里、靠人一条条抠出来算。", "style": "gold-accent"},
+    {"type": "image", "path": "05-配图/痛点5-商品对比费人.png", "position": "center-right"}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: current state showing manual PDF-to-comparison workflow. Right: root cause analysis. Center-right: supporting illustration showing PDF extraction and product comparison. Bottom: gold quote. 16:9, 3840x2160."
+}

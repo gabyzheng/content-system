@@ -1,0 +1,26 @@
+{
+  "page": 4,
+  "layout": "content_2col",
+  "title": "痛点 1：产品资料分散，缺少统一数据源",
+  "subtitle": "信息不是不够，是找不到、对不齐、用不上",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "现状描述", "items": [
+      {"label": "信息分散", "text": "各 Team 关键产品信息分散在邮件、本地文档、各系统中"},
+      {"label": "系统清单", "text": "NOVA、SHAREPOINT、ASSETS HUB、PID、ADIFOX、PLATFORM"},
+      {"label": "检测报告", "text": "无快速查询窗口，靠单文件存储查看"},
+      {"label": "功能词表", "text": "靠人工逐一排查，效率低"}
+    ]},
+    {"type": "right_column", "header": "根因分析", "items": [
+      {"label": "无统一入口", "text": "知识散落在多个系统中，缺乏统一的知识入口"},
+      {"label": "未结构化", "text": "知识以文档形式存在，未进行结构化处理"},
+      {"label": "无自动检索", "text": "缺乏自动化检索能力，信息查找靠人"},
+      {"label": "人效瓶颈", "text": "信息传递靠人，效率成为瓶颈"}
+    ]},
+    {"type": "bottom_quote", "content": "信息不是不够，是找不到、对不齐、用不上。", "style": "gold-accent"},
+    {"type": "image", "path": "05-配图/痛点1-产品资料分散-v2.png", "position": "center-right"}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: 现状描述 with 4 items. Right: 根因分析 with 4 items. Center-right: supporting illustration showing fragmented systems. Bottom: gold quote. 16:9, 3840x2160."
+}

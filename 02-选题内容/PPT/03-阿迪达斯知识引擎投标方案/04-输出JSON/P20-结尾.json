@@ -1,0 +1,16 @@
+{
+  "page": 20,
+  "layout": "end_cta",
+  "title": "让每一份产品知识，都成为品牌的竞争力",
+  "subtitle": "知识引擎 · 驱动品牌知识智能化",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "main_message", "content": "让每一份产品知识，都成为品牌的竞争力", "size": "48px", "weight": "bold"},
+    {"type": "sub_message", "content": "知识引擎 · 驱动品牌知识智能化", "size": "28px"},
+    {"type": "cta", "content": "期待与阿迪达斯团队深入交流", "style": "gold-button"},
+    {"type": "footer", "content": "火山引擎 · 东区 SA 团队", "position": "bottom-center"}
+  ],
+  "illustration_prompt": "Clean end slide in consulting style. White background with subtle blue geometric pattern. Center: large bold title. Below: subtitle. Below: gold-styled CTA text. Bottom: '火山引擎 · 东区 SA 团队'. Minimal, elegant, 16:9, 3840x2160."
+}

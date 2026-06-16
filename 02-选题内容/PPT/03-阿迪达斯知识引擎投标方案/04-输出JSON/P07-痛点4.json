@@ -1,0 +1,26 @@
+{
+  "page": 7,
+  "layout": "content_2col",
+  "title": "痛点 4：PEP 生成效率低",
+  "subtitle": "PEP 不是设计问题，是知识工程问题",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "left_column", "header": "现状描述", "items": [
+      {"label": "自动化率", "text": "不足 10%，制作仍停留在铺人阶段"},
+      {"label": "生产方式", "text": "信息组装靠人工，从各系统取数再手动拼接"},
+      {"label": "高频需求", "text": "难以应对高频次的集中制作需求（换季/大促）"},
+      {"label": "人力瓶颈", "text": "人力无法弹性伸缩，旺季积压严重"}
+    ]},
+    {"type": "right_column", "header": "根因分析", "items": [
+      {"label": "信息未结构化", "text": "商品信息散落在各系统，未形成结构化知识"},
+      {"label": "模板与数据分离", "text": "PEP 模板与商品数据分离，无法自动组装"},
+      {"label": "缺乏自动化", "text": "缺乏从知识到内容的自动化生成能力"},
+      {"label": "规模不经济", "text": "每增加一个 SKU，人力成本线性增长"}
+    ]},
+    {"type": "bottom_quote", "content": "PEP 不是设计问题，是知识工程问题。", "style": "gold-accent"},
+    {"type": "image", "path": "05-配图/痛点4-PEP生成效率低-v2.png", "position": "center-right"}
+  ],
+  "illustration_prompt": "Consulting-style two-column slide. Left: current state with <10% stat. Right: root cause analysis. Center-right: supporting illustration showing puzzle assembly. Bottom: gold quote. 16:9, 3840x2160."
+}

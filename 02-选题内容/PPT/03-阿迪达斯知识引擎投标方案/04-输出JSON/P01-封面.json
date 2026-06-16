@@ -1,0 +1,17 @@
+{
+  "page": 1,
+  "layout": "cover",
+  "title": "知识引擎 · 驱动品牌知识智能化",
+  "subtitle": "阿迪达斯 EC 团队知识赋能方案",
+  "theme": "business_blue_consulting_wireframe",
+  "ratio": "16:9",
+  "resolution": "3840x2160",
+  "sections": [
+    {"type": "tag", "content": "火山引擎 · 知识引擎", "position": "top-left"},
+    {"type": "main_title", "content": "知识引擎", "size": "72px", "weight": "bold"},
+    {"type": "main_title", "content": "驱动品牌知识智能化", "size": "56px", "weight": "regular"},
+    {"type": "subtitle", "content": "阿迪达斯 EC 团队知识赋能方案", "size": "24px"},
+    {"type": "footer", "content": "火山引擎 · 东区 SA 团队 · 2026.06", "position": "bottom-center"}
+  ],
+  "illustration_prompt": "Clean consulting-style cover slide with white background. Top-left: small blue tag '火山引擎 · 知识引擎'. Center: large bold title '知识引擎' in deep gray, below it '驱动品牌知识智能化' in slightly smaller font. Below: subtitle '阿迪达斯 EC 团队知识赋能方案' in medium gray. Bottom: thin blue horizontal line, below it '火山引擎 · 东区 SA 团队 · 2026.06'. A subtle geometric blue wireframe pattern in the background, minimal and professional. 16:9, 3840x2160."
+}

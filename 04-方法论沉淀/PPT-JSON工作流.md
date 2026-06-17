@@ -473,7 +473,73 @@ image_with_caption   — 配图+说明
 # 完整脚本参考：阿迪达斯选题实际执行记录
 ```
 
-### 8.6 注意事项
+### 8.6 图片品质与模板选择
+
+Mira 图片走字节 ImageX 服务，URL 中的 `~tplv-{template}` 后缀决定图片处理方式。
+
+| 模板后缀 | 文件大小 (16:9) | 说明 |
+|----------|:---:|------|
+| `~tplv-xobrcjvdq7-image-jpeg.jpeg` | ~82KB | 默认压缩版，带水印 |
+| `~tplv-xobrcjvdq7-image.image` | ~332KB | **高品质版（推荐）**，4x 体积 |
+
+**规则：始终使用 `~tplv-xobrcjvdq7-image.image` 模板。** 下载时把 URL 中的模板后缀替换即可。
+
+```bash
+# 从 SSE 拿到原始 URL 后，替换模板后缀再下载
+HQ_URL=$(echo "$ORIG_URL" | sed 's/~tplv-[^?]*/~tplv-xobrcjvdq7-image.image/')
+curl -H "Cookie: $COOKIE" "$HQ_URL" -o output.jpeg
+```
+
+关于水印：水印是 ImageX 模板在服务端渲染时叠加的，无法通过 API 参数去除。下载按钮的 `&filename=...&download=1` 参数仅触发浏览器下载行为（Content-Disposition header），不改变图片内容。
+
+### 8.7 超时与防重复生成
+
+**核心原则：每次生图请求必须设置超时，超时后不得自动重试。**
+
+```python
+# 生图请求超时设置
+TIMEOUT = 120  # 秒，GPT Image 2 通常 20-90s 完成
+
+# 超时后的处理逻辑：
+# 1. 不要自动重试 — 可能图片已在生成中，重试会导致重复
+# 2. 检查 SSE 响应是否已返回部分数据
+# 3. 如果确实无响应，收集超时页面列表
+```
+
+**超时报告机制：**
+- 批量生成完成后，汇总所有超时/失败的页面
+- 向主人报告：「以下 N 页超时/失败：P03, P07, P12...」
+- 由主人决定是否重新生成这些页面
+- 主人发起重试时，脚本只跑指定的失败页面（断点续跑）
+
+防重复机制：
+- 每页生成前检查目标文件是否已存在且 > 1KB（80 字节 = 失败下载）
+- 已存在的有效文件自动跳过（断点续跑）
+- 单次请求超时后不自动重试，需人工确认
+
+### 8.8 文件命名规则
+
+**命名格式：`P{page_id}-{title}.jpeg`**
+
+- `page_id`：两位数字，如 `01`, `02`, `03`
+- `title`：从对应 JSON 的 `title` 字段提取，空格替换为 `-`，特殊字符（`·`、`：`、`/` 等）保留
+- 示例：`P01-知识引擎-·-驱动品牌知识智能化.jpeg`
+
+```python
+# 从 JSON 提取 page_id 和 title 生成文件名
+def get_filename(json_path):
+    with open(json_path) as f:
+        data = json.load(f)
+    page_id = str(data['page_id']).zfill(2)  # "1" → "01"
+    title = data['title'].replace(' ', '-')   # 空格 → 连字符
+    return f"P{page_id}-{title}.jpeg"
+```
+
+产出路径：
+1. 生成时保存到 `05-配图/mira-gpt-image2/`
+2. 确认后复制到 `07-已发布/` 供主人检查
+
+### 8.9 注意事项
 
 - cookie 有效期有限，过期需重新从浏览器获取
 - GPT Image 2 不支持指定分辨率，1672×941 是固定输出
@@ -481,6 +547,7 @@ image_with_caption   — 配图+说明
 - 批量生成建议分批次跑（每批 10-12 页），避免 OOM
 - 产出目录：`05-配图/mira-gpt-image2/`
 - 确认后复制到 `07-已发布/` 供最终使用
+- **始终使用 `image.image` 模板，不要用默认的 `image-jpeg.jpeg`**
 
 ---
 

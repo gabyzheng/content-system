@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Pipeline · 选题看板</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  body { background: #0a0a0f; color: #e2e8f0; }
+  .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); }
+  .glass-hover:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+  .card { border-radius: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+  .pipeline-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .pipeline-line { width: 24px; height: 2px; }
+  .file-tree { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .file-tree.open { max-height: 2000px; }
+  .stat-card { position: relative; overflow: hidden; }
+  .stat-card::after { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); }
+  .topic-card { border-left: 3px solid transparent; }
+  .topic-card.status-已发布 { border-left-color: #10b981; }
+  .topic-card.status-已深化 { border-left-color: #3b82f6; }
+  .topic-card.status-待深化 { border-left-color: #f59e0b; }
+  .topic-card.status-放弃 { border-left-color: #64748b; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+  .filter-btn.active { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.2) !important; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { animation: fadeInUp 0.5s ease forwards; }
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal-content { max-width: 90vw; max-height: 90vh; overflow: auto; border-radius: 16px; background: #111118; border: 1px solid rgba(255,255,255,0.08); position: relative; min-width: 400px; }
+  .modal-close { position: absolute; top: 12px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: none; color: #94a3b8; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10; }
+  .modal-close:hover { background: rgba(255,255,255,0.15); color: #e2e8f0; }
+  .modal-body { padding: 24px; }
+  .modal-body img { max-width: 100%; max-height: 80vh; border-radius: 8px; }
+  .modal-body .md-content { color: #cbd5e1; line-height: 1.8; font-size: 14px; }
+  .modal-body .md-content h1,.modal-body .md-content h2,.modal-body .md-content h3 { color: #e2e8f0; margin: 16px 0 8px; }
+  .modal-body .md-content h1 { font-size: 1.4em; }
+  .modal-body .md-content h2 { font-size: 1.2em; }
+  .modal-body .md-content h3 { font-size: 1.1em; }
+  .modal-body .md-content p { margin: 8px 0; }
+  .modal-body .md-content code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  .modal-body .md-content pre { background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px; overflow-x: auto; }
+  .modal-body .md-content pre code { background: none; padding: 0; }
+  .modal-body .md-content ul,.modal-body .md-content ol { padding-left: 20px; margin: 8px 0; }
+  .modal-body .md-content li { margin: 4px 0; }
+  .modal-body .md-content blockquote { border-left: 3px solid #3b82f6; padding-left: 12px; color: #94a3b8; margin: 12px 0; }
+  .modal-body .md-content a { color: #60a5fa; text-decoration: underline; }
+  .modal-body .md-content table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  .modal-body .md-content th,.modal-body .md-content td { border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; text-align: left; }
+  .modal-body .md-content th { background: rgba(255,255,255,0.05); }
+  .file-link { cursor: pointer; }
+  .file-link:hover { color: #e2e8f0 !important; }
+  .file-link:hover i { color: #60a5fa !important; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .animate-spin { animation: spin 1s linear infinite; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Header -->
+<header class="border-b border-white/5 glass sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+        <i class="fa-solid fa-layer-group text-white text-lg"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">Content Pipeline</h1>
+        <p class="text-xs text-slate-500">选题看板 · 选题驱动 + 分支流水线</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 text-xs text-slate-500">
+      <span class="glass px-3 py-1.5 rounded-full flex items-center gap-1.5">
+        <i class="fa-regular fa-clock"></i>
+        <span id="updateTime">--</span>
+      </span>
+      <a href="https://github.com/gabyzheng/content-system" target="_blank" class="glass px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:text-slate-300 transition-colors">
+        <i class="fa-brands fa-github"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-8">
+  <!-- Stats Row -->
+  <div id="statsRow" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8"></div>
+
+  <!-- Filter Bar -->
+  <div class="flex flex-wrap items-center gap-3 mb-6">
+    <span class="text-xs text-slate-500 uppercase tracking-wider mr-1">筛选</span>
+    <div id="filterBar" class="flex flex-wrap gap-2"></div>
+  </div>
+
+  <!-- Topic List -->
+  <div id="topicList" class="space-y-4"></div>
+
+  <!-- Empty State -->
+  <div id="emptyState" class="hidden text-center py-20">
+    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl glass flex items-center justify-center">
+      <i class="fa-solid fa-inbox text-3xl text-slate-600"></i>
+    </div>
+    <h3 class="text-lg font-medium text-slate-400 mb-2">暂无选题</h3>
+    <p class="text-sm text-slate-600">在飞书中对大大驴说「记选题」来创建第一个选题</p>
+  </div>
+</main>
+
+<!-- File Preview Modal -->
+<div class="modal-overlay" id="fileModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+var DATA = [
+  {
+    "date": "2026-06-25",
+    "title": "BCG 波士顿咨询 AI 对焦",
+    "type": "H5-Deck",
+    "keywords": [
+      "BCG",
+      "波士顿咨询",
+      "AI对焦",
+      "Trae Work",
+      "火山方舟",
+      "企业AI平台",
+      "模型组合",
+      "Agent",
+      "数据安全",
+      "定价模式",
+      "合规"
+    ],
+    "idea": "基于 BCG 对焦清单框架，以 H5-Deck 形式介绍火山引擎 AI 平台（Trae Work + 火山方舟），覆盖 6 大模块：平台概览、模型能力、企业集成、数据安全、商业模型、合规与生态，共 24 页（Key Questions for meeting preparation），覆盖 6 大模块：General（市场地位/差异化）、Capability（模型组合/Agent能力）、Enterprise Integration（Outlook/SharePoint/Slack集成）、Enterprise Adoption（用例/限制）、Data Security（训练数据/驻留/跨境传输）、Commercial（定价/折扣/成本优化）、Compliance（区域限制）。可作为面向 Global 客户的 AI 平台供应商评估框架参考",
+    "status": "待深化",
+    "work_dir": "02-选题内容/H5-Deck/03-BCG-AI对焦/",
+    "pipeline": [
+      {
+        "dir": "01-打透观点",
+        "label": "打透观点",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "BCG-Key_Questions_for_meeting_preparation---8328257f-1a80-4adb-93c9-9782a70aac87.docx",
+            "size": 20694,
+            "path": "02-选题内容/H5-Deck/03-BCG-AI对焦/01-打透观点/BCG-Key_Questions_for_meeting_preparation---8328257f-1a80-4adb-93c9-9782a70aac87.docx",
+            "ext": ".docx",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "打透观点.md",
+            "size": 5301,
+            "path": "02-选题内容/H5-Deck/03-BCG-AI对焦/01-打透观点/打透观点.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-拆页设计",
+        "label": "拆页设计",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "拆页设计.md",
+            "size": 13109,
+            "path": "02-选题内容/H5-Deck/03-BCG-AI对焦/02-拆页设计/拆页设计.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "03-素材检索",
+        "label": "素材检索",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "04-生成HTML",
+        "label": "生成HTML",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "05-配图",
+        "label": "配图",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      }
+    ],
+    "total_files": 3
+  },
+  {
+    "date": "2026-06-22",
+    "title": "Trial Holdings 零售 DX 挑战案例",
+    "type": "竞品分析",
+    "keywords": [
+      "Trial Holdings",
+      "零售DX",
+      "智能购物车",
+      "AI摄像头",
+      "Retail AI",
+      "日本零售",
+      "数字化转型",
+      "自建工具型"
+    ],
+    "idea": "Trial Holdings（年商 5,353 亿日元/265 店）的零售 DX 案例，涵盖 AI 摄像头（65 店 3,900 台）、智能购物车 SSC（62 店 6,136 台）、MD-LINK 数据分析平台、自研 e3SMART 数据库、宫若实证基地（27 家企业入驻）。典型\"自建工具型\"零售企业，与每周一思中\"数据安全驱动型\"客户路径高度吻合",
+    "status": "待深化",
+    "work_dir": "02-选题内容/竞品分析/01-Trial-Holdings-零售DX案例/",
+    "pipeline": [
+      {
+        "dir": "01-素材检索",
+        "label": "素材检索",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "Trial-Holdings-零售DX挑战事例介绍.pdf",
+            "size": 10754063,
+            "path": "02-选题内容/竞品分析/01-Trial-Holdings-零售DX案例/01-素材检索/Trial-Holdings-零售DX挑战事例介绍.pdf",
+            "ext": ".pdf",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-内容生成",
+        "label": "内容生成",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "03-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "04-已发布",
+        "label": "已发布",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      }
+    ],
+    "total_files": 1
+  },
+  {
+    "date": "2026-06-16",
+    "title": "阿迪达斯知识引擎投标方案",
+    "type": "PPT",
+    "keywords": [
+      "知识引擎",
+      "阿迪达斯",
+      "投标",
+      "Global客户",
+      "知识管理",
+      "EC团队",
+      "商品对比"
+    ],
+    "idea": "面向阿迪达斯（Adidas）EC 团队的知识引擎投标方案，覆盖五大痛点（资料分散/主档校验/USP生成/PEP生成/商品对比），四层架构方案设计，品牌视角未来延展",
+    "status": "已发布",
+    "work_dir": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/",
+    "pipeline": [
+      {
+        "dir": "01-打透观点",
+        "label": "打透观点",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "01-EC团队知识赋能-痛点与解法.md",
+            "size": 14049,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/01-打透观点/01-EC团队知识赋能-痛点与解法.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-拆页设计",
+        "label": "拆页设计",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "01-拆页设计-20页.md",
+            "size": 15174,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/02-拆页设计/01-拆页设计-20页.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "03-素材检索",
+        "label": "素材检索",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "04-输出JSON",
+        "label": "输出JSON",
+        "file_count": 20,
+        "files": [
+          {
+            "name": "P01-封面.json",
+            "size": 1294,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P01-封面.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P01-封面.json"
+          },
+          {
+            "name": "P02-核心主张.json",
+            "size": 1546,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P02-核心主张.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P02-核心主张.json"
+          },
+          {
+            "name": "P03-痛点总览.json",
+            "size": 1490,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P03-痛点总览.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P03-痛点总览.json"
+          },
+          {
+            "name": "P04-痛点1.json",
+            "size": 1693,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P04-痛点1.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P04-痛点1.json"
+          },
+          {
+            "name": "P05-痛点2.json",
+            "size": 1804,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P05-痛点2.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P05-痛点2.json"
+          },
+          {
+            "name": "P06-痛点3.json",
+            "size": 1697,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P06-痛点3.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P06-痛点3.json"
+          },
+          {
+            "name": "P07-痛点4.json",
+            "size": 1656,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P07-痛点4.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P07-痛点4.json"
+          },
+          {
+            "name": "P08-痛点5.json",
+            "size": 1900,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P08-痛点5.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P08-痛点5.json"
+          },
+          {
+            "name": "P09-方案总览.json",
+            "size": 1634,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P09-方案总览.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P09-方案总览.json"
+          },
+          {
+            "name": "P10-能力-知识入库管理.json",
+            "size": 1386,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P10-能力-知识入库管理.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P10-能力-知识入库管理.json"
+          },
+          {
+            "name": "P11-能力-质量保障.json",
+            "size": 1452,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P11-能力-质量保障.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P11-能力-质量保障.json"
+          },
+          {
+            "name": "P12-能力-AI生成.json",
+            "size": 1505,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P12-能力-AI生成.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P12-能力-AI生成.json"
+          },
+          {
+            "name": "P13-能力-智能解析对比.json",
+            "size": 1563,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P13-能力-智能解析对比.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P13-能力-智能解析对比.json"
+          },
+          {
+            "name": "P14-能力-运营SOP.json",
+            "size": 1446,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P14-能力-运营SOP.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P14-能力-运营SOP.json"
+          },
+          {
+            "name": "P15-品牌延展.json",
+            "size": 1746,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P15-品牌延展.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P15-品牌延展.json"
+          },
+          {
+            "name": "P16-品牌延展场景.json",
+            "size": 1691,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P16-品牌延展场景.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P16-品牌延展场景.json"
+          },
+          {
+            "name": "P17-落地路径.json",
+            "size": 1571,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P17-落地路径.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P17-落地路径.json"
+          },
+          {
+            "name": "P18-差异化优势.json",
+            "size": 1681,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P18-差异化优势.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P18-差异化优势.json"
+          },
+          {
+            "name": "P19-价值量化.json",
+            "size": 1726,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P19-价值量化.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P19-价值量化.json"
+          },
+          {
+            "name": "P20-结尾.json",
+            "size": 991,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P20-结尾.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/04-输出JSON/P20-结尾.json"
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "05-配图",
+        "label": "配图",
+        "file_count": 9,
+        "files": [
+          {
+            "name": "痛点1-产品资料分散-v2.png",
+            "size": 3755334,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点1-产品资料分散-v2.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点1-产品资料分散.png",
+            "size": 1487777,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点1-产品资料分散.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点2-主档信息检查繁琐-v2.png",
+            "size": 3668690,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点2-主档信息检查繁琐-v2.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点2-主档信息检查繁琐.png",
+            "size": 3185807,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点2-主档信息检查繁琐.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点3-USP规则复杂-v2.png",
+            "size": 3203958,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点3-USP规则复杂-v2.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点3-USP规则复杂.png",
+            "size": 2172854,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点3-USP规则复杂.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点4-PEP生成效率低-v2.png",
+            "size": 3407832,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点4-PEP生成效率低-v2.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点4-PEP生成效率低.png",
+            "size": 2755824,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点4-PEP生成效率低.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "痛点5-商品对比费人.png",
+            "size": 2221247,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/05-配图/痛点5-商品对比费人.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 20,
+        "files": [
+          {
+            "name": "P01-知识引擎-·-驱动品牌知识智能化.jpeg",
+            "size": 609654,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P01-知识引擎-·-驱动品牌知识智能化.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P02-核心主张.jpeg",
+            "size": 171245,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P02-核心主张.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P03-EC-团队五大核心痛点.jpeg",
+            "size": 172082,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P03-EC-团队五大核心痛点.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P04-痛点-1-产品资料分散，缺少统一数据源.jpeg",
+            "size": 187806,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P04-痛点-1-产品资料分散，缺少统一数据源.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P05-痛点-2-主档信息检查繁琐.jpeg",
+            "size": 204294,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P05-痛点-2-主档信息检查繁琐.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P06-痛点-3-USP-规则复杂，依赖人工.jpeg",
+            "size": 209244,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P06-痛点-3-USP-规则复杂，依赖人工.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P07-痛点-4-PEP-生成效率低.jpeg",
+            "size": 180327,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P07-痛点-4-PEP-生成效率低.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P08-痛点-5-商品对比依赖人工，质检报告分析耗时.jpeg",
+            "size": 193289,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P08-痛点-5-商品对比依赖人工，质检报告分析耗时.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P09-知识引擎-·-EC-知识赋能方案.jpeg",
+            "size": 204195,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P09-知识引擎-·-EC-知识赋能方案.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P10-能力详解-知识入库与管理.jpeg",
+            "size": 168880,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P10-能力详解-知识入库与管理.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P11-能力详解-质量保障与规则引擎.jpeg",
+            "size": 182386,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P11-能力详解-质量保障与规则引擎.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P12-能力详解-AI-智能生成.jpeg",
+            "size": 158244,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P12-能力详解-AI-智能生成.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P13-能力详解-智能解析与自动对比.jpeg",
+            "size": 209416,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P13-能力详解-智能解析与自动对比.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P14-能力详解-知识运营-SOP.jpeg",
+            "size": 177933,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P14-能力详解-知识运营-SOP.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P15-品牌视角延展-从-EC-到全域.jpeg",
+            "size": 183519,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P15-品牌视角延展-从-EC-到全域.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P16-品牌延展场景详解.jpeg",
+            "size": 207465,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P16-品牌延展场景详解.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P17-一期落地路径.jpeg",
+            "size": 162536,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P17-一期落地路径.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P18-差异化优势.jpeg",
+            "size": 192385,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P18-差异化优势.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P19-客户价值量化.jpeg",
+            "size": 163202,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P19-客户价值量化.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "P20-让每一份产品知识，都成为品牌的竞争力.jpeg",
+            "size": 111661,
+            "path": "02-选题内容/PPT/03-阿迪达斯知识引擎投标方案/07-已发布/P20-让每一份产品知识，都成为品牌的竞争力.jpeg",
+            "ext": ".jpeg",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      }
+    ],
+    "total_files": 51
+  },
+  {
+    "date": "2026-06-15",
+    "title": "火山方舟大模型数据安全 For 亿滋",
+    "type": "H5-Deck",
+    "keywords": [
+      "火山方舟",
+      "大模型安全",
+      "数据安全",
+      "亿滋",
+      "消费品",
+      "Global客户"
+    ],
+    "idea": "面向亿滋（Mondelez）等 Global 消费品客户，阐述火山方舟在大模型应用中的数据安全能力与合规方案",
+    "status": "待深化",
+    "work_dir": "02-选题内容/H5-Deck/02-火山方舟数据安全-亿滋/",
+    "pipeline": [
+      {
+        "dir": "01-打透观点",
+        "label": "打透观点",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "01-安全合规调研-客户问答.md",
+            "size": 10335,
+            "path": "02-选题内容/H5-Deck/02-火山方舟数据安全-亿滋/01-打透观点/01-安全合规调研-客户问答.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-拆页设计",
+        "label": "拆页设计",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "03-素材检索",
+        "label": "素材检索",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "04-生成HTML",
+        "label": "生成HTML",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "02-安全合规-Deck.html",
+            "size": 25768,
+            "path": "02-选题内容/H5-Deck/02-火山方舟数据安全-亿滋/04-生成HTML/02-安全合规-Deck.html",
+            "ext": ".html",
+            "is_image": false,
+            "is_md": false,
+            "is_html": true,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/H5-Deck/02-火山方舟数据安全-亿滋/04-生成HTML/02-安全合规-Deck.html"
+          },
+          {
+            "name": "deck-editable.zip",
+            "size": 13922,
+            "path": "02-选题内容/H5-Deck/02-火山方舟数据安全-亿滋/04-生成HTML/deck-editable.zip",
+            "ext": ".zip",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "05-配图",
+        "label": "配图",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      }
+    ],
+    "total_files": 3
+  },
+  {
+    "date": "2026-06-08",
+    "title": "基于 ArkClaw 的智能审批方案",
+    "type": "PPT",
+    "keywords": [
+      "ArkClaw",
+      "BPM",
+      "智能审批",
+      "用户体验流",
+      "信息处理流",
+      "规则引擎",
+      "OCR",
+      "飞书卡片",
+      "来伊份"
+    ],
+    "idea": "以来伊份 BPM 审批场景为蓝本，设计基于 ArkClaw 的智能审批系统——包含用户体验流（规则管理+单据审核）和信息处理流（配置校验→OCR→规则匹配→AI审核→卡片推送→回调），覆盖 17 种异常场景",
+    "status": "已深化",
+    "work_dir": "02-选题内容/PPT/02-基于ArkClaw的审核方案/",
+    "pipeline": [
+      {
+        "dir": "01-打透观点",
+        "label": "打透观点",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "智能审批系统-用户体验流与信息处理流-设计文档.md",
+            "size": 36845,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/01-打透观点/智能审批系统-用户体验流与信息处理流-设计文档.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-拆页设计",
+        "label": "拆页设计",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "deck.xml",
+            "size": 11625,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/02-拆页设计/deck.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/02-拆页设计/deck.xml"
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "03-素材检索",
+        "label": "素材检索",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "04-输出JSON",
+        "label": "输出JSON",
+        "file_count": 8,
+        "files": [
+          {
+            "name": "P01_来伊份智能审批系统_封面.xml",
+            "size": 1745,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P01_来伊份智能审批系统_封面.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P01_来伊份智能审批系统_封面.xml"
+          },
+          {
+            "name": "P02_总体架构蓝图.xml",
+            "size": 1917,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P02_总体架构蓝图.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P02_总体架构蓝图.xml"
+          },
+          {
+            "name": "P03_智能审批中心_核心枢纽.xml",
+            "size": 1887,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P03_智能审批中心_核心枢纽.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P03_智能审批中心_核心枢纽.xml"
+          },
+          {
+            "name": "P04_知识库与智能体能力集.xml",
+            "size": 1883,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P04_知识库与智能体能力集.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P04_知识库与智能体能力集.xml"
+          },
+          {
+            "name": "P05_业务系统集成与数据平台.xml",
+            "size": 1778,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P05_业务系统集成与数据平台.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P05_业务系统集成与数据平台.xml"
+          },
+          {
+            "name": "P06_端到端审批闭环.xml",
+            "size": 1645,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P06_端到端审批闭环.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P06_端到端审批闭环.xml"
+          },
+          {
+            "name": "P07_总方案蓝图_一页纸总览.xml",
+            "size": 1768,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P07_总方案蓝图_一页纸总览.xml",
+            "ext": ".xml",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": true,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/P07_总方案蓝图_一页纸总览.xml"
+          },
+          {
+            "name": "single_pages_xml_INDEX.md",
+            "size": 976,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/04-输出JSON/single_pages_xml_INDEX.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "05-配图",
+        "label": "配图",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 3,
+        "files": [
+          {
+            "name": "P01_用户体验流.html",
+            "size": 13558,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/07-已发布/P01_用户体验流.html",
+            "ext": ".html",
+            "is_image": false,
+            "is_md": false,
+            "is_html": true,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/07-已发布/P01_用户体验流.html"
+          },
+          {
+            "name": "P02_信息处理流.html",
+            "size": 15075,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/07-已发布/P02_信息处理流.html",
+            "ext": ".html",
+            "is_image": false,
+            "is_md": false,
+            "is_html": true,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/07-已发布/P02_信息处理流.html"
+          },
+          {
+            "name": "index.html",
+            "size": 64006,
+            "path": "02-选题内容/PPT/02-基于ArkClaw的审核方案/07-已发布/index.html",
+            "ext": ".html",
+            "is_image": false,
+            "is_md": false,
+            "is_html": true,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/02-基于ArkClaw的审核方案/07-已发布/index.html"
+          }
+        ],
+        "exists": true
+      }
+    ],
+    "total_files": 13
+  },
+  {
+    "date": "2026-06-05",
+    "title": "企业应如何实现AI从试点场景到业务价值的规模化转化",
+    "type": "PPT",
+    "keywords": [
+      "AI规模化",
+      "试点到落地",
+      "业务价值",
+      "组织变革",
+      "知识管理",
+      "架构升级",
+      "CXO汇报"
+    ],
+    "idea": "从「光明走进火山」Part 4 落地路径拆出独立 Deck，面向 CXO 汇报，聚焦方法论——为什么试点总是断头路、怎么从单点到规模化、需要什么样的组织和架构支撑",
+    "status": "待深化",
+    "work_dir": "02-选题内容/PPT/01-AI规模化落地/",
+    "pipeline": [
+      {
+        "dir": "01-打透观点",
+        "label": "打透观点",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "打透观点.md",
+            "size": 10045,
+            "path": "02-选题内容/PPT/01-AI规模化落地/01-打透观点/打透观点.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-拆页设计",
+        "label": "拆页设计",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "拆页设计.md",
+            "size": 20844,
+            "path": "02-选题内容/PPT/01-AI规模化落地/02-拆页设计/拆页设计.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "03-素材检索",
+        "label": "素材检索",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "04-输出JSON",
+        "label": "输出JSON",
+        "file_count": 24,
+        "files": [
+          {
+            "name": "P01.json",
+            "size": 1441,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P01.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P01.json"
+          },
+          {
+            "name": "P02.json",
+            "size": 1892,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P02.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P02.json"
+          },
+          {
+            "name": "P03.json",
+            "size": 2324,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P03.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P03.json"
+          },
+          {
+            "name": "P04.json",
+            "size": 1677,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P04.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P04.json"
+          },
+          {
+            "name": "P05.json",
+            "size": 2318,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P05.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P05.json"
+          },
+          {
+            "name": "P06.json",
+            "size": 2268,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P06.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P06.json"
+          },
+          {
+            "name": "P07.json",
+            "size": 1855,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P07.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P07.json"
+          },
+          {
+            "name": "P08.json",
+            "size": 2005,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P08.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P08.json"
+          },
+          {
+            "name": "P09.json",
+            "size": 2658,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P09.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P09.json"
+          },
+          {
+            "name": "P10.json",
+            "size": 2018,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P10.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P10.json"
+          },
+          {
+            "name": "P11.json",
+            "size": 2118,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P11.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P11.json"
+          },
+          {
+            "name": "P12.json",
+            "size": 2294,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P12.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P12.json"
+          },
+          {
+            "name": "P13.json",
+            "size": 2016,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P13.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P13.json"
+          },
+          {
+            "name": "P14.json",
+            "size": 2385,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P14.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P14.json"
+          },
+          {
+            "name": "P15.json",
+            "size": 2129,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P15.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P15.json"
+          },
+          {
+            "name": "P16.json",
+            "size": 2104,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P16.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P16.json"
+          },
+          {
+            "name": "P17.json",
+            "size": 2007,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P17.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P17.json"
+          },
+          {
+            "name": "P18.json",
+            "size": 1427,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P18.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P18.json"
+          },
+          {
+            "name": "P19.json",
+            "size": 1151,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P19.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/P19.json"
+          },
+          {
+            "name": "总览JSON.json",
+            "size": 5885,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/总览JSON.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/总览JSON.json"
+          },
+          {
+            "name": "逐页JSON-Part1.json",
+            "size": 13571,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-Part1.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-Part1.json"
+          },
+          {
+            "name": "逐页JSON-Part2.json",
+            "size": 14704,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-Part2.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-Part2.json"
+          },
+          {
+            "name": "逐页JSON-Part3.json",
+            "size": 15115,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-Part3.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-Part3.json"
+          },
+          {
+            "name": "逐页JSON-完整.json",
+            "size": 42688,
+            "path": "02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-完整.json",
+            "ext": ".json",
+            "is_image": false,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": true,
+            "gh_pages_url": "https://gabyzheng.github.io/content-system/02-选题内容/PPT/01-AI规模化落地/04-输出JSON/逐页JSON-完整.json"
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "05-配图",
+        "label": "配图",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 0,
+        "files": [],
+        "exists": false
+      }
+    ],
+    "total_files": 26
+  },
+  {
+    "date": "2026-06-05",
+    "title": "光明走进火山：共建AI创新引擎，驱动业务增长",
+    "type": "H5-Deck",
+    "keywords": [
+      "光明集团",
+      "火山引擎",
+      "AI创新",
+      "业务增长",
+      "客户案例"
+    ],
+    "idea": "光明集团走进火山引擎，探讨 AI 创新引擎如何驱动业务增长，可作为客户案例或合作方案展示",
+    "status": "待深化",
+    "work_dir": "02-选题内容/H5-Deck/01-光明走进火山/",
+    "pipeline": [
+      {
+        "dir": "01-打透观点",
+        "label": "打透观点",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "打透观点.md",
+            "size": 5197,
+            "path": "02-选题内容/H5-Deck/01-光明走进火山/01-打透观点/打透观点.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-拆页设计",
+        "label": "拆页设计",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "拆页设计-v2.md",
+            "size": 32270,
+            "path": "02-选题内容/H5-Deck/01-光明走进火山/02-拆页设计/拆页设计-v2.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "拆页设计.md",
+            "size": 10866,
+            "path": "02-选题内容/H5-Deck/01-光明走进火山/02-拆页设计/拆页设计.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "03-素材检索",
+        "label": "素材检索",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "04-生成HTML",
+        "label": "生成HTML",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "05-配图",
+        "label": "配图",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      }
+    ],
+    "total_files": 3
+  },
+  {
+    "date": "2026-06-02",
+    "title": "如何在一天内重塑你的整个人生（Dan Koe）",
+    "type": "公众号文章",
+    "keywords": [
+      "Dan Koe",
+      "自我重塑",
+      "人生系统",
+      "个人成长"
+    ],
+    "idea": "Dan Koe 的「一天重塑人生」方法论，涉及身份重塑、控制论、自我发展九阶段、一日协议",
+    "status": "已发布",
+    "work_dir": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/",
+    "pipeline": [
+      {
+        "dir": "01-素材检索",
+        "label": "素材检索",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "Dan-Koe-How-To-Fix-Your-Life-原文.md",
+            "size": 3265,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/01-素材检索/Dan-Koe-How-To-Fix-Your-Life-原文.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "02-内容生成",
+        "label": "内容生成",
+        "file_count": 1,
+        "files": [
+          {
+            "name": "Dan-Koe-一日重塑人生-公众号文章.md",
+            "size": 8586,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/02-内容生成/Dan-Koe-一日重塑人生-公众号文章.md",
+            "ext": ".md",
+            "is_image": false,
+            "is_md": true,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "03-去AI化",
+        "label": "去AI化",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "04-配图",
+        "label": "配图",
+        "file_count": 7,
+        "files": [
+          {
+            "name": "Dan-Koe-cover-v5-v2.png",
+            "size": 154085,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-cover-v5-v2.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "Dan-Koe-cover-v5-v3.png",
+            "size": 127424,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-cover-v5-v3.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "Dan-Koe-cover-v5.png",
+            "size": 113687,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-cover-v5.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "Dan-Koe-cover.png",
+            "size": 604704,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-cover.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "Dan-Koe-illust-1.png",
+            "size": 489047,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-illust-1.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "Dan-Koe-illust-2.png",
+            "size": 174767,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-illust-2.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          },
+          {
+            "name": "Dan-Koe-illust-3.png",
+            "size": 147505,
+            "path": "02-选题内容/公众号文章/01-Dan-Koe-一日重塑人生/04-配图/Dan-Koe-illust-3.png",
+            "ext": ".png",
+            "is_image": true,
+            "is_md": false,
+            "is_html": false,
+            "is_xml": false,
+            "is_json": false,
+            "gh_pages_url": null
+          }
+        ],
+        "exists": true
+      },
+      {
+        "dir": "05-可视化",
+        "label": "可视化",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "06-质量检查",
+        "label": "质量检查",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      },
+      {
+        "dir": "07-已发布",
+        "label": "已发布",
+        "file_count": 0,
+        "files": [],
+        "exists": true
+      }
+    ],
+    "total_files": 9
+  }
+];
+var TYPE_ICONS = {"公众号文章": "fa-newspaper", "PPT": "fa-file-powerpoint", "H5-Deck": "fa-code", "日报": "fa-calendar-check", "竞品分析": "fa-chart-bar", "社交卡片": "fa-share-nodes", "其他": "fa-file-lines"};
+var TYPE_COLORS = {"公众号文章": {"bg": "bg-emerald-500/10", "text": "text-emerald-400", "border": "border-emerald-500/30"}, "PPT": {"bg": "bg-orange-500/10", "text": "text-orange-400", "border": "border-orange-500/30"}, "H5-Deck": {"bg": "bg-cyan-500/10", "text": "text-cyan-400", "border": "border-cyan-500/30"}, "日报": {"bg": "bg-blue-500/10", "text": "text-blue-400", "border": "border-blue-500/30"}, "竞品分析": {"bg": "bg-purple-500/10", "text": "text-purple-400", "border": "border-purple-500/30"}, "社交卡片": {"bg": "bg-pink-500/10", "text": "text-pink-400", "border": "border-pink-500/30"}, "其他": {"bg": "bg-slate-500/10", "text": "text-slate-400", "border": "border-slate-500/30"}};
+var STATUS_CONFIG = {"待深化": {"icon": "fa-circle", "color": "text-amber-400", "bg": "bg-amber-500/10"}, "已深化": {"icon": "fa-circle-dot", "color": "text-blue-400", "bg": "bg-blue-500/10"}, "已发布": {"icon": "fa-circle-check", "color": "text-emerald-400", "bg": "bg-emerald-500/10"}, "放弃": {"icon": "fa-circle-xmark", "color": "text-slate-500", "bg": "bg-slate-500/10"}};
+
+var currentFilter = '全部';
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+function renderStats() {
+  var counts = { total: DATA.length };
+  ['待深化','已深化','已发布','放弃'].forEach(function(s){ counts[s] = 0; });
+  DATA.forEach(function(t){ if (counts[t.status] !== undefined) counts[t.status]++; });
+
+  var stats = [
+    { label: '总计', value: counts.total, icon: 'fa-layer-group', color: 'from-blue-500 to-purple-600' },
+    { label: '待深化', value: counts['待深化'], icon: 'fa-circle', color: 'from-amber-500 to-orange-600' },
+    { label: '已深化', value: counts['已深化'], icon: 'fa-circle-dot', color: 'from-blue-500 to-cyan-600' },
+    { label: '已发布', value: counts['已发布'], icon: 'fa-circle-check', color: 'from-emerald-500 to-teal-600' },
+    { label: '放弃', value: counts['放弃'], icon: 'fa-circle-xmark', color: 'from-slate-500 to-zinc-600' },
+  ];
+
+  document.getElementById('statsRow').innerHTML = stats.map(function(s, i) {
+    return '<div class="glass card stat-card p-5 animate-in" style="animation-delay:' + (i * 0.08) + 's">' +
+      '<div class="flex items-center justify-between mb-3">' +
+        '<span class="text-xs text-slate-500 uppercase tracking-wider">' + s.label + '</span>' +
+        '<div class="w-8 h-8 rounded-lg bg-gradient-to-br ' + s.color + ' flex items-center justify-center shadow-lg opacity-80">' +
+          '<i class="fa-solid ' + s.icon + ' text-white text-xs"></i>' +
+        '</div>' +
+      '</div>' +
+      '<div class="text-3xl font-bold tracking-tight">' + s.value + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderFilters() {
+  var types = ['全部'];
+  DATA.forEach(function(t){ if (types.indexOf(t.type) === -1) types.push(t.type); });
+  document.getElementById('filterBar').innerHTML = types.map(function(t) {
+    var icon = TYPE_ICONS[t] || 'fa-file';
+    var label = t === '全部' ? '📋 全部' : '<i class="fa-solid ' + icon + ' mr-1.5"></i>' + t;
+    return '<button onclick="filterBy(\'' + t + '\')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 glass-hover' + (currentFilter === t ? ' active' : '') + '">' + label + '</button>';
+  }).join('');
+}
+
+function filterBy(type) {
+  currentFilter = type;
+  renderFilters();
+  renderTopics();
+}
+
+function renderPipeline(stages) {
+  if (!stages || stages.length === 0) return '';
+  return '<div class="flex items-center gap-1 flex-wrap">' +
+    stages.map(function(s, i) {
+      var done = s.file_count > 0;
+      var isLast = s.label === '已发布' && done;
+      var dot = '<div class="flex items-center gap-1">' +
+        '<div class="flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs' + (done ? ' bg-white/5' : ' opacity-30') + '">' +
+          '<div class="pipeline-dot' + (done ? (isLast ? ' bg-emerald-400' : ' bg-blue-400') : ' bg-slate-600') + '"' + (isLast ? ' style="box-shadow:0 0 6px rgba(52,211,153,0.5)"' : '') + '></div>' +
+          '<span class="' + (done ? 'text-slate-300' : 'text-slate-600') + '">' + s.label + '</span>' +
+          (s.file_count > 0 ? '<span class="mono text-[10px] text-slate-500">' + s.file_count + '</span>' : '') +
+        '</div>' +
+        (i < stages.length - 1 ? '<div class="pipeline-line' + (done ? ' bg-blue-500/40' : ' bg-slate-700') + '"></div>' : '') +
+      '</div>';
+      return dot;
+    }).join('') +
+  '</div>';
+}
+
+function renderFileTree(stages, topicId) {
+  if (!stages || stages.length === 0) return '';
+  var html = '<div class="file-tree" id="files-' + topicId + '">' +
+    '<div class="mt-4 pt-4 border-t border-white/5">' +
+    '<div class="text-xs text-slate-500 mb-3 uppercase tracking-wider">📂 过程文件</div>' +
+    '<div class="space-y-1">';
+  stages.forEach(function(s) {
+    html += '<div class="flex items-center justify-between py-1.5 px-2 rounded-lg text-sm' + (s.exists ? ' hover:bg-white/5' : ' opacity-30') + ' transition-colors">' +
+      '<div class="flex items-center gap-2">' +
+        '<i class="fa-solid ' + (s.exists ? 'fa-folder text-amber-500/60' : 'fa-folder-open text-slate-600') + ' text-xs"></i>' +
+        '<span class="' + (s.exists ? 'text-slate-300' : 'text-slate-600') + '">' + s.label + '</span>' +
+      '</div>' +
+      '<span class="mono text-xs ' + (s.file_count > 0 ? 'text-slate-400' : 'text-slate-600') + '">' + (s.file_count > 0 ? s.file_count + ' 文件' : '空') + '</span>' +
+    '</div>';
+    if (s.files && s.files.length > 0) {
+      s.files.forEach(function(f) {
+        var isPdf = f.ext === '.pdf';
+        var iconClass = f.is_image ? 'fa-image text-cyan-500/60' : (f.is_html ? 'fa-globe text-emerald-500/60' : (f.is_xml ? 'fa-code text-amber-500/60' : (f.is_json ? 'fa-code text-yellow-500/60' : (f.is_md ? 'fa-file-lines text-blue-500/60' : (isPdf ? 'fa-file-pdf text-red-500/60' : 'fa-file text-slate-600')))));
+        var ghRawUrl = 'https://github.com/gabyzheng/content-system/blob/master/' + f.path;
+        var clickAction = (f.is_html || f.is_xml || f.is_json) && f.gh_pages_url ? ' onclick="window.open(\'' + f.gh_pages_url + '\', \'_blank\')"' : (isPdf ? ' onclick="window.open(\'' + ghRawUrl + '\', \'_blank\')"' : (f.is_image || f.is_md ? ' onclick="openFile(\'' + f.path + '\', \'' + f.name.replace(/'/g, "\\'") + '\', ' + f.is_image + ', ' + f.is_md + ')"' : ''));
+        var cursorStyle = (f.is_html || f.is_xml || f.is_json || f.is_image || f.is_md || isPdf) ? ' cursor-pointer hover:text-slate-300' : '';
+        var previewBadge = (f.is_html || f.is_xml || f.is_json) && f.gh_pages_url ? ' <span class="text-[10px] text-emerald-500/70 ml-1">🔗 预览</span>' : (isPdf ? ' <span class="text-[10px] text-red-500/70 ml-1">📄 查看</span>' : '');
+        html += '<div class="flex items-center justify-between py-1 pl-8 pr-2 text-xs text-slate-500 file-link' + cursorStyle + '"' + clickAction + '>' +
+          '<span class="truncate max-w-[300px]"><i class="fa-solid ' + iconClass + ' mr-1.5"></i>' + f.name + previewBadge + '</span>' +
+          '<span class="mono text-slate-600 ml-2">' + formatSize(f.size) + '</span>' +
+        '</div>';
+      });
+    }
+  });
+  html += '</div></div></div>';
+  return html;
+}
+
+function renderTopics() {
+  var filtered = currentFilter === '全部' ? DATA : DATA.filter(function(t){ return t.type === currentFilter; });
+  var container = document.getElementById('topicList');
+  var empty = document.getElementById('emptyState');
+
+  if (filtered.length === 0) {
+    container.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+
+  container.innerHTML = filtered.map(function(t, i) {
+    var colors = TYPE_COLORS[t.type] || TYPE_COLORS['其他'];
+    var statusCfg = STATUS_CONFIG[t.status] || STATUS_CONFIG['待深化'];
+    var topicId = i;
+
+    var html = '<div class="glass card topic-card status-' + t.status + ' p-6 animate-in" style="animation-delay:' + (i * 0.1) + 's">' +
+      '<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">' +
+        '<div class="flex-1 min-w-0">' +
+          '<div class="flex items-center gap-3 mb-3 flex-wrap">' +
+            '<span class="px-2.5 py-1 rounded-lg text-xs font-medium ' + colors.bg + ' ' + colors.text + ' ' + colors.border + ' border">' +
+              '<i class="fa-solid ' + (TYPE_ICONS[t.type] || 'fa-file') + ' mr-1"></i>' + t.type +
+            '</span>' +
+            '<span class="px-2.5 py-1 rounded-lg text-xs font-medium ' + statusCfg.bg + ' ' + statusCfg.color + '">' +
+              '<i class="fa-solid ' + statusCfg.icon + ' mr-1"></i>' + t.status +
+            '</span>' +
+            '<span class="text-xs text-slate-600">' + t.date + '</span>' +
+          '</div>' +
+          '<h3 class="text-lg font-semibold mb-2 text-slate-100">' + t.title + '</h3>';
+
+    if (t.idea) {
+      html += '<p class="text-sm text-slate-400 mb-3 leading-relaxed">' + t.idea + '</p>';
+    }
+
+    if (t.keywords && t.keywords.length > 0) {
+      html += '<div class="flex flex-wrap gap-1.5 mb-4">' +
+        t.keywords.map(function(k){ return '<span class="px-2 py-0.5 rounded-md text-[11px] bg-white/5 text-slate-500">#' + k + '</span>'; }).join('') +
+      '</div>';
+    }
+
+    html += '<div class="mb-3">' +
+      '<div class="text-[10px] text-slate-600 uppercase tracking-wider mb-2">流水线进度</div>' +
+      renderPipeline(t.pipeline) +
+    '</div>';
+
+    if (t.total_files > 0) {
+      html += '<button onclick="toggleFiles(' + topicId + ')" class="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors mt-2">' +
+        '<i id="icon-' + topicId + '" class="fa-solid fa-chevron-right text-[10px] transition-transform"></i>' +
+        '<span>' + t.total_files + ' 个过程文件</span>' +
+      '</button>' +
+      renderFileTree(t.pipeline, topicId);
+    }
+
+    html += '</div>';
+
+    if (t.work_dir) {
+      html += '<div class="lg:text-right flex-shrink-0">' +
+        '<div class="text-[10px] text-slate-600 uppercase tracking-wider mb-1">工作目录</div>' +
+        '<code class="mono text-xs text-slate-500 bg-black/30 px-2 py-1 rounded block max-w-[320px] truncate">' + t.work_dir + '</code>' +
+      '</div>';
+    }
+
+    html += '</div></div>';
+    return html;
+  }).join('');
+}
+
+function toggleFiles(id) {
+  var tree = document.getElementById('files-' + id);
+  var icon = document.getElementById('icon-' + id);
+  if (tree && icon) {
+    tree.classList.toggle('open');
+    icon.style.transform = tree.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
+  }
+}
+
+function renderMarkdown(md) {
+  marked.setOptions({ breaks: true, gfm: true });
+  var renderer = new marked.Renderer();
+  renderer.link = function(href, title, text) {
+    return '<a href="' + href + '" target="_blank"' + (title ? ' title="' + title + '"' : '') + '>' + text + '</a>';
+  };
+  marked.use({ renderer: renderer });
+  return '<div class="md-content">' + marked.parse(md) + '</div>';
+}
+
+async function openFile(path, name, isImage, isMd) {
+  var modal = document.getElementById('fileModal');
+  var body = document.getElementById('modalBody');
+  body.innerHTML = '<div class="flex items-center justify-center py-12"><div class="w-8 h-8 border-2 border-blue-500/30 border-t-blue-400 rounded-full animate-spin"></div></div>';
+  modal.classList.add('open');
+
+  try {
+    var resp = await fetch(path);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+
+    if (isImage) {
+      var blob = await resp.blob();
+      var url = URL.createObjectURL(blob);
+      body.innerHTML = '<div class="text-center">' +
+        '<img src="' + url + '" alt="' + name + '" style="max-width:100%;max-height:75vh;border-radius:8px;">' +
+        '<p class="text-xs text-slate-500 mt-3">' + name + ' · <a href="' + path + '" target="_blank" class="text-blue-400 hover:underline">原始文件</a></p>' +
+      '</div>';
+    } else if (isMd) {
+      var text = await resp.text();
+      var editUrl = 'https://github.com/gabyzheng/content-system/edit/master/' + path;
+      body.innerHTML = '<div class="mb-3 pb-3 border-b border-white/5 flex items-center justify-between">' +
+        '<span class="text-xs text-slate-500">' + name + ' · <a href="' + path + '" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>' +
+        '<a href="' + editUrl + '" target="_blank" class="px-3 py-1 rounded-lg text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition-colors">' +
+          '<i class="fa-solid fa-pen-to-square mr-1"></i>编辑' +
+        '</a>' +
+      '</div>' + renderMarkdown(text);
+    } else {
+      var text = await resp.text();
+      body.innerHTML = '<div class="mb-3 pb-3 border-b border-white/5">' +
+        '<span class="text-xs text-slate-500">' + name + ' · <a href="' + path + '" target="_blank" class="text-blue-400 hover:underline">原始文件</a></span>' +
+      '</div>' +
+      '<pre style="background:rgba(0,0,0,0.4);padding:20px;border-radius:8px;overflow-x:auto;max-height:70vh;"><code style="color:#cbd5e1;font-size:13px;line-height:1.6;">' + text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</code></pre>';
+    }
+  } catch (e) {
+    body.innerHTML = '<div class="text-center py-12"><i class="fa-solid fa-triangle-exclamation text-3xl text-amber-500 mb-3"></i><p class="text-slate-400">无法加载文件</p><p class="text-xs text-slate-600 mt-1">' + e.message + '</p></div>';
+  }
+}
+
+function closeModal() {
+  document.getElementById('fileModal').classList.remove('open');
+  document.getElementById('modalBody').innerHTML = '';
+}
+
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+// Init
+document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+renderStats();
+renderFilters();
+renderTopics();
+</script>
+</body>
+</html>

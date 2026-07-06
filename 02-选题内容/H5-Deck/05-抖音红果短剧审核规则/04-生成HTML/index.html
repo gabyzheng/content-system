@@ -5,482 +5,353 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="fs-language" content="zh-only">
 <title>抖音×红果 短剧审核规则指南</title>
+<link rel="stylesheet" href="../../../../../../skills/feishu-deck-h5/assets/feishu-deck.css">
 <style>
 :root {
-  --bg: #0a0e1a;
-  --card-bg: rgba(255,255,255,0.04);
-  --text: rgba(255,255,255,0.88);
-  --text-secondary: rgba(255,255,255,0.62);
-  --accent-blue: #3b82f6;
-  --accent-teal: #14b8a6;
-  --accent-orange: #f59e0b;
-  --accent-red: #ef4444;
-  --accent-green: #22c55e;
-  --border: rgba(255,255,255,0.08);
-  --font-cjk: -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --fs-bg-0: #0a0e1a; --fs-bg-1: #0d1326; --fs-bg-2: #111a33; --fs-bg-3: #182244;
+  --fs-blue: #3b82f6; --fs-teal: #14b8a6; --fs-orange: #f59e0b; --fs-red: #ef4444;
+  --fs-accent: var(--fs-teal);
+  --fs-text: rgba(255,255,255,0.90); --fs-text-72: rgba(255,255,255,0.72);
+  --fs-text-65: rgba(255,255,255,0.65); --fs-text-48: rgba(255,255,255,0.48);
+  --fs-grad-hero: radial-gradient(120% 100% at 0% 0%, #0f1e40 0%, #0a1228 38%, #060a18 78%);
+  --fs-grad-close: radial-gradient(60% 50% at 92% 8%, rgba(139,92,246,0.28), transparent 60%), radial-gradient(60% 50% at 8% 92%, rgba(59,130,246,0.22), transparent 60%), #0a0e1a;
+  --fs-pad-x: 96px; --fs-pad-y: 64px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--font-cjk);background:var(--bg);color:var(--text);overflow-x:hidden}
-.slides-container{width:100%;max-width:1200px;margin:0 auto;padding:40px 20px;display:flex;flex-direction:column;gap:60px}
-.slide{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#0a0e1a 0%,#111827 50%,#0f172a 100%);border-radius:16px;border:1px solid var(--border);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-.slide::before{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:150%;background:radial-gradient(ellipse,rgba(59,130,246,0.06) 0%,transparent 70%);pointer-events:none}
-.slide-inner{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;padding:52px 64px 40px}
-.wordmark{position:absolute;top:20px;right:32px;font-size:13px;color:rgba(255,255,255,0.28);letter-spacing:0.08em;font-weight:500}
-.cover .slide-inner{justify-content:center;align-items:flex-start;padding:64px 80px}
-.cover .cover-tag{display:inline-block;padding:6px 16px;background:rgba(20,184,166,0.12);border:1px solid rgba(20,184,166,0.25);border-radius:20px;color:var(--accent-teal);font-size:13px;font-weight:600;letter-spacing:0.06em;margin-bottom:24px}
-.cover .cover-title{font-size:48px;font-weight:700;line-height:1.25;letter-spacing:0.02em;margin-bottom:16px}
-.cover .cover-title .highlight{color:var(--accent-teal)}
-.cover .cover-subtitle{font-size:18px;color:var(--text-secondary);line-height:1.6;max-width:540px}
-.content .slide-header{margin-bottom:24px}
-.content .slide-label{font-size:12px;font-weight:600;color:var(--accent-teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
-.content .slide-title{font-size:28px;font-weight:700;line-height:1.35}
-.content .slide-body{flex:1;display:flex;gap:32px;overflow:hidden}
-.col-left,.col-right{flex:1;min-width:0}
-.col-half{flex:0 0 calc(50% - 16px);min-width:0}
-.rule-group{margin-bottom:14px}
-.rule-group-title{font-size:15px;font-weight:700;color:var(--accent-teal);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid rgba(20,184,166,0.15)}
-.rule-group-title.red{color:var(--accent-red);border-bottom-color:rgba(239,68,68,0.15)}
-.rule-group-title.orange{color:var(--accent-orange);border-bottom-color:rgba(245,158,11,0.15)}
-.rule-group-title.blue{color:var(--accent-blue);border-bottom-color:rgba(59,130,246,0.15)}
-.rule-list{list-style:none;display:flex;flex-direction:column;gap:4px}
-.rule-list li{font-size:12.5px;line-height:1.6;color:var(--text-secondary);padding-left:14px;position:relative}
-.rule-list li::before{content:'•';position:absolute;left:0;color:var(--accent-teal);font-weight:700}
-.rule-list li.ban::before{content:'✕';color:var(--accent-red);font-size:11px}
-.rule-list li.warn::before{content:'⚠';color:var(--accent-orange);font-size:11px}
-.rule-badge{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10.5px;font-weight:600;margin-left:3px;vertical-align:middle}
-.rule-badge.ban{background:rgba(239,68,68,0.12);color:var(--accent-red)}
-.rule-badge.limit{background:rgba(245,158,11,0.12);color:var(--accent-orange)}
-.rule-badge.must{background:rgba(59,130,246,0.12);color:var(--accent-blue)}
-.stats-row{display:flex;gap:24px;margin-bottom:16px}
-.stat-card{flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
-.stat-card .num{font-size:32px;font-weight:800;line-height:1;margin-bottom:4px}
-.stat-card .num.teal{color:var(--accent-teal)}.stat-card .num.red{color:var(--accent-red)}.stat-card .num.orange{color:var(--accent-orange)}
-.stat-card .lbl{font-size:12.5px;color:var(--text-secondary);line-height:1.4}
-.compare-table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.5}
-.compare-table th{text-align:left;padding:7px 10px;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border);font-size:11px;letter-spacing:0.04em}
-.compare-table th:first-child{width:22%}.compare-table th:nth-child(2){width:39%}.compare-table th:nth-child(3){width:39%}
-.compare-table td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top}
-.compare-table tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
-.compare-table .same{color:var(--accent-teal);font-weight:500}
-.compare-table .diff-a{color:var(--accent-blue)}.compare-table .diff-b{color:var(--accent-orange)}
-.checklist{list-style:none;display:flex;flex-direction:column;gap:6px}
-.checklist li{font-size:12.5px;line-height:1.5;padding:8px 12px;background:var(--card-bg);border-radius:8px;border:1px solid var(--border);display:flex;align-items:flex-start;gap:8px}
-.checklist li .check-icon{font-size:15px;flex-shrink:0;margin-top:1px}
-.flow-steps{display:flex;gap:10px;align-items:stretch}
-.flow-step{flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
-.flow-step .step-num{width:28px;height:28px;border-radius:50%;background:rgba(20,184,166,0.15);color:var(--accent-teal);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
-.flow-step .step-title{font-size:13px;font-weight:600}
-.flow-step .step-desc{font-size:11px;color:var(--text-secondary);line-height:1.5}
-.flow-arrow{display:flex;align-items:center;color:var(--text-secondary);font-size:18px;flex-shrink:0}
-.end .slide-inner{justify-content:center;align-items:center;text-align:center}
-.end .end-title{font-size:32px;font-weight:700;margin-bottom:14px}
-.end .end-sub{font-size:15px;color:var(--text-secondary);line-height:1.6;max-width:480px}
-.end .end-contact{margin-top:28px;font-size:12.5px;color:rgba(255,255,255,0.35)}
-.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.tag-chip{padding:3px 10px;border-radius:14px;font-size:11px;font-weight:600}
-.tag-chip.danger{background:rgba(239,68,68,0.1);color:var(--accent-red);border:1px solid rgba(239,68,68,0.2)}
-.tag-chip.warning{background:rgba(245,158,11,0.1);color:var(--accent-orange);border:1px solid rgba(245,158,11,0.2)}
-.tag-chip.info{background:rgba(59,130,246,0.1);color:var(--accent-blue);border:1px solid rgba(59,130,246,0.2)}
-.platform-label{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;margin-bottom:10px}
-.platform-label .dot{width:8px;height:8px;border-radius:50%}
-.platform-label .dot.dy{background:var(--accent-blue)}.platform-label .dot.hg{background:var(--accent-orange)}
-.compact-text{font-size:12.5px;line-height:1.65;color:var(--text-secondary)}
-.compact-text strong{color:var(--text)}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.three-col .card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px}
-.three-col .card .card-num{font-size:26px;font-weight:900;color:rgba(255,255,255,0.07);line-height:1;margin-bottom:4px}
-.three-col .card .card-title{font-size:14px;font-weight:700;margin-bottom:6px}
-.three-col .card .card-body{font-size:12px;color:var(--text-secondary);line-height:1.55}
-.divider{width:100%;height:1px;background:var(--border);margin:12px 0}
-.highlight-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:10px;padding:12px 16px;font-size:12px;line-height:1.6;margin-top:10px}
-.highlight-box .box-title{font-weight:700;color:var(--accent-red);font-size:11px;letter-spacing:0.06em;margin-bottom:4px}
-.stage-banner{display:flex;align-items:center;gap:10px;background:rgba(20,184,166,0.06);border:1px solid rgba(20,184,166,0.12);border-radius:10px;padding:10px 16px;font-size:12.5px;color:var(--accent-teal);margin-bottom:12px}
-.stage-banner .banner-icon{font-size:18px}
-@media(max-width:768px){
-  .slides-container{padding:20px 12px;gap:40px}
-  .slide{aspect-ratio:auto;min-height:500px}
-  .slide-inner{padding:28px 24px 24px}
-  .cover .slide-inner{padding:36px 28px}
-  .cover .cover-title{font-size:26px}
-  .content .slide-body{flex-direction:column}
-  .stats-row{flex-direction:column}
-  .three-col{grid-template-columns:1fr}
-  .flow-steps{flex-direction:column}
-  .flow-arrow{transform:rotate(90deg);justify-content:center}
-  .compare-table{font-size:10px}
-  .compare-table th,.compare-table td{padding:4px 6px}
-}
+.deck { font-family: "PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif; }
+.slide[data-layout="content-2col"] { padding: var(--fs-pad-y) var(--fs-pad-x); }
+.slide-header { margin-bottom: 32px; }
+.slide-label { font-size: 13px; font-weight: 600; color: var(--fs-teal); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+.slide-title { font-size: 32px; font-weight: 700; line-height: 1.3; color: var(--fs-text); }
+.col-2 { display: flex; gap: 48px; flex: 1; min-height: 0; }
+.col-2 > * { flex: 1; min-width: 0; }
+.col-half { flex: 0 0 calc(50% - 24px); min-width: 0; }
+.rule-block { margin-bottom: 18px; }
+.rule-block-title { font-size: 16px; font-weight: 700; color: var(--fs-teal); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(20,184,166,0.2); }
+.rule-block-title.red { color: var(--fs-red); border-bottom-color: rgba(239,68,68,0.2); }
+.rule-block-title.orange { color: var(--fs-orange); border-bottom-color: rgba(245,158,11,0.2); }
+.rule-block-title.blue { color: var(--fs-blue); border-bottom-color: rgba(59,130,246,0.2); }
+.rule-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.rule-list li { font-size: 14px; line-height: 1.6; color: var(--fs-text-72); padding-left: 16px; position: relative; }
+.rule-list li::before { content: '•'; position: absolute; left: 0; color: var(--fs-teal); font-weight: 700; }
+.rule-list li.ban::before { content: '✕'; color: var(--fs-red); font-size: 12px; }
+.rule-list li.warn::before { content: '⚠'; color: var(--fs-orange); font-size: 12px; }
+.rule-badge { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+.rule-badge.hg { background: rgba(245,158,11,0.15); color: var(--fs-orange); }
+.rule-badge.dy { background: rgba(59,130,246,0.15); color: var(--fs-blue); }
+.stats-row { display: flex; gap: 28px; margin-bottom: 20px; }
+.stat-card { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--fs-hairline); border-radius: 14px; padding: 22px; text-align: center; }
+.stat-card .num { font-size: 38px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+.stat-card .num.teal { color: var(--fs-teal); } .stat-card .num.red { color: var(--fs-red); } .stat-card .num.orange { color: var(--fs-orange); }
+.stat-card .lbl { font-size: 13px; color: var(--fs-text-65); line-height: 1.4; }
+.compact { font-size: 14px; line-height: 1.7; color: var(--fs-text-65); }
+.compact strong { color: var(--fs-text); }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.55; }
+.compare-table th { text-align: left; padding: 8px 12px; font-weight: 600; color: var(--fs-text-65); border-bottom: 1px solid var(--fs-hairline); font-size: 12px; letter-spacing: 0.05em; }
+.compare-table th:first-child { width: 20%; }
+.compare-table td { padding: 7px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+.compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+.compare-table .same { color: var(--fs-teal); } .compare-table .dy-cell { color: var(--fs-blue); } .compare-table .hg-cell { color: var(--fs-orange); }
+.highlight-box { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 12px; padding: 14px 18px; font-size: 13px; line-height: 1.6; margin-top: 12px; }
+.highlight-box .box-title { font-weight: 700; color: var(--fs-red); font-size: 12px; letter-spacing: 0.06em; margin-bottom: 4px; }
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.checklist li { font-size: 13.5px; line-height: 1.5; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid var(--fs-hairline); display: flex; align-items: flex-start; gap: 10px; }
+.checklist li .check-icon { font-size: 16px; flex-shrink: 0; }
+.flow-steps { display: flex; gap: 8px; align-items: stretch; }
+.flow-step { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--fs-hairline); border-radius: 12px; padding: 14px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.flow-step .step-num { width: 28px; height: 28px; border-radius: 50%; background: rgba(20,184,166,0.15); color: var(--fs-teal); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+.flow-step .step-title { font-size: 13px; font-weight: 600; color: var(--fs-text); }
+.flow-step .step-desc { font-size: 11px; color: var(--fs-text-65); line-height: 1.5; }
+.flow-arrow { display: flex; align-items: center; color: var(--fs-text-48); font-size: 18px; flex-shrink: 0; }
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag-chip { padding: 4px 12px; border-radius: 14px; font-size: 12px; font-weight: 600; }
+.tag-chip.danger { background: rgba(239,68,68,0.12); color: var(--fs-red); border: 1px solid rgba(239,68,68,0.2); }
+.tag-chip.warn { background: rgba(245,158,11,0.12); color: var(--fs-orange); border: 1px solid rgba(245,158,11,0.2); }
+.tag-chip.info { background: rgba(59,130,246,0.12); color: var(--fs-blue); border: 1px solid rgba(59,130,246,0.2); }
+.platform-label { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.platform-label .dot { width: 10px; height: 10px; border-radius: 50%; }
+.platform-label .dot.dy { background: var(--fs-blue); } .platform-label .dot.hg { background: var(--fs-orange); }
+.stage-banner { display: flex; align-items: center; gap: 10px; background: rgba(20,184,166,0.06); border: 1px solid rgba(20,184,166,0.12); border-radius: 10px; padding: 10px 16px; font-size: 14px; color: var(--fs-teal); margin-bottom: 14px; }
+.stage-banner .banner-icon { font-size: 20px; }
+.slide[data-layout="cover"] { background: var(--fs-grad-hero); }
+.cover-inner { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 80px 120px; }
+.cover-tag { display: inline-block; padding: 8px 20px; background: rgba(20,184,166,0.12); border: 1px solid rgba(20,184,166,0.25); border-radius: 24px; color: var(--fs-teal); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 28px; align-self: flex-start; }
+.cover-title { font-size: 56px; font-weight: 700; line-height: 1.2; letter-spacing: 0.02em; color: var(--fs-text); }
+.cover-title .hl { color: var(--fs-teal); }
+.cover-subtitle { font-size: 20px; color: var(--fs-text-65); line-height: 1.6; margin-top: 20px; max-width: 600px; }
+.slide[data-layout="end"] { background: var(--fs-grad-close); }
+.end-inner { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; padding: 80px 160px; }
+.end-title { font-size: 40px; font-weight: 700; color: var(--fs-text); margin-bottom: 18px; }
+.end-sub { font-size: 18px; color: var(--fs-text-65); line-height: 1.7; max-width: 560px; }
+.end-contact { margin-top: 36px; font-size: 14px; color: var(--fs-text-40); }
+.appendix-body { display: flex; gap: 40px; flex: 1; min-height: 0; }
+.appendix-col { flex: 1; min-width: 0; overflow-y: auto; padding-right: 8px; }
+.appendix-col::-webkit-scrollbar { width: 4px; }
+.appendix-col::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
 </style>
 </head>
 <body>
-<div class="slides-container">
+<div class="deck" data-mode="present">
 
-<!-- P1: COVER -->
-<div class="slide cover" data-slide-key="cover" data-screen-label="01 封面">
-<div class="wordmark">内容合规指南</div>
-<div class="slide-inner">
-<div class="cover-tag">短剧创作者 · 审核规则手册</div>
-<h1 class="cover-title" data-text-id="slide-01.title">抖音 &times; 红果<br><span class="highlight">短剧审核规则指南</span></h1>
-<p class="cover-subtitle" data-text-id="slide-01.subtitle">共同红线 · 平台差异 · 风控应对 — 创作者避坑一站式参考</p>
-</div></div>
+<!-- P1 -->
+<div class="slide-frame is-current" data-idx="0">
+<div class="slide" data-layout="cover" data-slide-key="cover" data-screen-label="01 封面">
+<div class="cover-inner">
+<div class="cover-tag" data-text-id="slide-01.tag">短剧创作者 · 审核规则手册</div>
+<h1 class="cover-title" data-text-id="slide-01.title">抖音 &times; 红果<br><span class="hl">短剧审核规则指南</span></h1>
+<p class="cover-subtitle" data-text-id="slide-01.subtitle">共同红线 · 平台差异 · 风控应对<br>创作者避坑一站式参考</p>
+</div></div></div>
 
-<!-- P2: 背景 -->
-<div class="slide content" data-slide-key="background" data-screen-label="02 行业背景">
-<div class="wordmark">行业背景</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">BACKGROUND</div>
-<h2 class="slide-title" data-text-id="slide-02.title">为什么审核突然变严了？</h2></div>
-<div class="slide-body">
+<!-- P2 -->
+<div class="slide-frame" data-idx="1">
+<div class="slide" data-layout="content-2col" data-slide-key="background" data-screen-label="02 行业背景">
+<div class="slide-header"><div class="slide-label">BACKGROUND</div><h2 class="slide-title" data-text-id="slide-02.title">为什么审核突然变严了？</h2></div>
+<div class="col-2">
 <div class="col-left">
 <div class="stats-row">
 <div class="stat-card"><div class="num red">7万+</div><div class="lbl">抖音累计下架违规AI短剧</div></div>
 <div class="stat-card"><div class="num orange">1718部</div><div class="lbl">红果Q1下架违规短剧</div></div>
 <div class="stat-card"><div class="num teal">30%</div><div class="lbl">当前新剧过审率</div></div>
 </div>
-<div class="compact-text">
-<strong>政策收紧时间线：</strong><br>
-• 2026.4.1 — AI短剧"先备案后上线"强制执行，未备案全网下架<br>
-• 2026.5 — 抖音发布AI短剧审片标准（34条红线），行业最严<br>
+<div class="compact"><strong>政策收紧时间线：</strong><br>
+• 2026.4.1 — AI短剧"先备案后上线"强制执行<br>
+• 2026.5 — 抖音发布AI短剧审片标准（34条红线）<br>
 • 2026.6.1 — 广电总局启动2个月专项治理（8类重点问题）<br>
-• 2026.6.24 — 《微短剧发展管理办法（征求意见稿）》公开征求意见<br>
-• 日上新量从2000+部暴跌至约350部；首例AI短剧侵权案判刑8个月
-</div></div>
+• 2026.6.24 — 《微短剧发展管理办法》征求意见<br>
+• 日上新量从2000+部暴跌至约350部<br>
+• 首例AI短剧侵权案：盗录1700部 → 判刑8个月</div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title red">广电总局8类专项治理</div>
+<div class="rule-block"><div class="rule-block-title red">广电总局8类专项治理</div>
 <ul class="rule-list">
-<li class="ban">涉儿童有害内容</li><li class="ban">软色情擦边</li>
-<li class="ban">拜金炫富</li><li class="ban">畸形婚恋观</li>
-<li class="ban">封建糟粕</li><li class="ban">暴力复仇</li>
-<li class="ban">低俗片名</li><li class="ban">侵权盗版</li>
-</ul></div>
-<div class="highlight-box"><div class="box-title">⚠ 行业现实</div>
-微短剧按投资额度分三类管理：一类/二类需发行许可证，三类由播出单位播前审核。AI生成微短剧需每集加提示标识。
-</div></div>
-</div></div></div>
+<li class="ban">涉儿童有害内容</li><li class="ban">软色情擦边</li><li class="ban">拜金炫富</li>
+<li class="ban">畸形婚恋观</li><li class="ban">封建糟粕</li><li class="ban">暴力复仇</li>
+<li class="ban">低俗片名</li><li class="ban">侵权盗版</li></ul></div>
+<div class="highlight-box"><div class="box-title">⚠ 行业现实</div>微短剧按投资额度分三类管理。一类/二类需发行许可证，三类由播出单位播前审核。AI生成微短剧须每集标注提示标识。</div></div></div></div></div>
 
-<!-- P3: 规则全景图 -->
-<div class="slide content" data-slide-key="overview" data-screen-label="03 规则全景图">
-<div class="wordmark">规则全景</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">OVERVIEW</div>
-<h2 class="slide-title" data-text-id="slide-03.title">两平台规则体系总览</h2></div>
-<div class="slide-body">
+<!-- P3 -->
+<div class="slide-frame" data-idx="2">
+<div class="slide" data-layout="content-2col" data-slide-key="overview" data-screen-label="03 规则全景图">
+<div class="slide-header"><div class="slide-label">OVERVIEW</div><h2 class="slide-title" data-text-id="slide-03.title">两平台规则体系总览</h2></div>
+<div class="col-2">
 <div class="col-half">
 <div class="platform-label"><span class="dot dy"></span> 抖音集团</div>
-<div class="tag-row">
-<span class="tag-chip danger">6大零容忍红线</span>
-<span class="tag-chip warning">34条审核条款</span>
-<span class="tag-chip info">4大高风险场景</span></div>
-<div class="compact-text">
-<strong>审核逻辑：</strong>不搞题材一刀切，综合评估5维度（题材设定→人物关系→叙事表达→封面标题→利益导向）<br>
-<strong>核心三问：</strong>价值观正向？风险可控？质量达标？<br>
-<strong>附加规则：</strong>AI标注强制（≥50%三处标注）、质量硬指标（≥30秒/禁机械配音等）、剧本限投（30天≤10本/实名制）、封面禁用营销词
-</div></div>
+<div class="tag-row"><span class="tag-chip danger">6大零容忍红线</span><span class="tag-chip warn">34条审核条款</span><span class="tag-chip info">4大高风险场景</span></div>
+<div class="compact"><strong>审核逻辑：</strong>不搞题材一刀切，综合评估5维度（题材设定→人物关系→叙事表达→封面标题→利益导向）<br><strong>核心三问：</strong>价值观正向？风险可控？质量达标？<br><strong>附加规则：</strong>AI标注强制（≥50%三处标注）、质量硬指标（≥30秒/禁机械配音）、剧本限投（30天≤10本/实名制）、封面禁用营销词</div></div>
 <div class="col-half">
 <div class="platform-label"><span class="dot hg"></span> 红果短剧</div>
-<div class="tag-row">
-<span class="tag-chip danger">3类直接禁拍</span>
-<span class="tag-chip warning">6大通用红线</span>
-<span class="tag-chip info">13类受限内容</span></div>
-<div class="compact-text">
-<strong>审核逻辑：</strong>品类红线更明确，直接划定禁区，一刀切禁令更坚决<br>
-<strong>官方口径：</strong>"严格按主管部门统一要求"（否认发布独立标准）<br>
-<strong>附加规则：</strong>5月真人专项加码（男频保镖/豪门整治）、72小时审核机制、法律追责、标题禁用博眼球词
-</div></div>
-</div></div></div>
+<div class="tag-row"><span class="tag-chip danger">3类直接禁拍</span><span class="tag-chip warn">6大通用红线</span><span class="tag-chip info">真人专项加码</span></div>
+<div class="compact"><strong>审核逻辑：</strong>品类红线更明确，直接划定禁区，一刀切禁令更坚决<br><strong>官方口径：</strong>"严格按主管部门统一要求"（否认发布独立标准）<br><strong>附加规则：</strong>5月真人专项加码（男频保镖/豪门整治）、72小时审核机制、法律追责、标题禁用博眼球词</div></div></div></div></div>
 
-<!-- P4: 共同红线① -->
-<div class="slide content" data-slide-key="common-redline-1" data-screen-label="04 共同红线 · 不良价值观">
-<div class="wordmark">共同红线</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">COMMON REDLINES</div>
-<h2 class="slide-title" data-text-id="slide-04.title">共同红线① — 不良价值观导向</h2></div>
-<div class="slide-body">
+<!-- P4 -->
+<div class="slide-frame" data-idx="3">
+<div class="slide" data-layout="content-2col" data-slide-key="common-redline-1" data-screen-label="04 共同红线 · 不良价值观">
+<div class="slide-header"><div class="slide-label">COMMON REDLINES ①</div><h2 class="slide-title" data-text-id="slide-04.title">不良价值观导向</h2></div>
+<div class="col-2">
 <div class="col-left">
-<div class="rule-group"><div class="rule-group-title red">拜金主义 &amp; 错误金钱观</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title red">拜金主义 &amp; 错误金钱观</div><ul class="rule-list">
 <li class="ban">宣扬拜金主义、夸张炫富、嫌贫爱富</li>
 <li class="ban">夸大贫富矛盾、刻意制造阶层对立</li>
 <li class="ban">不择手段敛财、神化财富作用</li>
 <li class="ban">财富设定离奇（凭空暴富、系统送钱）</li>
 <li class="ban">性别物化（将人当工具/货物/符号）</li>
-<li class="ban">权贵凌驾法律、私下灰色交易<span class="rule-badge ban">红果专项</span></li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title red">极端复仇 &amp; 暴力仇恨</div>
-<ul class="rule-list">
+<li class="ban">权贵凌驾法律、私下灰色交易 <span class="rule-badge hg">红果</span></li></ul></div>
+<div class="rule-block"><div class="rule-block-title red">极端复仇 &amp; 暴力仇恨</div><ul class="rule-list">
 <li class="ban">极端复仇、以暴制暴、私刑正义</li>
 <li class="ban">教唆犯罪、冷漠报复</li>
 <li class="ban">主角主动出手伤人、报复殴打对手</li>
 <li class="warn">反派必须移交公安/司法依法处置</li>
 <li class="warn">主角仅能躲闪、格挡等正当防御</li>
-<li class="ban">私刑囚禁、捆绑拖拽、聚众围堵打斗<span class="rule-badge ban">红果专项</span></li>
-</ul></div></div>
+<li class="ban">私刑囚禁、捆绑拖拽、聚众围堵 <span class="rule-badge hg">红果</span></li></ul></div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title red">畸形婚恋观 &amp; 伦理观</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title red">畸形婚恋观 &amp; 伦理观</div><ul class="rule-list">
 <li class="ban">美化出轨、家暴、不伦关系</li>
 <li class="ban">PUA霸总囚禁追求、强制婚恋、绑架式追求</li>
 <li class="ban">小三上位、婚内出轨洗白</li>
 <li class="ban">封建婚恋观、非正当亲缘称呼</li>
 <li class="ban">恶意婆媳对立、狗血豪门撕逼</li>
-<li class="ban">将控制/羞辱/物化包装为"甜宠"卖点</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title red">人格羞辱 &amp; 尊严践踏</div>
-<ul class="rule-list">
+<li class="ban">将控制/羞辱/物化包装为"甜宠"卖点</li></ul></div>
+<div class="rule-block"><div class="rule-block-title red">人格羞辱 &amp; 尊严践踏</div><ul class="rule-list">
 <li class="ban">扔钱辱人、逼迫下跪、掌掴羞辱</li>
 <li class="ban">非人化羞辱、持续性言语羞辱</li>
 <li class="ban">校园霸凌</li>
 <li class="ban">职场无休止刁难弱势群体</li>
 <li class="ban">恶意贬低底层群体</li>
-<li class="ban">宣扬消极颓废人生观、放大社会阴暗面</li>
-</ul></div></div>
-</div></div></div>
+<li class="ban">宣扬消极颓废人生观、放大社会阴暗面</li></ul></div></div></div></div></div>
 
-<!-- P5: 共同红线② -->
-<div class="slide content" data-slide-key="common-redline-2" data-screen-label="05 共同红线 · 低俗 & 迷信">
-<div class="wordmark">共同红线</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">COMMON REDLINES</div>
-<h2 class="slide-title" data-text-id="slide-05.title">共同红线② — 低俗擦边 &amp; 封建迷信</h2></div>
-<div class="slide-body">
+<!-- P5 -->
+<div class="slide-frame" data-idx="4">
+<div class="slide" data-layout="content-2col" data-slide-key="common-redline-2" data-screen-label="05 共同红线 · 低俗 & 迷信">
+<div class="slide-header"><div class="slide-label">COMMON REDLINES ②</div><h2 class="slide-title" data-text-id="slide-05.title">低俗擦边 &amp; 封建迷信</h2></div>
+<div class="col-2">
 <div class="col-left">
-<div class="rule-group"><div class="rule-group-title red">低俗色情擦边</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title red">低俗色情擦边</div><ul class="rule-list">
 <li class="ban">刻意展示身体部位、暴露画面</li>
 <li class="ban">暧昧动作、性暗示台词、挑逗对白</li>
 <li class="ban">低俗封面/标题引流变现</li>
-<li class="ban">深夜独处、刻意肢体接触暧昧擦边<span class="rule-badge ban">红果专项</span></li>
-<li class="ban">以擦边内容引导变现</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title orange">观感不适 &amp; 血腥恐怖</div>
-<ul class="rule-list">
+<li class="ban">深夜独处、刻意肢体接触暧昧擦边 <span class="rule-badge hg">红果</span></li>
+<li class="ban">以擦边内容引导变现</li></ul></div>
+<div class="rule-block"><div class="rule-block-title orange">观感不适 &amp; 血腥恐怖</div><ul class="rule-list">
 <li class="ban">极端血腥画面、身体伤害特写</li>
 <li class="ban">恶心猎奇场景、无底线审丑</li>
 <li class="ban">引发强烈生理/心理不适的画面</li>
 <li class="ban">灵异惊悚类画面</li>
-<li class="ban">静态PPT式敷衍内容<span class="rule-badge ban">抖音专项</span></li>
-<li class="ban">阴间暗黑滤镜、压抑恐怖氛围<span class="rule-badge ban">红果专项</span></li>
-</ul></div></div>
+<li class="ban">静态PPT式敷衍内容 <span class="rule-badge dy">抖音</span></li>
+<li class="ban">阴间暗黑滤镜、压抑恐怖氛围 <span class="rule-badge hg">红果</span></li></ul></div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title red">封建迷信（两平台一致封禁）</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title red">封建迷信（两平台一致封禁）</div><ul class="rule-list">
 <li class="ban">鬼魂通灵、算命驱邪</li>
 <li class="ban">现代法术改命、玄学逆天改命</li>
 <li class="ban">法术作恶、玄幻荒诞离奇设定</li>
 <li class="ban">封建邪祟文化等迷信糟粕</li>
 <li class="ban">风水、降头、鬼怪等擦边内容</li>
-<li class="ban">宗教邪术、民俗邪异化改编</li>
-</ul></div>
-<div class="highlight-box"><div class="box-title">⚠ 关键收尾规则</div>
-所有诡异/悬疑事件必须以<strong>人为布局、心理错觉</strong>等科学逻辑收尾，不得以鬼神玄学作为结局解释。作品核心须体现<strong>破除迷信、倡导科学精神</strong>。
-</div></div>
-</div></div></div>
+<li class="ban">宗教邪术、民俗邪异化改编</li></ul></div>
+<div class="highlight-box"><div class="box-title">⚠ 关键收尾规则</div>所有诡异/悬疑事件必须以<strong>人为布局、心理错觉</strong>等科学逻辑收尾，不得以鬼神玄学作为结局解释。作品核心须体现<strong>破除迷信、倡导科学精神</strong>。</div></div></div></div></div>
 
-<!-- P6: 共同红线③ -->
-<div class="slide content" data-slide-key="common-redline-3" data-screen-label="06 共同红线 · 侵权 & 未成年人">
-<div class="wordmark">共同红线</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">COMMON REDLINES</div>
-<h2 class="slide-title" data-text-id="slide-06.title">共同红线③ — 侵权 &amp; 未成年人 &amp; 公序良俗</h2></div>
-<div class="slide-body">
+<!-- P6 -->
+<div class="slide-frame" data-idx="5">
+<div class="slide" data-layout="content-2col" data-slide-key="common-redline-3" data-screen-label="06 共同红线 · 侵权 & 未成年人">
+<div class="slide-header"><div class="slide-label">COMMON REDLINES ③</div><h2 class="slide-title" data-text-id="slide-06.title">侵权 &amp; 未成年人 &amp; 公序良俗</h2></div>
+<div class="col-2">
 <div class="col-left">
-<div class="rule-group"><div class="rule-group-title red">侵权与肖像滥用</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title red">侵权与肖像滥用</div><ul class="rule-list">
 <li class="ban">未经授权AI换脸（两平台一致零容忍）</li>
 <li class="ban">盗用视频/音频/图片素材</li>
 <li class="ban">模仿/盗用明星肖像</li>
 <li class="ban">洗稿抄袭</li>
 <li class="ban">盗用知名IP形象（卡通/游戏角色等）</li>
-<li class="ban">滥用宗教符号</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title red">处罚梯度对比</div>
-<ul class="rule-list">
+<li class="ban">滥用宗教符号</li></ul></div>
+<div class="rule-block"><div class="rule-block-title red">处罚梯度对比</div><ul class="rule-list">
 <li class="ban"><strong>抖音：</strong>下架 → 限权 → 封号 → 终止合作</li>
-<li class="ban"><strong>红果：</strong>下架 → 暂停上传15天 → 封禁 → 终止合作 → 法律追责</li>
-<li class="ban">首例刑事判例：盗录1700部AI短剧 → 判刑8个月+罚金6000元</li>
-<li class="ban">红果Q1核查1.5万部AI短剧，处置670部侵权作品</li>
-</ul></div></div>
+<li class="ban"><strong>红果：</strong>下架 → 暂停15天 → 封禁 → 终止合作 → 法律追责</li>
+<li class="ban">首例刑事判例：盗录1700部AI短剧 → 判刑8个月+罚金6000元</li></ul></div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title red">未成年人保护</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title red">未成年人保护</div><ul class="rule-list">
 <li class="ban">涉及未成年人低俗内容</li>
 <li class="ban">涉及未成年人暴力内容</li>
 <li class="ban">不良示范（诱导不当行为）</li>
-<li class="ban">利用孩童胁迫家长<span class="rule-badge ban">红果专项</span></li>
-<li class="ban">孩童早熟恋爱<span class="rule-badge ban">红果专项</span></li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title red">公序良俗</div>
-<ul class="rule-list">
+<li class="ban">利用孩童胁迫家长 <span class="rule-badge hg">红果</span></li>
+<li class="ban">孩童早熟恋爱 <span class="rule-badge hg">红果</span></li></ul></div>
+<div class="rule-block"><div class="rule-block-title red">公序良俗</div><ul class="rule-list">
 <li class="ban">恶搞公众人物</li>
 <li class="ban">损害国家形象、歪曲历史英雄</li>
 <li class="ban">宣扬消极颓废人生观</li>
-<li class="ban">放大社会阴暗面（群体妖魔化、极端家庭暴力）</li>
-<li class="ban">抽烟酗酒纹身造型过度渲染<span class="rule-badge ban">红果专项</span></li>
-</ul></div></div>
-</div></div></div>
+<li class="ban">放大社会阴暗面（群体妖魔化）</li>
+<li class="ban">抽烟酗酒纹身造型过度渲染 <span class="rule-badge hg">红果</span></li></ul></div></div></div></div></div>
 
-<!-- P7: 抖音特殊规则 -->
-<div class="slide content" data-slide-key="douyin-special" data-screen-label="07 抖音特殊规则">
-<div class="wordmark">抖音专项</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">DOUYIN ONLY</div>
-<h2 class="slide-title" data-text-id="slide-07.title">抖音特殊规则 — 34条红线 + 四大高风险场景</h2></div>
-<div class="slide-body">
+<!-- P7 -->
+<div class="slide-frame" data-idx="6">
+<div class="slide" data-layout="content-2col" data-slide-key="douyin-special" data-screen-label="07 抖音特殊规则">
+<div class="slide-header"><div class="slide-label">DOUYIN ONLY</div><h2 class="slide-title" data-text-id="slide-07.title">34条红线 + 四大高风险场景</h2></div>
+<div class="col-2">
 <div class="col-left">
-<div class="rule-group"><div class="rule-group-title blue">四大高风险场景（90%拒审来源）</div>
-<ul class="rule-list">
-<li class="ban"><strong>关系越界：</strong>将控制/羞辱/物化包装为"甜宠"，不伦擦边关系刻意制造讨论 → 直接高风险</li>
-<li class="ban"><strong>感官刺激引流：</strong>露骨/惊悚开篇+封面标题暗示 → 即使后续合规仍整体下架</li>
-<li class="ban"><strong>失真逻辑洗白：</strong>为作恶角色设无代价获利，用架空设定美化违规违法 → 违背常识即下架</li>
-<li class="ban"><strong>低质拼接冒充：</strong>PPT轮播+伪动态+机械朗读+AI穿帮 → 基本无法过审</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title blue">AI标识（强制 · 错即下架无修改机会）</div>
-<ul class="rule-list">
-<li class="warn">AI生成内容≥50%：片头前3秒 + 封面 + 简介 三处标注"本作品含AI生成内容"</li>
-<li class="ban">未标注或标注不显著 → 直接限流/下架</li>
-<li class="warn">主动标注不影响流量；被平台检测补标"疑似AI生成"影响权重</li>
-</ul></div></div>
+<div class="rule-block"><div class="rule-block-title blue">四大高风险场景（90%拒审来源）</div><ul class="rule-list">
+<li class="ban"><strong>关系越界：</strong>控制/羞辱/物化包装为"甜宠" → 直接高风险</li>
+<li class="ban"><strong>感官刺激引流：</strong>露骨/惊悚开篇+封面暗示 → 即使后续合规仍整体下架</li>
+<li class="ban"><strong>失真逻辑洗白：</strong>为作恶角色设无代价获利，架空美化违规 → 违背常识即下架</li>
+<li class="ban"><strong>低质拼接冒充：</strong>PPT轮播+伪动态+机械朗读+AI穿帮 → 基本无法过审</li></ul></div>
+<div class="rule-block"><div class="rule-block-title blue">AI标识（强制 · 错即下架）</div><ul class="rule-list">
+<li class="warn">AI生成≥50%：片头前3秒 + 封面 + 简介 三处标注</li>
+<li class="warn">标注文字："本作品含AI生成内容"</li>
+<li class="ban">未标注或不显著 → 直接限流/下架</li>
+<li class="warn">主动标注不影响流量；被检测补标影响权重</li></ul></div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title blue">制作质量硬指标</div>
-<ul class="rule-list">
+<div class="rule-block"><div class="rule-block-title blue">制作质量硬指标</div><ul class="rule-list">
 <li class="ban">禁止纯静态PPT拼接 / 伪动态凑数</li>
 <li class="ban">单集时长建议≥30秒（拒绝几秒一集"水文"）</li>
 <li class="ban">禁止全程机械配音 / 音画不同步</li>
-<li class="ban">禁止人物穿模 / 马赛克 / 烂尾断更 / 水印外链</li>
-<li class="ban">AI技术瑕疵率&gt;5% 即限流</li>
+<li class="ban">禁止人物穿模 / 马赛克 / 烂尾断更</li>
+<li class="ban">AI技术瑕疵率 &gt;5% 即限流</li>
 <li class="ban">封面禁用"热播""爆款""强推"等营销词</li>
-<li class="ban">封面禁止视觉擦边或主体五官缺失</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title blue">剧本限投 &amp; 审核机制</div>
-<ul class="rule-list">
+<li class="ban">封面禁止视觉擦边或主体五官缺失</li></ul></div>
+<div class="rule-block"><div class="rule-block-title blue">剧本限投 &amp; 审核机制</div><ul class="rule-list">
 <li class="warn">单个账号30天内签约剧本 ≤10本</li>
 <li class="warn">实名制绑定、禁止代投</li>
 <li class="warn">分类分层审核 + 分级备案制度</li>
-<li class="warn">审核覆盖剧名/封面/简介/正片/配音/字幕/画质全链路</li>
-</ul></div></div>
-</div></div></div>
+<li class="warn">审核覆盖剧名/封面/简介/正片/配音/字幕/画质全链路</li></ul></div></div></div></div></div>
 
-<!-- P8: 红果特殊规则 -->
-<div class="slide content" data-slide-key="hongguo-special" data-screen-label="08 红果特殊规则">
-<div class="wordmark">红果专项</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">HONGGUO ONLY</div>
-<h2 class="slide-title" data-text-id="slide-08.title">红果特殊规则 — 3类禁拍 + 六大通用红线 + 真人专项加码</h2></div>
-<div class="slide-body">
+<!-- P8 -->
+<div class="slide-frame" data-idx="7">
+<div class="slide" data-layout="content-2col" data-slide-key="hongguo-special" data-screen-label="08 红果特殊规则">
+<div class="slide-header"><div class="slide-label">HONGGUO ONLY</div><h2 class="slide-title" data-text-id="slide-08.title">3类禁拍 + 六大红线 + 真人专项加码</h2></div>
+<div class="col-2">
 <div class="col-left">
-<div class="rule-group"><div class="rule-group-title red">3类直接禁拍（零容忍·永久禁止）</div>
-<ul class="rule-list">
-<li class="ban"><strong>灵异迷信：</strong>鬼魂通灵、算命驱邪等全面封禁；诡异须用人为布局/心理错觉解释</li>
-<li class="ban"><strong>宗教民俗：</strong>宗教邪术永久禁止；不得解构宗教教义、编造法术修炼；民俗仅可生活化纪实</li>
-<li class="ban"><strong>缅北猎奇：</strong>囚禁/虐待/器官买卖不准拍摄；反诈仅保留公益科普形式</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title red">六大通用红线（4月落地）</div>
-<ul class="rule-list">
-<li class="ban"><strong>超自然金手指：</strong>隐身/瞬移/读心/快速自愈/修仙炼气/上古传承/凭空造物→全面禁拍。能力主角仅限退役军人/运动员/侦察兵等现实背景</li>
-<li class="ban"><strong>以暴制暴：</strong>主角不得主动伤人/私刑囚禁/聚众围堵；反派交公安处置；主角仅能躲闪格挡</li>
-<li class="ban"><strong>危险道具&amp;血腥：</strong>匕首/弹簧刀/毒针迷药禁出镜；刀具抵脖/出血特写禁拍；冲突仅用木棍等轻微磕碰，全程无受伤画面</li>
-</ul></div></div>
+<div class="rule-block"><div class="rule-block-title red">3类直接禁拍（零容忍）</div><ul class="rule-list">
+<li class="ban"><strong>灵异迷信：</strong>鬼魂通灵/算命驱邪全面封禁；诡异须用人为布局/心理错觉解释</li>
+<li class="ban"><strong>宗教民俗：</strong>宗教邪术永久禁止；不得解构宗教教义/编造法术；民俗仅可生活化纪实</li>
+<li class="ban"><strong>缅北猎奇：</strong>囚禁/虐待/器官买卖不准拍；反诈仅保留公益科普形式</li></ul></div>
+<div class="rule-block"><div class="rule-block-title red">六大通用红线（1-3）</div><ul class="rule-list">
+<li class="ban"><strong>超自然金手指禁用：</strong>隐身/瞬移/读心/修仙/上古传承/凭空造物→全面禁拍。能力主角仅限退役军人/运动员/侦察兵等现实背景</li>
+<li class="ban"><strong>以暴制暴管控：</strong>主角不得主动伤人/私刑囚禁/聚众围堵；反派交公安；主角仅躲闪格挡</li>
+<li class="ban"><strong>危险道具&amp;血腥：</strong>匕首/弹簧刀/毒针禁出镜；刀具抵脖/出血特写禁拍；冲突仅用木棍，全程无受伤画面</li></ul></div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title red">（续）六大通用红线</div>
-<ul class="rule-list">
-<li class="ban"><strong>人格羞辱&amp;极端价值观：</strong>扔钱辱人/逼迫下跪/掌掴→叫停；禁刻意制造贫富对立；禁校园职场霸凌</li>
+<div class="rule-block"><div class="rule-block-title red">六大通用红线（4-6）</div><ul class="rule-list">
+<li class="ban"><strong>人格羞辱&amp;极端价值观：</strong>扔钱辱人/逼跪/掌掴→叫停；禁刻意制造贫富对立；禁校园职场霸凌</li>
 <li class="ban"><strong>隐私侵犯&amp;要挟：</strong>禁偷拍窃听/私自调监控/曝光隐私；禁用弱势亲属胁迫主角；禁威胁医院停药</li>
-<li class="ban"><strong>交通暴力&amp;恶意毁物：</strong>禁恶意别车/危险飙车/蓄意撞击；砸车窗/踹车身/车内打斗→删减</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title orange">真人专项加码（5月启动）</div>
-<ul class="rule-list">
+<li class="ban"><strong>交通暴力&amp;恶意毁物：</strong>禁恶意别车/危险飙车/蓄意撞击；砸车窗/踹车身/车内打斗→删减</li></ul></div>
+<div class="rule-block"><div class="rule-block-title orange">真人专项加码（5月启动）</div><ul class="rule-list">
 <li class="ban">男频保镖/豪门：无资质私人保镖/黑市佣兵→立项驳回；雇凶暗杀/灭口→大幅修改</li>
 <li class="ban">婆媳/婚恋收紧：霸总禁锢/绑架追求/PUA精神控制/婚内出轨/小三上位/家暴流产→全部禁止</li>
-<li class="ban">价值观硬控：无脑砸钱炫富/拜金主义/权贵凌驾法律→禁止；反派须移交司法，完整呈现抓捕判刑</li>
-<li class="ban">标题/剧名禁用词："灭门""逆天改命""一手遮天"等博眼球词→禁用</li>
-<li class="ban">经典案例：《隐身侍卫》因违规删减，流量大幅下滑</li>
-</ul></div></div>
-</div></div></div>
+<li class="ban">价值观硬控：无脑砸钱炫富/拜金主义/权贵凌驾法律→禁止；反派须移交司法</li>
+<li class="ban">标题/剧名禁用词："灭门""逆天改命""一手遮天"等博眼球词→禁用</li></ul></div></div></div></div></div>
 
-<!-- P9: 差异对照表 -->
-<div class="slide content" data-slide-key="diff-table" data-screen-label="09 平台差异对照">
-<div class="wordmark">差异对照</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">COMPARISON</div>
-<h2 class="slide-title" data-text-id="slide-09.title">抖音 vs 红果 — 关键差异一览</h2></div>
-<div class="slide-body">
+<!-- P9 -->
+<div class="slide-frame" data-idx="8">
+<div class="slide" data-layout="content-2col" data-slide-key="diff-table" data-screen-label="09 平台差异对照">
+<div class="slide-header"><div class="slide-label">COMPARISON</div><h2 class="slide-title" data-text-id="slide-09.title">抖音 vs 红果 — 关键差异一览</h2></div>
 <table class="compare-table">
 <tr><th>维度</th><th>抖音</th><th>红果</th></tr>
-<tr><td>规则公开度</td><td class="diff-a">官方发布审片标准（2026.5）</td><td class="diff-b">否认独立标准，称遵循主管部门</td></tr>
-<tr><td>审核风格</td><td class="diff-a">综合评估，不搞题材一刀切</td><td class="diff-b">品类红线更明确，3类直接禁拍</td></tr>
-<tr><td>超自然金手指</td><td class="diff-a">禁止作为主线/核心卖点</td><td class="diff-b">全面禁拍（六大红线之首）</td></tr>
-<tr><td>AI标注</td><td class="diff-a">≥50%强制三处标注</td><td class="diff-b">未单独公开细则</td></tr>
-<tr><td>质量门槛</td><td class="diff-a">硬指标（≥30秒/禁机械配音等）</td><td class="diff-b">未单独公开</td></tr>
-<tr><td>剧本限制</td><td class="diff-a">30天≤10本/实名制/禁代投</td><td class="diff-b">未公开</td></tr>
-<tr><td>封面规范</td><td class="diff-a">禁用"热播""爆款"营销词</td><td class="diff-b">未单独公开</td></tr>
-<tr><td>标题规范</td><td class="diff-a">—</td><td class="diff-b">禁用"灭门""逆天改命"等博眼球词</td></tr>
-<tr><td>处罚力度</td><td class="diff-a">下架→限权→封号→终止合作</td><td class="diff-b">下架→暂停15天→封禁→终止合作→法律追责</td></tr>
-<tr><td>申诉渠道</td><td class="diff-a">站内举报 + jubao@douyin.com + 95152</td><td class="diff-b">hongguojubao@bytedance.com</td></tr>
-</table>
-</div></div></div>
+<tr><td>规则公开度</td><td class="dy-cell">官方发布审片标准（2026.5）</td><td class="hg-cell">否认独立标准，称遵循主管部门</td></tr>
+<tr><td>审核风格</td><td class="dy-cell">综合评估，不搞题材一刀切</td><td class="hg-cell">品类红线更明确，3类直接禁拍</td></tr>
+<tr><td>超自然金手指</td><td class="dy-cell">禁止作为主线/核心卖点</td><td class="hg-cell">全面禁拍（六大红线之首）</td></tr>
+<tr><td>AI标注</td><td class="dy-cell">≥50%强制三处标注</td><td class="hg-cell">未单独公开细则</td></tr>
+<tr><td>质量门槛</td><td class="dy-cell">硬指标（≥30秒/禁机械配音等）</td><td class="hg-cell">未单独公开</td></tr>
+<tr><td>剧本限制</td><td class="dy-cell">30天≤10本/实名制/禁代投</td><td class="hg-cell">未公开</td></tr>
+<tr><td>封面规范</td><td class="dy-cell">禁用"热播""爆款"营销词</td><td class="hg-cell">未单独公开</td></tr>
+<tr><td>标题规范</td><td class="dy-cell">—</td><td class="hg-cell">禁用"灭门""逆天改命"等博眼球词</td></tr>
+<tr><td>处罚力度</td><td class="dy-cell">下架→限权→封号→终止合作</td><td class="hg-cell">下架→暂停15天→封禁→终止合作→法律追责</td></tr>
+<tr><td>申诉渠道</td><td class="dy-cell">站内举报 + jubao@douyin.com + 95152</td><td class="hg-cell">hongguojubao@bytedance.com</td></tr>
+</table></div></div>
 
-<!-- P10: 风控应对 -->
-<div class="slide content" data-slide-key="risk-response" data-screen-label="10 触发风控后怎么办">
-<div class="wordmark">风控应对</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">RISK RESPONSE</div>
-<h2 class="slide-title" data-text-id="slide-10.title">触发风控后怎么办？— 申诉流程 &amp; 修改策略</h2></div>
-<div class="slide-body">
+<!-- P10 -->
+<div class="slide-frame" data-idx="9">
+<div class="slide" data-layout="content-2col" data-slide-key="risk-response" data-screen-label="10 触发风控后怎么办">
+<div class="slide-header"><div class="slide-label">RISK RESPONSE</div><h2 class="slide-title" data-text-id="slide-10.title">触发风控后怎么办？— 申诉流程 &amp; 修改策略</h2></div>
+<div class="col-2">
 <div class="col-left">
-<div class="rule-group"><div class="rule-group-title blue">抖音侧申诉流程</div>
+<div class="rule-block"><div class="rule-block-title blue">抖音侧申诉流程</div>
 <div class="flow-steps">
 <div class="flow-step"><div class="step-num">1</div><div class="step-title">查看违规原因</div><div class="step-desc">平台提供违规时间戳和违规点</div></div>
 <div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-num">2</div><div class="step-title">一次性连查排清</div><div class="step-desc">主动检查全剧同类风险点，整体调整</div></div>
+<div class="flow-step"><div class="step-num">2</div><div class="step-title">一次性连查排清</div><div class="step-desc">主动检查全剧同类风险点</div></div>
 <div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-num">3</div><div class="step-title">修改提交</div><div class="step-desc">消除原违规点，不引入新违规点</div></div>
+<div class="flow-step"><div class="step-num">3</div><div class="step-title">修改提交</div><div class="step-desc">消除原违规点，不引入新点</div></div>
 <div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-num">4</div><div class="step-title">等待复审</div><div class="step-desc">修改次数有限制，务必一次到位</div></div>
-</div></div>
-<div class="rule-group"><div class="rule-group-title blue">申诉技巧</div>
-<ul class="rule-list">
+<div class="flow-step"><div class="step-num">4</div><div class="step-title">等待复审</div><div class="step-desc">修改次数有限，务必一次到位</div></div></div></div>
+<div class="rule-block"><div class="rule-block-title blue">申诉技巧</div><ul class="rule-list">
 <li class="warn">准备原创性证据链（原始素材、剪辑工程截图）</li>
 <li class="warn">200字内技术性解释（不辩解，针对违规点回应）</li>
 <li class="warn">误判时提供截图/录制证明</li>
-<li class="warn">承诺不再违规</li>
-</ul></div></div>
+<li class="warn">承诺不再违规</li></ul></div></div>
 <div class="col-right">
-<div class="rule-group"><div class="rule-group-title orange">红果侧申诉流程</div>
+<div class="rule-block"><div class="rule-block-title orange">红果侧申诉流程</div>
 <div class="flow-steps">
-<div class="flow-step"><div class="step-num">1</div><div class="step-title">收到下架通知</div><div class="step-desc">侵权投诉后72小时内须提供合规证据</div></div>
+<div class="flow-step"><div class="step-num">1</div><div class="step-title">收到下架通知</div><div class="step-desc">侵权投诉后72小时须提供合规证据</div></div>
 <div class="flow-arrow">→</div>
 <div class="flow-step"><div class="step-num">2</div><div class="step-title">提交证明材料</div><div class="step-desc">素材授权证明/原创证据/版权登记</div></div>
 <div class="flow-arrow">→</div>
 <div class="flow-step"><div class="step-num">3</div><div class="step-title">平台审核裁定</div><div class="step-desc">72小时全面审核期</div></div>
 <div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-num">4</div><div class="step-title">处罚/恢复</div><div class="step-desc">无法证明合规→下架+暂停15天</div></div>
-</div></div>
-<div class="rule-group"><div class="rule-group-title red">修改避坑要点</div>
-<ul class="rule-list">
+<div class="flow-step"><div class="step-num">4</div><div class="step-title">处罚/恢复</div><div class="step-desc">无法证明合规→下架+暂停15天</div></div></div></div>
+<div class="rule-block"><div class="rule-block-title red">修改避坑要点</div><ul class="rule-list">
 <li class="ban">不要只改被标注的单个点——检查全剧同类风险</li>
 <li class="ban">封面、标题、简介、正片全量检查</li>
 <li class="ban">修改后确保不引入新违规点</li>
-<li class="warn">案例《桃花簪》：盗脸侵权→全面下架+暂停上传15天</li>
-</ul></div></div>
-</div></div></div>
+<li class="warn">案例《桃花簪》：盗脸侵权→全面下架+暂停上传15天</li></ul></div></div></div></div></div>
 
-<!-- P11: 自查清单 -->
-<div class="slide content" data-slide-key="checklist" data-screen-label="11 创作者自查清单">
-<div class="wordmark">自查清单</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">CHECKLIST</div>
-<h2 class="slide-title" data-text-id="slide-11.title">创作者自查清单 — 拍之前过一遍</h2></div>
-<div class="slide-body">
+<!-- P11 -->
+<div class="slide-frame" data-idx="10">
+<div class="slide" data-layout="content-2col" data-slide-key="checklist" data-screen-label="11 创作者自查清单">
+<div class="slide-header"><div class="slide-label">CHECKLIST</div><h2 class="slide-title" data-text-id="slide-11.title">创作者自查清单 — 拍之前过一遍</h2></div>
+<div class="col-2">
 <div class="col-left">
 <div class="stage-banner"><span class="banner-icon">📋</span> 内容红线检查</div>
 <ul class="checklist">
@@ -490,8 +361,7 @@ body{font-family:var(--font-cjk);background:var(--bg);color:var(--text);overflow
 <li><span class="check-icon">🔴</span> 超自然设定是否用科学逻辑收尾？</li>
 <li><span class="check-icon">🔴</span> 封面标题是否低俗擦边/博眼球？</li>
 <li><span class="check-icon">🔴</span> 有没有AI换脸/盗用素材/洗稿？</li>
-<li><span class="check-icon">🔴</span> 反派最终是否移交司法机关？</li>
-</ul></div>
+<li><span class="check-icon">🔴</span> 反派最终是否移交司法机关？</li></ul></div>
 <div class="col-right">
 <div class="stage-banner"><span class="banner-icon">✅</span> 前置合规 &amp; 长期策略</div>
 <ul class="checklist">
@@ -501,75 +371,77 @@ body{font-family:var(--font-cjk);background:var(--bg);color:var(--text);overflow
 <li><span class="check-icon">📝</span> <strong>AI标注到位：</strong>≥50%AI内容三处标注（片头+封面+简介）</li>
 <li><span class="check-icon">💡</span> 从"爽点模板"转向原创叙事</li>
 <li><span class="check-icon">💡</span> 现实主义/职场/家庭等正向题材过审更友好</li>
-<li><span class="check-icon">💡</span> 合规精品可获流量倾斜和保底收益（抖音15亿+扶持预算）</li>
-</ul></div>
-</div></div></div>
+<li><span class="check-icon">💡</span> 合规精品可获流量倾斜和保底收益（抖音15亿+扶持预算）</li></ul></div></div></div></div>
 
-<!-- P12: 封底 -->
-<div class="slide end" data-slide-key="closing" data-screen-label="12 封底">
-<div class="wordmark">内容合规指南</div>
-<div class="slide-inner">
+<!-- P12 -->
+<div class="slide-frame" data-idx="11">
+<div class="slide" data-layout="end" data-slide-key="closing" data-screen-label="12 封底">
+<div class="end-inner">
 <h2 class="end-title" data-text-id="slide-12.title">记住一句话</h2>
-<p class="end-sub" data-text-id="slide-12.subtitle">
-<strong>你可以爽，但不能越过法律和道德的红线。</strong><br><br>
-合规不是创作的敌人——精品化才是短剧行业的唯一出路。
-</p>
-<div class="end-contact" data-text-id="slide-12.contact">
-<strong>举报渠道：</strong><br>
-抖音 · jubao@douyin.com · 客服 95152<br>
-红果 · hongguojubao@bytedance.com<br><br>
-数据来源：抖音集团AI短剧审片标准（2026.5）、广电总局微短剧管理办法（2026.6）、<br>
-红果短剧专项整治通告、各平台公开信息 · 整理于 2026.07
-</div>
-</div></div>
+<p class="end-sub" data-text-id="slide-12.subtitle"><strong>你可以爽，但不能越过法律和道德的红线。</strong><br><br>合规不是创作的敌人——精品化才是短剧行业的唯一出路。</p>
+<div class="end-contact" data-text-id="slide-12.contact"><strong>举报渠道：</strong><br>抖音 · jubao@douyin.com · 客服 95152<br>红果 · hongguojubao@bytedance.com<br><br>数据来源：抖音集团AI短剧审片标准（2026.5）、广电总局微短剧管理办法（2026.6）、红果短剧专项整治通告 · 整理于 2026.07</div></div></div></div>
 
-<!-- P13: 附录 -->
-<div class="slide content" data-slide-key="appendix" data-screen-label="13 附录 · 规则来源索引">
-<div class="wordmark">附录</div>
-<div class="slide-inner">
-<div class="slide-header">
-<div class="slide-label">APPENDIX</div>
-<h2 class="slide-title" data-text-id="slide-13.title">附录 — 分类规则明细与来源索引</h2></div>
-<div class="slide-body">
-<div class="col-left">
-<div class="rule-group"><div class="rule-group-title blue">政策法规</div>
-<ul class="rule-list">
-<li class="warn">广电总局AI短剧"先备案后上线"（2026.4.1）</li>
-<li class="warn">微短剧有害低俗内容专项治理（2026.6.1-7.31）— thepaper.cn</li>
-<li class="warn">《微短剧发展管理办法》征求意见稿（2026.6.24）— 新华网</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title blue">抖音 · 官方/准官方</div>
-<ul class="rule-list">
+<!-- P13 -->
+<div class="slide-frame" data-idx="12">
+<div class="slide" data-layout="content-2col" data-slide-key="appendix" data-screen-label="13 附录 · 规则来源索引">
+<div class="slide-header"><div class="slide-label">APPENDIX</div><h2 class="slide-title" data-text-id="slide-13.title">附录 — 分类规则明细与来源索引</h2></div>
+<div class="appendix-body">
+<div class="appendix-col">
+<div class="rule-block"><div class="rule-block-title blue">政策法规</div><ul class="rule-list">
+<li class="warn">广电总局AI短剧"先备案后上线"（2026.4.1）— 搜狐报道</li>
+<li class="warn">微短剧有害低俗内容专项治理（2026.6.1）— thepaper.cn</li>
+<li class="warn">《微短剧发展管理办法》征求意见（2026.6.24）— 新华网</li></ul></div>
+<div class="rule-block"><div class="rule-block-title blue">抖音 · 官方/准官方</div><ul class="rule-list">
 <li class="warn">AI短剧审片标准 — tvoao.com/a/224167</li>
 <li class="warn">34条红线原文 — m.10100.com/article/133090373</li>
 <li class="warn">六大红线+四大场景 — thepaper.cn 33186546</li>
-<li class="warn">微短剧内容治理公告 — developer.open-douyin.com</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title orange">红果 · 官方/准官方</div>
-<ul class="rule-list">
+<li class="warn">微短剧内容治理公告 — developer.open-douyin.com</li></ul></div>
+<div class="rule-block"><div class="rule-block-title orange">红果 · 官方/准官方</div><ul class="rule-list">
 <li class="warn">官方回应（新京报）— bjnews.com.cn/detail/1780730730129801</li>
 <li class="warn">治理AI短剧素材违规 — xinwen.bjd.com.cn</li>
-<li class="warn">《桃花簪》侵权案例 — myzaker.com</li>
-</ul></div></div>
-<div class="col-right">
-<div class="rule-group"><div class="rule-group-title orange">红果 · 行业解读</div>
-<ul class="rule-list">
+<li class="warn">《桃花簪》侵权案例 — myzaker.com</li></ul></div></div>
+<div class="appendix-col">
+<div class="rule-block"><div class="rule-block-title orange">红果 · 行业解读</div><ul class="rule-list">
 <li class="warn">3类禁拍13类受限深度 — sohu.com/a/1034544611</li>
 <li class="warn">细项拆解 — 163.com KUNG3PB4056D0RP</li>
 <li class="warn">新规细项 — toutiao.com/group/7648130413361201670</li>
-<li class="warn">"谣言风波"澄清 — toutiao.com/group/7648388487955235382</li>
-</ul></div>
-<div class="rule-group"><div class="rule-group-title red">违规案例 </div><!-- /slides-container --> 申诉</div>
-<ul class="rule-list">
+<li class="warn">"谣言风波"澄清 — toutiao.com/group/7648388487955235382</li></ul></div>
+<div class="rule-block"><div class="rule-block-title red">违规案例 &amp; 申诉</div><ul class="rule-list">
 <li class="ban">首例刑事案：盗录1700部→判刑8个月 — sohu.com/a/1034868515</li>
 <li class="ban">抖音209部下架短剧 — jinantimes.com.cn</li>
-<li class="warn">申诉技巧 — m.php.cn/faq/1881699</li>
-</ul></div>
-<div class="highlight-box"><div class="box-title">⚠ 免责声明</div>
-红果"3+13"体系为行业流传版，官方否认发布独立标准；抖音34条红线来自闭门会议披露。所有规则以平台最新公告和广电总局正式文件为准，本文仅为创作者参考指南。
-</div></div>
-</div></div></div>
+<li class="warn">申诉技巧 — m.php.cn/faq/1881699</li></ul></div>
+<div class="highlight-box"><div class="box-title">⚠ 免责声明</div>红果"3+13"体系为行业流传版，官方否认发布独立标准；抖音34条红线来自闭门会议披露。所有规则以平台最新公告和广电总局正式文件为准，本文仅为创作者参考指南。</div></div></div></div></div>
 
-</div><!-- /slides-container -->
+</div><!-- /deck -->
+
+<div class="deck-ui">
+  <div class="deck-progress"><div class="bar" style="width:0%"></div></div>
+  <div class="deck-controls">
+    <button class="ctl" data-action="prev" aria-label="上一页">◀</button>
+    <span class="indicator"><span class="current">1</span><span class="sep">/</span><span class="total">13</span></span>
+    <button class="ctl" data-action="next" aria-label="下一页">▶</button>
+    <span class="ctl-sep"></span>
+    <button class="ctl fs" data-action="fullscreen" aria-label="全屏">⛶</button>
+  </div>
+  <div class="nav-hint">← → 翻页 &nbsp; F 全屏</div>
+</div>
+
+<script src="../../../../../../skills/feishu-deck-h5/assets/feishu-deck.js"></script>
+<script>
+// Scale fix: ensure JS rescales after custom content loads
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var frames = document.querySelectorAll('.slide-frame');
+    frames.forEach(function(f) {
+      var s = f.querySelector('.slide');
+      if (s) {
+        var w = f.clientWidth, h = f.clientHeight;
+        var scale = Math.min(w/1920, h/1080);
+        s.style.setProperty('--fs-scale', String(scale));
+      }
+    });
+  }, 200);
+});
+</script>
 </body>
 </html>

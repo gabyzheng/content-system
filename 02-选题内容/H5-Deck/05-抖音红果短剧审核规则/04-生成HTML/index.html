@@ -2970,6 +2970,30 @@ body {
 .appendix-col { flex: 1; min-width: 0; overflow-y: auto; padding-right: 8px; }
 .appendix-col::-webkit-scrollbar { width: 4px; }
 .appendix-col::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
+/* ===== OVERRIDE: 强制字体和色系 ===== */
+.deck, .deck .slide, .deck .slide *, .deck .slide-frame *,
+.deck-ui, .deck-ui * {
+  font-family: "PingFang SC","Microsoft YaHei","Noto Sans SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif !important;
+}
+:root {
+  --fs-bg-0: #060a14 !important;
+  --fs-bg-1: #0c1428 !important;
+  --fs-bg-2: #101a36 !important;
+  --fs-bg-3: #162048 !important;
+  --fs-blue: #4da3ff !important;
+  --fs-teal: #3ee8d0 !important;
+  --fs-orange: #f5a623 !important;
+  --fs-red: #f44 !important;
+  --fs-accent: var(--fs-teal) !important;
+  --fs-text: rgba(255,255,255,0.92) !important;
+  --fs-text-72: rgba(255,255,255,0.72) !important;
+  --fs-text-65: rgba(255,255,255,0.65) !important;
+  --fs-text-48: rgba(255,255,255,0.48) !important;
+  --fs-text-40: rgba(255,255,255,0.40) !important;
+  --fs-grad-hero: radial-gradient(120% 100% at 0% 0%, #0f1e40 0%, #080f20 38%, #040812 78%) !important;
+  --fs-grad-close: radial-gradient(60% 50% at 92% 8%, rgba(100,70,220,0.25), transparent 60%),radial-gradient(60% 50% at 8% 92%, rgba(60,130,255,0.20), transparent 60%),#060a14 !important;
+}
 </style>
 </head>
 <body>
